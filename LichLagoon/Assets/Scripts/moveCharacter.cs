@@ -8,12 +8,14 @@ public class moveCharacter : MonoBehaviour
     public Camera cam;
     Animator bob;
 
+	[Header ("Mod Values")]
     public float speed = 6.0f;
     //public float jumpSpeed = 8.0f;
     public float gravity = 20.0f;
 
     private Vector3 moveDirection = Vector3.zero;
 
+	[Header ("KeyInputs")]
     public KeyCode forward;
     public KeyCode back;
     public KeyCode left;
@@ -25,6 +27,9 @@ public class moveCharacter : MonoBehaviour
     {
         characterController = GetComponent<CharacterController>();
         bob = cam.GetComponent<Animator>();
+
+		Cursor.visible = false;
+		Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
@@ -43,7 +48,7 @@ public class moveCharacter : MonoBehaviour
         currentX += Input.GetAxis("Mouse X") * sensitivityX;
         currentY += Input.GetAxis("Mouse Y") * sensitivityY;
 
-        verticalLook.localRotation = Quaternion.Euler(-currentY, 0, 0);
+		verticalLook.localRotation = Quaternion.Euler(-currentY, 0, 0);
         transform.rotation = Quaternion.Euler(0, currentX, 0);
         
 
@@ -89,10 +94,9 @@ public class moveCharacter : MonoBehaviour
         // as an acceleration (ms^-2)
         moveDirection.y -= gravity * Time.deltaTime;
 
-        
-
         // Move the controller
         characterController.Move(moveDirection * Time.deltaTime);
+
         if(Mathf.Abs(moveDirection.x) < .1f && Mathf.Abs(moveDirection.z) < .1f)
         {
             bob.enabled = false;

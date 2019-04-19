@@ -22,6 +22,13 @@ public class moveCharacter : MonoBehaviour
     public KeyCode right;
     public KeyCode jump;
 
+    [Header("Audio")]
+    public float stepInterval = 0;
+    private float stepI = 0;
+    private AudioSource stepSource;
+    public AudioClip[] sandSteps = new AudioClip[6];
+    public AudioClip[] woodSteps = new AudioClip[6];
+    private bool moving = false, onWood = false, onSand = false;
 
     void Start()
     {
@@ -30,12 +37,16 @@ public class moveCharacter : MonoBehaviour
 
 		Cursor.visible = false;
 		Cursor.lockState = CursorLockMode.Locked;
+
+        stepI = stepInterval;
+        stepSource = this.GetComponent<AudioSource>();
     }
 
     void Update()
     {
         Movement();
         Look();
+        checkGround();
     }
 
     public float sensitivityX;
@@ -97,14 +108,64 @@ public class moveCharacter : MonoBehaviour
         // Move the controller
         characterController.Move(moveDirection * Time.deltaTime);
 
-        if(Mathf.Abs(moveDirection.x) < .1f && Mathf.Abs(moveDirection.z) < .1f)
+        if(Mathf.Abs(moveDirection.x) < .1f && Mathf.Abs(moveDirection.z) < .1f)    //if not moving
         {
             bob.enabled = false;
-            //bob.Play("Camera_Head_Bob");
+            //stepI = stepInterval;   //when you stop moving, reset the footstep timer for step sfx
+            ///bob.Play("Camera_Head_Bob");
+        }
+        else     //if moving
+        {
+            bob.enabled = true;
+            stepCount();
+        }
+    }
+
+    void stepCount ()
+    {
+        stepI -= Time.deltaTime;
+
+        if (stepI <= 0) {
+            stepI = stepInterval;
+            
+            if (onSand)
+            {
+                stepSource.PlayOneShot(sandSteps[Random.Range(0, sandSteps.Length)]);       //if on sand, play a random sand footstep sfx
+            }
+
+            else if (onWood)
+            {
+                stepSource.PlayOneShot(woodSteps[Random.Range(0, woodSteps.Length)]);       //if on wood, play a random wood footstep sfx
+            }
+        }
+    }
+
+    void checkGround ()
+    {
+        Vector3 downDirection = new Vector3(0, -1, 0);
+        RaycastHit hit;
+        float mag = 1.25f;
+
+        Debug.DrawRay(transform.position, downDirection, Color.green);
+
+        if (Physics.Raycast(transform.position, downDirection, out hit, mag))   //CHECK to see if player is currently standing on sand or wood
+        {
+            if (hit.collider.gameObject.tag == "Sand")
+            {
+                onSand = true;
+                onWood = false;
+            }
+
+            else if (hit.collider.gameObject.tag == "Wood")
+            {
+                onSand = false;
+                onWood = true;
+            }
         }
         else
         {
-            bob.enabled = true;
+            onSand = false;
+            onWood = false;
         }
     }
 }

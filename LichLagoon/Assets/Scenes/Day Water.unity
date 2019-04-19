@@ -5081,6 +5081,21 @@ MonoBehaviour:
   left: 97
   right: 100
   jump: 32
+  stepInterval: 0
+  sandSteps:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  woodSteps:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   sensitivityX: 2
   sensitivityY: 1.5
   verticalLook: {fileID: 804106509}
@@ -8943,7 +8958,7 @@ GameObject:
   - component: {fileID: 2129649849}
   m_Layer: 0
   m_Name: Hill
-  m_TagString: Untagged
+  m_TagString: Sand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

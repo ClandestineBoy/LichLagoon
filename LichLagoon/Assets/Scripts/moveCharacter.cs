@@ -13,7 +13,17 @@ public class moveCharacter : MonoBehaviour
     //The animator that adds the walking head bob
     Animator bob;
 
-	[Header ("Mod Values")]
+    [Header ("Grab Variables")]
+
+    public GameObject grabPos;
+    // Movement speed in units/sec.
+    public float grabSpeed = 1.0F;
+    private bool grabbing;
+    GameObject grabbedObj;
+    grabbable grabbedItem;
+
+
+   [Header ("Mod Values")]
     //movement speed
     public float speed = 6.0f;
 
@@ -74,6 +84,41 @@ public class moveCharacter : MonoBehaviour
 
         //Script
         checkGround();
+
+        //Script checking mouse clicks to pick up objects
+        PickUp();
+    }
+
+    
+
+    void PickUp()
+    {
+        RaycastHit hit;
+        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (!grabbing)
+            {
+                if (Physics.Raycast(ray, out hit, 100, 1 << LayerMask.NameToLayer("Default")))
+                {
+                    if (hit.collider.gameObject.GetComponent<grabbable>() != null)
+                    {
+                        grabbedObj = hit.collider.gameObject;
+                        grabbedItem = grabbedObj.GetComponent<grabbable>();
+                        grabbedItem.grabbed = true;
+                        grabbedItem.grabPos = grabPos;
+                        grabbedItem.grabSpeed = grabSpeed;
+                        grabbedItem.grabBegin = true;
+                        grabbing = true;
+                    }
+                }
+            }
+            else
+            {
+                grabbedItem.grabbed = false;
+                grabbing = false;
+            }
+        }
     }
 
     //mouse sensitivity

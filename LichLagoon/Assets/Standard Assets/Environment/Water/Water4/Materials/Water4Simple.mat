@@ -80,7 +80,7 @@ Material:
     - _GDirectionCD: {r: -0.3, g: -0.9, b: 0.5, a: 0.5}
     - _GFrequency: {r: 0.25, g: 0.125, b: 0.3, a: 0.12}
     - _GSpeed: {r: 1, g: 1, b: 0.2, a: 0.5}
-    - _GSteepness: {r: 2, g: 1, b: 1, a: 1}
+    - _GSteepness: {r: 40, g: 1, b: 1, a: 1}
     - _InvFadeParemeter: {r: 1.63, g: 0.08562102, b: 0.09414239, a: 0.96}
     - _ReflectionColor: {r: 0.47582978, g: 0.6064865, b: 0.6641791, a: 0.47058824}
     - _RefractionFog: {r: 0.8681778, g: 0.8797176, b: 0.8880597, a: 1}

@@ -104,6 +104,11 @@ public class moveCharacter : MonoBehaviour
                     if (hit.collider.gameObject.GetComponent<grabbable>() != null)
                     {
                         grabbedObj = hit.collider.gameObject;
+                        grabbedObj.transform.SetParent(grabPos.transform);
+                        if(grabbedObj.GetComponent<MeshCollider>() != null)
+                            grabbedObj.GetComponent<MeshCollider>().enabled = false;
+                        if (grabbedObj.GetComponent<BoxCollider>() != null)
+                            grabbedObj.GetComponent<BoxCollider>().enabled = false;
                         grabbedItem = grabbedObj.GetComponent<grabbable>();
                         grabbedItem.grabbed = true;
                         grabbedItem.grabPos = grabPos;
@@ -115,6 +120,11 @@ public class moveCharacter : MonoBehaviour
             }
             else
             {
+                grabbedObj.transform.SetParent(null);
+                if (grabbedObj.GetComponent<MeshCollider>() != null)
+                    grabbedObj.GetComponent<MeshCollider>().enabled = true;
+                if (grabbedObj.GetComponent<BoxCollider>() != null)
+                    grabbedObj.GetComponent<BoxCollider>().enabled = true;
                 grabbedItem.grabbed = false;
                 grabbing = false;
             }

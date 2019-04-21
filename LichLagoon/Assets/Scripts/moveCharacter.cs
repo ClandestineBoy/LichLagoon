@@ -105,28 +105,34 @@ public class moveCharacter : MonoBehaviour
                     {
                         grabbedObj = hit.collider.gameObject;
                         grabbedObj.transform.SetParent(grabPos.transform);
+
                         if(grabbedObj.GetComponent<MeshCollider>() != null)
                             grabbedObj.GetComponent<MeshCollider>().enabled = false;
+
                         if (grabbedObj.GetComponent<BoxCollider>() != null)
                             grabbedObj.GetComponent<BoxCollider>().enabled = false;
+
                         grabbedItem = grabbedObj.GetComponent<grabbable>();
-                        grabbedItem.grabbed = true;
-                        grabbedItem.grabPos = grabPos;
-                        grabbedItem.grabSpeed = grabSpeed;
-                        grabbedItem.grabBegin = true;
+                        grabbedItem.setGrabbed(true);
+                        grabbedItem.setGrabObj(grabPos);
+                        grabbedItem.setGrabSpeed(grabSpeed);
                         grabbing = true;
                     }
                 }
             }
             else
             {
-                grabbedObj.transform.SetParent(null);
-                if (grabbedObj.GetComponent<MeshCollider>() != null)
-                    grabbedObj.GetComponent<MeshCollider>().enabled = true;
-                if (grabbedObj.GetComponent<BoxCollider>() != null)
-                    grabbedObj.GetComponent<BoxCollider>().enabled = true;
-                grabbedItem.grabbed = false;
-                grabbing = false;
+                if (grabbedItem.getInHand())
+                {
+                    grabbedObj.transform.SetParent(null);
+                    if (grabbedObj.GetComponent<MeshCollider>() != null)
+                        grabbedObj.GetComponent<MeshCollider>().enabled = true;
+                    if (grabbedObj.GetComponent<BoxCollider>() != null)
+                        grabbedObj.GetComponent<BoxCollider>().enabled = true;
+                    grabbedItem.setGrabbed(false);
+                    grabbing = false;
+                    grabbedItem.setInHand(false);                    
+                }
             }
         }
     }

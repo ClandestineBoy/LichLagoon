@@ -51,29 +51,29 @@ public class grabbable : MonoBehaviour
             // Calculate the journey length.
             journeyLength = Vector3.Distance(startPos, grabPos.transform.position);
 
-            if (rb.isKinematic)
-            {
-                rb.isKinematic = false;
-            }
+            buried = false;
+            rb.isKinematic = true;
             grabBegin = false;
         }
 
         if (grabbed)
-        { 
+        {
             Grabbed();
+        }else if (!buried)
+        {
+            rb.isKinematic = false;
         }
     }
 
     void Grabbed()
     {
         // Distance moved = time * speed.
-        float distCovered = (Time.time - startTime) * grabSpeed;
-        // Fraction of journey completed = current distance divided by total distance.
-        float fracJourney = distCovered / journeyLength;
-        // Set our position as a fraction of the distance between the markers.
-        transform.position = Vector3.Lerp(startPos, grabPos.transform.position, fracJourney);
+        float distLeft = Vector3.Distance(transform.position, grabPos.transform.position) * Time.deltaTime;
 
-        if(transform.position == grabPos.transform.position)
+        // Set our position as a fraction of the distance between the markers.
+        transform.position = Vector3.MoveTowards(transform.position, grabPos.transform.position, (distLeft*grabSpeed));
+
+        if(Vector3.Distance(transform.position,grabPos.transform.position) < .1f)
         {
             inHand = true;
         }

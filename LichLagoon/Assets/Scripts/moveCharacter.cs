@@ -131,7 +131,7 @@ public class moveCharacter : MonoBehaviour
                         grabbedObj.GetComponent<BoxCollider>().enabled = true;
                     grabbedItem.setGrabbed(false);
                     grabbing = false;
-                    grabbedItem.setInHand(false);
+                    grabbedItem.setInHand(false);                    
                 }
             }
         }

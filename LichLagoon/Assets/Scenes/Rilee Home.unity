@@ -1170,7 +1170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 534669904}
   grabPos: {fileID: 1175207093}
-  grabSpeed: 15
+  grabSpeed: 7
   speed: 5
   gravity: 20
   forward: 119

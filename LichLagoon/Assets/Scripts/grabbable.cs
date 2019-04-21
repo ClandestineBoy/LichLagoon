@@ -59,6 +59,6 @@ public class grabbable : MonoBehaviour
         // Fraction of journey completed = current distance divided by total distance.
         float fracJourney = distCovered / journeyLength;
         // Set our position as a fraction of the distance between the markers.
-        transform.position = Vector3.Lerp(startPos, grabPos.transform.position, fracJourney);
+        transform.position = Vector3.Slerp(startPos, grabPos.transform.position, fracJourney);
     }
 }

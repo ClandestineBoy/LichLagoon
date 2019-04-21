@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class grabbable : MonoBehaviour
 {
-    public bool grabbed;
-    public GameObject grabPos;
+    public bool buried;
+
+    private bool inHand;
+    private bool grabbed;
+    private GameObject grabPos;
     Rigidbody rb;
-    public float grabSpeed;
+    private float grabSpeed;
 
     // Time when the movement started.
     private float startTime;
@@ -15,6 +18,7 @@ public class grabbable : MonoBehaviour
     // Total distance between the markers.
     private float journeyLength;
 
+ 
     void Start()
     {
         //attatch a Rigidbody to the object if there isnt one already
@@ -26,12 +30,16 @@ public class grabbable : MonoBehaviour
         {
             rb = GetComponent<Rigidbody>();
         }
+        if (buried)
+        {
+            rb.isKinematic = true;
+        }
         grabbed = false;
         grabBegin = false;
     }
 
     Vector3 startPos;
-    public bool grabBegin = false;
+    private bool grabBegin = false;
 
     void Update()
     {
@@ -43,6 +51,10 @@ public class grabbable : MonoBehaviour
             // Calculate the journey length.
             journeyLength = Vector3.Distance(startPos, grabPos.transform.position);
 
+            if (rb.isKinematic)
+            {
+                rb.isKinematic = false;
+            }
             grabBegin = false;
         }
 
@@ -59,6 +71,33 @@ public class grabbable : MonoBehaviour
         // Fraction of journey completed = current distance divided by total distance.
         float fracJourney = distCovered / journeyLength;
         // Set our position as a fraction of the distance between the markers.
-        transform.position = Vector3.Slerp(startPos, grabPos.transform.position, fracJourney);
+        transform.position = Vector3.Lerp(startPos, grabPos.transform.position, fracJourney);
+
+        if(transform.position == grabPos.transform.position)
+        {
+            inHand = true;
+        }
+    }
+
+    public void setGrabbed(bool boo)
+    {
+        grabbed = boo;
+        grabBegin = true;
+    }
+    public void setGrabObj(GameObject obj)
+    {
+        grabPos = obj;
+    }
+    public void setGrabSpeed(float speed)
+    {
+        grabSpeed = speed;
+    }
+    public void setInHand(bool boo)
+    {
+        inHand = boo;
+    }
+    public bool getInHand()
+    {
+        return inHand;
     }
 }

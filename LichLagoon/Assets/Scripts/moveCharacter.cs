@@ -16,6 +16,8 @@ public class moveCharacter : MonoBehaviour
     [Header ("Grab Variables")]
 
     public GameObject grabPos;
+    public GameObject UIAnchor;
+
     // Movement speed in units/sec.
     public float grabSpeed = 1.0F;
     private bool grabbing;
@@ -115,6 +117,7 @@ public class moveCharacter : MonoBehaviour
                         grabbedItem = grabbedObj.GetComponent<grabbable>();
                         grabbedItem.setGrabbed(true);
                         grabbedItem.setGrabObj(grabPos);
+                        grabbedItem.setUIAnchor(UIAnchor);
                         grabbedItem.setGrabSpeed(grabSpeed);
                         grabbing = true;
                     }

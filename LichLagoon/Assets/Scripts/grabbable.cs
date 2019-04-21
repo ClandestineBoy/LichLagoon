@@ -8,8 +8,9 @@ public class grabbable : MonoBehaviour
 
     private bool inHand;
     private bool grabbed;
-    private GameObject grabPos;
+    private GameObject grabPos, UIAnchor;
     Rigidbody rb;
+    ParticleSystem ps;
     private float grabSpeed;
 
     // Time when the movement started.
@@ -36,6 +37,8 @@ public class grabbable : MonoBehaviour
         }
         grabbed = false;
         grabBegin = false;
+
+        ps = GetComponent<ParticleSystem>();
     }
 
     Vector3 startPos;
@@ -56,10 +59,22 @@ public class grabbable : MonoBehaviour
             grabBegin = false;
         }
 
+        if (inHand)
+        {
+            inHandFunc();
+        }
+        else
+        {
+            ps.Stop();  //if not in hand, the object stop emitting particles into the lore UI
+        }
+
         if (grabbed)
         {
             Grabbed();
-        }else if (!buried)
+
+           
+        }
+        else if (!buried)
         {
             rb.isKinematic = false;
         }
@@ -79,6 +94,27 @@ public class grabbable : MonoBehaviour
         }
     }
 
+    void inHandFunc()
+    {
+        Debug.Log("inHandFunc: " + Time.time);
+        if (!ps.isPlaying)
+        {
+            ps.Play();  //plays UI particle effect when held
+        }
+
+        ParticleSystem.Particle[] particles = new ParticleSystem.Particle[ps.particleCount];
+
+        for (float t = 0f; t < 1f; t += 0.1f)
+        {
+            int count = ps.GetParticles(particles);
+            for (int i = 0; i < count; i++)
+            {
+                particles[i].position = Vector3.Lerp(particles[i].position, UIAnchor.transform.localPosition, Time.deltaTime / 3);
+            }
+            ps.SetParticles(particles, count);
+        }
+    }
+
     public void setGrabbed(bool boo)
     {
         grabbed = boo;
@@ -87,6 +123,10 @@ public class grabbable : MonoBehaviour
     public void setGrabObj(GameObject obj)
     {
         grabPos = obj;
+    }
+    public void setUIAnchor(GameObject obj)
+    {
+        UIAnchor = obj;
     }
     public void setGrabSpeed(float speed)
     {

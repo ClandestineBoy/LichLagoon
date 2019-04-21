@@ -4,18 +4,37 @@ using UnityEngine;
 
 public class moveCharacter : MonoBehaviour
 {
+    //The component that helps us control the character's motion
     CharacterController characterController;
+
+    //The camera attatched to the player
     public Camera cam;
+
+    //The animator that adds the walking head bob
     Animator bob;
 
-	[Header ("Mod Values")]
+    [Header ("Grab Variables")]
+
+    public GameObject grabPos;
+    // Movement speed in units/sec.
+    public float grabSpeed = 1.0F;
+    private bool grabbing;
+    GameObject grabbedObj;
+    grabbable grabbedItem;
+
+
+   [Header ("Mod Values")]
+    //movement speed
     public float speed = 6.0f;
-    //public float jumpSpeed = 8.0f;
+
+    //the gravity applied to the player
     public float gravity = 20.0f;
 
+    //the direction the player is moving in
     private Vector3 moveDirection = Vector3.zero;
 
 	[Header ("KeyInputs")]
+    //all of the key inputs
     public KeyCode forward;
     public KeyCode back;
     public KeyCode left;
@@ -23,32 +42,86 @@ public class moveCharacter : MonoBehaviour
     public KeyCode jump;
 
     [Header("Audio")]
+    //the duration in between footsteps
     public float stepInterval = 0;
+
+    //the counter for stepInterval
     private float stepI = 0;
+
+    //audio source for footsteps
     private AudioSource stepSource;
+
+    //array containing all sand footstep sounds
     public AudioClip[] sandSteps = new AudioClip[6];
+
+    //array containing all wood footstep sounds
     public AudioClip[] woodSteps = new AudioClip[6];
+
+    //booleans determining what surface is being walked on
     private bool moving = false, onWood = false, onSand = false;
 
     void Start()
     {
+        //assigning public variables to components
         characterController = GetComponent<CharacterController>();
         bob = cam.GetComponent<Animator>();
+        stepSource = this.GetComponent<AudioSource>();
 
-		Cursor.visible = false;
+        //locking cursor into the center of the screen and making it invisible
+        Cursor.visible = false;
 		Cursor.lockState = CursorLockMode.Locked;
 
-        stepI = stepInterval;
-        stepSource = this.GetComponent<AudioSource>();
+        stepI = stepInterval;   
     }
 
     void Update()
     {
+        //Script controlling character movement
         Movement();
+
+        //Script controlling character camera rotation
         Look();
+
+        //Script
         checkGround();
+
+        //Script checking mouse clicks to pick up objects
+        PickUp();
     }
 
+    
+
+    void PickUp()
+    {
+        RaycastHit hit;
+        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (!grabbing)
+            {
+                if (Physics.Raycast(ray, out hit, 100, 1 << LayerMask.NameToLayer("Default")))
+                {
+                    if (hit.collider.gameObject.GetComponent<grabbable>() != null)
+                    {
+                        grabbedObj = hit.collider.gameObject;
+                        grabbedItem = grabbedObj.GetComponent<grabbable>();
+                        grabbedItem.grabbed = true;
+                        grabbedItem.grabPos = grabPos;
+                        grabbedItem.grabSpeed = grabSpeed;
+                        grabbedItem.grabBegin = true;
+                        grabbing = true;
+                    }
+                }
+            }
+            else
+            {
+                grabbedItem.grabbed = false;
+                grabbing = false;
+            }
+        }
+    }
+
+    //mouse sensitivity
     public float sensitivityX;
     public float sensitivityY;
     private float currentX, currentY;
@@ -61,9 +134,6 @@ public class moveCharacter : MonoBehaviour
 
 		verticalLook.localRotation = Quaternion.Euler(-currentY, 0, 0);
         transform.rotation = Quaternion.Euler(0, currentX, 0);
-        
-
-       // player.rotation = Quaternion.Slerp(player.rotation, , Time.deltaTime * 10);
     }
 
     void Movement()
@@ -92,10 +162,7 @@ public class moveCharacter : MonoBehaviour
             }
             moveDirection.Normalize();
             moveDirection *= speed;
-           /* if (Input.GetKey(jump))
-            {
-                moveDirection.y = jumpSpeed;
-            }*/
+
             //Rotation with look direction
             moveDirection = transform.rotation * moveDirection;
         }
@@ -108,15 +175,20 @@ public class moveCharacter : MonoBehaviour
         // Move the controller
         characterController.Move(moveDirection * Time.deltaTime);
 
-        if(Mathf.Abs(moveDirection.x) < .1f && Mathf.Abs(moveDirection.z) < .1f)    //if not moving
+        if(Mathf.Abs(moveDirection.x) < .1f && Mathf.Abs(moveDirection.z) < .1f)
         {
+            moving = true;
             bob.enabled = false;
-            //stepI = stepInterval;   //when you stop moving, reset the footstep timer for step sfx
-            ///bob.Play("Camera_Head_Bob");
+
+            //when you stop moving, reset the footstep timer for step sfx
+            //stepI = stepInterval;
         }
-        else     //if moving
+        else
         {
+            moving = false;
             bob.enabled = true;
+
+            //count down for step audio
             stepCount();
         }
     }

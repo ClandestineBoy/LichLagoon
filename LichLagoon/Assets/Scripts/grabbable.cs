@@ -8,10 +8,8 @@ public class grabbable : MonoBehaviour
 
     private bool inHand = false, inHandOne = false;
 
-    public float grabScale;
-    public float restScale;
-    private Vector3 grabS;
-    private Vector3 restS;
+    public Vector3 grabS = new Vector3(.4f,.4f,.4f);
+    public Vector3 restS = new Vector3(1,1,1);
 
     private bool grabbed;
     private GameObject grabPos, UIAnchor;
@@ -26,6 +24,7 @@ public class grabbable : MonoBehaviour
 
     // Total distance between the markers.
     private float journeyLength;
+    private float shrinkLength;
 
  
     void Start()
@@ -48,10 +47,6 @@ public class grabbable : MonoBehaviour
 
 
         ps = GetComponent<ParticleSystem>();
-
-        restS = new Vector3(restScale, restScale, restScale);
-        grabS = new Vector3(grabScale, grabScale, grabScale);
-
     }
 
     Vector3 startPos;
@@ -65,7 +60,8 @@ public class grabbable : MonoBehaviour
             startTime = Time.time;
             startPos = transform.position;
             // Calculate the journey length.
-            journeyLength = Vector3.Distance(restS, grabS);
+            shrinkLength = Vector3.Distance(restS, grabS);
+            journeyLength = Vector3.Distance(startPos, grabPos.transform.position);
 
             buried = false;
             rb.isKinematic = true;
@@ -90,17 +86,17 @@ public class grabbable : MonoBehaviour
         {
             inHandOne = false;
             ps.Stop();  //if not in hand, the object stop emitting particles into the lore UI
-            //StartCoroutine(delayedClear());
         }
     }
+
+    public float shrinkSpeed;
 
     void Grabbed()
     {
         // Distance moved = time * speed.
         float distLeft = Vector3.Distance(transform.position, grabPos.transform.position) * Time.deltaTime;
 
-        float shrinkDone = (Time.time - startTime)*3;
-        float shrinkJourney = 1-(shrinkDone/journeyLength);
+        float shrinkJourney = (distLeft/journeyLength)*100;
 
         // Set our position as a fraction of the distance between the markers.
         transform.position = Vector3.MoveTowards(transform.position, grabPos.transform.position, (distLeft*grabSpeed));
@@ -119,7 +115,7 @@ public class grabbable : MonoBehaviour
             ps.Play();  //plays UI particle effect when held
             inHandOne = true;
         }
-        Debug.Log(ps.isPlaying);
+      //Debug.Log(ps.isPlaying);
 
         if (particlesFollowPlayer)
         {

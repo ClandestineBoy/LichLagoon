@@ -88,6 +88,7 @@ public class grabbable : MonoBehaviour
         }
         if (!grabbed)
         {
+            GetComponent<rotater>().activeRotate = false;
             inHandOne = false;
             ps.Stop();  //if not in hand, the object stop emitting particles into the lore UI
             //StartCoroutine(delayedClear());
@@ -118,6 +119,7 @@ public class grabbable : MonoBehaviour
         {
             ps.Play();  //plays UI particle effect when held
             inHandOne = true;
+            GetComponent<rotater>().activeRotate = true;
         }
         Debug.Log(ps.isPlaying);
 

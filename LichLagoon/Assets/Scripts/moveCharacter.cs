@@ -94,7 +94,7 @@ public class moveCharacter : MonoBehaviour
 
         if (grabbing)
         {
-           //Debug.Log("isplaying = " + grabbedItem.ps.IsAlive() + " | " + Time.time);
+            grabPos.GetComponent<bobberScript>().enabled = true;  //start bobbing the grab anchor when holding something
 
             if (moving)
             {
@@ -106,6 +106,10 @@ public class moveCharacter : MonoBehaviour
                 //grabbedItem.ps.Play();  //plays UI particle effect when held and not moving
                 grabbedItem.particlesFollowPlayer = true;
             }
+        }
+        else
+        {
+            grabPos.GetComponent<bobberScript>().enabled = false;  //stop bobbing the grab anchor when not holding anything
         }
 
         //Script

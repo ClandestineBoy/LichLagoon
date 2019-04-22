@@ -6,17 +6,12 @@ public class grabbable : MonoBehaviour
 {
     public bool buried;
 
-
     private bool inHand = false, inHandOne = false;
 
     public float grabScale;
     public float restScale;
-    public float grabScale;
-    public float restScale;
     private Vector3 grabS;
     private Vector3 restS;
-
-    private bool inHand;
 
     private bool grabbed;
     private GameObject grabPos, UIAnchor;

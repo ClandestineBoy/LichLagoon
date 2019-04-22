@@ -139,7 +139,7 @@ Transform:
   m_GameObject: {fileID: 51670536}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.738, y: 0.178, z: 0.928}
-  m_LocalScale: {x: 0.25702, y: 0.25702, z: 0.25702}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1822603117}
   m_Father: {fileID: 1042703594}
@@ -1517,8 +1517,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1560836355}
-  m_LocalRotation: {x: 0.020135548, y: 0.9288819, z: 0.36628625, w: -0.051063035}
-  m_LocalPosition: {x: -0.21327919, y: -3.2576222, z: 5.5455422}
+  m_LocalRotation: {x: 0.4457769, y: 0.14335811, z: 0.072570734, w: -0.88060486}
+  m_LocalPosition: {x: 0.66672194, y: -4.3475795, z: 1.7722408}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6452,7 +6452,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1822603114}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.05, y: 1.46, z: -1.5}
+  m_LocalPosition: {x: 1.006, y: 0.378, z: -0.387}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 51670537}
@@ -11159,6 +11159,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buried: 1
+  grabScale: 0
+  restScale: 0
   ps: {fileID: 0}
   particlesFollowPlayer: 1
 --- !u!65 &1860749072
@@ -16094,6 +16096,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buried: 0
+  grabScale: 0.4
+  restScale: 1
   ps: {fileID: 0}
   particlesFollowPlayer: 1
 --- !u!65 &1885582213

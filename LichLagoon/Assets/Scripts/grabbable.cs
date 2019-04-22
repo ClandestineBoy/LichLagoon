@@ -6,7 +6,18 @@ public class grabbable : MonoBehaviour
 {
     public bool buried;
 
+
     private bool inHand = false, inHandOne = false;
+
+    public float grabScale;
+    public float restScale;
+    public float grabScale;
+    public float restScale;
+    private Vector3 grabS;
+    private Vector3 restS;
+
+    private bool inHand;
+
     private bool grabbed;
     private GameObject grabPos, UIAnchor;
     Rigidbody rb;
@@ -40,7 +51,12 @@ public class grabbable : MonoBehaviour
         grabbed = false;
         grabBegin = false;
 
+
         ps = GetComponent<ParticleSystem>();
+
+        restS = new Vector3(restScale, restScale, restScale);
+        grabS = new Vector3(grabScale, grabScale, grabScale);
+
     }
 
     Vector3 startPos;
@@ -54,7 +70,7 @@ public class grabbable : MonoBehaviour
             startTime = Time.time;
             startPos = transform.position;
             // Calculate the journey length.
-            journeyLength = Vector3.Distance(startPos, grabPos.transform.position);
+            journeyLength = Vector3.Distance(restS, grabS);
 
             buried = false;
             rb.isKinematic = true;
@@ -62,11 +78,12 @@ public class grabbable : MonoBehaviour
         }
 
         if (grabbed)
-        {
+        {   
             Grabbed();
         }
         else if (!buried)
         {
+            transform.localScale = restS;
             rb.isKinematic = false;
         }
 
@@ -87,10 +104,14 @@ public class grabbable : MonoBehaviour
         // Distance moved = time * speed.
         float distLeft = Vector3.Distance(transform.position, grabPos.transform.position) * Time.deltaTime;
 
+        float shrinkDone = (Time.time - startTime)*3;
+        float shrinkJourney = 1-(shrinkDone/journeyLength);
+
         // Set our position as a fraction of the distance between the markers.
         transform.position = Vector3.MoveTowards(transform.position, grabPos.transform.position, (distLeft*grabSpeed));
+        transform.localScale = Vector3.Lerp(grabS, restS, shrinkJourney);
 
-        if(Vector3.Distance(transform.position,grabPos.transform.position) < .1f)
+        if (Vector3.Distance(transform.position,grabPos.transform.position) < .1f)
         {
             inHand = true;
         }

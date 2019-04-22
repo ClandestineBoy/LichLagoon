@@ -69,6 +69,7 @@ public class moveCharacter : MonoBehaviour
     //booleans determining what surface is being walked on
     private bool moving = false, onWood = false, onSand = false;
 
+
     void Start()
     {
         //assigning public variables to components
@@ -77,11 +78,12 @@ public class moveCharacter : MonoBehaviour
         stepSource = this.GetComponent<AudioSource>();
 
         //locking cursor into the center of the screen and making it invisible
-        Cursor.visible = false;
+        //Cursor.visible = false;
 		Cursor.lockState = CursorLockMode.Locked;
 
         stepI = stepInterval;
     }
+
 
     void Update()
     {

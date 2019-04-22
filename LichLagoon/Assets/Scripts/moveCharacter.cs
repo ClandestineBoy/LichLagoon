@@ -10,6 +10,12 @@ public class moveCharacter : MonoBehaviour
     //The camera attatched to the player
     public Camera cam;
 
+    //mouse sensitivity
+    public float sensitivityX;
+    public float sensitivityY;
+    private float currentX, currentY;
+    public Transform verticalLook;
+
     //The animator that adds the walking head bob
     Animator bob;
 
@@ -23,6 +29,7 @@ public class moveCharacter : MonoBehaviour
     private bool grabbing;
     GameObject grabbedObj;
     grabbable grabbedItem;
+    private float targetAngle = 0;
 
 
    [Header ("Mod Values")]
@@ -73,16 +80,31 @@ public class moveCharacter : MonoBehaviour
         Cursor.visible = false;
 		Cursor.lockState = CursorLockMode.Locked;
 
-        stepI = stepInterval;   
+        stepI = stepInterval;
     }
 
     void Update()
     {
+        //Script controlling character camera rotation
+        Look();
         //Script controlling character movement
         Movement();
 
-        //Script controlling character camera rotation
-        Look();
+        if (grabbing)
+        {
+            Debug.Log("isplaying = " + grabbedItem.ps.isPlaying + " | " + Time.time);
+
+            if (moving)
+            {
+                grabbedItem.ps.Stop();  //stop and disconnect UI particle effect when moving
+                grabbedItem.particlesFollowPlayer = false;
+            }
+            else if (!moving && (grabbedItem.ps.isPlaying == false))
+            {
+                grabbedItem.ps.Play();  //plays UI particle effect when held and not moving
+                grabbedItem.particlesFollowPlayer = true;
+            }
+        }
 
         //Script
         checkGround();
@@ -120,6 +142,7 @@ public class moveCharacter : MonoBehaviour
                         grabbedItem.setUIAnchor(UIAnchor);
                         grabbedItem.setGrabSpeed(grabSpeed);
                         grabbing = true;
+                        targetAngle = verticalLook.localRotation.x;
                     }
                 }
             }
@@ -139,12 +162,6 @@ public class moveCharacter : MonoBehaviour
             }
         }
     }
-
-    //mouse sensitivity
-    public float sensitivityX;
-    public float sensitivityY;
-    private float currentX, currentY;
-    public Transform verticalLook;
 
     void Look()
     {
@@ -196,7 +213,7 @@ public class moveCharacter : MonoBehaviour
 
         if(Mathf.Abs(moveDirection.x) < .1f && Mathf.Abs(moveDirection.z) < .1f)
         {
-            moving = true;
+            moving = false;
             bob.enabled = false;
 
             //when you stop moving, reset the footstep timer for step sfx
@@ -204,7 +221,7 @@ public class moveCharacter : MonoBehaviour
         }
         else
         {
-            moving = false;
+            moving = true;
             bob.enabled = true;
 
             //count down for step audio

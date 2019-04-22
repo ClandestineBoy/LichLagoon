@@ -10,8 +10,10 @@ public class grabbable : MonoBehaviour
     private bool grabbed;
     private GameObject grabPos, UIAnchor;
     Rigidbody rb;
-    ParticleSystem ps;
+    public ParticleSystem ps;
     private float grabSpeed;
+
+    public bool particlesFollowPlayer = true;
 
     // Time when the movement started.
     private float startTime;
@@ -96,22 +98,19 @@ public class grabbable : MonoBehaviour
 
     void inHandFunc()
     {
-        Debug.Log("inHandFunc: " + Time.time);
-        if (!ps.isPlaying)
+        if (particlesFollowPlayer)
         {
-            ps.Play();  //plays UI particle effect when held
-        }
+            ParticleSystem.Particle[] particles = new ParticleSystem.Particle[ps.particleCount];
 
-        ParticleSystem.Particle[] particles = new ParticleSystem.Particle[ps.particleCount];
-
-        for (float t = 0f; t < 1f; t += 0.1f)
-        {
-            int count = ps.GetParticles(particles);
-            for (int i = 0; i < count; i++)
+            for (float t = 0f; t < 1f; t += 0.1f)
             {
-                particles[i].position = Vector3.Lerp(particles[i].position, UIAnchor.transform.localPosition, Time.deltaTime / 3);
+                int count = ps.GetParticles(particles);
+                for (int i = 0; i < count; i++)
+                {
+                    particles[i].position = Vector3.Lerp(particles[i].position, UIAnchor.transform.position, Time.deltaTime / 3);
+                }
+                ps.SetParticles(particles, count);
             }
-            ps.SetParticles(particles, count);
         }
     }
 

@@ -6,7 +6,7 @@ public class grabbable : MonoBehaviour
 {
     public bool buried;
 
-    private bool inHand;
+    private bool inHand = false, inHandOne = false;
     private bool grabbed;
     private GameObject grabPos, UIAnchor;
     Rigidbody rb;
@@ -61,24 +61,24 @@ public class grabbable : MonoBehaviour
             grabBegin = false;
         }
 
-        if (inHand)
-        {
-            inHandFunc();
-        }
-        else
-        {
-            ps.Stop();  //if not in hand, the object stop emitting particles into the lore UI
-        }
-
         if (grabbed)
         {
             Grabbed();
-
-           
         }
         else if (!buried)
         {
             rb.isKinematic = false;
+        }
+
+        if (inHand)
+        {
+            inHandFunc();
+        }
+        if (!grabbed)
+        {
+            inHandOne = false;
+            ps.Stop();  //if not in hand, the object stop emitting particles into the lore UI
+            //StartCoroutine(delayedClear());
         }
     }
 
@@ -98,6 +98,13 @@ public class grabbable : MonoBehaviour
 
     void inHandFunc()
     {
+        if (!inHandOne)
+        {
+            ps.Play();  //plays UI particle effect when held
+            inHandOne = true;
+        }
+        Debug.Log(ps.isPlaying);
+
         if (particlesFollowPlayer)
         {
             ParticleSystem.Particle[] particles = new ParticleSystem.Particle[ps.particleCount];
@@ -138,5 +145,11 @@ public class grabbable : MonoBehaviour
     public bool getInHand()
     {
         return inHand;
+    }
+    IEnumerator delayedClear()
+    {
+        yield return new WaitForSeconds(2.5f);
+
+        ps.Clear();
     }
 }

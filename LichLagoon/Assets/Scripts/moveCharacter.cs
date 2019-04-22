@@ -92,16 +92,16 @@ public class moveCharacter : MonoBehaviour
 
         if (grabbing)
         {
-            Debug.Log("isplaying = " + grabbedItem.ps.isPlaying + " | " + Time.time);
+           //Debug.Log("isplaying = " + grabbedItem.ps.IsAlive() + " | " + Time.time);
 
             if (moving)
             {
-                grabbedItem.ps.Stop();  //stop and disconnect UI particle effect when moving
+                //grabbedItem.ps.Stop();  //stop and disconnect UI particle effect when moving
                 grabbedItem.particlesFollowPlayer = false;
             }
-            else if (!moving && (grabbedItem.ps.isPlaying == false))
+            else if (!moving)
             {
-                grabbedItem.ps.Play();  //plays UI particle effect when held and not moving
+                //grabbedItem.ps.Play();  //plays UI particle effect when held and not moving
                 grabbedItem.particlesFollowPlayer = true;
             }
         }

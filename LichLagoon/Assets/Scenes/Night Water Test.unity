@@ -1086,6 +1086,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1862278648}
+  sensitivityX: 2
+  sensitivityY: 1.5
+  verticalLook: {fileID: 1968773149}
   grabPos: {fileID: 51670536}
   UIAnchor: {fileID: 1822603114}
   grabSpeed: 7
@@ -1111,9 +1114,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  sensitivityX: 2
-  sensitivityY: 1.5
-  verticalLook: {fileID: 1968773149}
 --- !u!143 &1042703590
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1517,8 +1517,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1560836355}
-  m_LocalRotation: {x: 0.23394659, y: 0.390479, z: 0.10329531, w: -0.88437843}
-  m_LocalPosition: {x: 2.6056285, y: -1.8141762, z: 3.2785916}
+  m_LocalRotation: {x: 0.020135548, y: 0.9288819, z: 0.36628625, w: -0.051063035}
+  m_LocalPosition: {x: -0.21327919, y: -3.2576222, z: 5.5455422}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -11159,6 +11159,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buried: 1
+  ps: {fileID: 0}
+  particlesFollowPlayer: 1
 --- !u!65 &1860749072
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12353,8 +12355,66 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    m_BurstCount: 0
-    m_Bursts: []
+    m_BurstCount: 1
+    m_Bursts:
+    - serializedVersion: 2
+      time: 0
+      countCurve:
+        serializedVersion: 2
+        minMaxState: 0
+        scalar: 3
+        minScalar: 30
+        maxCurve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        minCurve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+      cycleCount: 1
+      repeatInterval: 0.01
+      probability: 1
   SizeModule:
     enabled: 1
     curve:
@@ -16034,6 +16094,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buried: 0
+  ps: {fileID: 0}
+  particlesFollowPlayer: 1
 --- !u!65 &1885582213
 BoxCollider:
   m_ObjectHideFlags: 0

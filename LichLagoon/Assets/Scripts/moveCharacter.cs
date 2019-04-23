@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class moveCharacter : MonoBehaviour
 {
@@ -18,6 +19,11 @@ public class moveCharacter : MonoBehaviour
 
     //The animator that adds the walking head bob
     Animator bob;
+
+    [Header("UI Fade")]
+    public Image loreBacker;
+    public Text headerText, bodyText;
+    public float headFadeInSpeed, headFadeOutSpeed, bodyFadeInSpeed, bodyFadeOutSpeed, backFadeInSpeed, backFadeOutSpeed;
 
     [Header ("Grab Variables")]
 
@@ -98,18 +104,27 @@ public class moveCharacter : MonoBehaviour
 
             if (moving)
             {
-                //grabbedItem.ps.Stop();  //stop and disconnect UI particle effect when moving
+                ///grabbedItem.ps.Stop();  //stop and disconnect UI particle effect when moving
                 grabbedItem.particlesFollowPlayer = false;
+                colourShift(loreBacker, null, new Color(1, 1, 1, 0), backFadeOutSpeed, false, false);    //fade backer colour in
+                colourShift(null, headerText, new Color(1, 1, 1, 0), headFadeOutSpeed, true, false);    //fade header colour in
+                colourShift(null, bodyText, new Color(1, 1, 1, 0), bodyFadeOutSpeed, true, true);      //fade body text in
             }
             else if (!moving)
             {
-                //grabbedItem.ps.Play();  //plays UI particle effect when held and not moving
+                ///grabbedItem.ps.Play();  //plays UI particle effect when held and not moving
                 grabbedItem.particlesFollowPlayer = true;
+                colourShift(loreBacker, null, new Color(1, 1, 1, .6f), backFadeInSpeed, false, false);    //fade backer colour in
+                colourShift(null, headerText, Color.white, headFadeInSpeed, true, false);    //fade header colour in
+                colourShift(null, bodyText, Color.white, bodyFadeInSpeed * .25f, true, true);      //fade body text in
             }
         }
         else
         {
             grabPos.GetComponent<bobberScript>().enabled = false;  //stop bobbing the grab anchor when not holding anything
+            colourShift(loreBacker, null, new Color (1, 1, 1, 0), backFadeOutSpeed, false, false);    //fade backer colour in
+            colourShift(null, headerText, new Color(1, 1, 1, 0), headFadeOutSpeed, true, false);    //fade header colour in
+            colourShift(null, bodyText, new Color(1, 1, 1, 0), bodyFadeOutSpeed, true, true);      //fade body text in
         }
 
         //Script
@@ -281,5 +296,43 @@ public class moveCharacter : MonoBehaviour
             onSand = false;
             onWood = false;
         }
+    }
+
+    void colourShift (Image curImg, Text curText, Vector4 target, float speed, bool isText, bool isBody)
+    {
+        Vector4 purpleMod = new Vector4(Random.Range(.9f, 1f), Random.Range(.6f, .8f), Random.Range(.7f, .9f), 1);
+
+        if (isText)
+        {
+            if (isBody)
+            {
+                curText.color = Vector4.MoveTowards
+                            (
+                                curText.color,
+                                Vector4.Scale(target, purpleMod),
+                                speed * Time.deltaTime
+                            );
+            }
+            else
+            {
+                curText.color = Vector4.MoveTowards
+                            (
+                                curText.color,
+                                target,
+                                speed * Time.deltaTime
+                            );
+            }
+        }
+        else
+        {
+            curImg.color = Vector4.MoveTowards
+                        (
+                            curImg.color,
+                            Vector4.Scale(target, purpleMod),
+                            speed * Time.deltaTime
+                        );
+        }
+
+        Debug.Log("colourShift");
     }
 }

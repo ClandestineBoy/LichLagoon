@@ -22,6 +22,7 @@ public class Sun_Rotation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        RenderSettings.skybox = daySky;
         goToNight = false;   
     }
 
@@ -52,7 +53,7 @@ public class Sun_Rotation : MonoBehaviour
             }
             if(Moon.GetComponent<Light>().intensity < .1f)
             {
-                //Moon.GetComponent<Light>().intensity += .0005f;
+                Moon.GetComponent<Light>().intensity += .0005f;
             }
             if(exposure < 1)
             {

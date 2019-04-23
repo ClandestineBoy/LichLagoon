@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.27791995, g: 0.41796786, b: 0.57582957, a: 1}
+  m_IndirectSpecularColor: {r: 0.27791992, g: 0.41796786, b: 0.57583106, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5151,6 +5151,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buried: 0
+  grabScale: 0
+  restScale: 0
   grabS: {x: 0.4, y: 0.4, z: 0.4}
   restS: {x: 1, y: 1, z: 1}
   ps: {fileID: 0}
@@ -6345,6 +6347,17 @@ MonoBehaviour:
   sensitivityX: 2
   sensitivityY: 1.5
   verticalLook: {fileID: 804106509}
+  loreBacker: {fileID: 0}
+  hex0: {fileID: 0}
+  hex1: {fileID: 0}
+  headerText: {fileID: 0}
+  bodyText: {fileID: 0}
+  headFadeInSpeed: 0
+  headFadeOutSpeed: 0
+  bodyFadeInSpeed: 0
+  bodyFadeOutSpeed: 0
+  backFadeInSpeed: 0
+  backFadeOutSpeed: 0
   grabPos: {fileID: 1175207093}
   UIAnchor: {fileID: 940369452}
   grabSpeed: 7
@@ -11328,6 +11341,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buried: 1
+  grabScale: 0
+  restScale: 0
   grabS: {x: 0.4, y: 0.4, z: 0.4}
   restS: {x: 1, y: 1, z: 1}
   ps: {fileID: 0}

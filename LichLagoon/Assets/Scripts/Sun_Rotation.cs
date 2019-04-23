@@ -14,7 +14,9 @@ public class Sun_Rotation : MonoBehaviour
     public GameObject Moon;
 
     public Material daySky;
+    public Cubemap dayReflection;
     public Material nightSky;
+    public Cubemap nightReflection;
 
     bool goToNight;
 
@@ -23,6 +25,7 @@ public class Sun_Rotation : MonoBehaviour
     void Start()
     {
         RenderSettings.skybox = daySky;
+        RenderSettings.customReflection = dayReflection;
         goToNight = false;   
     }
 
@@ -36,12 +39,15 @@ public class Sun_Rotation : MonoBehaviour
         if (goToNight && day)
         {
             transform.RotateAround(Vector3.zero, Vector3.right, .5f);
+            if(RenderSettings.reflectionIntensity > 0)
+            RenderSettings.reflectionIntensity -= .01f;
         }
-        if (isSun && transform.position.y <= -45 && day)
+        if (isSun && transform.position.y <= -50 && day)
         {
             night = true;
             day = false;
             RenderSettings.skybox = nightSky;
+            RenderSettings.customReflection = nightReflection;
             RenderSettings.skybox.SetFloat("_Exposure", 0);
             Moon.GetComponent<Light>().intensity = 0;
         }
@@ -55,7 +61,7 @@ public class Sun_Rotation : MonoBehaviour
             {
                 Moon.GetComponent<Light>().intensity += .0005f;
             }
-            if(exposure < 1)
+            if(exposure < .5)
             {
                 exposure += .005f;
             }

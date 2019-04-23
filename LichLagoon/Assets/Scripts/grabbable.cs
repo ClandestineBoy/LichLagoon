@@ -8,16 +8,14 @@ public class grabbable : MonoBehaviour
 
     private bool inHand = false, inHandOne = false;
 
-<<<<<<< HEAD
+
     [Header ("Scale")]
     public float grabScale;
     public float restScale;
-    private Vector3 grabS;
-    private Vector3 restS;
-=======
+
     public Vector3 grabS = new Vector3(.4f,.4f,.4f);
     public Vector3 restS = new Vector3(1,1,1);
->>>>>>> origin/Rilee
+
 
     [Header("Grabbing")]
     private bool grabbed;
@@ -126,10 +124,6 @@ public class grabbable : MonoBehaviour
             inHandOne = true;
             GetComponent<rotater>().activeRotate = true;
         }
-<<<<<<< HEAD
-=======
-      //Debug.Log(ps.isPlaying);
->>>>>>> origin/Rilee
 
         if (particlesFollowPlayer)
         {

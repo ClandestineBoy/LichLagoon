@@ -339,6 +339,6 @@ public class moveCharacter : MonoBehaviour
                         );
         }
 
-        Debug.Log("colourShift");
+        ///Debug.Log("colourShift");
     }
 }

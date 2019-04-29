@@ -32,10 +32,11 @@ public class dialogueScript : MonoBehaviour
     public float fadeOutSpeed = 0f, fadeInSpeed = 0f;
 
     [Header("Next Line Data")]
-    public NPC Xnpc;
-    public float XinitDelay, XendDelay, XpostDelay;
-    public bool XisPlayer, Xtrigger;
-    public string Xline;
+    public NPC[] Xnpc = new NPC [20];
+    float[] XinitDelay = new float[20], XendDelay = new float[20], XpostDelay = new float[20];
+    bool[] XisPlayer = new bool[20], Xtrigger = new bool[20];
+    string[] Xline = new string[20];
+    int lineI = -1;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -52,14 +53,14 @@ public class dialogueScript : MonoBehaviour
         rob.currentDialogue.text = "";
         rob.diagBacker.color = new Color(1, 1, 1, 0);
 
-        youDiag.text = "I'm the loremaster!";
+        youDiag.text = "";
         youDiag.color = tranBlack;
         youBacker.color = tranWhite;
 
         oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
 
-        StartCoroutine(poseQuestion(rob, 1.5f, true,    //any name will work for null under "NPC"
-                    "I'm the loremaster!",
+        StartCoroutine(poseQuestion(rob, 1.5f, false,    //any name will work for null under "NPC"
+                    "You've gotta run me through this just one more time.",
                     3f, true, 2f));
     }
 
@@ -132,6 +133,8 @@ public class dialogueScript : MonoBehaviour
 ///_______________________________________________________________________________________________________________________________________________________________________
     void answerFunc ()
     {
+        lineI = -1;
+
         colourShift(youBacker, null, Color.white, Time.deltaTime * fadeInSpeed, false);
         colourShift(null, youDiag, Color.black, Time.deltaTime * fadeInSpeed, true);
         colourShift(null, oneAnswer, Color.black, Time.deltaTime * fadeInSpeed, true);
@@ -141,29 +144,32 @@ public class dialogueScript : MonoBehaviour
         ///*********LINE************************************************************************************************///
         if (answerTag == "A01")
         {
-            youDiag.text = "I understand. Let's begin: tell me about your...";
+            youDiag.text = "";
 
-            oneAnswer.text = "1) Childhood";  //choices presented to player (leave as "null" if there are less choices
-            twoAnswer.text = "2) Family";
-            thrAnswer.text = "3) Occupation";
+            oneAnswer.text = "1) Don't explain. (Skip Tutorial)";  //choices presented to player (leave as "null" if there are less choices
+            twoAnswer.text = "2) Explain again.";
+            thrAnswer.text = null;
 
             if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))  //if choice 1 is selected
             {
-                youDiag.text = "I understand. Let's begin: tell me about your childhood.";
+                youDiag.text = "I think you understand.";
                 answering = false;  //stops updating this answer section so it doesn't show the next choices
 
                 answerTag = "A01a"; //preemptively updates this answer function to be ready with the choices for the next answer
 
                 StartCoroutine(poseQuestion(rob, 1.5f, false,
-                    "My dad is cool[placeholder].",
-                    2f, false, 3f));   //comment this out and fill it out - this is the next line read from the next npc
+                    "Well excuse me. It's my first time, I'm nervous.",
+                    3f, false, 2f));   //comment this out and fill it out - this is the next line read from the next npc
 
-                Xnpc = rob; XinitDelay = 2f; XendDelay = 2f; XpostDelay = 5f; XisPlayer = false; Xtrigger = true;
-                Xline = "Do you think he's cool?";
+                Xnpc[0] = gunn; XinitDelay[0] = 3f; XendDelay[0] = 3f; XpostDelay[0] = 4f; XisPlayer[0] = false; Xtrigger[0] = false;
+                Xline[0] = "We are all new to this. Yet here we sit, silent.";
+
+                Xnpc[1] = rob; XinitDelay[1] = 4f; XendDelay[1] = 3f; XpostDelay[1] = 5f; XisPlayer[1] = false; Xtrigger[1] = false;
+                Xline[1] = "Okay, okay...Nevermind.";
             }
             else if (twoAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))  //if choice 2 is selected
             {
-                youDiag.text = "I understand. Let's begin: tell me about your family.";
+                youDiag.text = "Okay, but please: listen this time.";
                 answering = false;
 
                 answerTag = "A01b";
@@ -183,49 +189,7 @@ public class dialogueScript : MonoBehaviour
             return;
         }
         ///*********LINE************************************************************************************************///
-        if (answerTag == "A01a")
-        {
-            youDiag.text = "I think he's...";
-
-            oneAnswer.text = "1) Cool";
-            twoAnswer.text = "2) Dumb";
-            thrAnswer.text = null;
-
-            if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))  //if choice 1 is selected
-            {
-                youDiag.text = "I think he's cool.";
-                answering = false;
-
-                answerTag = "A01a1";
-
-                StartCoroutine(poseQuestion(gunn, 1.5f, false,
-                    "My dad is also cool[placeholder].",
-                    5f, false, 3f));
-
-                Xnpc = gunn; XinitDelay = 1f; XendDelay = 1f; XpostDelay = 1f; XisPlayer = false; Xtrigger = false;
-                Xline = "My dad is also cool.";
-            }
-            else if (twoAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))  //if choice 2 is selected
-            {
-                youDiag.text = "I understand. Let's begin: tell me about your family.";
-                answering = false;
-
-                answerTag = "A01b";
-
-                //StartCoroutine(poseQuestion());
-            }
-            else if (thrAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))  //if choice 3 is selected
-            {
-                youDiag.text = "I understand. Let's begin: tell me about your occupation.";
-                answering = false;
-
-                answerTag = "A01c";
-
-                //StartCoroutine(poseQuestion());
-            }
-
-            return;
-        }
+        
 
     }
 
@@ -266,7 +230,9 @@ public class dialogueScript : MonoBehaviour
         }
         else     //if another NPC is gonna pipe in before player talking
         {
-            StartCoroutine(poseQuestion(Xnpc, XinitDelay, XisPlayer, Xline, XendDelay, Xtrigger, XpostDelay));
+            lineI++;
+            StartCoroutine(poseQuestion(Xnpc[lineI], XinitDelay[lineI], XisPlayer[lineI], Xline[lineI], XendDelay[lineI], Xtrigger[lineI], XpostDelay[lineI]));
+            Debug.Log("New Line: " + Xnpc[lineI]);
         }
 
         yield return new WaitForSeconds(postDelay);     //pause before darkening this most recent line

@@ -55351,7 +55351,7 @@ MonoBehaviour:
   fadeOutSpeed: 18
   fadeInSpeed: 120
   Xnpc:
-    currentDialogue: {fileID: 0}
+  - currentDialogue: {fileID: 0}
     diagBacker: {fileID: 0}
     portrait: {fileID: 0}
     heldObj: {fileID: 0}
@@ -55359,12 +55359,85 @@ MonoBehaviour:
     delayResponseValue: 0
     primaryActive: 0
     secondaryActive: 0
-  XinitDelay: 0
-  XendDelay: 0
-  XpostDelay: 0
-  XisPlayer: 0
-  Xtrigger: 0
-  Xline: 
+  - currentDialogue: {fileID: 0}
+    diagBacker: {fileID: 0}
+    portrait: {fileID: 0}
+    heldObj: {fileID: 0}
+    heldResponseValue: 0
+    delayResponseValue: 0
+    primaryActive: 0
+    secondaryActive: 0
+  - currentDialogue: {fileID: 0}
+    diagBacker: {fileID: 0}
+    portrait: {fileID: 0}
+    heldObj: {fileID: 0}
+    heldResponseValue: 0
+    delayResponseValue: 0
+    primaryActive: 0
+    secondaryActive: 0
+  - currentDialogue: {fileID: 0}
+    diagBacker: {fileID: 0}
+    portrait: {fileID: 0}
+    heldObj: {fileID: 0}
+    heldResponseValue: 0
+    delayResponseValue: 0
+    primaryActive: 0
+    secondaryActive: 0
+  - currentDialogue: {fileID: 0}
+    diagBacker: {fileID: 0}
+    portrait: {fileID: 0}
+    heldObj: {fileID: 0}
+    heldResponseValue: 0
+    delayResponseValue: 0
+    primaryActive: 0
+    secondaryActive: 0
+  - currentDialogue: {fileID: 0}
+    diagBacker: {fileID: 0}
+    portrait: {fileID: 0}
+    heldObj: {fileID: 0}
+    heldResponseValue: 0
+    delayResponseValue: 0
+    primaryActive: 0
+    secondaryActive: 0
+  - currentDialogue: {fileID: 0}
+    diagBacker: {fileID: 0}
+    portrait: {fileID: 0}
+    heldObj: {fileID: 0}
+    heldResponseValue: 0
+    delayResponseValue: 0
+    primaryActive: 0
+    secondaryActive: 0
+  - currentDialogue: {fileID: 0}
+    diagBacker: {fileID: 0}
+    portrait: {fileID: 0}
+    heldObj: {fileID: 0}
+    heldResponseValue: 0
+    delayResponseValue: 0
+    primaryActive: 0
+    secondaryActive: 0
+  - currentDialogue: {fileID: 0}
+    diagBacker: {fileID: 0}
+    portrait: {fileID: 0}
+    heldObj: {fileID: 0}
+    heldResponseValue: 0
+    delayResponseValue: 0
+    primaryActive: 0
+    secondaryActive: 0
+  - currentDialogue: {fileID: 0}
+    diagBacker: {fileID: 0}
+    portrait: {fileID: 0}
+    heldObj: {fileID: 0}
+    heldResponseValue: 0
+    delayResponseValue: 0
+    primaryActive: 0
+    secondaryActive: 0
+  XinitDelay: []
+  XendDelay: []
+  XpostDelay: []
+  XisPlayer: 
+  Xtrigger: 
+  Xline: []
+  lineI: 0
 --- !u!4 &2139972736
 Transform:
   m_ObjectHideFlags: 0

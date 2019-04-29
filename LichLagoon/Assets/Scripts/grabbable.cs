@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class grabbable : MonoBehaviour
 {
     public bool buried;
+
+    public bool tagged;
 
     private bool inHand = false, inHandOne = false;
 
@@ -36,8 +39,14 @@ public class grabbable : MonoBehaviour
  
     void Start()
     {
+        DontDestroyOnLoad(gameObject);
+
+
+        grabS = new Vector3(grabScale, grabScale, grabScale);
+        restS = new Vector3(restScale, restScale, restScale);
+
         //attatch a Rigidbody to the object if there isnt one already
-        if(GetComponent<Rigidbody>() == null)
+        if (GetComponent<Rigidbody>() == null)
         {
             rb = gameObject.AddComponent<Rigidbody>();
         }
@@ -61,6 +70,16 @@ public class grabbable : MonoBehaviour
 
     void Update()
     {
+
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(0))
+        {
+            if (!tagged)
+            {
+                gameObject.SetActive(false);
+            }
+        }
+       
+
         if (grabBegin)
         {
             // Keep a note of the time the movement started.

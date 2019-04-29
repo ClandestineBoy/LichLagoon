@@ -40,6 +40,9 @@ public class moveCharacter : MonoBehaviour
 
     public float grabDist;
 
+    public GameObject artifactTags;
+    private ArtifactTags tags;
+
 
    [Header ("Mod Values")]
     //movement speed
@@ -84,6 +87,11 @@ public class moveCharacter : MonoBehaviour
 
     void Start()
     {
+        
+
+        artifactTags = GameObject.FindGameObjectWithTag("Tags");
+        tags = artifactTags.GetComponent<ArtifactTags>();
+
         //assigning public variables to components
         characterController = GetComponent<CharacterController>();
         bob = cam.GetComponent<Animator>();
@@ -162,11 +170,31 @@ public class moveCharacter : MonoBehaviour
         sunRotator.goToNight = boo;
     }
 
+    void dropItem()
+    {
+        grabbedObj.transform.SetParent(null);
+        if (grabbedObj.GetComponent<MeshCollider>() != null)
+            grabbedObj.GetComponent<MeshCollider>().enabled = true;
+        if (grabbedObj.GetComponent<BoxCollider>() != null)
+            grabbedObj.GetComponent<BoxCollider>().enabled = true;
+        grabbedItem.setGrabbed(false);
+        grabbing = false;
+        grabbedItem.setInHand(false);
+        DontDestroyOnLoad(grabbedObj);
+    }
     void PickUp()
     {
         RaycastHit hit;
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(1))
+        {
+            if (grabbing && grabbedItem.getInHand())
+            {
+                dropItem();
+                tags.addTag(grabbedObj);  
+            }
+        }
+            if (Input.GetMouseButtonDown(0))
         {
             if (!grabbing)
             {
@@ -201,14 +229,7 @@ public class moveCharacter : MonoBehaviour
             {
                 if (grabbedItem.getInHand())
                 {
-                    grabbedObj.transform.SetParent(null);
-                    if (grabbedObj.GetComponent<MeshCollider>() != null)
-                        grabbedObj.GetComponent<MeshCollider>().enabled = true;
-                    if (grabbedObj.GetComponent<BoxCollider>() != null)
-                        grabbedObj.GetComponent<BoxCollider>().enabled = true;
-                    grabbedItem.setGrabbed(false);
-                    grabbing = false;
-                    grabbedItem.setInHand(false);                    
+                    dropItem();                 
                 }
             }
         }

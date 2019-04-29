@@ -18,7 +18,7 @@ public class Sun_Rotation : MonoBehaviour
     public Material nightSky;
     public Cubemap nightReflection;
 
-    bool goToNight;
+    public bool goToNight;
 
     float exposure = 0;
     // Start is called before the first frame update

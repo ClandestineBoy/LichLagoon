@@ -37,6 +37,8 @@ public class moveCharacter : MonoBehaviour
     grabbable grabbedItem;
     private float targetAngle = 0;
 
+    public float grabDist;
+
 
    [Header ("Mod Values")]
     //movement speed
@@ -98,6 +100,7 @@ public class moveCharacter : MonoBehaviour
         //Script controlling character movement
         Movement();
 
+
         if (grabbing)
         {
             grabPos.GetComponent<bobberScript>().enabled = true;  //start bobbing the grab anchor when holding something
@@ -140,7 +143,12 @@ public class moveCharacter : MonoBehaviour
         PickUp();
     }
 
-    
+    public Sun_Rotation sunRotator;
+
+    void DayTransition(bool boo)
+    {
+        sunRotator.goToNight = true;
+    }
 
     void PickUp()
     {
@@ -150,9 +158,13 @@ public class moveCharacter : MonoBehaviour
         {
             if (!grabbing)
             {
-                if (Physics.Raycast(ray, out hit, 100, 1 << LayerMask.NameToLayer("Default")))
+                if (Physics.Raycast(ray, out hit, grabDist, 1 << LayerMask.NameToLayer("Default")))
                 {
-                    if (hit.collider.gameObject.GetComponent<grabbable>() != null)
+                    if (hit.collider.gameObject.tag == "Fire")
+                    {
+                        DayTransition(true);
+                    }
+                        if (hit.collider.gameObject.GetComponent<grabbable>() != null)
                     {
                         grabbedObj = hit.collider.gameObject;
                         grabbedObj.transform.SetParent(grabPos.transform);

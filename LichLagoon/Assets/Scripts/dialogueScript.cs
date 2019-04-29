@@ -29,6 +29,7 @@ public class dialogueScript : MonoBehaviour
     [Header("Colours")]
     public Color silentPortrait;    //activePortraits are just color.white
     public Color tranWhite, tranBlack;
+    public float fadeOutSpeed = 0f, fadeInSpeed = 0f;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -47,45 +48,73 @@ public class dialogueScript : MonoBehaviour
 
         youDiag.text = "";
         youBacker.color = new Color(1, 1, 1, 0);
+
+        StartCoroutine(poseQuestion(rob, 1.5f, true,
+                    "I'm the loremaster!",
+                    1f, true, 2f));
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        if (fran.primaryActive)     //if last to speak
+        for (int i = 0; i < 3; i++)
         {
-            colourShift(fran.diagBacker, null, Color.white, Time.deltaTime, false);
-            colourShift(fran.portrait, null, Color.white, Time.deltaTime, false);
-            colourShift(null, fran.currentDialogue, Color.white, Time.deltaTime, false);
-        }
-        else if (fran.secondaryActive)  //if has spoken in current exchange, but not most recently
-        {
-            colourShift(fran.diagBacker, null, silentPortrait, Time.deltaTime, false);
-            colourShift(fran.portrait, null, silentPortrait, Time.deltaTime, false);
-            colourShift(null, fran.currentDialogue, silentPortrait, Time.deltaTime, false);
-        }
-        else     //hasn't spoken yet
-        {
-            colourShift(fran.diagBacker, null, tranWhite, Time.deltaTime, false);
-            colourShift(fran.portrait, null, silentPortrait, Time.deltaTime, false);
-            colourShift(null, fran.currentDialogue, tranWhite, Time.deltaTime, false);
-        }
+            NPC speaker = new NPC();
 
+            if (i == 0)
+            {
+                speaker = fran;
+            }
+            else if (i == 1)
+            {
+                speaker = gunn;
+            }
+            else if (i == 2)
+            {
+                speaker = rob;
+            }
+
+            if (speaker.primaryActive)     //if last to speak
+            {
+                colourShift(speaker.diagBacker, null, Color.white, Time.deltaTime * fadeInSpeed, false);
+                colourShift(speaker.portrait, null, Color.white, Time.deltaTime * fadeInSpeed, false);
+                colourShift(null, speaker.currentDialogue, Color.black, Time.deltaTime * fadeInSpeed, true);
+            }
+            else if (speaker.secondaryActive)  //if has spoken in current exchange, but not most recently
+            {
+                colourShift(speaker.diagBacker, null, silentPortrait, Time.deltaTime * fadeInSpeed, false);
+                colourShift(speaker.portrait, null, silentPortrait, Time.deltaTime * fadeInSpeed, false);
+                colourShift(null, speaker.currentDialogue, Color.black, Time.deltaTime * fadeInSpeed, true);
+            }
+            else     //hasn't spoken yet
+            {
+                colourShift(speaker.diagBacker, null, tranWhite, Time.deltaTime * fadeOutSpeed, false);
+                colourShift(speaker.portrait, null, silentPortrait, Time.deltaTime * fadeOutSpeed, false);
+                colourShift(null, speaker.currentDialogue, tranBlack, Time.deltaTime * fadeOutSpeed, true);
+            }
+        }
 
         if (answering)  //if the player now has the ability to respond in conversation
         {
             answerFunc();
         }
+
         else if (playerSpeaking)
         {
-            colourShift(youBacker, null, Color.white, Time.deltaTime, false);
-            colourShift(null, youDiag, Color.white, Time.deltaTime, false);
+            colourShift(youBacker, null, Color.white, Time.deltaTime * fadeInSpeed, false);
+            colourShift(null, youDiag, Color.black, Time.deltaTime * fadeInSpeed, true);
+            colourShift(null, oneAnswer, Color.black, Time.deltaTime * fadeInSpeed, true);
+            colourShift(null, twoAnswer, Color.black, Time.deltaTime * fadeInSpeed, true);
+            colourShift(null, thrAnswer, Color.black, Time.deltaTime * fadeInSpeed, true);
         }
         else    //fade out player dialogue when they aren't talking/answering
         {
-            colourShift(youBacker, null, tranWhite, Time.deltaTime, false);
-            colourShift(null, youDiag, tranWhite, Time.deltaTime, false);
+            colourShift(youBacker, null, tranWhite, Time.deltaTime * fadeOutSpeed, false);
+            colourShift(null, youDiag, tranBlack, Time.deltaTime * fadeOutSpeed, true);
+            colourShift(null, oneAnswer, tranBlack, Time.deltaTime * fadeOutSpeed, true);
+            colourShift(null, twoAnswer, tranBlack, Time.deltaTime * fadeOutSpeed, true);
+            colourShift(null, thrAnswer, tranBlack, Time.deltaTime * fadeOutSpeed, true);
         }
     }
 
@@ -94,8 +123,11 @@ public class dialogueScript : MonoBehaviour
 ///_______________________________________________________________________________________________________________________________________________________________________
     void answerFunc ()
     {
-        colourShift(youBacker, null, Color.white, Time.deltaTime, false);
-        colourShift(null, youDiag, Color.white, Time.deltaTime, false);
+        colourShift(youBacker, null, Color.white, Time.deltaTime * fadeInSpeed, false);
+        colourShift(null, youDiag, Color.black, Time.deltaTime * fadeInSpeed, true);
+        colourShift(null, oneAnswer, Color.black, Time.deltaTime * fadeInSpeed, true);
+        colourShift(null, twoAnswer, Color.black, Time.deltaTime * fadeInSpeed, true);
+        colourShift(null, thrAnswer, Color.black, Time.deltaTime * fadeInSpeed, true);
 
         if (answerTag == "A01")
         {
@@ -107,27 +139,32 @@ public class dialogueScript : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))  //if choice 1 is selected
             {
+                youDiag.text = "I understand. Let's begin: tell me about your childhood.";
                 answering = false;  //stops updating this answer section so it doesn't show the next choices
 
                 answerTag = "A01a"; //preemptively updates this answer function to be ready with the choices for the next answer
 
-                //StartCoroutine(poseQuestion());   //comment this out and fill it out - this is the next line read from the next npc
+                StartCoroutine(poseQuestion(rob, 1.5f, false,
+                    "My dad is cool[placeholder].",
+                    2f, false, 3f));   //comment this out and fill it out - this is the next line read from the next npc
             }
             else if (twoAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))  //if choice 2 is selected
             {
+                youDiag.text = "I understand. Let's begin: tell me about your family.";
                 answering = false;
 
                 answerTag = "A01b";
 
-                //StartCoroutine(poseQuestion());   //comment this out and fill it out - this is the next line read from the next npc
+                //StartCoroutine(poseQuestion());
             }
             else if (thrAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))  //if choice 3 is selected
             {
+                youDiag.text = "I understand. Let's begin: tell me about your occupation.";
                 answering = false;
 
                 answerTag = "A01c";
 
-                //StartCoroutine(poseQuestion());   //comment this out and fill it out - this is the next line read from the next npc
+                //StartCoroutine(poseQuestion());
             }
         }
 
@@ -154,7 +191,7 @@ public class dialogueScript : MonoBehaviour
         if (!isPlayer)    //if an npc is speaking
         {
             speaker.primaryActive = true; speaker.secondaryActive = false;     //fade in speaker's dialogue box, dialogue text, and brighten their portrait
-
+            
             speaker.currentDialogue.text = line;
         }
         else
@@ -162,18 +199,18 @@ public class dialogueScript : MonoBehaviour
             playerSpeaking = true;
         }
 
-            yield return new WaitForSeconds(endDelay);
+        yield return new WaitForSeconds(endDelay);
 
-            if (trigger)    //if next is the player talking
-            {
-                answering = true;
-            }
-            else     //if another NPC is gonna pipe in before player talking
-            {
-                //StartCoroutine(poseQuestion());
-            }
+        if (trigger)    //if next is the player talking
+        {
+            answering = true;
+        }
+        else     //if another NPC is gonna pipe in before player talking
+        {
+            //StartCoroutine(poseQuestion());
+        }
 
-            yield return new WaitForSeconds(postDelay);     //pause before darkening this most recent line
+        yield return new WaitForSeconds(postDelay);     //pause before darkening this most recent line
 
 
         if (!isPlayer)

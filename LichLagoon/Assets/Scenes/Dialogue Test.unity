@@ -1533,7 +1533,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 73688487}
   m_LocalRotation: {x: -0.11226163, y: 0.014620116, z: 0.0016494195, w: 0.99356973}
-  m_LocalPosition: {x: -17.612701, y: 17.214006, z: 12.306523}
+  m_LocalPosition: {x: -17.698748, y: 16.544622, z: 9.38342}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1926229345}
@@ -55345,11 +55345,26 @@ MonoBehaviour:
   thrAnswer: {fileID: 529734617}
   youBacker: {fileID: 1363746021}
   answerTag: A01
-  silentPortrait: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+  silentPortrait: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 1}
   tranWhite: {r: 1, g: 1, b: 1, a: 0}
   tranBlack: {r: 0, g: 0, b: 0, a: 0}
-  fadeOutSpeed: 10
-  fadeInSpeed: 30
+  fadeOutSpeed: 18
+  fadeInSpeed: 120
+  Xnpc:
+    currentDialogue: {fileID: 0}
+    diagBacker: {fileID: 0}
+    portrait: {fileID: 0}
+    heldObj: {fileID: 0}
+    heldResponseValue: 0
+    delayResponseValue: 0
+    primaryActive: 0
+    secondaryActive: 0
+  XinitDelay: 0
+  XendDelay: 0
+  XpostDelay: 0
+  XisPlayer: 0
+  Xtrigger: 0
+  Xline: 
 --- !u!4 &2139972736
 Transform:
   m_ObjectHideFlags: 0

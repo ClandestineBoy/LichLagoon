@@ -1,12 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Sun_Rotation : MonoBehaviour
 {
-    public bool isSun;
-    public bool isMoon;
-
     public bool night;
     public bool day = true;
 
@@ -32,17 +30,17 @@ public class Sun_Rotation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+      /*  if (Input.GetKeyDown(KeyCode.Space))
         {
             goToNight = true;
-        }
+        }*/
         if (goToNight && day)
         {
             transform.RotateAround(Vector3.zero, Vector3.right, .5f);
             if(RenderSettings.reflectionIntensity > 0)
             RenderSettings.reflectionIntensity -= .01f;
         }
-        if (isSun && transform.position.y <= -50 && day)
+        if (transform.position.y <= -50 && day)
         {
             night = true;
             day = false;
@@ -64,8 +62,12 @@ public class Sun_Rotation : MonoBehaviour
             if(exposure < .5)
             {
                 exposure += .005f;
+                RenderSettings.skybox.SetFloat("_Exposure", exposure);
             }
-            RenderSettings.skybox.SetFloat("_Exposure", exposure);
+            else if(exposure >= .5)
+            {
+                SceneManager.LoadScene(0);
+            }
         }   
     }
 }

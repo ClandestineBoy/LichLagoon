@@ -7,7 +7,7 @@ public class grabbable : MonoBehaviour
 {
     public bool buried;
 
-    public bool tagged;
+    public bool tagged, inInventory;
 
     private bool inHand = false, inHandOne = false;
 
@@ -41,6 +41,7 @@ public class grabbable : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
 
+        inInventory = false;
 
         grabS = new Vector3(grabScale, grabScale, grabScale);
         restS = new Vector3(restScale, restScale, restScale);
@@ -100,8 +101,11 @@ public class grabbable : MonoBehaviour
         }
         else if (!buried)
         {
-            transform.localScale = restS;
-            rb.isKinematic = false;
+            if (!inInventory)
+            {
+                transform.localScale = restS;
+                rb.isKinematic = false;
+            }
         }
 
         if (inHand)
@@ -139,6 +143,8 @@ public class grabbable : MonoBehaviour
     {
         if (!inHandOne)
         {
+            inInventory = false;
+            //rb.useGravity = true;
             ps.Play();  //plays UI particle effect when held
             inHandOne = true;
             GetComponent<rotater>().activeRotate = true;

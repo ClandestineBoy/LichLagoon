@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class ArtifactTags : MonoBehaviour
 {
     public List<GameObject> tagged = new List<GameObject>();
+    public Vector3 pos1, pos2, pos3, iPos1, iPos2, iPos3;
+    public bool display = false;
 
     // Start is called before the first frame update
     void Start()
@@ -16,19 +18,54 @@ public class ArtifactTags : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        iPos1 = transform.localPosition + (Vector3.forward * 2);
+        iPos2 = transform.localPosition + (Vector3.forward * 1.5f) + (Vector3.left);
+        iPos3 = transform.localPosition + (Vector3.forward * 1.5f) + (Vector3.right);
+
+
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(0))
         {
             for(int i = 0; i < tagged.Count; i++)
             {
                 tagged[i].SetActive(true);
+                if (i == 0)
+                    tagged[i].transform.position = pos1;
+                if (i == 1)
+                    tagged[i].transform.position = pos2;
+                if (i == 2)
+                    tagged[i].transform.position = pos3;
             }
         }
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(1))
         {
-            for (int i = 0; i < tagged.Count; i++)
+            if (display)
             {
-                tagged[i].SetActive(false);
+                for (int i = 0; i < tagged.Count; i++)
+                {
+                    Rigidbody rb = tagged[i].GetComponent<Rigidbody>();
+                    tagged[i].SetActive(true);
+                    tagged[i].GetComponent<rotater>().activeRotate = true;
+                    tagged[i].transform.localScale = tagged[i].GetComponent<grabbable>().grabS;
+                    if (rb != null)
+                    {
+                        rb.isKinematic = true;
+                        //rb.useGravity = false;
+                    }
+                    if (i == 0)
+                        tagged[i].transform.position = iPos1;
+                    if (i == 1)
+                        tagged[i].transform.position = iPos2;
+                    if (i == 2)
+                        tagged[i].transform.position = iPos3;
+                }
             }
+            else
+            {
+                for (int i = 0; i < tagged.Count; i++)
+                {
+                    tagged[i].SetActive(false);
+                }
+            } 
         }
     }
 
@@ -37,6 +74,7 @@ public class ArtifactTags : MonoBehaviour
         if (tagged.Count < 3)
         {
             tagged.Add(obj);
+            obj.GetComponent<grabbable>().inInventory = true;
             obj.GetComponent<grabbable>().tagged = true;
             obj.SetActive(false);  
         }

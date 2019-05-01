@@ -8,9 +8,16 @@ public class grabbable : MonoBehaviour
 
     private bool inHand = false, inHandOne = false;
 
+
+    [Header ("Scale")]
+    public float grabScale;
+    public float restScale;
+
     public Vector3 grabS = new Vector3(.4f,.4f,.4f);
     public Vector3 restS = new Vector3(1,1,1);
 
+
+    [Header("Grabbing")]
     private bool grabbed;
     private GameObject grabPos, UIAnchor;
     Rigidbody rb;
@@ -84,6 +91,7 @@ public class grabbable : MonoBehaviour
         }
         if (!grabbed)
         {
+            GetComponent<rotater>().activeRotate = false;
             inHandOne = false;
             ps.Stop();  //if not in hand, the object stop emitting particles into the lore UI
         }
@@ -114,8 +122,8 @@ public class grabbable : MonoBehaviour
         {
             ps.Play();  //plays UI particle effect when held
             inHandOne = true;
+            GetComponent<rotater>().activeRotate = true;
         }
-      //Debug.Log(ps.isPlaying);
 
         if (particlesFollowPlayer)
         {

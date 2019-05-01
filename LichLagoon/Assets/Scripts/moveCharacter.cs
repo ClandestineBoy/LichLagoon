@@ -113,7 +113,8 @@ public class moveCharacter : MonoBehaviour
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(1))
         { 
             //Script controlling character movement
-            Movement();
+            if(!tags.display)
+                Movement();
 
 
             if (grabbing)
@@ -188,6 +189,17 @@ public class moveCharacter : MonoBehaviour
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         if (Input.GetMouseButtonDown(1))
         {
+            if (!grabbing && tags.tagged.Count > 0)
+            {
+                if (tags.display == true)
+                {
+                    tags.display = false;
+                }
+                else
+                {
+                    tags.display = true;
+                }
+            }
             if (grabbing && grabbedItem.getInHand())
             {
                 dropItem();
@@ -222,6 +234,9 @@ public class moveCharacter : MonoBehaviour
                         grabbedItem.setGrabSpeed(grabSpeed);
                         grabbing = true;
                         targetAngle = verticalLook.localRotation.x;
+                        tags.tagged.Remove(grabbedObj);
+                        if (tags.display)
+                            tags.display = false;
                     }
                 }
             }
@@ -242,6 +257,12 @@ public class moveCharacter : MonoBehaviour
 
 		verticalLook.localRotation = Quaternion.Euler(-currentY, 0, 0);
         transform.rotation = Quaternion.Euler(0, currentX, 0);
+
+        if (!tags.display)
+        {
+            artifactTags.transform.position = transform.position;
+            artifactTags.transform.rotation = transform.rotation;
+        }
     }
 
     void Movement()

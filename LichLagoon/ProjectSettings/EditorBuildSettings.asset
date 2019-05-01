@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/UINight Test.unity
-    guid: 6ffb8da9c2e069d42abd0278c3fb2bb9
+    path: Assets/Scenes/Rilee Night.unity
+    guid: 9e653ca0144228e42a31b2e30a6aa1c0
+  - enabled: 1
+    path: Assets/Scenes/Rilee Home.unity
+    guid: 00871575bd6b007458647b2b7a3a1db9
   m_configObjects: {}

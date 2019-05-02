@@ -74,7 +74,7 @@ public class grabbable : MonoBehaviour
 
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(0))
         {
-            if (!tagged)
+            if (!inInventory)
             {
                 gameObject.SetActive(false);
             }

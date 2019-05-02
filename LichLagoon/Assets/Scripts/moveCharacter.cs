@@ -235,6 +235,10 @@ public class moveCharacter : MonoBehaviour
                         grabbing = true;
                         targetAngle = verticalLook.localRotation.x;
                         tags.tagged.Remove(grabbedObj);
+
+                        bodyText.text = grabbedItem.lore;
+                        headerText.text = grabbedObj.name;
+
                         if (tags.display)
                             tags.display = false;
                     }
@@ -254,6 +258,15 @@ public class moveCharacter : MonoBehaviour
     {
         currentX += Input.GetAxis("Mouse X") * sensitivityX;
         currentY += Input.GetAxis("Mouse Y") * sensitivityY;
+
+        if (currentY > 90f)
+        {
+            currentY = 90f;
+        }
+        else if (currentY < -90f)
+        {
+            currentY = -90f;
+        }
 
 		verticalLook.localRotation = Quaternion.Euler(-currentY, 0, 0);
         transform.rotation = Quaternion.Euler(0, currentX, 0);

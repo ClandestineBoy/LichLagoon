@@ -23,7 +23,7 @@ public class Sun_Rotation : MonoBehaviour
     void Start()
     {
         RenderSettings.skybox = daySky;
-        RenderSettings.customReflection = dayReflection;
+        //RenderSettings.customReflection = dayReflection;
         goToNight = false;   
     }
 

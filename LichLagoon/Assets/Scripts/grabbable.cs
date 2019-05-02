@@ -11,6 +11,7 @@ public class grabbable : MonoBehaviour
 
     private bool inHand = false, inHandOne = false;
 
+    public string lore = "";
 
     [Header ("Scale")]
     public float grabScale;
@@ -26,6 +27,7 @@ public class grabbable : MonoBehaviour
     Rigidbody rb;
     public ParticleSystem ps;
     private float grabSpeed;
+    public Vector3 grabRot;
 
     public bool particlesFollowPlayer = true;
 
@@ -132,6 +134,8 @@ public class grabbable : MonoBehaviour
         // Set our position as a fraction of the distance between the markers.
         transform.position = Vector3.MoveTowards(transform.position, grabPos.transform.position, (distLeft*grabSpeed));
         transform.localScale = Vector3.Lerp(grabS, restS, shrinkJourney);
+
+        transform.eulerAngles = Vector3.RotateTowards(transform.eulerAngles, new Vector3(grabRot.x, transform.eulerAngles.y, grabRot.z), Time.deltaTime * grabSpeed, 0f);
 
         if (Vector3.Distance(transform.position,grabPos.transform.position) < .1f)
         {

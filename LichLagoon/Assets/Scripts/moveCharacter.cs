@@ -136,8 +136,8 @@ public class moveCharacter : MonoBehaviour
                     ///grabbedItem.ps.Play();  //plays UI particle effect when held and not moving
                     grabbedItem.particlesFollowPlayer = true;
                     ///colourShift(loreBacker, null, new Color(1, 1, 1, .6f), backFadeInSpeed, false, false);    //fade backer colour in
-                    colourShift(hex0, null, new Color(1, .9f, .9f, .7f), backFadeInSpeed, false, false);    //fade hexs colour in
-                    colourShift(hex1, null, new Color(1, .9f, .9f, .7f), backFadeInSpeed, false, false);
+                    colourShift(hex0, null, new Color(1, .9f, .9f, .8f), backFadeInSpeed, false, false);    //fade hexs colour in
+                    colourShift(hex1, null, new Color(1, .9f, .9f, .8f), backFadeInSpeed, false, false);
                     colourShift(null, headerText, Color.white, headFadeInSpeed, true, false);    //fade header colour in
                     colourShift(null, bodyText, Color.white, bodyFadeInSpeed * .25f, true, true);      //fade body text in
                 }
@@ -220,6 +220,7 @@ public class moveCharacter : MonoBehaviour
                     {
                         grabbedObj = hit.collider.gameObject;
                         grabbedObj.transform.SetParent(grabPos.transform);
+                        grabbedObj.transform.eulerAngles = new Vector3(0, 0, 0);
 
                         if(grabbedObj.GetComponent<MeshCollider>() != null)
                             grabbedObj.GetComponent<MeshCollider>().enabled = false;

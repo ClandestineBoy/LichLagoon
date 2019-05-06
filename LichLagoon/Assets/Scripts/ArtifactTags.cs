@@ -9,6 +9,8 @@ public class ArtifactTags : MonoBehaviour
     public Vector3 pos1, pos2, pos3, iPos1, iPos2, iPos3;
     public bool display = false;
 
+    public float oneForMod, twoForMod, twoSideMod, thrForMod, thrSideMod;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,9 +20,9 @@ public class ArtifactTags : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        iPos1 = transform.localPosition + (Vector3.forward * 2);
-        iPos2 = transform.localPosition + (Vector3.forward * 1.5f) + (Vector3.left);
-        iPos3 = transform.localPosition + (Vector3.forward * 1.5f) + (Vector3.right);
+        iPos1 = transform.localPosition + (transform.forward * oneForMod);
+        iPos2 = transform.localPosition + (transform.forward * twoForMod) + (-transform.right * twoSideMod);
+        iPos3 = transform.localPosition + (transform.forward * thrForMod) + (transform.right * thrSideMod);
 
 
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(0))

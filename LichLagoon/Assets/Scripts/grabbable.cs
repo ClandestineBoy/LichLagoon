@@ -74,7 +74,7 @@ public class grabbable : MonoBehaviour
     void Update()
     {
 
-        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(0))
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(1))
         {
             if (!inInventory)
             {

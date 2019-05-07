@@ -149,8 +149,8 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 4
-      minScalar: 1
+      scalar: 2
+      minScalar: 0.8
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -203,7 +203,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.5660378, g: 0.16820933, b: 0.5424377, a: 0.7058824}
+      maxColor: {r: 1, g: 1, b: 1, a: 0.3137255}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -709,7 +709,7 @@ ParticleSystem:
           m_PostInfinity: 2
           m_RotationOrder: 4
     m_Mesh: {fileID: 0}
-    m_MeshRenderer: {fileID: 0}
+    m_MeshRenderer: {fileID: 3884051255233953556}
     m_SkinnedMeshRenderer: {fileID: 0}
     m_Sprite: {fileID: 0}
     m_SpriteRenderer: {fileID: 0}
@@ -4050,7 +4050,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 1, g: 1, b: 1, a: 0.47058824}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4767,7 +4767,7 @@ MonoBehaviour:
   buried: 0
   tagged: 0
   inInventory: 0
-  lore: It's partner chest was permantly broken open years ago. Now this is worn by
+  lore: Its partner chest was permantly broken open years ago. Now this is worn by
     its owner as a peculiar fashion statement. It opens nothing.
   grabScale: 1.5
   restScale: 1
@@ -4832,19 +4832,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2300000, guid: 0199b6c74465c844daf12c2ce9f6ea65, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: c588d90acd895c644892504e0bc19e39, type: 2}
-    - target: {fileID: 2300002, guid: 0199b6c74465c844daf12c2ce9f6ea65, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: c588d90acd895c644892504e0bc19e39, type: 2}
     - target: {fileID: 2300004, guid: 0199b6c74465c844daf12c2ce9f6ea65, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: c588d90acd895c644892504e0bc19e39, type: 2}
     - target: {fileID: 2300006, guid: 0199b6c74465c844daf12c2ce9f6ea65, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c588d90acd895c644892504e0bc19e39, type: 2}
+    - target: {fileID: 2300000, guid: 0199b6c74465c844daf12c2ce9f6ea65, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c588d90acd895c644892504e0bc19e39, type: 2}
+    - target: {fileID: 2300002, guid: 0199b6c74465c844daf12c2ce9f6ea65, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: c588d90acd895c644892504e0bc19e39, type: 2}
@@ -4857,6 +4857,12 @@ PrefabInstance:
 --- !u!1 &3884051255232012756 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 0199b6c74465c844daf12c2ce9f6ea65,
+    type: 3}
+  m_PrefabInstance: {fileID: 3884051255231915892}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &3884051255233953556 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2300000, guid: 0199b6c74465c844daf12c2ce9f6ea65,
     type: 3}
   m_PrefabInstance: {fileID: 3884051255231915892}
   m_PrefabAsset: {fileID: 0}

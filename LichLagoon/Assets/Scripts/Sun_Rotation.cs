@@ -66,7 +66,7 @@ public class Sun_Rotation : MonoBehaviour
             }
             else if(exposure >= .5)
             {
-                SceneManager.LoadScene(0);
+                SceneManager.LoadScene("Dialogue Test");
             }
         }   
     }

@@ -88,6 +88,7 @@ public class moveCharacter : MonoBehaviour
     //booleans determining what surface is being walked on
     private bool moving = false, onWood = false, onSand = false;
 
+    public string curScene = "";
 
     void Start()
     {
@@ -114,7 +115,7 @@ public class moveCharacter : MonoBehaviour
         //Script controlling character camera rotation
         Look();
 
-        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(1))
+        if (curScene == "Day")
         {
             //Script controlling character movement
             if (!tags.display)
@@ -162,7 +163,7 @@ public class moveCharacter : MonoBehaviour
             //Script checking mouse clicks to pick up objects
             PickUp();
         }
-        else if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(0))
+        else if (curScene == "Night")
         {
 
         }

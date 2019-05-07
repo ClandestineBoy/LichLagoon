@@ -149,8 +149,8 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 4
-      minScalar: 1
+      scalar: 1
+      minScalar: 0.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -203,7 +203,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.5660378, g: 0.16820933, b: 0.5424377, a: 0.7058824}
+      maxColor: {r: 1, g: 1, b: 1, a: 0.3137255}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -709,7 +709,7 @@ ParticleSystem:
           m_PostInfinity: 2
           m_RotationOrder: 4
     m_Mesh: {fileID: 0}
-    m_MeshRenderer: {fileID: 0}
+    m_MeshRenderer: {fileID: 2997335868034110342}
     m_SkinnedMeshRenderer: {fileID: 0}
     m_Sprite: {fileID: 0}
     m_SpriteRenderer: {fileID: 0}
@@ -4050,7 +4050,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 1, g: 1, b: 1, a: 0.47058824}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4771,7 +4771,7 @@ MonoBehaviour:
     owned this, like her mother before her. She was told this was incredibly valuable;
     she resented her mother, though, and used this to clean her feet in the morning
     instead.
-  grabScale: 2
+  grabScale: 1.7
   restScale: 1
   grabS: {x: 0.9, y: 0.9, z: 0.9}
   restS: {x: 1, y: 1, z: 1}
@@ -4834,27 +4834,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2300000, guid: 8e1baba758b7e5c4795cf9002faf9140, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 2f4d23b51c6fc764f88f6cc0ef33622e, type: 2}
-    - target: {fileID: 2300002, guid: 8e1baba758b7e5c4795cf9002faf9140, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: ea8ddfd1e9cee41449355f5dd51477f1, type: 2}
-    - target: {fileID: 2300004, guid: 8e1baba758b7e5c4795cf9002faf9140, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: c588d90acd895c644892504e0bc19e39, type: 2}
     - target: {fileID: 2300006, guid: 8e1baba758b7e5c4795cf9002faf9140, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 68fe35c1f23d2284583df2c30509cb4f, type: 2}
+    - target: {fileID: 2300004, guid: 8e1baba758b7e5c4795cf9002faf9140, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c588d90acd895c644892504e0bc19e39, type: 2}
+    - target: {fileID: 2300002, guid: 8e1baba758b7e5c4795cf9002faf9140, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ea8ddfd1e9cee41449355f5dd51477f1, type: 2}
+    - target: {fileID: 2300000, guid: 8e1baba758b7e5c4795cf9002faf9140, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2f4d23b51c6fc764f88f6cc0ef33622e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e1baba758b7e5c4795cf9002faf9140, type: 3}
 --- !u!1 &2997335868032109894 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 8e1baba758b7e5c4795cf9002faf9140,
+    type: 3}
+  m_PrefabInstance: {fileID: 2997335868032076774}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &2997335868034110342 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2300000, guid: 8e1baba758b7e5c4795cf9002faf9140,
     type: 3}
   m_PrefabInstance: {fileID: 2997335868032076774}
   m_PrefabAsset: {fileID: 0}

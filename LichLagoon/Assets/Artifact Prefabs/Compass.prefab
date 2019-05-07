@@ -255,8 +255,8 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 4
-      minScalar: 1
+      scalar: 2
+      minScalar: 0.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -309,7 +309,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.5660378, g: 0.16820933, b: 0.5424377, a: 0.7058824}
+      maxColor: {r: 1, g: 1, b: 1, a: 0.3137255}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -815,7 +815,7 @@ ParticleSystem:
           m_PostInfinity: 2
           m_RotationOrder: 4
     m_Mesh: {fileID: 0}
-    m_MeshRenderer: {fileID: 0}
+    m_MeshRenderer: {fileID: 1910540263853981309}
     m_SkinnedMeshRenderer: {fileID: 0}
     m_Sprite: {fileID: 0}
     m_SpriteRenderer: {fileID: 0}
@@ -4156,7 +4156,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 1, g: 1, b: 1, a: 0.47058824}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4877,11 +4877,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2300000, guid: b55557d9f4b934346afde31dd7637d73, type: 3}
+    - target: {fileID: 2300020, guid: b55557d9f4b934346afde31dd7637d73, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 66d734fbab0d6384c955cad130ffe1d3, type: 2}
-    - target: {fileID: 2300002, guid: b55557d9f4b934346afde31dd7637d73, type: 3}
+      objectReference: {fileID: 2100000, guid: 062be7b85c4e92f4d807c6a50579dc52, type: 2}
+    - target: {fileID: 2300018, guid: b55557d9f4b934346afde31dd7637d73, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 66d734fbab0d6384c955cad130ffe1d3, type: 2}
@@ -4893,6 +4893,18 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 66d734fbab0d6384c955cad130ffe1d3, type: 2}
+    - target: {fileID: 2300000, guid: b55557d9f4b934346afde31dd7637d73, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 66d734fbab0d6384c955cad130ffe1d3, type: 2}
+    - target: {fileID: 2300002, guid: b55557d9f4b934346afde31dd7637d73, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 66d734fbab0d6384c955cad130ffe1d3, type: 2}
+    - target: {fileID: 2300012, guid: b55557d9f4b934346afde31dd7637d73, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 38f971709154dcf4191969a51d3530b6, type: 2}
     - target: {fileID: 2300008, guid: b55557d9f4b934346afde31dd7637d73, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -4901,18 +4913,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e58481a0d01ef854da75a6a92f0aaf21, type: 2}
-    - target: {fileID: 2300012, guid: b55557d9f4b934346afde31dd7637d73, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 38f971709154dcf4191969a51d3530b6, type: 2}
-    - target: {fileID: 2300018, guid: b55557d9f4b934346afde31dd7637d73, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 66d734fbab0d6384c955cad130ffe1d3, type: 2}
-    - target: {fileID: 2300020, guid: b55557d9f4b934346afde31dd7637d73, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 062be7b85c4e92f4d807c6a50579dc52, type: 2}
     - target: {fileID: 2300022, guid: b55557d9f4b934346afde31dd7637d73, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -4932,6 +4932,12 @@ GameObject:
 --- !u!4 &1910540263856405653 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: b55557d9f4b934346afde31dd7637d73,
+    type: 3}
+  m_PrefabInstance: {fileID: 1910540263856268821}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1910540263853981309 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2300008, guid: b55557d9f4b934346afde31dd7637d73,
     type: 3}
   m_PrefabInstance: {fileID: 1910540263856268821}
   m_PrefabAsset: {fileID: 0}

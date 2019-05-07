@@ -120,7 +120,7 @@ public class dialogueScript : MonoBehaviour
 
                 timer[i] += Time.deltaTime;
 
-                if (timer[i] > 9f)
+                if (timer[i] > 4f)
                 {
                     speaker.secondaryActive = false;
                     timer[i] = 0;
@@ -131,7 +131,7 @@ public class dialogueScript : MonoBehaviour
                 colourShift(speaker.diagBacker, null, tranBlack, Time.deltaTime * (fadeOutSpeed + 2), false);
                 colourShift(speaker.portrait, null, silentPortrait, Time.deltaTime * (fadeOutSpeed + 2), false);
                 colourShift(null, speaker.currentDialogue, tranWhite, Time.deltaTime * (fadeOutSpeed + 2), true);
-                colourShift(null, speaker.header, tranWhite, Time.deltaTime * fadeInSpeed, true);
+                colourShift(null, speaker.header, tranWhite, Time.deltaTime * (fadeOutSpeed + 2), true);
             }
         }
 
@@ -153,7 +153,7 @@ public class dialogueScript : MonoBehaviour
         }
         else    //fade out player dialogue when they aren't talking/answering
         {
-            if (timer[3] > 2)
+            if (timer[3] > 4)
             {
                 colourShift(youBacker, null, tranBlack, Time.deltaTime * fadeOutSpeed, false);
                 colourShift(null, youDiag, tranWhite, Time.deltaTime * fadeOutSpeed, true);
@@ -369,7 +369,7 @@ public class dialogueScript : MonoBehaviour
                 oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
 
                 Xnpc[0] = null; XinitDelay[0] = 0; XendDelay[0] = 6f; XpostDelay[0] = .75f; XisPlayer[0] = true; Xtrigger[0] = false;
-                Xline[0] = "They won't spare you. I've seen Paladin's slay their own before. You will befall a similar fate without our help.";
+                Xline[0] = "They won't spare you. I've seen Paladins slay their own before. You will befall a similar fate without our help.";
 
                 Xnpc[1] = rob; XinitDelay[1] = 0; XendDelay[1] = 4.5f; XpostDelay[1] = 1f; XisPlayer[1] = false; Xtrigger[1] = false;
                 Xline[1] = "So why you? I wanna pick what my soul goes into, it's my damn soul.";
@@ -408,12 +408,12 @@ public class dialogueScript : MonoBehaviour
             }
             else if (thrAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))  //if choice 3 is selected
             {
-                youDiag.text = "Paladin's have been tracking undead for centuries. You are now a target; they won't hestitate, Paladin armor or not.";
+                youDiag.text = "Paladins have been tracking undead for centuries. You are now a target; they won't hestitate, Paladin armor or not.";
                 answering = false;
 
                 answerTag = "A01b3";
 
-                StartCoroutine(poseQuestion(fran, 2.25f, false,
+                StartCoroutine(poseQuestion(fran, 4f, false,
                     "I know my people.",
                     3f, false, 2f));
 

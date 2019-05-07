@@ -13,7 +13,7 @@ public class lightFlicker : MonoBehaviour
     public bool flickers = false;
     public bool vacillates = false, upping = false;
 
-    public float flickerDelay = 0f; private float flickerI = 0f;
+    public float flickerDelay = 0f, flickerSpeed = 0f; private float flickerI = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +31,7 @@ public class lightFlicker : MonoBehaviour
         if (flickers)
         {
             Flicker();
-            thisLight.intensity = Mathf.MoveTowards(thisLight.intensity, targetIntensity, Time.deltaTime / 2);
+            thisLight.intensity = Mathf.MoveTowards(thisLight.intensity, targetIntensity, Time.deltaTime * flickerSpeed);
         }
         else if (vacillates)
         {

@@ -15,9 +15,21 @@ public class bobberScript : MonoBehaviour
 	private float growSpeed = 0f;
 	public float growSpeedMod = 0f;
 
-	void Start()	{
-		
-	}
+    [Header("Rotation")]
+    public Vector3 targetRot, startRot;
+    public float rotSpeed, rotAmp;
+    public bool rots;
+    public float rotI, rotTimer;
+    private float tempX, tempY, tempZ;
+
+
+    void Start()	{
+        startRot = this.transform.eulerAngles;
+
+        tempX = transform.eulerAngles.x;
+        tempY = transform.eulerAngles.y;
+        tempZ = transform.eulerAngles.z;
+    }
 
     // Update is called once per frame
     void Update()
@@ -55,5 +67,28 @@ public class bobberScript : MonoBehaviour
 				}
 			}
 		}
+
+        if (rots)
+        {
+            rotI += Time.deltaTime;
+
+            if (rotI >= rotTimer)
+            {
+                rotI = 0;
+
+                targetRot = startRot + new Vector3
+                    (
+                        Random.Range(-rotAmp, rotAmp),
+                        Random.Range(-rotAmp, rotAmp),
+                        Random.Range(-rotAmp, rotAmp)
+                    );
+            }
+
+            tempX = Mathf.MoveTowardsAngle(transform.eulerAngles.x, targetRot.x, Time.deltaTime * rotSpeed);
+            tempY = Mathf.MoveTowardsAngle(transform.eulerAngles.y, targetRot.y, Time.deltaTime * rotSpeed);
+            tempZ = Mathf.MoveTowardsAngle(transform.eulerAngles.z, targetRot.z, Time.deltaTime * rotSpeed);
+
+            this.transform.eulerAngles = new Vector3(tempX, tempY, tempZ);
+        }
     }
 }

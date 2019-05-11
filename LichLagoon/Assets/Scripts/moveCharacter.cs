@@ -103,7 +103,7 @@ public class moveCharacter : MonoBehaviour
         stepSource = this.GetComponent<AudioSource>();
 
         //locking cursor into the center of the screen and making it invisible
-        //Cursor.visible = false;
+        Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
         stepI = stepInterval;

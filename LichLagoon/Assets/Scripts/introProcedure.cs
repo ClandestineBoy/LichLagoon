@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class introProcedure : MonoBehaviour
 {
@@ -12,12 +13,15 @@ public class introProcedure : MonoBehaviour
     Lastly, we'll need a fadeOutRect to blacken when the intro is over.
     */
 
-    [Header ("Map")]
-    public Image mapBacker, mapShip;
+    [Header ("Fade")]
+    public Image fadeRect;
+    public float fadeInSpeed, fadeOutSpeed;
+    public GameObject intro0, intro1, intro2, intro3;
 
     [Header("Player")]
     public Image playerDiagBack;
     public Text playerDiag;
+    public GameObject player, playFulcrum;
 
     [Header("Boat")]
     public GameObject boatParent;
@@ -26,18 +30,17 @@ public class introProcedure : MonoBehaviour
     {
         public string currentDialogue;
         public Image diagBacker, portrait;
+        public Text intro0, intro1, intro2, intro3;
         //public GameObject heldObj;    //This and the below stuff probably wont be used in this intro script
         //public float heldResponseValue, delayResponseValue;
     };
 
-    public Image fadeOutRect;
-
-    private bool firstMapVisible = false, inBoatConvo = false, atFadeOut = false;
+    public bool firstMapVisible = true, atFadeIn = false, inBoatConvo = false, atFadeOut = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        firstMapVisible = true;
+        ///Debug.Log("introProcObj = " + this.gameObject.name);
         StartCoroutine(firstMapEnum());
     }
 
@@ -46,28 +49,63 @@ public class introProcedure : MonoBehaviour
     {
         if (firstMapVisible)
         {
+            player.transform.localEulerAngles = new Vector3(0, 0, 0);
+            playFulcrum.transform.localEulerAngles = new Vector3(0, 0, 0);
+        }
+        if (atFadeIn)
+        {
+            firstMapVisible = false;
 
+            player.transform.localEulerAngles = new Vector3(0, 0, 0);
+            playFulcrum.transform.localEulerAngles = new Vector3(0, 0, 0);
+
+            colourShift(fadeRect, null, new Color(0, 0, 0, 0), fadeInSpeed * .8f, false);
+            colourShift(null, intro0.GetComponent<Text>(), new Color(1, 1, 1, 0), fadeInSpeed * 2, true);
+            colourShift(null, intro1.GetComponent<Text>(), new Color(1, 1, 1, 0), fadeInSpeed * 2, true);
+            colourShift(null, intro2.GetComponent<Text>(), new Color(1, 1, 1, 0), fadeInSpeed * 2, true);
+            colourShift(null, intro3.GetComponent<Text>(), new Color(1, 1, 1, 0), fadeInSpeed * 2, true);
+
+            if (fadeRect.color == new Color (0, 0, 0, 0))
+            {
+                atFadeIn = false; //first map just means fade rect now
+                inBoatConvo = true;
+                ///this.GetComponent<dialogueScript>().enabled = true;
+            }
         }
         else if (inBoatConvo)
         {
-            colourShift(mapBacker, null, new Color(1, 1, 1, 0), Time.deltaTime, false);     //fade out map
-            colourShift(mapShip, null, new Color(1, 1, 1, 0), Time.deltaTime, false);     //fade out ship on map
-            mapShip.GetComponent<TrailRenderer>().startColor = Vector4.MoveTowards      //fade out ship's dotted trail
-                (
-                    mapShip.GetComponent<TrailRenderer>().startColor, new Color (1, 1, 1, 0), Time.deltaTime
-                );
+            //nothing? that i can think of rn
         }
         else if (atFadeOut)
         {
+            colourShift(fadeRect, null, new Color(0, 0, 0, 1), fadeOutSpeed, false);
 
+            if (fadeRect.color == new Color(0, 0, 0, 1))
+            {
+                //SceneManager.LoadScene("");
+            }
         }
     }
 
     IEnumerator firstMapEnum ()
     {
+        yield return new WaitForSeconds(2f);
+        intro0.SetActive(true);
 
+        yield return new WaitForSeconds(6f);
+        intro1.SetActive(true);
 
-        return null;
+        yield return new WaitForSeconds(6f);
+        intro2.SetActive(true);
+
+        yield return new WaitForSeconds(6f);
+        intro3.SetActive(true);
+
+        yield return new WaitForSeconds(7f);
+        atFadeIn = true;
+
+        yield return new WaitForSeconds(6f);
+        this.GetComponent<dialogueScript>().enabled = true;
     }
 
     void colourShift(Image curImg, Text curText, Vector4 target, float speed, bool isText)

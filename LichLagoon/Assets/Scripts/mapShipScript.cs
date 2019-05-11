@@ -19,6 +19,6 @@ public class mapShipScript : MonoBehaviour
     void Update()
     {
         target = targetObj.transform.localPosition;
-        this.transform.localPosition = Vector3.MoveTowards(this.transform.localPosition, target, Time.deltaTime * speed);
+        this.transform.localPosition = Vector3.MoveTowards(this.transform.localPosition, target, Time.fixedDeltaTime * speed);
     }
 }

@@ -22,6 +22,7 @@ public class bobberScript : MonoBehaviour
     public float rotI, rotTimer;
     private float tempX, tempY, tempZ;
 
+    public bool isBoat = false;
 
     void Start()	{
         startRot = this.transform.eulerAngles;
@@ -38,7 +39,15 @@ public class bobberScript : MonoBehaviour
             bobSpeed = Mathf.Sin(bobTimerI * Mathf.PI) * (bobAmpMod / 1000);
             //bobSpeed = ((bobSpeedMod / (bobTimerI + 1f)) * Time.deltaTime);
             //bobSpeed = (bobSpeedMod * Time.deltaTime) / (Mathf.Abs(bobTimerI - (bobTimerMax / 2)) * 10);
-            bobTimerI += Time.deltaTime / bobSpeedMod;
+
+            if (isBoat)
+            {
+                bobTimerI += Time.fixedDeltaTime / bobSpeedMod;
+            }
+            else
+            {
+                bobTimerI += Time.deltaTime / bobSpeedMod;
+            }
 
             if (bobTimerI >= bobTimerMax)
             {
@@ -70,7 +79,14 @@ public class bobberScript : MonoBehaviour
 
         if (rots)
         {
-            rotI += Time.deltaTime;
+            if (isBoat)
+            {
+                rotI += Time.fixedDeltaTime;
+            }
+            else
+            {
+                rotI += Time.deltaTime;
+            }
 
             if (rotI >= rotTimer)
             {
@@ -84,9 +100,18 @@ public class bobberScript : MonoBehaviour
                     );
             }
 
-            tempX = Mathf.MoveTowardsAngle(transform.eulerAngles.x, targetRot.x, Time.deltaTime * rotSpeed);
-            tempY = Mathf.MoveTowardsAngle(transform.eulerAngles.y, targetRot.y, Time.deltaTime * rotSpeed);
-            tempZ = Mathf.MoveTowardsAngle(transform.eulerAngles.z, targetRot.z, Time.deltaTime * rotSpeed);
+            if (isBoat)
+            {
+                tempX = Mathf.MoveTowardsAngle(transform.eulerAngles.x, targetRot.x, Time.fixedDeltaTime * rotSpeed);
+                tempY = Mathf.MoveTowardsAngle(transform.eulerAngles.y, targetRot.y, Time.fixedDeltaTime * rotSpeed);
+                tempZ = Mathf.MoveTowardsAngle(transform.eulerAngles.z, targetRot.z, Time.fixedDeltaTime * rotSpeed);
+            }
+            else
+            {
+                tempX = Mathf.MoveTowardsAngle(transform.eulerAngles.x, targetRot.x, Time.deltaTime * rotSpeed);
+                tempY = Mathf.MoveTowardsAngle(transform.eulerAngles.y, targetRot.y, Time.deltaTime * rotSpeed);
+                tempZ = Mathf.MoveTowardsAngle(transform.eulerAngles.z, targetRot.z, Time.deltaTime * rotSpeed);
+            }
 
             this.transform.eulerAngles = new Vector3(tempX, tempY, tempZ);
         }

@@ -44,15 +44,21 @@ ModelImporter:
     400036: transform7
     400038: transform8
     2100000: lambert1
+    2100002: wood
+    2100004: pillow
+    2100006: matress
     2300000: pCube12
     2300002: pCube3
     2300004: pCylinder3
+    2300006: //RootNode
     3300000: pCube12
     3300002: pCube3
     3300004: pCylinder3
+    3300006: //RootNode
     4300000: pCube3
     4300002: pCylinder3
     4300004: pCube12
+    4300006: polySurface10
   externalObjects: {}
   materials:
     importMaterials: 1

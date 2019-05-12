@@ -38,12 +38,17 @@ ModelImporter:
     400030: transform6
     400032: transform7
     2100000: lambert1
+    2100002: glass
+    2100004: lantern
     2300000: pCube2
     2300002: pCube7
+    2300004: //RootNode
     3300000: pCube2
     3300002: pCube7
+    3300004: //RootNode
     4300000: pCube2
     4300002: pCube7
+    4300004: pCube9
   externalObjects: {}
   materials:
     importMaterials: 1

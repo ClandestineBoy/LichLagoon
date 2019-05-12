@@ -10,12 +10,17 @@ ModelImporter:
     400002: pasted__pCube3
     400004: //RootNode
     2100000: lambert1
+    2100002: metal
+    2100004: hilt
     2300000: pasted__pCube2
     2300002: pasted__pCube3
+    2300004: //RootNode
     3300000: pasted__pCube2
     3300002: pasted__pCube3
+    3300004: //RootNode
     4300000: pasted__pCube2
     4300002: pasted__pCube3
+    4300004: pasted__pCube4
   externalObjects: {}
   materials:
     importMaterials: 1

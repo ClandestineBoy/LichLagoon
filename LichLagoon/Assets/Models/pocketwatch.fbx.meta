@@ -54,18 +54,25 @@ ModelImporter:
     400046: transform8
     400048: transform9
     2100000: lambert1
+    2100002: metal
+    2100004: hands
+    2100006: clock
+    2100008: body
     2300000: pCone4
     2300002: pCylinder5
     2300004: pSphere1
     2300006: pSphere4
+    2300008: //RootNode
     3300000: pCone4
     3300002: pCylinder5
     3300004: pSphere1
     3300006: pSphere4
+    3300008: //RootNode
     4300000: pSphere1
     4300002: pSphere4
     4300004: pCone4
     4300006: pCylinder5
+    4300008: pCylinder7
   externalObjects: {}
   materials:
     importMaterials: 1

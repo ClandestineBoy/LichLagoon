@@ -7093,6 +7093,14 @@ MonoBehaviour:
   shrinkGrows: 0
   growing: 0
   growSpeedMod: 0
+  targetRot: {x: 0, y: 0, z: 0}
+  startRot: {x: 0, y: 0, z: 0}
+  rotSpeed: 0
+  rotAmp: 0
+  rots: 0
+  rotI: 0
+  rotTimer: 0
+  isBoat: 0
 --- !u!23 &371525489
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -24461,6 +24469,7 @@ GameObject:
   - component: {fileID: 1272199670}
   - component: {fileID: 1272199669}
   - component: {fileID: 1272199668}
+  - component: {fileID: 1272199674}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -24625,6 +24634,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1272199674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1272199667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 906e95dde6bc19f488b05740db1481ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseImage: {fileID: 0}
+  paused: 0
+  quitTimer: 0
 --- !u!1 &1273514869
 GameObject:
   m_ObjectHideFlags: 0
@@ -31886,8 +31910,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1410846781}
-  m_LocalRotation: {x: -0.48696038, y: 0.27743733, z: 0.16656555, w: 0.81126696}
-  m_LocalPosition: {x: 9.648909, y: -99.325874, z: 300.046}
+  m_LocalRotation: {x: 0.003035675, y: 0.9960142, z: 0.03677587, w: -0.08120456}
+  m_LocalPosition: {x: 24.703154, y: 18.67274, z: 375.816}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1508705850}

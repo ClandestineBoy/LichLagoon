@@ -222,7 +222,7 @@ public class dialogueScript : MonoBehaviour
                 youDiag.text = "I think you understand.";
                 answering = false;  //stops updating this answer section so it doesn't show the next choices
 
-                answerTag = "A01a"; //preemptively updates this answer function to be ready with the choices for the next answer
+                nextTag = "A01a"; //preemptively updates this answer function to be ready with the choices for the next answer
 
                 oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";  //zero out dialogue choices
 
@@ -294,7 +294,7 @@ public class dialogueScript : MonoBehaviour
                 Xnpc[13] = fran; XinitDelay[13] = 0; XendDelay[13] = 5f; XpostDelay[13] = .25f; XisPlayer[13] = false; Xtrigger[13] = true;
                 Xline[13] = "--And if we refuse your help?";
 
-                answerTag = "A01b";
+                nextTag = "A01b";
             }
             else if (thrAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))  //if choice 3 is selected
             {
@@ -324,7 +324,7 @@ public class dialogueScript : MonoBehaviour
                 youDiag.text = "Nobody's ever refused my help before. I would highly recommend you take it.";
                 answering = false;
 
-                answerTag = "A01b1";
+                nextTag = "A01b1";
 
                 StartCoroutine(poseQuestion(fran, 2.5f, false,
                     "And why's that?",
@@ -387,7 +387,7 @@ public class dialogueScript : MonoBehaviour
                 youDiag.text = "Well, without a phylactery you'll decompose in a week at best. That's assuming the Paladin's don't get to you first.";
                 answering = false;
 
-                answerTag = "A01b2";
+                nextTag = "A01b2";
 
                 StartCoroutine(poseQuestion(fran, 1.5f, false,
                     "I welcome their arrival.",
@@ -586,7 +586,7 @@ public class dialogueScript : MonoBehaviour
                 youDiag.text = "...It took time to bring you back, Robin.";
                 answering = false;
 
-                answerTag = "B03";
+                nextTag = "B03";
 
                 StartCoroutine(poseQuestion(null, .5f, true,
                     "This was the first place we could stop safely.",

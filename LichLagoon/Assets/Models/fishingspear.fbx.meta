@@ -28,15 +28,21 @@ ModelImporter:
     400020: transform3
     400022: transform4
     2100000: lambert1
+    2100002: prong
+    2100004: WOOD
+    2100006: connect
     2300000: pCone6
     2300002: pCylinder1
     2300004: pCylinder2
+    2300006: //RootNode
     3300000: pCone6
     3300002: pCylinder1
     3300004: pCylinder2
+    3300006: //RootNode
     4300000: pCylinder1
     4300002: pCone6
     4300004: pCylinder2
+    4300006: pCone8
   externalObjects: {}
   materials:
     importMaterials: 1

@@ -28,10 +28,13 @@ ModelImporter:
     2100000: lambert1
     2300000: pCylinder5
     2300002: pCylinder6
+    2300004: //RootNode
     3300000: pCylinder5
     3300002: pCylinder6
+    3300004: //RootNode
     4300000: pCylinder5
     4300002: pCylinder6
+    4300004: pCylinder8
     2186277476908879412: ImportLogs
   externalObjects: {}
   materials:

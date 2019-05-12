@@ -22,18 +22,23 @@ ModelImporter:
     400014: transform1
     400016: transform2
     2100000: lambert1
+    2100002: seat
+    2100004: wood
     2300000: pCube3
     2300002: pCube4
     2300004: pCube5
     2300006: pCube6
+    2300008: //RootNode
     3300000: pCube3
     3300002: pCube4
     3300004: pCube5
     3300006: pCube6
+    3300008: //RootNode
     4300000: pCube3
     4300002: pCube4
     4300004: pCube5
     4300006: pCube6
+    4300008: pCube8
   externalObjects: {}
   materials:
     importMaterials: 1

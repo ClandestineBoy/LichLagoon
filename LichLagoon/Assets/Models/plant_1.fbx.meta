@@ -1,53 +1,15 @@
 fileFormatVersion: 2
-guid: 629235a2811eb8d43b100332c555d6a3
+guid: 03f0d51177c1a2744891d11df94f00c4
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
-    100002: pCylinder1
-    100004: pCylinder2
-    100006: pCylinder3
-    100008: pCylinder4
-    100010: pCylinder5
-    100012: pCylinder6
-    100014: pTorus1
-    100016: pTorus2
-    100018: transform1
-    100020: transform2
-    100022: transform3
-    100024: transform4
     400000: //RootNode
-    400002: pCylinder1
-    400004: pCylinder2
-    400006: pCylinder3
-    400008: pCylinder4
-    400010: pCylinder5
-    400012: pCylinder6
-    400014: pTorus1
-    400016: pTorus2
-    400018: transform1
-    400020: transform2
-    400022: transform3
-    400024: transform4
-    2100000: lambert1
-    2100002: handle
-    2100004: bucket
-    2300000: pCylinder3
-    2300002: pCylinder6
-    2300004: pTorus1
-    2300006: pTorus2
-    2300008: //RootNode
-    3300000: pCylinder3
-    3300002: pCylinder6
-    3300004: pTorus1
-    3300006: pTorus2
-    3300008: //RootNode
-    4300000: pCylinder3
-    4300002: pTorus1
-    4300004: pCylinder6
-    4300006: pTorus2
-    4300008: pTorus4
-    2186277476908879412: ImportLogs
+    2100000: leaves
+    2100002: lambert1
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: pCylinder38
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -79,7 +41,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 5
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importVisibility: 1

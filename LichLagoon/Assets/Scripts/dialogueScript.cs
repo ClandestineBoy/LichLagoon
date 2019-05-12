@@ -25,6 +25,7 @@ public class dialogueScript : MonoBehaviour
     public Text youDiag, oneAnswer, twoAnswer, thrAnswer;
     public Image youBacker, youMousePrompt;
     public string answerTag = " ";  //determines where in conversation we are when player is given a chance to answer
+    public string nextTag = " ";
 
     [Header("Colours")]
     public Color silentPortrait, silentDiag, backerBase;    //activePortraits are just color.white
@@ -37,6 +38,7 @@ public class dialogueScript : MonoBehaviour
     bool[] XisPlayer = new bool[20], Xtrigger = new bool[20];
     string[] Xline = new string[20];
     int lineI = -1;
+    public bool[] XskipAvailable = new bool [20];   public bool _skippable = true;
 
     [Header("FastForward Tools")]
     public bool ff = false;
@@ -70,9 +72,20 @@ public class dialogueScript : MonoBehaviour
         {
             StartCoroutine(poseQuestion(rob, 1.5f, false,    //any name will work for null under "NPC"
                         "You've gotta run me through this just one more time.",
-                        3f, true, .5f));
+                        3f, true, .5f, true));
 
             answerTag = "A01";
+            nextTag = "A01";
+        }
+
+        if (dialogueID == "Night1")
+        {
+            StartCoroutine(poseQuestion(null, 2f, true,
+                        "We'll be camping here until I find each of you a suitable phylactery.",
+                        7f, true, .5f, true));
+
+            nextTag = "B01";
+            answerTag = "B01";
         }
     }
 
@@ -80,9 +93,9 @@ public class dialogueScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && !ff)       
+        if (Input.GetKeyDown(KeyCode.Mouse0) && !ff && _skippable)       
         {
-            Time.timeScale = ffSpeed * 2;
+            Time.timeScale = ffSpeed * 5;
             //Debug.Log("timescale = " + Time.timeScale);
             ff = true;
             fran.mousePrompt.color = tranWhite;
@@ -215,7 +228,7 @@ public class dialogueScript : MonoBehaviour
 
                 StartCoroutine(poseQuestion(rob, 1.5f, false,
                     "Well pardon me. It's my first time. I'm nervous.",
-                    5f, false, .5f));   //comment this out and fill it out - this is the next line read from the next npc
+                    5f, false, .5f, true));   //comment this out and fill it out - this is the next line read from the next npc
 
                 Xnpc[0] = gunn; XinitDelay[0] = 0f; XendDelay[0] = 6f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
                 Xline[0] = "We are all new to this. Yet here we sit, silent.";
@@ -235,7 +248,7 @@ public class dialogueScript : MonoBehaviour
 
                 StartCoroutine(poseQuestion(rob, 2f, false,
                    "I'll try me best.",
-                   5f, false, .5f));
+                   5f, false, .5f, true));
 
                 oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
 
@@ -315,7 +328,7 @@ public class dialogueScript : MonoBehaviour
 
                 StartCoroutine(poseQuestion(fran, 2.5f, false,
                     "And why's that?",
-                    4.5f, false, 0f));
+                    4.5f, false, 0f, true));
 
                 oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
 
@@ -378,7 +391,7 @@ public class dialogueScript : MonoBehaviour
 
                 StartCoroutine(poseQuestion(fran, 1.5f, false,
                     "I welcome their arrival.",
-                    5f, false, 2f));
+                    5f, false, 2f, true));
 
                 oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
 
@@ -429,7 +442,7 @@ public class dialogueScript : MonoBehaviour
 
                 StartCoroutine(poseQuestion(fran, 4f, false,
                     "I know my people.",
-                    3f, false, 2f));
+                    3f, false, 2f, true));
 
                 oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
 
@@ -477,6 +490,138 @@ public class dialogueScript : MonoBehaviour
 
             return;
         }
+
+        if (answerTag == "B01")
+        {
+            youDiag.text = "";
+
+            oneAnswer.text = "1) Explain";  //choices presented to player (leave as "null" if there are less choices
+            twoAnswer.text = "2) Apologize";
+            thrAnswer.text = null;
+
+            if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))  //if choice 1 is selected
+            {
+                youDiag.text = "There's no point setting up the entire crew ashore--";
+                answering = false;
+
+                StartCoroutine(poseQuestion(null, 2.5f, true,
+                    "--We'll have to leave as fast as we can when the Paladins come.",
+                    6f, false, 0f, true));
+
+                oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
+
+                Xnpc[0] = gunn; XinitDelay[0] = 0f; XendDelay[0] = 5f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                Xline[0] = "This should...work, I suppose.";
+
+                Xnpc[1] = rob; XinitDelay[1] = 0f; XendDelay[1] = 5.5f; XpostDelay[1] = .25f; XisPlayer[1] = false; Xtrigger[1] = false;
+                Xline[1] = "Can still enjoy fresh air. Stars are out!";
+
+                Xnpc[2] = gunn; XinitDelay[2] = 0; XendDelay[2] = 5f; XpostDelay[2] = .25f; XisPlayer[2] = false; Xtrigger[1] = false;
+                Xline[2] = "They look different here. The stars.";
+
+                Xnpc[3] = gunn; XinitDelay[3] = 0; XendDelay[3] = 4.5f; XpostDelay[3] = .25f; XisPlayer[3] = false; Xtrigger[3] = false;
+                Xline[3] = "Where are we?";
+
+                Xnpc[4] = null; XinitDelay[4] = 0; XendDelay[4] = 7f; XpostDelay[4] = .25f; XisPlayer[4] = true; Xtrigger[4] = false;
+                Xline[4] = "Saint Dominque abouts. We...came here a couple weeks ago.";
+
+                Xnpc[5] = rob; XinitDelay[5] = 0; XendDelay[5] = 7f; XpostDelay[5] = .25f; XisPlayer[5] = false; Xtrigger[5] = false;
+                Xline[5] = "Okay. Why didn't we get phylacteries where we died though?";
+
+                Xnpc[6] = gunn; XinitDelay[6] = 0; XendDelay[6] = 5f; XpostDelay[6] = 1f; XisPlayer[6] = false; Xtrigger[6] = true;
+                Xline[6] = "Did you kill people here?";     XskipAvailable[6] = false;
+
+                nextTag = "B02";
+            }
+            else if (twoAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))  //if choice 2 is selected
+            {
+                youDiag.text = "I know it's not much...but setting up any further would be irresponsible--";
+                answering = false;
+
+                StartCoroutine(poseQuestion(null, 1.5f, true,
+                    "The Paladins could get here any day, remember.",
+                    5f, false, 2f, true));
+
+                oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
+
+                Xnpc[0] = gunn; XinitDelay[0] = 0f; XendDelay[0] = 5f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                Xline[0] = "This should...work, I suppose.";
+
+                Xnpc[1] = rob; XinitDelay[1] = 0f; XendDelay[1] = 5.5f; XpostDelay[1] = .25f; XisPlayer[1] = false; Xtrigger[1] = false;
+                Xline[1] = "Can still enjoy fresh air. Stars are out!";
+
+                Xnpc[2] = gunn; XinitDelay[2] = 0; XendDelay[2] = 5f; XpostDelay[2] = .25f; XisPlayer[2] = false; Xtrigger[1] = false;
+                Xline[2] = "They look different here. The stars.";
+
+                Xnpc[3] = gunn; XinitDelay[3] = 0; XendDelay[3] = 4.5f; XpostDelay[3] = .25f; XisPlayer[3] = false; Xtrigger[3] = false;
+                Xline[3] = "Where are we?";
+
+                Xnpc[4] = null; XinitDelay[4] = 0; XendDelay[4] = 7f; XpostDelay[4] = .25f; XisPlayer[4] = true; Xtrigger[4] = false;
+                Xline[4] = "Saint Dominque abouts. We...came here a couple weeks ago.";
+
+                Xnpc[5] = rob; XinitDelay[5] = 0; XendDelay[5] = 7f; XpostDelay[5] = .25f; XisPlayer[5] = false; Xtrigger[5] = false;
+                Xline[5] = "Okay. Why didn't we get phylacteries where we died though?";
+
+                Xnpc[6] = gunn; XinitDelay[6] = 0; XendDelay[6] = 5f; XpostDelay[6] = 1f; XisPlayer[6] = false; Xtrigger[6] = true;
+                Xline[6] = "Did you kill people here?";     XskipAvailable[6] = false;
+
+                nextTag = "B02";
+            }
+            else if (thrAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))  //if choice 3 is selected
+            {
+
+            }
+        }
+
+        if (answerTag == "B02")
+        {
+            youDiag.text = "";
+
+            oneAnswer.text = "1) Answer Robin";  //choices presented to player (leave as "null" if there are less choices
+            twoAnswer.text = "2) Answer Gunnlaug";
+            thrAnswer.text = null;
+
+            if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))  //if choice 1 is selected
+            {
+                youDiag.text = "...It took time to bring you back, Robin.";
+                answering = false;
+
+                answerTag = "B03";
+
+                StartCoroutine(poseQuestion(null, .5f, true,
+                    "This was the first place we could stop safely.",
+                    4f, false, 2f, false));
+
+                oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
+
+                Xnpc[0] = rob; XinitDelay[0] = 0f; XendDelay[0] = 7f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = true;
+                Xline[0] = "Think you'll find something nice in the wreckage?";
+            }
+            else if (twoAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))  //if choice 2 is selected
+            {
+                youDiag.text = "We do what we must.";
+                answering = false;
+
+                nextTag = "B03";
+
+                StartCoroutine(poseQuestion(null, 3f, true,
+                    "This is only safe place North of Cuba right now.",
+                    4f, false, 2f, false));
+
+                oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
+
+                Xnpc[0] = gunn; XinitDelay[0] = 2.5f; XendDelay[0] = 3f; XpostDelay[0] = 2f; XisPlayer[0] = false; Xtrigger[0] = false;
+                Xline[0] = "Okay.";    XskipAvailable[0] = false;
+
+                Xnpc[1] = rob; XinitDelay[1] = 0f; XendDelay[1] = 7f; XpostDelay[1] = .25f; XisPlayer[1] = false; Xtrigger[1] = true;
+                Xline[1] = "...Think you'll find something nice in the wreckage?";
+            }
+            else if (thrAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))  //if choice 3 is selected
+            {
+
+            }
+        }
+
         ///*********LINE************************************************************************************************///
 
 
@@ -486,17 +631,13 @@ public class dialogueScript : MonoBehaviour
 //////////////////////END PLAYER SCRIPT
 ///_______________________________________________________________________________________________________________________________________________________________________
 
-    IEnumerator poseQuestion(NPC speaker, float initDelay, bool isPlayer, string line, float endDelay, bool trigger, float postDelay)
+    IEnumerator poseQuestion(NPC speaker, float initDelay, bool isPlayer, string line, float endDelay, bool trigger, float postDelay, bool skippable)
     {
-        /*There will never be downtime during a conversation, codewise (we're always running an enumerator):
-         FIRST) A pose question function is called; this is a delay, then an npc poses a question (or stays silent);
-                this either calls another pose question for another npc to pipe in, or an answer from the player is called instead;
-
-         SECOND) We end this function, then flip states to enable the player to answer
-
-         THIRD) The player's answer activates a response from an npc; the end of this response either calls another response or
-                calls a new pose question (starting with another delay)
-         */
+        //initialise skippable dialogue
+        for (int i = 0; i < XskipAvailable.Length; i++)
+        {
+            XskipAvailable[i] = true;
+        }
 
         youMousePrompt.color = tranWhite;
         yield return new WaitForSeconds(initDelay);
@@ -505,12 +646,30 @@ public class dialogueScript : MonoBehaviour
         {
             speaker.primaryActive = true; speaker.secondaryActive = false;     //fade in speaker's dialogue box, dialogue text, and brighten their portrait
 
-            speaker.mousePrompt.color = Color.white;
+            if (skippable)
+            {
+                speaker.mousePrompt.color = Color.white;
+                _skippable = true;
+            }
+            else
+            {
+                _skippable = false;
+            }
+
             speaker.currentDialogue.text = line;
         }
         else
         {
-            youMousePrompt.color = Color.white;
+            if (skippable)
+            {
+                youMousePrompt.color = Color.white;
+                _skippable = true;
+            }
+            else
+            {
+                _skippable = false;
+            }
+
             playerSpeaking = true;
 
             oneAnswer.text = null;  //choices presented to player (leave as "null" if there are less choices
@@ -519,6 +678,7 @@ public class dialogueScript : MonoBehaviour
             youDiag.text = line;
         }
 
+        ///Debug.Log(skippable);
         ff = false;
         ffSpeed = endDelay;
 
@@ -538,12 +698,13 @@ public class dialogueScript : MonoBehaviour
         if (trigger)    //if next is the player talking
         {
             answering = true;
+            answerTag = nextTag;
         }
         else     //if another NPC is gonna pipe in before player talking
         {
             lineI++;
-            StartCoroutine(poseQuestion(Xnpc[lineI], XinitDelay[lineI], XisPlayer[lineI], Xline[lineI], XendDelay[lineI], Xtrigger[lineI], XpostDelay[lineI]));
-            Debug.Log("New Line: " + Xnpc[lineI]);
+            StartCoroutine(poseQuestion(Xnpc[lineI], XinitDelay[lineI], XisPlayer[lineI], Xline[lineI], XendDelay[lineI], Xtrigger[lineI], XpostDelay[lineI], XskipAvailable[lineI]));
+            ///Debug.Log("New Line: " + Xnpc[lineI]);
         }
     }
 

@@ -16812,8 +16812,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 856007729}
-  m_LocalRotation: {x: 0.0007181975, y: 0.999316, z: 0.024896316, w: -0.027336048}
-  m_LocalPosition: {x: 25.170668, y: 19.406214, z: 380.67096}
+  m_LocalRotation: {x: -0.018253092, y: 0.94750446, z: 0.3144259, w: 0.055122953}
+  m_LocalPosition: {x: 22.471872, y: 13.983839, z: 371.1258}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 795733726}
@@ -34028,6 +34028,8 @@ MonoBehaviour:
     delayResponseValue: 0
     primaryActive: 0
     secondaryActive: 0
+  XskipAvailable: 0000000000000000000000000000000000000000
+  skippable: 1
   ff: 0
   ffSpeed: 0
   dialogueID: Intro
@@ -34058,7 +34060,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeRect: {fileID: 202410179}
-  fadeInSpeed: 0.2
+  fadeInSpeed: 0.4
   fadeOutSpeed: 3
   intro0: {fileID: 1527708844}
   intro1: {fileID: 451553015}

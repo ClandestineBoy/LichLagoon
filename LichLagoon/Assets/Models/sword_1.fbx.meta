@@ -56,21 +56,29 @@ ModelImporter:
     400048: transform8
     400050: transform9
     2100000: lambert1
+    2100002: line
+    2100004: middle
+    2100006: hilt
+    2100008: swoop
+    2100010: metal
     2300000: pCube2
     2300002: pCylinder1
     2300004: pCylinder12
     2300006: pCylinder2
     2300008: pTorus1
+    2300010: //RootNode
     3300000: pCube2
     3300002: pCylinder1
     3300004: pCylinder12
     3300006: pCylinder2
     3300008: pTorus1
+    3300010: //RootNode
     4300000: pCylinder1
     4300002: pTorus1
     4300004: pCylinder2
     4300006: pCube2
     4300008: pCylinder12
+    4300010: pCylinder14
   externalObjects: {}
   materials:
     importMaterials: 1

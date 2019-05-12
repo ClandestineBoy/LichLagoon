@@ -18,12 +18,17 @@ ModelImporter:
     400010: transform1
     400012: transform2
     2100000: lambert1
+    2100002: wood
+    2100004: metal
     2300000: pCylinder1
     2300002: pCylinder3
+    2300004: //RootNode
     3300000: pCylinder1
     3300002: pCylinder3
+    3300004: //RootNode
     4300000: pCylinder1
     4300002: pCylinder3
+    4300004: pCylinder5
   externalObjects: {}
   materials:
     importMaterials: 1

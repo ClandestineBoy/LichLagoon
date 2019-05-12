@@ -12,15 +12,23 @@ ModelImporter:
     400004: pCube2
     400006: pCylinder1
     2100000: lambert1
+    2100002: edge
+    2100004: loop
+    2100006: bridge
+    2100008: body
+    2100010: inside
     2300000: pCube1
     2300002: pCube2
     2300004: pCylinder1
+    2300006: //RootNode
     3300000: pCube1
     3300002: pCube2
     3300004: pCylinder1
+    3300006: //RootNode
     4300000: pCylinder1
     4300002: pCube1
     4300004: pCube2
+    4300006: pCube4
   externalObjects: {}
   materials:
     importMaterials: 1

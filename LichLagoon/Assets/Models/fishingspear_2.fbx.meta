@@ -12,15 +12,21 @@ ModelImporter:
     400004: pCylinder1
     400006: pCylinder2
     2100000: lambert1
+    2100002: wood
+    2100004: metal
+    2100006: connect
     2300000: pCone1
     2300002: pCylinder1
     2300004: pCylinder2
+    2300006: //RootNode
     3300000: pCone1
     3300002: pCylinder1
     3300004: pCylinder2
+    3300006: //RootNode
     4300000: pCylinder1
     4300002: pCylinder2
     4300004: pCone1
+    4300006: pCylinder4
   externalObjects: {}
   materials:
     importMaterials: 1

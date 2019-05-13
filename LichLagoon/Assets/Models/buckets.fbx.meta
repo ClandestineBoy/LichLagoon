@@ -30,18 +30,23 @@ ModelImporter:
     400022: transform3
     400024: transform4
     2100000: lambert1
+    2100002: handle
+    2100004: bucket
     2300000: pCylinder3
     2300002: pCylinder6
     2300004: pTorus1
     2300006: pTorus2
+    2300008: //RootNode
     3300000: pCylinder3
     3300002: pCylinder6
     3300004: pTorus1
     3300006: pTorus2
+    3300008: //RootNode
     4300000: pCylinder3
     4300002: pTorus1
     4300004: pCylinder6
     4300006: pTorus2
+    4300008: pTorus4
     2186277476908879412: ImportLogs
   externalObjects: {}
   materials:

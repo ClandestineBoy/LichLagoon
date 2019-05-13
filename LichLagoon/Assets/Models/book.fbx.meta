@@ -22,12 +22,17 @@ ModelImporter:
     400014: transform2
     400016: transform3
     2100000: lambert1
+    2100002: cover
+    2100004: pages
     2300000: pCube3
     2300002: pCube5
+    2300004: //RootNode
     3300000: pCube3
     3300002: pCube5
+    3300004: //RootNode
     4300000: pCube3
     4300002: pCube5
+    4300004: pCube7
   externalObjects: {}
   materials:
     importMaterials: 1

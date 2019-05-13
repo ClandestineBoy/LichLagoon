@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class moveCharacter : MonoBehaviour
 {
@@ -21,11 +22,12 @@ public class moveCharacter : MonoBehaviour
     Animator bob;
 
     [Header("UI Fade")]
-    public Image loreBacker, hex0, hex1;
+    public Image loreBacker, hex0, hex1, reticle;
     public Text headerText, bodyText;
     public float headFadeInSpeed, headFadeOutSpeed, bodyFadeInSpeed, bodyFadeOutSpeed, backFadeInSpeed, backFadeOutSpeed;
+    public Vector3 reticleMinScale, reticleMaxScale;
 
-    [Header ("Grab Variables")]
+    [Header("Grab Variables")]
 
     public GameObject grabPos;
     public GameObject UIAnchor;
@@ -37,8 +39,16 @@ public class moveCharacter : MonoBehaviour
     grabbable grabbedItem;
     private float targetAngle = 0;
 
+    public float grabDist;
 
-   [Header ("Mod Values")]
+    public GameObject artifactTags;
+    private ArtifactTags tags;
+
+    [Header("Colours")]
+    public Color reticleActive, reticleSilent;
+    public float colourShiftMod;
+
+    [Header("Mod Values")]
     //movement speed
     public float speed = 6.0f;
 
@@ -48,7 +58,10 @@ public class moveCharacter : MonoBehaviour
     //the direction the player is moving in
     private Vector3 moveDirection = Vector3.zero;
 
-	[Header ("KeyInputs")]
+    public Transform sitTransform;
+    private bool isDay;
+
+    [Header("KeyInputs")]
     //all of the key inputs
     public KeyCode forward;
     public KeyCode back;
@@ -75,17 +88,23 @@ public class moveCharacter : MonoBehaviour
     //booleans determining what surface is being walked on
     private bool moving = false, onWood = false, onSand = false;
 
+    public string curScene = "";
 
     void Start()
     {
+
+
+        artifactTags = GameObject.FindGameObjectWithTag("Tags");
+        tags = artifactTags.GetComponent<ArtifactTags>();
+
         //assigning public variables to components
         characterController = GetComponent<CharacterController>();
         bob = cam.GetComponent<Animator>();
         stepSource = this.GetComponent<AudioSource>();
 
         //locking cursor into the center of the screen and making it invisible
-        //Cursor.visible = false;
-		Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
 
         stepI = stepInterval;
     }
@@ -95,69 +114,126 @@ public class moveCharacter : MonoBehaviour
     {
         //Script controlling character camera rotation
         Look();
-        //Script controlling character movement
-        Movement();
 
-        if (grabbing)
+        if (curScene == "Day")
         {
-            grabPos.GetComponent<bobberScript>().enabled = true;  //start bobbing the grab anchor when holding something
+            //Script controlling character movement
+            if (!tags.display)
+                Movement();
 
-            if (moving)
+
+            if (grabbing)
             {
-                ///grabbedItem.ps.Stop();  //stop and disconnect UI particle effect when moving
-                grabbedItem.particlesFollowPlayer = false;
-                ///colourShift(loreBacker, null, new Color(1, 1, 1, 0), backFadeOutSpeed, false, false);    //fade backer colour in
+                grabPos.GetComponent<bobberScript>().enabled = true;  //start bobbing the grab anchor when holding something
+
+                if (moving)
+                {
+                    ///grabbedItem.ps.Stop();  //stop and disconnect UI particle effect when moving
+                    grabbedItem.particlesFollowPlayer = false;
+                    ///colourShift(loreBacker, null, new Color(1, 1, 1, 0), backFadeOutSpeed, false, false);    //fade backer colour in
+                    colourShift(hex0, null, new Color(1, .9f, .9f, 0), backFadeOutSpeed, false, false);    //fade hexs colour in
+                    colourShift(hex1, null, new Color(1, .9f, .9f, 0), backFadeOutSpeed, false, false);
+                    colourShift(null, headerText, new Color(1, 1, 1, 0), headFadeOutSpeed, true, false);    //fade header colour in
+                    colourShift(null, bodyText, new Color(1, 1, 1, 0), bodyFadeOutSpeed, true, true);      //fade body text in
+                }
+                else if (!moving)
+                {
+                    ///grabbedItem.ps.Play();  //plays UI particle effect when held and not moving
+                    grabbedItem.particlesFollowPlayer = true;
+                    ///colourShift(loreBacker, null, new Color(1, 1, 1, .6f), backFadeInSpeed, false, false);    //fade backer colour in
+                    colourShift(hex0, null, new Color(1, .9f, .9f, .8f), backFadeInSpeed, false, false);    //fade hexs colour in
+                    colourShift(hex1, null, new Color(1, .9f, .9f, .8f), backFadeInSpeed, false, false);
+                    colourShift(null, headerText, Color.white, headFadeInSpeed, true, false);    //fade header colour in
+                    colourShift(null, bodyText, Color.white, bodyFadeInSpeed * .25f, true, true);      //fade body text in
+                }
+            }
+            else
+            {
+                grabPos.GetComponent<bobberScript>().enabled = false;  //stop bobbing the grab anchor when not holding anything
+                                                                       ///colourShift(loreBacker, null, new Color (1, 1, 1, 0), backFadeOutSpeed, false, false);    //fade backer colour in
                 colourShift(hex0, null, new Color(1, .9f, .9f, 0), backFadeOutSpeed, false, false);    //fade hexs colour in
                 colourShift(hex1, null, new Color(1, .9f, .9f, 0), backFadeOutSpeed, false, false);
                 colourShift(null, headerText, new Color(1, 1, 1, 0), headFadeOutSpeed, true, false);    //fade header colour in
                 colourShift(null, bodyText, new Color(1, 1, 1, 0), bodyFadeOutSpeed, true, true);      //fade body text in
             }
-            else if (!moving)
-            {
-                ///grabbedItem.ps.Play();  //plays UI particle effect when held and not moving
-                grabbedItem.particlesFollowPlayer = true;
-                ///colourShift(loreBacker, null, new Color(1, 1, 1, .6f), backFadeInSpeed, false, false);    //fade backer colour in
-                colourShift(hex0, null, new Color(1, .9f, .9f, .7f), backFadeInSpeed, false, false);    //fade hexs colour in
-                colourShift(hex1, null, new Color(1, .9f, .9f, .7f), backFadeInSpeed, false, false);
-                colourShift(null, headerText, Color.white, headFadeInSpeed, true, false);    //fade header colour in
-                colourShift(null, bodyText, Color.white, bodyFadeInSpeed * .25f, true, true);      //fade body text in
-            }
+
+            //Script
+            checkGround();
+
+            //Script checking mouse clicks to pick up objects
+            PickUp();
         }
-        else
+        else if (curScene == "Night")
         {
-            grabPos.GetComponent<bobberScript>().enabled = false;  //stop bobbing the grab anchor when not holding anything
-            ///colourShift(loreBacker, null, new Color (1, 1, 1, 0), backFadeOutSpeed, false, false);    //fade backer colour in
-            colourShift(hex0, null, new Color(1, .9f, .9f, 0), backFadeOutSpeed, false, false);    //fade hexs colour in
-            colourShift(hex1, null, new Color(1, .9f, .9f, 0), backFadeOutSpeed, false, false);
-            colourShift(null, headerText, new Color(1, 1, 1, 0), headFadeOutSpeed, true, false);    //fade header colour in
-            colourShift(null, bodyText, new Color(1, 1, 1, 0), bodyFadeOutSpeed, true, true);      //fade body text in
+
         }
-
-        //Script
-        checkGround();
-
-        //Script checking mouse clicks to pick up objects
-        PickUp();
     }
 
-    
+    public Sun_Rotation sunRotator;
 
+    void DayTransition(bool boo)
+    {
+        sunRotator.goToNight = boo;
+    }
+
+    void dropItem()
+    {
+        grabbedObj.transform.SetParent(null);
+        if (grabbedObj.GetComponent<MeshCollider>() != null)
+            grabbedObj.GetComponent<MeshCollider>().enabled = true;
+        if (grabbedObj.GetComponent<BoxCollider>() != null)
+            grabbedObj.GetComponent<BoxCollider>().enabled = true;
+        grabbedItem.setGrabbed(false);
+        grabbing = false;
+        grabbedItem.setInHand(false);
+        DontDestroyOnLoad(grabbedObj);
+    }
     void PickUp()
     {
         RaycastHit hit;
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(1))
         {
-            if (!grabbing)
+            if (!grabbing && tags.tagged.Count > 0)
             {
-                if (Physics.Raycast(ray, out hit, 100, 1 << LayerMask.NameToLayer("Default")))
+                if (tags.display == true)
                 {
-                    if (hit.collider.gameObject.GetComponent<grabbable>() != null)
+                    tags.display = false;
+                }
+                else
+                {
+                    tags.display = true;
+                }
+            }
+            if (grabbing && grabbedItem.getInHand())
+            {
+                dropItem();
+                tags.addTag(grabbedObj);
+            }
+        }
+
+        if (!grabbing)
+        {
+            if (Physics.Raycast(ray, out hit, grabDist, 1 << LayerMask.NameToLayer("Default")))
+            {
+                if (hit.collider.gameObject.tag == "Fire")      //if looking at campfire
+                {
+                    if (Input.GetMouseButtonDown(0))
                     {
+                        DayTransition(true);
+                    }
+                }
+                if (hit.collider.gameObject.GetComponent<grabbable>() != null && sunRotator.goToNight == false)     //if looking at an artifact
+                {
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        Debug.Log("Pickup");
+
                         grabbedObj = hit.collider.gameObject;
                         grabbedObj.transform.SetParent(grabPos.transform);
+                        grabbedObj.transform.eulerAngles = new Vector3(0, 0, 0);
 
-                        if(grabbedObj.GetComponent<MeshCollider>() != null)
+                        if (grabbedObj.GetComponent<MeshCollider>() != null)
                             grabbedObj.GetComponent<MeshCollider>().enabled = false;
 
                         if (grabbedObj.GetComponent<BoxCollider>() != null)
@@ -170,33 +246,64 @@ public class moveCharacter : MonoBehaviour
                         grabbedItem.setGrabSpeed(grabSpeed);
                         grabbing = true;
                         targetAngle = verticalLook.localRotation.x;
+                        tags.tagged.Remove(grabbedObj);
+
+                        bodyText.text = grabbedItem.lore;
+                        headerText.text = grabbedObj.name;
+
+                        if (tags.display)
+                            tags.display = false;
+                    }
+                    else   //if looking at artifact but not clicking
+                    {
+                        Debug.Log("Can Pickup");
+
+                        reticle.transform.localScale = Vector3.MoveTowards(reticle.transform.localScale, reticleMaxScale, Time.deltaTime * 10);
+                        colourShift(reticle, null, reticleActive, Time.deltaTime * colourShiftMod, false, false);
                     }
                 }
-            }
-            else
-            {
-                if (grabbedItem.getInHand())
+                else
                 {
-                    grabbedObj.transform.SetParent(null);
-                    if (grabbedObj.GetComponent<MeshCollider>() != null)
-                        grabbedObj.GetComponent<MeshCollider>().enabled = true;
-                    if (grabbedObj.GetComponent<BoxCollider>() != null)
-                        grabbedObj.GetComponent<BoxCollider>().enabled = true;
-                    grabbedItem.setGrabbed(false);
-                    grabbing = false;
-                    grabbedItem.setInHand(false);                    
+                    Debug.Log("Can't Pickup");
+
+                    reticle.transform.localScale = Vector3.MoveTowards(reticle.transform.localScale, reticleMinScale, Time.deltaTime * 10);
+                    colourShift(reticle, null, reticleSilent, Time.deltaTime * colourShiftMod, false, false);
                 }
             }
         }
-    }
+        else
+        {
+            if (grabbedItem.getInHand() && Input.GetMouseButtonDown(0))
+            {
+                dropItem();
+            }
 
+            reticle.transform.localScale = Vector3.MoveTowards(reticle.transform.localScale, reticleMaxScale, Time.deltaTime * 10);
+            colourShift(reticle, null, new Color(1, 1, 1, 0), Time.deltaTime * colourShiftMod, false, false);    //if ya holding something currently
+        }
+    }
     void Look()
     {
         currentX += Input.GetAxis("Mouse X") * sensitivityX;
         currentY += Input.GetAxis("Mouse Y") * sensitivityY;
 
-		verticalLook.localRotation = Quaternion.Euler(-currentY, 0, 0);
+        if (currentY > 90f)
+        {
+            currentY = 90f;
+        }
+        else if (currentY < -90f)
+        {
+            currentY = -90f;
+        }
+
+        verticalLook.localRotation = Quaternion.Euler(-currentY, 0, 0);
         transform.rotation = Quaternion.Euler(0, currentX, 0);
+
+        if (!tags.display)
+        {
+            artifactTags.transform.position = transform.position;
+            artifactTags.transform.rotation = transform.rotation;
+        }
     }
 
     void Movement()
@@ -238,7 +345,7 @@ public class moveCharacter : MonoBehaviour
         // Move the controller
         characterController.Move(moveDirection * Time.deltaTime);
 
-        if(Mathf.Abs(moveDirection.x) < .1f && Mathf.Abs(moveDirection.z) < .1f)
+        if (Mathf.Abs(moveDirection.x) < .1f && Mathf.Abs(moveDirection.z) < .1f)
         {
             moving = false;
             bob.enabled = false;
@@ -256,13 +363,14 @@ public class moveCharacter : MonoBehaviour
         }
     }
 
-    void stepCount ()
+    void stepCount()
     {
         stepI -= Time.deltaTime;
 
-        if (stepI <= 0) {
+        if (stepI <= 0)
+        {
             stepI = stepInterval;
-            
+
             if (onSand)
             {
                 stepSource.PlayOneShot(sandSteps[Random.Range(0, sandSteps.Length)]);       //if on sand, play a random sand footstep sfx
@@ -275,7 +383,7 @@ public class moveCharacter : MonoBehaviour
         }
     }
 
-    void checkGround ()
+    void checkGround()
     {
         Vector3 downDirection = new Vector3(0, -1, 0);
         RaycastHit hit;
@@ -304,7 +412,7 @@ public class moveCharacter : MonoBehaviour
         }
     }
 
-    void colourShift (Image curImg, Text curText, Vector4 target, float speed, bool isText, bool isBody)
+    void colourShift(Image curImg, Text curText, Vector4 target, float speed, bool isText, bool isBody)
     {
         //Vector4 purpleMod = new Vector4(Random.Range(.9f, 1f), Random.Range(.6f, .8f), Random.Range(.7f, .9f), 1);
 

@@ -17,8 +17,11 @@ ModelImporter:
     400010: transform2
     2100000: lambert1
     2300000: pCylinder3
+    2300002: //RootNode
     3300000: pCylinder3
+    3300002: //RootNode
     4300000: pCylinder3
+    4300002: pCylinder4
     2186277476908879412: ImportLogs
   externalObjects: {}
   materials:

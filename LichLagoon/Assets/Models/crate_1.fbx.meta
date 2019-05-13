@@ -184,6 +184,9 @@ ModelImporter:
     400176: transform40
     400178: transform41
     2100000: lambert1
+    2100002: box
+    2100004: edge
+    2100006: metal
     2300000: pCube13
     2300002: pSphere1
     2300004: pSphere2
@@ -197,6 +200,7 @@ ModelImporter:
     2300020: polySurface1
     2300022: polySurface2
     2300024: polySurface6
+    2300026: //RootNode
     3300000: pCube13
     3300002: pSphere1
     3300004: pSphere2
@@ -210,6 +214,7 @@ ModelImporter:
     3300020: polySurface1
     3300022: polySurface2
     3300024: polySurface6
+    3300026: //RootNode
     4300000: pCube13
     4300002: pSphere1
     4300004: pSphere2
@@ -223,6 +228,7 @@ ModelImporter:
     4300020: polySurface1
     4300022: polySurface2
     4300024: polySurface6
+    4300026: polySurface19
   externalObjects: {}
   materials:
     importMaterials: 1

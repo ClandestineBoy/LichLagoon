@@ -26,6 +26,13 @@ public class rotater : MonoBehaviour
 
     void rotaterFunc()
     {
-        this.transform.localEulerAngles += dir * rotSpeed * Time.deltaTime;
+        if (Input.GetAxis("Mouse ScrollWheel") != 0)
+        {
+            this.transform.localEulerAngles += dir * rotSpeed * Time.deltaTime * Input.GetAxis("Mouse ScrollWheel") * 500f;
+        }
+        else
+        {
+            this.transform.localEulerAngles += dir * rotSpeed * Time.deltaTime;
+        }
     }
 }

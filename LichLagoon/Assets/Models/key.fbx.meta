@@ -21,16 +21,19 @@ ModelImporter:
     2300004: pCylinder3
     2300006: pCylinder4
     2300008: pTorus1
+    2300010: //RootNode
     3300000: pCylinder1
     3300002: pCylinder2
     3300004: pCylinder3
     3300006: pCylinder4
     3300008: pTorus1
+    3300010: //RootNode
     4300000: pTorus1
     4300002: pCylinder1
     4300004: pCylinder2
     4300006: pCylinder3
     4300008: pCylinder4
+    4300010: pCylinder6
   externalObjects: {}
   materials:
     importMaterials: 1

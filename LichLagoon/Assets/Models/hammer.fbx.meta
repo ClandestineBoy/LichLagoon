@@ -12,15 +12,21 @@ ModelImporter:
     400004: pCube3
     400006: pCylinder1
     2100000: lambert1
+    2100002: other
+    2100004: stone
+    2100006: handle
     2300000: pCube2
     2300002: pCube3
     2300004: pCylinder1
+    2300006: //RootNode
     3300000: pCube2
     3300002: pCube3
     3300004: pCylinder1
+    3300006: //RootNode
     4300000: pCube2
     4300002: pCube3
     4300004: pCylinder1
+    4300006: pCube5
   externalObjects: {}
   materials:
     importMaterials: 1

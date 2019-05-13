@@ -42,7 +42,7 @@ public class moveCharacter : MonoBehaviour
     public float grabDist;
 
     public GameObject artifactTags;
-    private ArtifactTags tags;
+    public ArtifactTags tags;
 
     [Header("Colours")]
     public Color reticleActive, reticleSilent;
@@ -92,8 +92,6 @@ public class moveCharacter : MonoBehaviour
 
     void Start()
     {
-
-
         artifactTags = GameObject.FindGameObjectWithTag("Tags");
         tags = artifactTags.GetComponent<ArtifactTags>();
 
@@ -269,6 +267,11 @@ public class moveCharacter : MonoBehaviour
                     reticle.transform.localScale = Vector3.MoveTowards(reticle.transform.localScale, reticleMinScale, Time.deltaTime * 10);
                     colourShift(reticle, null, reticleSilent, Time.deltaTime * colourShiftMod, false, false);
                 }
+            }
+            else
+            {
+                reticle.transform.localScale = Vector3.MoveTowards(reticle.transform.localScale, reticleMinScale, Time.deltaTime * 10);
+                colourShift(reticle, null, reticleSilent, Time.deltaTime * colourShiftMod, false, false);
             }
         }
         else

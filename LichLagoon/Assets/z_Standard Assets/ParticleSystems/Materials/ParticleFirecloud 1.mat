@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: ParticleFirecloud
+  m_Name: ParticleFirecloud 1
   m_Shader: {fileID: 200, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -31,6 +31,3 @@ Material:
     - _Emission: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 1, g: 1, b: 1, a: 0}
     - _TintColor: {r: 0.67910445, g: 0.67910445, b: 0.67910445, a: 0.6784314}
---- !u!1002 &2100001
-EditorExtensionImpl:
-  serializedVersion: 6

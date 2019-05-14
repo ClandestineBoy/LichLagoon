@@ -245,7 +245,6 @@ public class dialogueScript : MonoBehaviour
 
                 //END INTRO
                 sm.nextScene = true;
-                Debug.Log("AAAAHHHH");
             }
             else if (twoAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))  //if choice 2 is selected
             {

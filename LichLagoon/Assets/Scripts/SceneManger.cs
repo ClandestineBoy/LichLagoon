@@ -10,23 +10,40 @@ public class SceneManger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(gameObject);   
+        DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName("StartScreen"))
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("StartScreen"))
         {
             if (Input.anyKeyDown)
             {
                 nextScene = true;
             }
-            if(nextScene == true)
+            if (nextScene == true)
             {
                 nextScene = false;
                 SceneManager.LoadScene("Intro");
             }
         }
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Intro"))
+        {
+            if (nextScene == true)
+            {
+                nextScene = false;
+                SceneManager.LoadScene("Night2");
+            }
+        }
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Night2"))
+        {
+            if (nextScene == true)
+            {
+                nextScene = false;
+                SceneManager.LoadScene("Rilee Home");
+            }
+        }
     }
+
 }

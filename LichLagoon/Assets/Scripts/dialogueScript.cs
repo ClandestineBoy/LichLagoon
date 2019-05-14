@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class dialogueScript : MonoBehaviour
 {
+    GameObject sceneMan;
+    SceneManger sm;
 
     [System.Serializable]
     public class NPC
@@ -52,6 +54,8 @@ public class dialogueScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        sceneMan = GameObject.FindGameObjectWithTag("SceneManager");
+        sm = sceneMan.GetComponent<SceneManger>();
         //initialise npc dialogue
         fran.currentDialogue.text = "";
         fran.diagBacker.color = new Color(1, 1, 1, 0);
@@ -240,6 +244,8 @@ public class dialogueScript : MonoBehaviour
                 Xline[2] = "Okay, okay...Nevermind.";
 
                 //END INTRO
+                sm.nextScene = true;
+                Debug.Log("AAAAHHHH");
             }
             else if (twoAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))  //if choice 2 is selected
             {
@@ -381,6 +387,7 @@ public class dialogueScript : MonoBehaviour
                 Xline[15] = "...No idea.";
 
                 //END INTRO
+                sm.nextScene = true;
             }
             else if (twoAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))  //if choice 2 is selected
             {
@@ -432,6 +439,7 @@ public class dialogueScript : MonoBehaviour
                 Xline[11] = "...No idea.";
 
                 //END INTRO
+                sm.nextScene = true;
             }
             else if (thrAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))  //if choice 3 is selected
             {
@@ -486,6 +494,7 @@ public class dialogueScript : MonoBehaviour
                 Xline[12] = "...No idea.";
 
                 //END INTRO
+                sm.nextScene = true;
             }
 
             return;
@@ -1131,7 +1140,7 @@ public class dialogueScript : MonoBehaviour
                 Xline[5] = "Lichs are leeches: they cannot survive without sucking the life out of world around them.";
 
                 Xnpc[6] = null; XinitDelay[6] = 0; XendDelay[6] = 8.5f; XpostDelay[6] = .5f; XisPlayer[6] = true; Xtrigger[6] = false;
-                Xline[6] = "You force us to fight. We try to give back the all the lives we can.";
+                Xline[6] = "You force us to fight. We try to give back all the lives we can.";
 
                 Xnpc[7] = fran; XinitDelay[7] = 0; XendDelay[7] = 6.5f; XpostDelay[7] = .25f; XisPlayer[7] = false; Xtrigger[7] = false;
                 Xline[7] = "And how many lives did you save on your last raid?";
@@ -1240,6 +1249,7 @@ public class dialogueScript : MonoBehaviour
                 Xline[20] = "I'll begin searching for your phylacteries tomorrow morning.";
 
                 //end
+                sm.nextScene = true;
             }
             else if (thrAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))  //if choice 3 is selected
             {
@@ -1312,6 +1322,7 @@ public class dialogueScript : MonoBehaviour
                 Xline[18] = "I'll begin searching for your phylacteries tomorrow morning.";
 
                 //end
+                sm.nextScene = true;
             }
         }
 
@@ -1349,7 +1360,7 @@ public class dialogueScript : MonoBehaviour
                 Xline[3] = "I'm going to bed, Pirate. Find my phylactery quickly.";
 
                 //END NIGHT
-                
+                sm.nextScene = true;
             }
             else if (twoAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))
             {
@@ -1376,7 +1387,8 @@ public class dialogueScript : MonoBehaviour
                 Xnpc[3] = fran; XinitDelay[3] = 0; XendDelay[3] = 6.5f; XpostDelay[3] = .75f; XisPlayer[3] = false; Xtrigger[3] = false;
                 Xline[3] = "I'm going to bed, Pirate. Find my phylactery quickly.";
 
-                //end intro
+                //END NIGHT
+                sm.nextScene = true;
             }
             else if (thrAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))  //if choice 3 is selected
             {

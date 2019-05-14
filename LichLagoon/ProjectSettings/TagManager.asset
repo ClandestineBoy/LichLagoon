@@ -8,6 +8,7 @@ TagManager:
   - Sand
   - Wood
   - Tags
+  - SceneManager
   layers:
   - Default
   - TransparentFX

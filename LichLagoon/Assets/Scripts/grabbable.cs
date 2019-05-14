@@ -42,6 +42,7 @@ public class grabbable : MonoBehaviour
     void Start()
     {
         DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(transform.parent.gameObject);
 
         inInventory = false;
 

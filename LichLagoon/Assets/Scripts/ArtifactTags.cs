@@ -15,7 +15,6 @@ public class ArtifactTags : MonoBehaviour
     void Start()
     {
         DontDestroyOnLoad(gameObject);
-        DontDestroyOnLoad(transform.parent.gameObject);
     }
 
     // Update is called once per frame

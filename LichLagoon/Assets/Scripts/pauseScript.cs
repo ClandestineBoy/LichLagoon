@@ -22,8 +22,7 @@ public class pauseScript : MonoBehaviour
     {
         if (!paused)    //unpaused
         {
-            Time.timeScale = 1f;
-            colourShift(pauseImage, null, new Color(1, 1, 1, 0), Time.deltaTime * 5, false, false);
+            colourShift(pauseImage, null, new Color(1, 1, 1, 0), Time.deltaTime * 100, false, false);
 
             if (Input.GetKeyDown(KeyCode.P))
             {
@@ -32,12 +31,10 @@ public class pauseScript : MonoBehaviour
         }
         else     //paused
         {
-            Time.timeScale = 0f;
-            colourShift(pauseImage, null, new Color(1, 1, 1, 1), Time.deltaTime * 5, false, false);
+            colourShift(pauseImage, null, new Color(1, 1, 1, 1), Time.deltaTime * 100, false, false);
 
             if (Input.GetKey(KeyCode.Escape))
             {
-                paused = false;
                 quitTimer += Time.fixedDeltaTime;
 
                 if (quitTimer > 1.2f)

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.07145288, g: 0.038542733, b: 0.10627394, a: 1}
+  m_IndirectSpecularColor: {r: 0.05182623, g: 0.027033689, b: 0.07665933, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2812,7 +2812,7 @@ GameObject:
   - component: {fileID: 170076735}
   - component: {fileID: 170076734}
   m_Layer: 0
-  m_Name: Moon
+  m_Name: MoonSource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2829,7 +2829,7 @@ Light:
   serializedVersion: 8
   m_Type: 1
   m_Color: {r: 0.8392157, g: 1, b: 0.9676453, a: 1}
-  m_Intensity: 0.15
+  m_Intensity: 0.18
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -2863,13 +2863,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 170076733}
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalRotation: {x: 0.38826415, y: 0.3579281, z: -0.16690454, w: 0.8326352}
+  m_LocalPosition: {x: -434, y: 428, z: -332}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1207711443}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 50.000004, y: 46.523003, z: 0}
 --- !u!1 &171853407
 GameObject:
   m_ObjectHideFlags: 0
@@ -18385,8 +18385,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 856007729}
-  m_LocalRotation: {x: -0.27075413, y: 0.35633278, z: 0.108817056, w: 0.8876249}
-  m_LocalPosition: {x: -637.48486, y: -717.5085, z: -519.022}
+  m_LocalRotation: {x: -0.18953933, y: 0.6792176, z: 0.18850738, w: 0.6835228}
+  m_LocalPosition: {x: -614.6363, y: -505.75198, z: -322.34375}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 795733726}
@@ -22035,7 +22035,7 @@ MonoBehaviour:
   sensitivityX: 2
   sensitivityY: 1.5
   verticalLook: {fileID: 1968773149}
-  inIntro: 1
+  talking: 1
   loreBacker: {fileID: 473333324}
   hex0: {fileID: 821432504}
   hex1: {fileID: 2095658368}
@@ -35987,7 +35987,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1042703594}
-  offset: {x: 165, y: 400, z: -285}
+  offset: {x: 115, y: 300, z: -450}
 --- !u!23 &1645583215
 MeshRenderer:
   m_ObjectHideFlags: 0

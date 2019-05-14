@@ -104,6 +104,11 @@ public class moveCharacter : MonoBehaviour
             artifactTags = GameObject.FindGameObjectWithTag("Tags");
             tags = artifactTags.GetComponent<ArtifactTags>();
         }
+        else
+        {
+            transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, 180, transform.localEulerAngles.z);
+            currentX = this.transform.localEulerAngles.y;
+        }
 
         //assigning public variables to components
         characterController = GetComponent<CharacterController>();

@@ -49,15 +49,15 @@ public class introProcedure : MonoBehaviour
     {
         if (firstMapVisible)
         {
-            player.transform.localEulerAngles = new Vector3(0, 0, 0);
-            playFulcrum.transform.localEulerAngles = new Vector3(0, 0, 0);
+            player.transform.localEulerAngles = new Vector3(player.transform.localEulerAngles.x, 180, player.transform.localEulerAngles.z);
+            playFulcrum.transform.localEulerAngles = new Vector3(playFulcrum.transform.localEulerAngles.x, 0, playFulcrum.transform.localEulerAngles.z);
         }
         if (atFadeIn)
         {
             firstMapVisible = false;
 
-            player.transform.localEulerAngles = new Vector3(0, 0, 0);
-            playFulcrum.transform.localEulerAngles = new Vector3(0, 0, 0);
+            player.transform.localEulerAngles = new Vector3(player.transform.localEulerAngles.x, 180, player.transform.localEulerAngles.z);
+            playFulcrum.transform.localEulerAngles = new Vector3(playFulcrum.transform.localEulerAngles.x, 0, playFulcrum.transform.localEulerAngles.z);
 
             colourShift(fadeRect, null, new Color(0, 0, 0, 0), fadeInSpeed * .8f, false);
             colourShift(null, intro0.GetComponent<Text>(), new Color(1, 1, 1, 0), fadeInSpeed * 2, true);

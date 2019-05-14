@@ -6541,6 +6541,18 @@ PrefabInstance:
         caught, stuffed, mounted and loved by a man named Alfie. The fishes name was
         also Alfie.
       objectReference: {fileID: 0}
+    - target: {fileID: 173944550, guid: 29be2aa85d6d46e4596482936691b6a5, type: 3}
+      propertyPath: grabRot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 173944550, guid: 29be2aa85d6d46e4596482936691b6a5, type: 3}
+      propertyPath: grabRot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 173944550, guid: 29be2aa85d6d46e4596482936691b6a5, type: 3}
+      propertyPath: grabRot.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29be2aa85d6d46e4596482936691b6a5, type: 3}
 --- !u!4 &302362174 stripped
@@ -27479,36 +27491,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -44.661003
       objectReference: {fileID: 0}
-    - target: {fileID: 2623250763121375144, guid: a8d3b3f2a4866fc4a8c90d8d38dc8165,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.6249599
-      objectReference: {fileID: 0}
-    - target: {fileID: 2623250763121375144, guid: a8d3b3f2a4866fc4a8c90d8d38dc8165,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.6249601
-      objectReference: {fileID: 0}
-    - target: {fileID: 2623250763121375144, guid: a8d3b3f2a4866fc4a8c90d8d38dc8165,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.62496
+    - target: {fileID: 794500460, guid: a8d3b3f2a4866fc4a8c90d8d38dc8165, type: 3}
+      propertyPath: grabRot.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 794500460, guid: a8d3b3f2a4866fc4a8c90d8d38dc8165, type: 3}
-      propertyPath: grabScale
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 794500460, guid: a8d3b3f2a4866fc4a8c90d8d38dc8165, type: 3}
-      propertyPath: lore
-      value: 'This guitar belonged to a young girl some time ago. She was awful at
-        first--her father would berate her for making such racket each morning. Nevertheless,
-        she would play and play until the twangs turned to tunes and squeeks to serenades.
-        Now, in her old age, she plays for the children each afternoon and one girl
-        has caught her eye as a suitable student.  '
-      objectReference: {fileID: 0}
-    - target: {fileID: 794500460, guid: a8d3b3f2a4866fc4a8c90d8d38dc8165, type: 3}
-      propertyPath: restScale
-      value: 0.625
+      propertyPath: grabRot.z
+      value: -90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8d3b3f2a4866fc4a8c90d8d38dc8165, type: 3}

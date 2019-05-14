@@ -74,14 +74,21 @@ public class grabbable : MonoBehaviour
     void Update()
     {
 
-        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(1))
+        if (!(SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Rilee Home")))
         {
             if (!inInventory)
             {
                 gameObject.SetActive(false);
             }
         }
-       
+        if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Rilee Home"))
+        {
+            if (!inInventory)
+            {
+                gameObject.SetActive(true);
+            }
+        }
+
 
         if (grabBegin)
         {
@@ -135,8 +142,8 @@ public class grabbable : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, grabPos.transform.position, (distLeft*grabSpeed));
         transform.localScale = Vector3.Lerp(grabS, restS, shrinkJourney);
 
-        transform.eulerAngles = Vector3.RotateTowards(transform.eulerAngles, new Vector3(grabRot.x, transform.eulerAngles.y, grabRot.z), Time.deltaTime, 0f);
-
+        // transform.localEulerAngles = Vector3.RotateTowards(transform.localEulerAngles, new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, grabRot.z), Time.deltaTime, 0f);
+       transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, grabRot.z);
         if (Vector3.Distance(transform.position,grabPos.transform.position) < .1f)
         {
             inHand = true;

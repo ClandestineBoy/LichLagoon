@@ -25,7 +25,7 @@ public class ArtifactTags : MonoBehaviour
         iPos3 = transform.localPosition + (transform.forward * thrForMod) + (transform.right * thrSideMod);
 
 
-        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(0))
+        if (!(SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Rilee Home")))
         {
             for(int i = 0; i < tagged.Count; i++)
             {
@@ -38,7 +38,7 @@ public class ArtifactTags : MonoBehaviour
                     tagged[i].transform.position = pos3;
             }
         }
-        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(1))
+        if ((SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Rilee Home")))
         {
             if (display)
             {

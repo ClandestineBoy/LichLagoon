@@ -4724,49 +4724,6 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &794500460
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2623250763120946056}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94e7fe831fd013d4caf4fc96696e2482, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buried: 0
-  tagged: 0
-  inInventory: 0
-  lore: 'This guitar belonged to a young girl some time ago. She was awful at first,
-    her father would berate her for playing such racket each morning. Nevertheless,
-    she would play and play until the twangs turned to tunes and squeeks to serenades.
-    Now, in her old age, she plays for the children each afternoon and one girl has
-    caught her eye as a suitable student.  '
-  grabScale: 0
-  restScale: 1
-  grabS: {x: 0.4, y: 0.4, z: 0.4}
-  restS: {x: 1, y: 1, z: 1}
-  ps: {fileID: 0}
-  grabRot: {x: 0, y: 0, z: 0}
-  particlesFollowPlayer: 1
-  shrinkSpeed: 0
---- !u!114 &794500461
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2623250763120946056}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c110884ebbfc0b4383f8bccd11fd6cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  activeRotate: 0
-  dir: {x: 0, y: 1, z: 0}
-  rotSpeed: 8
 --- !u!65 &794500466
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4793,6 +4750,49 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.93, y: 0.12, z: 0.48}
   m_Center: {x: -0.92, y: 0.15, z: 0.000000029802322}
+--- !u!114 &794500460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2623250763120946056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94e7fe831fd013d4caf4fc96696e2482, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buried: 0
+  tagged: 0
+  inInventory: 0
+  lore: 'This guitar belonged to a young girl some time ago. She was awful at first--her
+    father would berate her for making such racket each morning. Nevertheless, she
+    would play and play until the twangs turned to tunes and squeeks to serenades.
+    Now, in her old age, she plays for the children each afternoon and one girl has
+    caught her eye as a suitable student.  '
+  grabScale: 0.5
+  restScale: 0.625
+  grabS: {x: 0.4, y: 0.4, z: 0.4}
+  restS: {x: 1, y: 1, z: 1}
+  ps: {fileID: 0}
+  grabRot: {x: 0, y: 0, z: 0}
+  particlesFollowPlayer: 1
+  shrinkSpeed: 0
+--- !u!114 &794500461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2623250763120946056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c110884ebbfc0b4383f8bccd11fd6cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activeRotate: 0
+  dir: {x: 0, y: 1, z: 0}
+  rotSpeed: 8
 --- !u!1001 &2623250763120979240
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4806,44 +4806,60 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 58c46a77b4d060246988ba2f62aaa722, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.55
+      value: 2.23
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 58c46a77b4d060246988ba2f62aaa722, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.84
+      value: -1.42
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 58c46a77b4d060246988ba2f62aaa722, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.33
+      value: 9.91
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 58c46a77b4d060246988ba2f62aaa722, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0.2924923
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 58c46a77b4d060246988ba2f62aaa722, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: -0.58389723
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 58c46a77b4d060246988ba2f62aaa722, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.24848709
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 58c46a77b4d060246988ba2f62aaa722, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7153785
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 58c46a77b4d060246988ba2f62aaa722, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2300006, guid: 58c46a77b4d060246988ba2f62aaa722, type: 3}
-      propertyPath: m_Materials.Array.data[4]
-      value: 
-      objectReference: {fileID: 2100000, guid: 062be7b85c4e92f4d807c6a50579dc52, type: 2}
-    - target: {fileID: 2300006, guid: 58c46a77b4d060246988ba2f62aaa722, type: 3}
-      propertyPath: m_Materials.Array.data[3]
-      value: 
-      objectReference: {fileID: 2100000, guid: 062be7b85c4e92f4d807c6a50579dc52, type: 2}
+    - target: {fileID: 400000, guid: 58c46a77b4d060246988ba2f62aaa722, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 7.372
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 58c46a77b4d060246988ba2f62aaa722, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -81.47401
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 58c46a77b4d060246988ba2f62aaa722, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -44.661003
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 58c46a77b4d060246988ba2f62aaa722, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6249599
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 58c46a77b4d060246988ba2f62aaa722, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.6249601
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 58c46a77b4d060246988ba2f62aaa722, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.62496
+      objectReference: {fileID: 0}
     - target: {fileID: 2300006, guid: 58c46a77b4d060246988ba2f62aaa722, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -4852,6 +4868,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[2]
       value: 
       objectReference: {fileID: 2100000, guid: e58481a0d01ef854da75a6a92f0aaf21, type: 2}
+    - target: {fileID: 2300006, guid: 58c46a77b4d060246988ba2f62aaa722, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 062be7b85c4e92f4d807c6a50579dc52, type: 2}
+    - target: {fileID: 2300006, guid: 58c46a77b4d060246988ba2f62aaa722, type: 3}
+      propertyPath: m_Materials.Array.data[4]
+      value: 
+      objectReference: {fileID: 2100000, guid: 062be7b85c4e92f4d807c6a50579dc52, type: 2}
     - target: {fileID: 2300006, guid: 58c46a77b4d060246988ba2f62aaa722, type: 3}
       propertyPath: m_Materials.Array.data[5]
       value: 

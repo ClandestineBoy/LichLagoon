@@ -27506,6 +27506,10 @@ PrefabInstance:
         Now, in her old age, she plays for the children each afternoon and one girl
         has caught her eye as a suitable student.  '
       objectReference: {fileID: 0}
+    - target: {fileID: 794500460, guid: a8d3b3f2a4866fc4a8c90d8d38dc8165, type: 3}
+      propertyPath: restScale
+      value: 0.625
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8d3b3f2a4866fc4a8c90d8d38dc8165, type: 3}
 --- !u!4 &1315812475 stripped
@@ -34555,8 +34559,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1410846781}
-  m_LocalRotation: {x: 0.068073, y: 0.39370492, z: 0.029129814, w: -0.91625}
-  m_LocalPosition: {x: -22.657951, y: 1.8534645, z: 57.940437}
+  m_LocalRotation: {x: -0.11706537, y: 0.011391132, z: 0.0013422222, w: 0.99305797}
+  m_LocalPosition: {x: -15.697415, y: 16.589397, z: 6.4583116}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1508705850}

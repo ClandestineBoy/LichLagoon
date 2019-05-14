@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Rilee Home.unity
     guid: 00871575bd6b007458647b2b7a3a1db9
   - enabled: 0

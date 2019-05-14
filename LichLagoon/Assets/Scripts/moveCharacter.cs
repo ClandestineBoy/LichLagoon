@@ -15,11 +15,13 @@ public class moveCharacter : MonoBehaviour
     //The camera attatched to the player
     public Camera cam;
 
+    [Header("Look")]
     //mouse sensitivity
     public float sensitivityX;
     public float sensitivityY;
     private float currentX, currentY;
     public Transform verticalLook;
+    public bool talking = false;
 
     //The animator that adds the walking head bob
     Animator bob;
@@ -96,8 +98,17 @@ public class moveCharacter : MonoBehaviour
     void Start()
     {
         pause = GetComponent<pauseScript>();
-        artifactTags = GameObject.FindGameObjectWithTag("Tags");
-        tags = artifactTags.GetComponent<ArtifactTags>();
+
+        if (!talking)
+        {
+            artifactTags = GameObject.FindGameObjectWithTag("Tags");
+            tags = artifactTags.GetComponent<ArtifactTags>();
+        }
+        else
+        {
+            transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, 180, transform.localEulerAngles.z);
+            currentX = this.transform.localEulerAngles.y;
+        }
 
         //assigning public variables to components
         characterController = GetComponent<CharacterController>();
@@ -314,14 +325,25 @@ public class moveCharacter : MonoBehaviour
             currentY = -90f;
         }
 
-        verticalLook.localRotation = Quaternion.Euler(-currentY, 0, 0);
-        transform.rotation = Quaternion.Euler(0, currentX, 0);
-
-        if (!tags.display)
+        if (talking)
+        {
+            if (currentX < 140 && currentX > 0)
+            {
+                currentX = 140;
+            }
+            else if (currentX > 220 && currentX < 360)
+            {
+                currentX = 220;
+            }
+        }
+        else if (!tags.display)
         {
             artifactTags.transform.position = transform.position;
             artifactTags.transform.rotation = transform.rotation;
         }
+
+        verticalLook.localRotation = Quaternion.Euler(-currentY, 0, 0);
+        transform.rotation = Quaternion.Euler(0, currentX, 0);
     }
 
     void Movement()

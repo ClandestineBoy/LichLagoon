@@ -21704,7 +21704,8 @@ MonoBehaviour:
   sensitivityX: 2
   sensitivityY: 1.5
   verticalLook: {fileID: 1968773149}
-  talking: 1
+  talkingIntro: 1
+  talking: 0
   loreBacker: {fileID: 0}
   hex0: {fileID: 0}
   hex1: {fileID: 0}

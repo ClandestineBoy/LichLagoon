@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.1178804, g: 0.07654197, b: 0.13670927, a: 1}
+  m_IndirectSpecularColor: {r: 0.051826224, g: 0.027033623, b: 0.076659374, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -22421,6 +22421,8 @@ MonoBehaviour:
   sensitivityX: 2
   sensitivityY: 1.5
   verticalLook: {fileID: 1968773149}
+  talkingIntro: 0
+  talking: 1
   loreBacker: {fileID: 0}
   hex0: {fileID: 0}
   hex1: {fileID: 0}

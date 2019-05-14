@@ -21,7 +21,8 @@ public class moveCharacter : MonoBehaviour
     public float sensitivityY;
     private float currentX, currentY;
     public Transform verticalLook;
-    public bool talking = false;
+    public bool talkingIntro = false, talking = false;
+    public float startYRot;
 
     //The animator that adds the walking head bob
     Animator bob;
@@ -97,16 +98,22 @@ public class moveCharacter : MonoBehaviour
 
     void Start()
     {
+        startYRot = this.transform.eulerAngles.y;
         pause = GetComponent<pauseScript>();
 
-        if (!talking)
+        if (!talking && !talkingIntro)
         {
             artifactTags = GameObject.FindGameObjectWithTag("Tags");
             tags = artifactTags.GetComponent<ArtifactTags>();
         }
-        else
+        else if (talking)
         {
             transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, 180, transform.localEulerAngles.z);
+            currentX = this.transform.localEulerAngles.y;
+        }
+        else
+        {
+            transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, 0, transform.localEulerAngles.z);
             currentX = this.transform.localEulerAngles.y;
         }
 
@@ -325,7 +332,7 @@ public class moveCharacter : MonoBehaviour
             currentY = -90f;
         }
 
-        if (talking)
+        if (talkingIntro)
         {
             if (currentX < 140 && currentX > 0)
             {
@@ -334,6 +341,17 @@ public class moveCharacter : MonoBehaviour
             else if (currentX > 220 && currentX < 360)
             {
                 currentX = 220;
+            }
+        }
+        else if (talking)
+        {
+            if (currentX < (startYRot - 40) && currentX > (startYRot - 180))
+            {
+                currentX = (startYRot - 40);
+            }
+            else if (currentX > (startYRot + 40) && currentX < (startYRot + 180))
+            {
+                currentX = (startYRot + 40);
             }
         }
         else if (!tags.display)

@@ -6894,8 +6894,8 @@ PrefabInstance:
     - target: {fileID: 173944550, guid: 29be2aa85d6d46e4596482936691b6a5, type: 3}
       propertyPath: lore
       value: This fish was not caught for eating, quite the opposite in fact. He was
-        caught, stuffed, mounted and loved by a man named Halfer. The fishes name
-        was also Halfer.
+        caught, stuffed, mounted and loved by a man named Alfie. The fishes name was
+        also Alfie.
       objectReference: {fileID: 0}
     - target: {fileID: 173944550, guid: 29be2aa85d6d46e4596482936691b6a5, type: 3}
       propertyPath: grabRot.x
@@ -37552,8 +37552,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1410846781}
-  m_LocalRotation: {x: -0.09321369, y: 0.0057469336, z: 0.0005378947, w: 0.99562943}
-  m_LocalPosition: {x: 31.73975, y: -42.39223, z: -69.93608}
+  m_LocalRotation: {x: 0.1008869, y: 0.884122, z: 0.39711523, w: -0.22460991}
+  m_LocalPosition: {x: -38.702198, y: 17.125612, z: 29.398447}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1508705850}
@@ -39400,17 +39400,17 @@ PrefabInstance:
     - target: {fileID: 3163429563754145263, guid: e3c8bbc677f06a34f8ad145af4fa1314,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -27.67
+      value: -27.44
       objectReference: {fileID: 0}
     - target: {fileID: 3163429563754145263, guid: e3c8bbc677f06a34f8ad145af4fa1314,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.263
+      value: -4.02
       objectReference: {fileID: 0}
     - target: {fileID: 3163429563754145263, guid: e3c8bbc677f06a34f8ad145af4fa1314,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 21.36
+      value: 20.3
       objectReference: {fileID: 0}
     - target: {fileID: 3163429563754145263, guid: e3c8bbc677f06a34f8ad145af4fa1314,
         type: 3}
@@ -39455,6 +39455,30 @@ PrefabInstance:
     - target: {fileID: 563943056, guid: e3c8bbc677f06a34f8ad145af4fa1314, type: 3}
       propertyPath: grabScale
       value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 563943061, guid: e3c8bbc677f06a34f8ad145af4fa1314, type: 3}
+      propertyPath: m_Size.y
+      value: 0.124121845
+      objectReference: {fileID: 0}
+    - target: {fileID: 563943061, guid: e3c8bbc677f06a34f8ad145af4fa1314, type: 3}
+      propertyPath: m_Center.y
+      value: 0.03456092
+      objectReference: {fileID: 0}
+    - target: {fileID: 563943061, guid: e3c8bbc677f06a34f8ad145af4fa1314, type: 3}
+      propertyPath: m_Size.z
+      value: 0.20401764
+      objectReference: {fileID: 0}
+    - target: {fileID: 563943061, guid: e3c8bbc677f06a34f8ad145af4fa1314, type: 3}
+      propertyPath: m_Center.z
+      value: -0.021518707
+      objectReference: {fileID: 0}
+    - target: {fileID: 563943061, guid: e3c8bbc677f06a34f8ad145af4fa1314, type: 3}
+      propertyPath: m_Size.x
+      value: 0.261734
+      objectReference: {fileID: 0}
+    - target: {fileID: 563943061, guid: e3c8bbc677f06a34f8ad145af4fa1314, type: 3}
+      propertyPath: m_Center.x
+      value: -0.005634308
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3c8bbc677f06a34f8ad145af4fa1314, type: 3}

@@ -683,10 +683,10 @@ public class dialogueScript : MonoBehaviour
 
                 oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
 
-                Xnpc[0] = rob; XinitDelay[0] = 0f; XendDelay[0] = 6f; XpostDelay[0] = 1.25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                Xnpc[0] = rob; XinitDelay[0] = 0f; XendDelay[0] = 4.5f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
                 Xline[0] = "Huh. Guess I'll keep an open mind, then?"; XskipAvailable[0] = false;
 
-                Xnpc[1] = fran; XinitDelay[1] = 0f; XendDelay[1] = 4f; XpostDelay[1] = .5f; XisPlayer[1] = false; Xtrigger[1] = false;
+                Xnpc[1] = fran; XinitDelay[1] = 1f; XendDelay[1] = 4f; XpostDelay[1] = .5f; XisPlayer[1] = false; Xtrigger[1] = false;
                 Xline[1] = "...I've decided to stay."; XskipAvailable[1] = false;
 
                 Xnpc[2] = fran; XinitDelay[2] = 0f; XendDelay[2] = 3.5f; XpostDelay[2] = .5f; XisPlayer[2] = false; Xtrigger[2] = false;
@@ -1473,20 +1473,20 @@ public class dialogueScript : MonoBehaviour
                 Xnpc[11] = rob; XinitDelay[11] = 0f; XendDelay[11] = 7f; XpostDelay[11] = .25f; XisPlayer[11] = false; Xtrigger[11] = false;
                 Xline[11] = "Got your crew, working legs: things are looking up!";
 
-                Xnpc[5] = rob; XinitDelay[5] = 0f; XendDelay[5] = 5.5f; XpostDelay[5] = .25f; XisPlayer[5] = false; Xtrigger[5] = false;
-                Xline[5] = "I think I've almost got jumping down.";
+                Xnpc[12] = rob; XinitDelay[12] = 0f; XendDelay[12] = 5.5f; XpostDelay[12] = .25f; XisPlayer[12] = false; Xtrigger[12] = false;
+                Xline[12] = "I think I've almost got jumping down.";
 
-                Xnpc[6] = fran; XinitDelay[6] = 0; XendDelay[6] = 6f; XpostDelay[6] = 1f; XisPlayer[6] = false; Xtrigger[6] = false;
-                Xline[6] = "...Don't you worry about how they brought us back?";
+                Xnpc[13] = fran; XinitDelay[13] = 0; XendDelay[13] = 6f; XpostDelay[13] = 1f; XisPlayer[13] = false; Xtrigger[13] = false;
+                Xline[13] = "...Don't you worry about how they brought us back?";
 
-                Xnpc[7] = rob; XinitDelay[7] = 0; XendDelay[7] = 7f; XpostDelay[7] = .25f; XisPlayer[7] = false; Xtrigger[7] = false;
-                Xline[7] = "Corrozo's given me more than piety ever did.";
+                Xnpc[14] = rob; XinitDelay[14] = 0; XendDelay[14] = 7f; XpostDelay[14] = .25f; XisPlayer[14] = false; Xtrigger[14] = false;
+                Xline[14] = "Corrozo's given me more than piety ever did.";
 
-                Xnpc[8] = gunn; XinitDelay[8] = 0; XendDelay[8] = 7f; XpostDelay[8] = .25f; XisPlayer[8] = false; Xtrigger[8] = false;
-                Xline[8] = "They have a point. Being dead isn't all bad.";
+                Xnpc[15] = gunn; XinitDelay[15] = 0; XendDelay[15] = 7f; XpostDelay[15] = .25f; XisPlayer[15] = false; Xtrigger[15] = false;
+                Xline[15] = "They have a point. Being dead isn't all bad.";
 
-                Xnpc[9] = fran; XinitDelay[9] = 0; XendDelay[9] = 8.5f; XpostDelay[9] = .25f; XisPlayer[9] = false; Xtrigger[9] = true;
-                Xline[9] = "I don't know. I was taught that good requires persistence, not magic.";
+                Xnpc[16] = fran; XinitDelay[16] = 0; XendDelay[16] = 8.5f; XpostDelay[16] = .25f; XisPlayer[16] = false; Xtrigger[16] = true;
+                Xline[16] = "I don't know. I was taught that good requires persistence, not magic.";
             }
             else if (thrAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))  //if choice 3 is selected
             {
@@ -1654,10 +1654,10 @@ public class dialogueScript : MonoBehaviour
                 Xline[3] = "I'd rather you didn't 'cleanse' me, thanks.";
 
                 Xnpc[4] = fran; XinitDelay[4] = 0; XendDelay[4] = 7.5f; XpostDelay[4] = .25f; XisPlayer[4] = false; Xtrigger[4] = false;
-                Xline[4] = "Do you understand what you've become? What you've become?";
+                Xline[4] = "Do you understand what you've become?";
 
                 Xnpc[5] = fran; XinitDelay[5] = 0; XendDelay[5] = 9.5f; XpostDelay[5] = 1f; XisPlayer[5] = false; Xtrigger[5] = false;
-                Xline[5] = "Lichs are leeches: they cannot survive without sucking the life out of world around them.";
+                Xline[5] = "Lichs are leeches: they cannot survive without sucking the life out of the world around them.";
 
                 Xnpc[6] = null; XinitDelay[6] = 0; XendDelay[6] = 8.5f; XpostDelay[6] = .5f; XisPlayer[6] = true; Xtrigger[6] = false;
                 Xline[6] = "You force us to fight. We try to give back all the lives we can.";

@@ -1,47 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &7079937715274277944
-MonoBehaviour:
+--- !u!136 &1491523971295296674
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6429967451272616294}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94e7fe831fd013d4caf4fc96696e2482, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buried: 0
-  tagged: 0
-  inInventory: 0
-  lore: The fishing spear was an item found in every home throughout Saint Dominique,
-    and in each household was the man or woman who wielded it. It was a way of life,
-    the only way to put food on the table. Some even used it as defense in the raid,
-    it was the weapon they knew best.
-  grabScale: 0
-  restScale: 0
-  grabS: {x: 0.4, y: 0.4, z: 0.4}
-  restS: {x: 1, y: 1, z: 1}
-  ps: {fileID: 0}
-  grabRot: {x: 0, y: 0, z: 0}
-  particlesFollowPlayer: 1
-  shrinkSpeed: 0
---- !u!114 &4739626033172327698
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6429967451272616294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c110884ebbfc0b4383f8bccd11fd6cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  activeRotate: 0
-  dir: {x: 0, y: 1, z: 0}
-  rotSpeed: 8
+  m_Radius: 0.13491696
+  m_Height: 4.573142
+  m_Direction: 1
+  m_Center: {x: 0.0000000037252903, y: 0, z: -0.000000007450581}
 --- !u!199 &2208410805761843109
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -4766,20 +4738,51 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!136 &1491523971295296674
-CapsuleCollider:
+--- !u!114 &4739626033172327698
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6429967451272616294}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.13491696
-  m_Height: 4.573142
-  m_Direction: 1
-  m_Center: {x: 0.0000000037252903, y: 0, z: -0.000000007450581}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c110884ebbfc0b4383f8bccd11fd6cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activeRotate: 1
+  dir: {x: 0, y: 1, z: 0}
+  rotSpeed: 8
+--- !u!114 &7079937715274277944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6429967451272616294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94e7fe831fd013d4caf4fc96696e2482, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  franScore: 2
+  robScore: 1
+  gunScore: 1
+  buried: 1
+  tagged: 0
+  inInventory: 0
+  lore: The fishing spear was an item found in every home throughout Saint Dominique,
+    and in each household was the man or woman who wielded it. It was a way of life,
+    the only way to put food on the table. Some even used it as defense in the raid,
+    it was the weapon they knew best.
+  grabScale: 0.3
+  restScale: 0.7
+  grabS: {x: 0.4, y: 0.4, z: 0.4}
+  restS: {x: 1, y: 1, z: 1}
+  ps: {fileID: 0}
+  grabRot: {x: 0, y: 0, z: 30}
+  particlesFollowPlayer: 1
+  shrinkSpeed: 0
 --- !u!1001 &6429967451272519622
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4789,56 +4792,8 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 83d7393f6c6bef54dbcf71ea02b6b4b5, type: 3}
       propertyPath: m_Name
-      value: fishingspear
+      value: Fishingspear
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 83d7393f6c6bef54dbcf71ea02b6b4b5, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -14.977015
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 83d7393f6c6bef54dbcf71ea02b6b4b5, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -2.8182755
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 83d7393f6c6bef54dbcf71ea02b6b4b5, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 5.2906337
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 83d7393f6c6bef54dbcf71ea02b6b4b5, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 83d7393f6c6bef54dbcf71ea02b6b4b5, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 83d7393f6c6bef54dbcf71ea02b6b4b5, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 83d7393f6c6bef54dbcf71ea02b6b4b5, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 83d7393f6c6bef54dbcf71ea02b6b4b5, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 83d7393f6c6bef54dbcf71ea02b6b4b5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 83d7393f6c6bef54dbcf71ea02b6b4b5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 83d7393f6c6bef54dbcf71ea02b6b4b5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2300006, guid: 83d7393f6c6bef54dbcf71ea02b6b4b5, type: 3}
-      propertyPath: m_Materials.Array.data[3]
-      value: 
-      objectReference: {fileID: 2100000, guid: 56dcfb18414deae458ae73d5e117cdf3, type: 2}
     - target: {fileID: 2300006, guid: 83d7393f6c6bef54dbcf71ea02b6b4b5, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -4847,6 +4802,66 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 062be7b85c4e92f4d807c6a50579dc52, type: 2}
+    - target: {fileID: 2300006, guid: 83d7393f6c6bef54dbcf71ea02b6b4b5, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 56dcfb18414deae458ae73d5e117cdf3, type: 2}
+    - target: {fileID: 400000, guid: 83d7393f6c6bef54dbcf71ea02b6b4b5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 83d7393f6c6bef54dbcf71ea02b6b4b5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 83d7393f6c6bef54dbcf71ea02b6b4b5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -21.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 83d7393f6c6bef54dbcf71ea02b6b4b5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 83d7393f6c6bef54dbcf71ea02b6b4b5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.9954033
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 83d7393f6c6bef54dbcf71ea02b6b4b5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.0957723
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 83d7393f6c6bef54dbcf71ea02b6b4b5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 83d7393f6c6bef54dbcf71ea02b6b4b5, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 83d7393f6c6bef54dbcf71ea02b6b4b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 169.008
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 83d7393f6c6bef54dbcf71ea02b6b4b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -0.000015258789
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 83d7393f6c6bef54dbcf71ea02b6b4b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 83d7393f6c6bef54dbcf71ea02b6b4b5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.72399
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 83d7393f6c6bef54dbcf71ea02b6b4b5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.72399
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 83d7393f6c6bef54dbcf71ea02b6b4b5, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.72399
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83d7393f6c6bef54dbcf71ea02b6b4b5, type: 3}
 --- !u!1 &6429967451272616294 stripped

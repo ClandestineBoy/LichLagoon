@@ -13,49 +13,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.14206433, y: 3.0712442, z: 0.42538574}
   m_Center: {x: -0.000000003725291, y: 0, z: 0}
---- !u!114 &1123313366578632701
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8753095931752942209}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94e7fe831fd013d4caf4fc96696e2482, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buried: 0
-  tagged: 0
-  inInventory: 0
-  lore: 'A finely crafted instrument with an intentionally blunted blade. This belonged
-    to a once young boy, gifted to him by his grandfather. You could find him at sunrise,
-    clutching his sword and swinging at trees, his head filled with dreams of becoming
-    a great warrior or captain perhaps. Any profession that involved sattbing would
-    do. '
-  grabScale: 0
-  restScale: 0
-  grabS: {x: 0.4, y: 0.4, z: 0.4}
-  restS: {x: 1, y: 1, z: 1}
-  ps: {fileID: 0}
-  grabRot: {x: 0, y: 0, z: 0}
-  particlesFollowPlayer: 1
-  shrinkSpeed: 0
---- !u!114 &3656204503510479679
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8753095931752942209}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c110884ebbfc0b4383f8bccd11fd6cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  activeRotate: 0
-  dir: {x: 0, y: 1, z: 0}
-  rotSpeed: 8
 --- !u!199 &6359005927110393654
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -4780,6 +4737,52 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &1123313366578632701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8753095931752942209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94e7fe831fd013d4caf4fc96696e2482, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  franScore: 2
+  robScore: 1
+  gunScore: 0
+  buried: 1
+  tagged: 0
+  inInventory: 0
+  lore: 'A finely crafted instrument with an intentionally blunted blade. This belonged
+    to a once young boy, gifted to him by his grandfather. You could find him at sunrise,
+    clutching his sword and swinging at trees, his head filled with dreams of becoming
+    a great warrior or captain perhaps. Any profession that involved sattbing would
+    do. '
+  grabScale: 0.4
+  restScale: 1
+  grabS: {x: 0.4, y: 0.4, z: 0.4}
+  restS: {x: 1, y: 1, z: 1}
+  ps: {fileID: 0}
+  grabRot: {x: 30, y: 0, z: 0}
+  particlesFollowPlayer: 1
+  shrinkSpeed: 0
+--- !u!114 &3656204503510479679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8753095931752942209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c110884ebbfc0b4383f8bccd11fd6cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activeRotate: 0
+  dir: {x: 0, y: 1, z: 0}
+  rotSpeed: 8
 --- !u!1001 &8753095931752909861
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4789,35 +4792,35 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100004, guid: 3cbfce7c26a5c4749955e4dae9cac5ca, type: 3}
       propertyPath: m_Name
-      value: sword_3
+      value: Sword
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 3cbfce7c26a5c4749955e4dae9cac5ca, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -18.71
+      value: -18.07
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 3cbfce7c26a5c4749955e4dae9cac5ca, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.21
+      value: -4.85
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 3cbfce7c26a5c4749955e4dae9cac5ca, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 12.04
+      value: 55.04
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 3cbfce7c26a5c4749955e4dae9cac5ca, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0.87435704
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 3cbfce7c26a5c4749955e4dae9cac5ca, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.6685001
+      value: -0.07668384
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 3cbfce7c26a5c4749955e4dae9cac5ca, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.38246453
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 3cbfce7c26a5c4749955e4dae9cac5ca, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7437121
+      value: 0.28868708
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 3cbfce7c26a5c4749955e4dae9cac5ca, type: 3}
       propertyPath: m_RootOrder
@@ -4825,15 +4828,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 3cbfce7c26a5c4749955e4dae9cac5ca, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 145.703
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 3cbfce7c26a5c4749955e4dae9cac5ca, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 83.90301
+      value: -49.112
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 3cbfce7c26a5c4749955e4dae9cac5ca, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -6.026001
       objectReference: {fileID: 0}
     - target: {fileID: 2300004, guid: 3cbfce7c26a5c4749955e4dae9cac5ca, type: 3}
       propertyPath: m_Materials.Array.data[0]

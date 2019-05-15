@@ -147,7 +147,7 @@ public class grabbable : MonoBehaviour
         transform.localScale = Vector3.Lerp(grabS, restS, shrinkJourney);
 
         // transform.localEulerAngles = Vector3.RotateTowards(transform.localEulerAngles, new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, grabRot.z), Time.deltaTime, 0f);
-       transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, grabRot.z);
+       transform.localEulerAngles = new Vector3(grabRot.x, transform.localEulerAngles.y, grabRot.z);
         if (Vector3.Distance(transform.position,grabPos.transform.position) < .1f)
         {
             inHand = true;

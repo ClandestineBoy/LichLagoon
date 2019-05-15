@@ -50634,7 +50634,7 @@ MonoBehaviour:
   _skippable: 1
   ff: 0
   ffSpeed: 0
-  dialogueID: Night1
+  dialogueID: Night2
 --- !u!4 &2139972736
 Transform:
   m_ObjectHideFlags: 0

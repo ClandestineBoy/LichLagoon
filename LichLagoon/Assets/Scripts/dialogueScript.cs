@@ -47,7 +47,7 @@ public class dialogueScript : MonoBehaviour
     public float ffSpeed = 0f;
 
     private float[] timer = new float[4];
-    public string dialogueID = "";
+    public string dialogueID = "";          //potential IDs: "Intro" "Night1" "Night2"
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -231,38 +231,11 @@ public class dialogueScript : MonoBehaviour
         {
             youDiag.text = "";
 
-            oneAnswer.text = "1) Don't explain. (Skip Tutorial)";  //choices presented to player (leave as "null" if there are less choices
-            twoAnswer.text = "2) Explain again.";
+            oneAnswer.text = "1) Explain again.";  //choices presented to player (leave as "null" if there are less choices
+            twoAnswer.text = "2) Reassure (Skip Tutorial)";
             thrAnswer.text = null;
 
             if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))  //if choice 1 is selected
-            {
-                youDiag.text = "I think you understand.";
-                answering = false;  //stops updating this answer section so it doesn't show the next choices
-
-                nextTag = "A01a"; //preemptively updates this answer function to be ready with the choices for the next answer
-
-                oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";  //zero out dialogue choices
-
-                StartCoroutine(poseQuestion(rob, 1.5f, false,
-                    "Well pardon me. It's my first time. I'm nervous.",
-                    5f, false, .5f, true));   //comment this out and fill it out - this is the next line read from the next npc
-
-                
-
-                Xnpc[0] = gunn; XinitDelay[0] = 0f; XendDelay[0] = 6f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
-                Xline[0] = "We are all new to this. Yet here we sit, silent.";
-
-                Xnpc[1] = fran; XinitDelay[1] = 0f; XendDelay[1] = 5.5f; XpostDelay[1] = .25f; XisPlayer[1] = false; Xtrigger[1] = false;
-                Xline[1] = "...";
-
-                Xnpc[2] = rob; XinitDelay[2] = 0f; XendDelay[2] = 4.5f; XpostDelay[2] = 2.5f; XisPlayer[2] = false; Xtrigger[2] = false;
-                Xline[2] = "Okay, okay...Nevermind.";
-
-                //END INTRO
-                maxI = 2;
-            }
-            else if (twoAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))  //if choice 2 is selected
             {
                 youDiag.text = "Okay, but please: listen this time.";
                 answering = false;
@@ -316,6 +289,33 @@ public class dialogueScript : MonoBehaviour
                 Xline[13] = "--And if we refuse your help?";
 
                 nextTag = "A01b";
+            }
+            else if (twoAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))  //if choice 2 is selected
+            {
+                youDiag.text = "I think you understand.";
+                answering = false;  //stops updating this answer section so it doesn't show the next choices
+
+                nextTag = "A01a"; //preemptively updates this answer function to be ready with the choices for the next answer
+
+                oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";  //zero out dialogue choices
+
+                StartCoroutine(poseQuestion(rob, 1.5f, false,
+                    "Well pardon me. It's my first time. I'm nervous.",
+                    5f, false, .5f, true));   //comment this out and fill it out - this is the next line read from the next npc
+
+
+
+                Xnpc[0] = gunn; XinitDelay[0] = 0f; XendDelay[0] = 6f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                Xline[0] = "We are all new to this. Yet here we sit, silent.";
+
+                Xnpc[1] = fran; XinitDelay[1] = 0f; XendDelay[1] = 5.5f; XpostDelay[1] = .25f; XisPlayer[1] = false; Xtrigger[1] = false;
+                Xline[1] = "...";
+
+                Xnpc[2] = rob; XinitDelay[2] = 0f; XendDelay[2] = 4.5f; XpostDelay[2] = 2.5f; XisPlayer[2] = false; Xtrigger[2] = false;
+                Xline[2] = "Okay, okay...Nevermind.";
+
+                //END INTRO
+                maxI = 2; 
             }
             else if (thrAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))  //if choice 3 is selected
             {
@@ -1939,7 +1939,7 @@ public class dialogueScript : MonoBehaviour
                 youDiag.text = "Let's begin: what do you regret?";
                 answering = false;
 
-                StartCoroutine(poseQuestion(fran, 1.5f, true,
+                StartCoroutine(poseQuestion(fran, 1.5f, false,
                     "Nothing.",
                     2f, false, .25f, true));
 
@@ -1957,7 +1957,7 @@ public class dialogueScript : MonoBehaviour
                 Xnpc[3] = rob; XinitDelay[3] = 0; XendDelay[3] = 2.5f; XpostDelay[3] = .5f; XisPlayer[3] = false; Xtrigger[3] = false;
                 Xline[3] = "That's impressive.";
 
-                Xnpc[4] = rob; XinitDelay[4] = 0; XendDelay[4] = 4f; XpostDelay[4] = .25f; XisPlayer[4] = true; Xtrigger[4] = false;
+                Xnpc[4] = rob; XinitDelay[4] = 0; XendDelay[4] = 4f; XpostDelay[4] = .25f; XisPlayer[4] = false; Xtrigger[4] = false;
                 Xline[4] = "I regret...a lot, I guess.";
 
                 Xnpc[5] = rob; XinitDelay[5] = 0; XendDelay[5] = 5f; XpostDelay[5] = .25f; XisPlayer[5] = false; Xtrigger[5] = false;
@@ -1969,11 +1969,8 @@ public class dialogueScript : MonoBehaviour
                 Xnpc[6] = null; XinitDelay[6] = 0; XendDelay[6] = 3.5f; XpostDelay[6] = 1f; XisPlayer[6] = true; Xtrigger[6] = false;
                 Xline[6] = "What about you, Gunnlaug?";
 
-                Xnpc[6] = null; XinitDelay[6] = 0; XendDelay[6] = 5f; XpostDelay[6] = 1f; XisPlayer[6] = false; Xtrigger[6] = false;
+                Xnpc[6] = gunn; XinitDelay[6] = 0; XendDelay[6] = 5f; XpostDelay[6] = 1f; XisPlayer[6] = false; Xtrigger[6] = true;
                 Xline[6] = "I have one regret. That might change soon, though.";
-
-                Xnpc[7] = fran; XinitDelay[7] = 0; XendDelay[7] = 5f; XpostDelay[7] = 1f; XisPlayer[7] = false; Xtrigger[7] = true;
-                Xline[7] = "I have one regret. That might change soon, though.";
 
                 nextTag = "REGRETPROMPTS";
             }
@@ -2002,7 +1999,7 @@ public class dialogueScript : MonoBehaviour
 
                 nextTag = "REGRETPROMPTSagain";
 
-                StartCoroutine(poseQuestion(null, 4f, true,
+                StartCoroutine(poseQuestion(fran, 4f, false,
                     "I've nothing to give, pirate. Probe someone else.",
                     4.5f, false, .5f, true));
 
@@ -2323,7 +2320,7 @@ public class dialogueScript : MonoBehaviour
                 Xnpc[1] = fran; XinitDelay[1] = 0f; XendDelay[1] = 3f; XpostDelay[1] = .75f; XisPlayer[1] = false; Xtrigger[1] = false;
                 Xline[1] = "...";   XskipAvailable[1] = false;
 
-                Xnpc[2] = fran; XinitDelay[2] = 1.5f; XendDelay[2] = 3.5f; XpostDelay[2] = .75f; XisPlayer[2] = false; Xtrigger[2] = true;
+                Xnpc[2] = fran; XinitDelay[2] = 1.5f; XendDelay[2] = 3.5f; XpostDelay[2] = .75f; XisPlayer[2] = false; Xtrigger[2] = false;
                 Xline[2] = "I lost someone."; XskipAvailable[2] = false;
 
                 Xnpc[3] = rob; XinitDelay[3] = 0; XendDelay[3] = 2.5f; XpostDelay[3] = .75f; XisPlayer[3] = false; Xtrigger[3] = false;
@@ -2558,7 +2555,7 @@ public class dialogueScript : MonoBehaviour
                 Xline[11] = "How'd the inquisitors know? Someone had to tell them--";
 
                 Xnpc[12] = rob; XinitDelay[12] = 0; XendDelay[12] = 4f; XpostDelay[12] = .25f; XisPlayer[12] = false; Xtrigger[12] = false;
-                Xline[12] = "Was he practicing at home? Did your family kno--"; XskipAvailable[14] = false;
+                Xline[12] = "Was he practicing at home? Did your family kno--"; XskipAvailable[12] = false;
 
                 Xnpc[13] = fran; XinitDelay[13] = 0; XendDelay[13] = 2.5f; XpostDelay[13] = 1f; XisPlayer[13] = false; Xtrigger[13] = false;
                 Xline[13] = "ENOUGH!";   XskipAvailable[13] = false;

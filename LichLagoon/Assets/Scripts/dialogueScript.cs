@@ -91,6 +91,16 @@ public class dialogueScript : MonoBehaviour
             nextTag = "B01";
             answerTag = "B01";
         }
+
+        if (dialogueID == "Night2")
+        {
+            StartCoroutine(poseQuestion(null, 2f, true,
+                        "TEST",
+                        2f, true, .5f, true));
+
+            nextTag = "C01";
+            answerTag = "C01";
+        }
     }
 
 

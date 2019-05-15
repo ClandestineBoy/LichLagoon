@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.07145288, g: 0.038542733, b: 0.10627394, a: 1}
+  m_IndirectSpecularColor: {r: 0.051826224, g: 0.027033623, b: 0.076659374, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -12886,6 +12886,12 @@ PrefabInstance:
       propertyPath: m_Volume
       value: 0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 293506767865181286, guid: f68e10d7fbb180644b58e868002455fe,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 243583730647073120, guid: 2537d9271dcb22548ba4fd30acbdf4fa,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f68e10d7fbb180644b58e868002455fe, type: 3}
 --- !u!1 &435764917
@@ -32902,6 +32908,12 @@ PrefabInstance:
       propertyPath: Priority
       value: 209
       objectReference: {fileID: 0}
+    - target: {fileID: 5168018723728603732, guid: 4e68538ac0d5b7e43a9ec7ffdecf094e,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 243214004628380168, guid: 2537d9271dcb22548ba4fd30acbdf4fa,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e68538ac0d5b7e43a9ec7ffdecf094e, type: 3}
 --- !u!1 &1341455131
@@ -38160,6 +38172,12 @@ PrefabInstance:
       propertyPath: m_Volume
       value: 0.008
       objectReference: {fileID: 0}
+    - target: {fileID: 4785912859886379251, guid: 579511365e6689a46a8d281a02992f43,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 243214004628380168, guid: 2537d9271dcb22548ba4fd30acbdf4fa,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 579511365e6689a46a8d281a02992f43, type: 3}
 --- !u!1 &1591889832
@@ -39348,6 +39366,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextScene: 0
+  nextName: 
+  delay: 0
+  fadeOutRect: {fileID: 0}
 --- !u!1 &1654536255
 GameObject:
   m_ObjectHideFlags: 0

@@ -4762,6 +4762,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94e7fe831fd013d4caf4fc96696e2482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  franScore: 1
+  robScore: 0
+  gunScore: 2
   buried: 0
   tagged: 0
   inInventory: 0
@@ -4770,12 +4773,12 @@ MonoBehaviour:
     would play and play until the twangs turned to tunes and squeeks to serenades.
     Now, in her old age, she plays for the children each afternoon and one girl has
     caught her eye as a suitable student.  '
-  grabScale: 0.5
+  grabScale: 0.3
   restScale: 0.625
   grabS: {x: 0.4, y: 0.4, z: 0.4}
   restS: {x: 1, y: 1, z: 1}
   ps: {fileID: 0}
-  grabRot: {x: 0, y: 0, z: 0}
+  grabRot: {x: 0, y: 0, z: 300}
   particlesFollowPlayer: 1
   shrinkSpeed: 0
 --- !u!114 &794500461
@@ -4818,19 +4821,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 58c46a77b4d060246988ba2f62aaa722, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.7071068
+      value: 0.2924923
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 58c46a77b4d060246988ba2f62aaa722, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.7071068
+      value: -0.58389723
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 58c46a77b4d060246988ba2f62aaa722, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0.24848709
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 58c46a77b4d060246988ba2f62aaa722, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 0.7153785
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 58c46a77b4d060246988ba2f62aaa722, type: 3}
       propertyPath: m_RootOrder
@@ -4838,15 +4841,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 58c46a77b4d060246988ba2f62aaa722, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 7.372
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 58c46a77b4d060246988ba2f62aaa722, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
+      value: -81.47401
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 58c46a77b4d060246988ba2f62aaa722, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 270
+      value: -44.661003
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 58c46a77b4d060246988ba2f62aaa722, type: 3}
       propertyPath: m_LocalScale.x

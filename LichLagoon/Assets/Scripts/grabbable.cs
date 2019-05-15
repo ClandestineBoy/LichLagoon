@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class grabbable : MonoBehaviour
 {
+
+    public int franScore, robScore, gunScore;
+
     public bool buried;
 
     public bool tagged, inInventory;

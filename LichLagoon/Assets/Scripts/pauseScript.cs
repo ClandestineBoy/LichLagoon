@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class pauseScript : MonoBehaviour
 {
 
-    public Image pauseImage;
+    public Image pauseImage, pausePrompt;
     public bool paused;
 
     public float quitTimer;
@@ -23,6 +23,7 @@ public class pauseScript : MonoBehaviour
         if (!paused)    //unpaused
         {
             colourShift(pauseImage, null, new Color(1, 1, 1, 0), Time.deltaTime * 100, false, false);
+            colourShift(pausePrompt, null, new Color(1, 1, 1, .75f), Time.deltaTime * 100, false, false);
 
             if (Input.GetKeyDown(KeyCode.P))
             {
@@ -32,6 +33,7 @@ public class pauseScript : MonoBehaviour
         else     //paused
         {
             colourShift(pauseImage, null, new Color(1, 1, 1, 1), Time.deltaTime * 100, false, false);
+            colourShift(pausePrompt, null, new Color(1, 1, 1, 0), Time.deltaTime * 100, false, false);
 
             if (Input.GetKey(KeyCode.Escape))
             {
@@ -47,7 +49,7 @@ public class pauseScript : MonoBehaviour
                 quitTimer = 0f;
             }
 
-            if (Input.GetKeyDown(KeyCode.P))
+            if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Mouse0))
             {
                 paused = false;
             }

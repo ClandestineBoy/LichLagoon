@@ -268,7 +268,7 @@ public class dialogueScript : MonoBehaviour
                 Xline[4] = "That explains a few things.";
 
                 Xnpc[5] = null; XinitDelay[5] = 0f; XendDelay[5] = 9f; XpostDelay[5] = .5f; XisPlayer[5] = true; Xtrigger[5] = false;
-                Xline[5] = "All Lichs, if they so please, may join Captain Carrozo's crew, the most formidable pirates this side of the afterlife.";
+                Xline[5] = "All Lichs, if they so please, may join Captain Corrozo's crew, the most formidable pirates this side of the afterlife.";
 
                 Xnpc[6] = fran; XinitDelay[6] = 0; XendDelay[6] = 5f; XpostDelay[6] = 1f; XisPlayer[6] = false; Xtrigger[6] = false;
                 Xline[6] = "So we're monsters *and* criminals?";
@@ -761,7 +761,7 @@ public class dialogueScript : MonoBehaviour
             }
             else if (twoAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))  //if choice 2 is selected
             {
-                youDiag.text = "Captain Carrozo saved your life--a courtesy the Paladins have never returned.";
+                youDiag.text = "Captain Corrozo saved your life--a courtesy the Paladins have never returned.";
                 answering = false;
 
                 nextTag = "B05";

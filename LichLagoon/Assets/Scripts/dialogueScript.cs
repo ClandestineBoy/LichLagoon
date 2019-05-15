@@ -14,7 +14,7 @@ public class dialogueScript : MonoBehaviour
         public Text currentDialogue, header;
         public Image diagBacker, portrait, mousePrompt;
         public GameObject heldObj;    //This and the below stuff probably wont be used in this intro script
-        public float heldResponseValue, delayResponseValue;
+        //public float heldResponseValue, delayResponseValue;
         public bool primaryActive, secondaryActive;
     };
 
@@ -1957,7 +1957,7 @@ public class dialogueScript : MonoBehaviour
                 Xnpc[1] = fran; XinitDelay[1] = .25f; XendDelay[1] = 2f; XpostDelay[1] = .25f; XisPlayer[1] = false; Xtrigger[1] = false;
                 Xline[1] = "...No.";
 
-                Xnpc[2] = null; XinitDelay[2] = 0; XendDelay[2] = 3f; XpostDelay[2] = .25f; XisPlayer[2] = false; Xtrigger[1] = false;
+                Xnpc[2] = null; XinitDelay[2] = 0; XendDelay[2] = 3f; XpostDelay[2] = .25f; XisPlayer[2] = true; Xtrigger[2] = true;
                 Xline[2] = "Hah! Okay: here's what I've found."; XskipAvailable[2] = false;
             }
             else if (twoAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))  //if choice 2 is selected
@@ -1982,7 +1982,7 @@ public class dialogueScript : MonoBehaviour
                 Xnpc[2] = gunn; XinitDelay[2] = 0; XendDelay[2] = 2f; XpostDelay[2] = .25f; XisPlayer[2] = false; Xtrigger[2] = false;
                 Xline[2] = "Indeed.";
 
-                Xnpc[3] = null; XinitDelay[3] = 0; XendDelay[3] = 3f; XpostDelay[3] = .25f; XisPlayer[3] = false; Xtrigger[3] = false;
+                Xnpc[3] = null; XinitDelay[3] = 0; XendDelay[3] = 3f; XpostDelay[3] = .25f; XisPlayer[3] = true; Xtrigger[3] = true;
                 Xline[3] = "Hah! Okay: here's what I've found."; XskipAvailable[3] = false;
             }
         }
@@ -3212,11 +3212,11 @@ public class dialogueScript : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))  //if choice 1 is selected
             {
-                youDiag.text = "Alright then...";
+                youDiag.text = "Alright then--";
                 answering = false;
 
                 StartCoroutine(poseQuestion(gunn, 4f, false,
-                    "I've been thinking Lich. Where are the bodies?",
+                    "--I've been thinking Lich. Where are the bodies?",
                     3f, false, .25f, true));
 
                 nextTag = "C01";

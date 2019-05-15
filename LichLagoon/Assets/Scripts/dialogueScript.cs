@@ -602,11 +602,11 @@ public class dialogueScript : MonoBehaviour
 
                 StartCoroutine(poseQuestion(null, 2.5f, true,
                     "This was the first place we could stop safely.",
-                    4f, false, 2f, false));
+                    4f, false, 2f, true));
 
                 oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
 
-                Xnpc[0] = rob; XinitDelay[0] = 0f; XendDelay[0] = 7f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = true;
+                Xnpc[0] = rob; XinitDelay[0] = 0f; XendDelay[0] = 6f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = true;
                 Xline[0] = "Think you'll find something weird in the wreckage?";
             }
             else if (twoAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))  //if choice 2 is selected

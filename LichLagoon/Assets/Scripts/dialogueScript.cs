@@ -2680,6 +2680,15 @@ public class dialogueScript : MonoBehaviour
 
             oneAnswer.text = "1) " + artifactTags.GetComponent<ArtifactTags>().tagged[0].name;
 
+            if (artifactTags.GetComponent<ArtifactTags>().tagged[0] != null)
+            {
+                oneAnswer.text = "1) " + artifactTags.GetComponent<ArtifactTags>().tagged[0].name;
+            }
+            else
+            {
+                oneAnswer.text = null;
+            }
+
             if (artifactTags.GetComponent<ArtifactTags>().tagged[1] != null)
             {
                 twoAnswer.text = "2) " + artifactTags.GetComponent<ArtifactTags>().tagged[1].name;

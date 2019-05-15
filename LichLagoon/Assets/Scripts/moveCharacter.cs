@@ -144,8 +144,13 @@ public class moveCharacter : MonoBehaviour
                 {
                     //Script controlling character movement
                     if (!tags.display)
+                    {
                         Movement();
-
+                    }
+                    else
+                    {
+                        bob.enabled = false;
+                    }
 
                     if (grabbing)
                     {
@@ -198,6 +203,7 @@ public class moveCharacter : MonoBehaviour
         {
             //Script controlling character camera rotation
             Look();
+            bob.enabled = false;
         }
     }
 
@@ -360,6 +366,7 @@ public class moveCharacter : MonoBehaviour
             artifactTags.transform.position = transform.position;
             artifactTags.transform.rotation = transform.rotation;
         }
+        
 
         verticalLook.localRotation = Quaternion.Euler(-currentY, 0, 0);
         transform.rotation = Quaternion.Euler(0, currentX, 0);
@@ -403,6 +410,8 @@ public class moveCharacter : MonoBehaviour
 
         // Move the controller
         characterController.Move(moveDirection * Time.deltaTime);
+
+        Debug.Log(tags.display);
 
         if (Mathf.Abs(moveDirection.x) < .1f && Mathf.Abs(moveDirection.z) < .1f)
         {

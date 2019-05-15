@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class SceneManger : MonoBehaviour
 {
-    public bool nextScene, fading;
+    public bool nextScene, finalScene, fading;
     public string nextName;
     public float delay, fadeSpeed;
 
@@ -15,6 +15,12 @@ public class SceneManger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(finalScene = true)
+        {
+            finalScene = false;
+            nextName = "End";
+            StartCoroutine(fadeDelay());
+        }
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("StartScreen"))
         {
             if (Input.anyKeyDown)

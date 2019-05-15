@@ -1929,9 +1929,7 @@ public class dialogueScript : MonoBehaviour
 
             }
         }
-
-        //C0A artifact stuff
-
+        
         if (answerTag == "C00")     //Night2
         {
             youDiag.text = "";
@@ -1979,7 +1977,7 @@ public class dialogueScript : MonoBehaviour
                 Xline[0] = "I certainly hope so, pirate. You've not much time.";
 
                 Xnpc[1] = rob; XinitDelay[1] = 0f; XendDelay[1] = 4.5f; XpostDelay[1] = .25f; XisPlayer[1] = false; Xtrigger[1] = false;
-                Xline[1] = "Hate to say it, but she's right. Only one day left after this.";    XskipAvailable[1] = false;
+                Xline[1] = "Hate to say it, but she's right. Only one day left after this."; XskipAvailable[1] = false;
 
                 Xnpc[2] = gunn; XinitDelay[2] = 0; XendDelay[2] = 2f; XpostDelay[2] = .25f; XisPlayer[2] = false; Xtrigger[2] = false;
                 Xline[2] = "Indeed.";
@@ -1991,7 +1989,7 @@ public class dialogueScript : MonoBehaviour
 
         if (answerTag == "C01")     //Night2
         {
-            youDiag.text = "Let's begin:";
+            youDiag.text = "Now let's begin:";
 
             oneAnswer.text = "1) What do you regret?"; 
             twoAnswer.text = null;
@@ -1999,7 +1997,7 @@ public class dialogueScript : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))  //if choice 1 is selected
             {
-                youDiag.text = "Let's begin: what do you regret?";
+                youDiag.text = "So let's begin: what do you regret?";
                 answering = false;
 
                 StartCoroutine(poseQuestion(fran, 1.5f, false,
@@ -2675,6 +2673,7 @@ public class dialogueScript : MonoBehaviour
             }
         }
 
+        //C0A artifact stuff
         if (answerTag == "FRANGIFT1")
         {
             youDiag.text = "Choose a phylactery to test with Francesca.";
@@ -3055,151 +3054,186 @@ public class dialogueScript : MonoBehaviour
 
                 rResponse = artifactTags.GetComponent<ArtifactTags>().tagged[0].GetComponent<grabbable>().robScore;    //stretch goal (assign artifact pos when given)
 
-                nextTag = "ROBGIFT1";
+                nextTag = "CSTART";
 
-                StartCoroutine(poseQuestion(gunn, 3f, false,
+                StartCoroutine(poseQuestion(rob, 3f, false,
                     "Eh? Let's see.",
                     2.5f, false, .5f, true));
 
                 oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
 
-                if (gResponse == 0)
-                {
-                    Xnpc[0] = gunn; XinitDelay[0] = 0f; XendDelay[0] = 4.5f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
-                    Xline[0] = "I'm sorry, I don't follow your logic. This repulses me.";
-
-                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 2f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = true;
-                    Xline[1] = "...";
-                }
-                else if (gResponse == 1)
-                {
-                    Xnpc[0] = gunn; XinitDelay[0] = 0f; XendDelay[0] = 4.5f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
-                    Xline[0] = "Hm. I'm not pleased, but I don't know phylacteries as you do.";
-
-                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 2.5f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = true;
-                    Xline[1] = "Good to know, thank you.";
-                }
-                else if (gResponse == 2)
+                if (rResponse == 0)
                 {
                     Xnpc[0] = gunn; XinitDelay[0] = 0f; XendDelay[0] = 4f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
-                    Xline[0] = "I'm quite fond of this. It suits me well.";
+                    Xline[0] = "Huh?! Oh, you're not much of a listener, are you.";
+
+                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 2f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = true;
+                    Xline[1] = "Hah! It's only my job.";
+                }
+                else if (rResponse == 1)
+                {
+                    Xnpc[0] = rob; XinitDelay[0] = 0f; XendDelay[0] = 4.5f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                    Xline[0] = "Huh? Bit of a weird pick, but I guess it could work.";
+
+                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 2.5f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = true;
+                    Xline[1] = "Alright.";
+                }
+                else if (rResponse == 2)
+                {
+                    Xnpc[0] = rob; XinitDelay[0] = 0f; XendDelay[0] = 4f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                    Xline[0] = "Hey, I'm pretty happy with this. Yeah.";
 
                     Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 3f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = true;
-                    Xline[1] = "That's good. Thank you.";
+                    Xline[1] = "That's nice to hear.";
                 }
-                else if (gResponse == 3)
+                else if (rResponse == 3)
                 {
-                    Xnpc[0] = gunn; XinitDelay[0] = 0f; XendDelay[0] = 3f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
-                    Xline[0] = "...Interesting.";
+                    Xnpc[0] = rob; XinitDelay[0] = 0f; XendDelay[0] = 3f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                    Xline[0] = "Well, I actually like this a lot. It's a bit weird, to be honest.";
 
-                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 3f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = false;
-                    Xline[1] = "Interesting?";
-
-                    Xnpc[2] = null; XinitDelay[2] = 0f; XendDelay[2] = 2.5f; XpostDelay[2] = .25f; XisPlayer[2] = false; Xtrigger[2] = true;
-                    Xline[2] = "Very.";
+                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 3f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = true;
+                    Xline[1] = "That's how you know it's working.";
                 }
             }
             else if (twoAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))  //if choice 2 is selected
             {
-                youDiag.text = "Gunnlaug, what do you think of this?";   //stretch goal (random range for dialogue choices)
+                youDiag.text = "How's this feel, Robin?";   //stretch goal (random range for dialogue choices)
                 answering = false;
 
-                gResponse = artifactTags.GetComponent<ArtifactTags>().tagged[1].GetComponent<grabbable>().gunScore;    //stretch goal (assign artifact pos when given)
+                rResponse = artifactTags.GetComponent<ArtifactTags>().tagged[1].GetComponent<grabbable>().robScore;    //stretch goal (assign artifact pos when given)
 
-                nextTag = "ROBGIFT1";
+                nextTag = "CSTART";
 
-                StartCoroutine(poseQuestion(gunn, 3f, false,
-                    "Let me see...",
+                StartCoroutine(poseQuestion(rob, 3f, false,
+                    "Eh? Let's see.",
                     2.5f, false, .5f, true));
 
                 oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
 
-                if (gResponse == 0)
-                {
-                    Xnpc[0] = gunn; XinitDelay[0] = 0f; XendDelay[0] = 4.5f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
-                    Xline[0] = "I'm sorry, I don't follow your logic. This repulses me.";
-
-                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 2f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = true;
-                    Xline[1] = "...";
-                }
-                else if (gResponse == 1)
-                {
-                    Xnpc[0] = gunn; XinitDelay[0] = 0f; XendDelay[0] = 4.5f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
-                    Xline[0] = "Hm. I'm not pleased, but I don't know phylacteries as you do.";
-
-                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 2.5f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = true;
-                    Xline[1] = "Good to know, thank you.";
-                }
-                else if (gResponse == 2)
+                if (rResponse == 0)
                 {
                     Xnpc[0] = gunn; XinitDelay[0] = 0f; XendDelay[0] = 4f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
-                    Xline[0] = "I'm quite fond of this. It suits me well.";
+                    Xline[0] = "Huh?! Oh, you're not much of a listener, are you.";
+
+                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 2f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = true;
+                    Xline[1] = "Hah! It's only my job.";
+                }
+                else if (rResponse == 1)
+                {
+                    Xnpc[0] = rob; XinitDelay[0] = 0f; XendDelay[0] = 4.5f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                    Xline[0] = "Huh? Bit of a weird pick, but I guess it could work.";
+
+                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 2.5f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = true;
+                    Xline[1] = "Alright.";
+                }
+                else if (rResponse == 2)
+                {
+                    Xnpc[0] = rob; XinitDelay[0] = 0f; XendDelay[0] = 4f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                    Xline[0] = "Hey, I'm pretty happy with this. Yeah.";
 
                     Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 3f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = true;
-                    Xline[1] = "That's good. Thank you.";
+                    Xline[1] = "That's nice to hear.";
                 }
-                else if (gResponse == 3)
+                else if (rResponse == 3)
                 {
-                    Xnpc[0] = gunn; XinitDelay[0] = 0f; XendDelay[0] = 3f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
-                    Xline[0] = "...Interesting.";
+                    Xnpc[0] = rob; XinitDelay[0] = 0f; XendDelay[0] = 3f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                    Xline[0] = "Well, I actually like this a lot. It's a bit weird, to be honest.";
 
-                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 3f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = false;
-                    Xline[1] = "Interesting?";
-
-                    Xnpc[2] = null; XinitDelay[2] = 0f; XendDelay[2] = 2.5f; XpostDelay[2] = .25f; XisPlayer[2] = false; Xtrigger[2] = true;
-                    Xline[2] = "Very.";
+                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 3f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = true;
+                    Xline[1] = "That's how you know it's working.";
                 }
             }
             else if (thrAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))  //if choice 3 is selected
             {
-                youDiag.text = "Gunnlaug, what do you think of this?";   //stretch goal (random range for dialogue choices)
+                youDiag.text = "How's this feel, Robin?";   //stretch goal (random range for dialogue choices)
                 answering = false;
 
-                gResponse = artifactTags.GetComponent<ArtifactTags>().tagged[3].GetComponent<grabbable>().gunScore;    //stretch goal (assign artifact pos when given)
+                rResponse = artifactTags.GetComponent<ArtifactTags>().tagged[2].GetComponent<grabbable>().robScore;    //stretch goal (assign artifact pos when given)
 
-                nextTag = "ROBGIFT1";
+                nextTag = "CSTART";
 
-                StartCoroutine(poseQuestion(gunn, 3f, false,
-                    "Let me see...",
+                StartCoroutine(poseQuestion(rob, 3f, false,
+                    "Eh? Let's see.",
                     2.5f, false, .5f, true));
 
                 oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
 
-                if (gResponse == 0)
-                {
-                    Xnpc[0] = gunn; XinitDelay[0] = 0f; XendDelay[0] = 4.5f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
-                    Xline[0] = "I'm sorry, I don't follow your logic. This repulses me.";
-
-                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 2f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = true;
-                    Xline[1] = "...";
-                }
-                else if (gResponse == 1)
-                {
-                    Xnpc[0] = gunn; XinitDelay[0] = 0f; XendDelay[0] = 4.5f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
-                    Xline[0] = "Hm. I'm not pleased, but I don't know phylacteries as you do.";
-
-                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 2.5f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = true;
-                    Xline[1] = "Good to know, thank you.";
-                }
-                else if (gResponse == 2)
+                if (rResponse == 0)
                 {
                     Xnpc[0] = gunn; XinitDelay[0] = 0f; XendDelay[0] = 4f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
-                    Xline[0] = "I'm quite fond of this. It suits me well.";
+                    Xline[0] = "Huh?! Oh, you're not much of a listener, are you.";
+
+                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 2f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = true;
+                    Xline[1] = "Hah! It's only my job.";
+                }
+                else if (rResponse == 1)
+                {
+                    Xnpc[0] = rob; XinitDelay[0] = 0f; XendDelay[0] = 4.5f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                    Xline[0] = "Huh? Bit of a weird pick, but I guess it could work.";
+
+                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 2.5f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = true;
+                    Xline[1] = "Alright.";
+                }
+                else if (rResponse == 2)
+                {
+                    Xnpc[0] = rob; XinitDelay[0] = 0f; XendDelay[0] = 4f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                    Xline[0] = "Hey, I'm pretty happy with this. Yeah.";
 
                     Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 3f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = true;
-                    Xline[1] = "That's good. Thank you.";
+                    Xline[1] = "That's nice to hear.";
                 }
-                else if (gResponse == 3)
+                else if (rResponse == 3)
                 {
-                    Xnpc[0] = gunn; XinitDelay[0] = 0f; XendDelay[0] = 3f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
-                    Xline[0] = "...Interesting.";
+                    Xnpc[0] = rob; XinitDelay[0] = 0f; XendDelay[0] = 3f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                    Xline[0] = "Well, I actually like this a lot. It's a bit weird, to be honest.";
 
-                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 3f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = false;
-                    Xline[1] = "Interesting?";
-
-                    Xnpc[2] = null; XinitDelay[2] = 0f; XendDelay[2] = 2.5f; XpostDelay[2] = .25f; XisPlayer[2] = false; Xtrigger[2] = true;
-                    Xline[2] = "Very.";
+                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 3f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = true;
+                    Xline[1] = "That's how you know it's working.";
                 }
+            }
+        }
+
+        if (answerTag == "CSTART")     //Night2
+        {
+            youDiag.text = "";
+
+            oneAnswer.text = "1) Continue";
+            twoAnswer.text = null;
+            thrAnswer.text = null;
+
+            if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))  //if choice 1 is selected
+            {
+                youDiag.text = "Alright then...";
+                answering = false;
+
+                StartCoroutine(poseQuestion(gunn, 4f, false,
+                    "I've been thinking Lich. Where are the bodies?",
+                    3f, false, .25f, true));
+
+                nextTag = "C01";
+
+                oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
+
+                Xnpc[0] = rob; XinitDelay[0] = 0f; XendDelay[0] = 2.5f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                Xline[0] = "Bodies?";
+
+                Xnpc[1] = fran; XinitDelay[1] = .25f; XendDelay[1] = 6f; XpostDelay[1] = .25f; XisPlayer[1] = false; Xtrigger[1] = false;
+                Xline[1] = "They raided this place, didn't they? What happened to the people here?";
+
+                Xnpc[2] = fran; XinitDelay[2] = 0; XendDelay[2] = 3f; XpostDelay[2] = .25f; XisPlayer[2] = false; Xtrigger[2] = false;
+                Xline[2] = "I can answer that one, actually...";
+
+                Xnpc[3] = fran; XinitDelay[3] = 0; XendDelay[3] = 4.5f; XpostDelay[3] = .25f; XisPlayer[3] = false; Xtrigger[3] = false;
+                Xline[3] = "We...Paladins burn the bodies after undead attacks.";
+
+                Xnpc[4] = fran; XinitDelay[4] = 0; XendDelay[4] = 4.5f; XpostDelay[4] = .25f; XisPlayer[4] = false; Xtrigger[4] = false;
+                Xline[4] = "Makes it harder for them to become...well, like us.";
+
+                Xnpc[4] = gunn; XinitDelay[4] = 0; XendDelay[4] = 4.5f; XpostDelay[4] = .25f; XisPlayer[4] = false; Xtrigger[4] = false;
+                Xline[4] = "I see...I assume we're not done with questioning, though.";
+
+                Xnpc[4] = null; XinitDelay[4] = 0; XendDelay[4] = 3.5f; XpostDelay[4] = .25f; XisPlayer[4] = true; Xtrigger[4] = true;
+                Xline[4] = "That's correct, Gunn.";
             }
         }
 

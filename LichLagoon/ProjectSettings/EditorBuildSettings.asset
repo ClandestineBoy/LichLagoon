@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Night2.unity
     guid: fb43875d1254b59409aebc3f78666c34
+  - enabled: 1
+    path: Assets/Scenes/End.unity
+    guid: e44f5a2bb9d123c499440dc3847de8fb
   m_configObjects: {}

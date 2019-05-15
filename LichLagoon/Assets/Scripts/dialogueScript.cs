@@ -532,7 +532,7 @@ public class dialogueScript : MonoBehaviour
                 youDiag.text = "There's no point setting up the entire crew ashore--";
                 answering = false;
 
-                StartCoroutine(poseQuestion(null, 2.5f, true,
+                StartCoroutine(poseQuestion(null, 3f, true,
                     "--We'll have to leave as fast as we can when the Paladins come.",
                     6f, false, 0f, true));
 
@@ -566,9 +566,9 @@ public class dialogueScript : MonoBehaviour
                 youDiag.text = "I know it's not much...but setting up any further would be irresponsible--";
                 answering = false;
 
-                StartCoroutine(poseQuestion(null, 1.5f, true,
+                StartCoroutine(poseQuestion(null, 3f, true,
                     "The Paladins could get here any day, remember.",
-                    5f, false, 2f, true));
+                    6f, false, 2f, true));
 
                 oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
 

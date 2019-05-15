@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Sun_Rotation : MonoBehaviour
 {
+    GameObject sceneMan;
+    SceneManger sm;
     public bool night;
     public bool day = true;
 
@@ -22,6 +24,8 @@ public class Sun_Rotation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        sceneMan = GameObject.FindGameObjectWithTag("SceneManager");
+        sm = sceneMan.GetComponent<SceneManger>();
         RenderSettings.skybox = daySky;
         //RenderSettings.customReflection = dayReflection;
         goToNight = false;   
@@ -66,7 +70,7 @@ public class Sun_Rotation : MonoBehaviour
             }
             else if(exposure >= .5)
             {
-                SceneManager.LoadScene("Night1");
+                sm.nextScene = true;
             }
         }   
     }

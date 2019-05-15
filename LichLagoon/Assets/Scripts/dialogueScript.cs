@@ -2132,7 +2132,7 @@ public class dialogueScript : MonoBehaviour
                 Xline[5] = "I think that'll do for tonight. Thank you.";
 
                 Xnpc[6] = null; XinitDelay[6] = 0; XendDelay[6] = 3.5f; XpostDelay[6] = .25f; XisPlayer[6] = true; Xtrigger[6] = false;
-                Xline[6] = "I'll begin searching for more phylacteries tomorrow morning.";
+                Xline[6] = "I'll continue searching for more phylacteries tomorrow morning.";
 
                 //end
                 maxI = 6;
@@ -2167,7 +2167,7 @@ public class dialogueScript : MonoBehaviour
                 Xline[5] = "I think that'll do for tonight. Thank you.";
 
                 Xnpc[6] = null; XinitDelay[6] = 0; XendDelay[6] = 3.5f; XpostDelay[6] = .25f; XisPlayer[6] = true; Xtrigger[6] = false;
-                Xline[6] = "I'll begin searching for more phylacteries tomorrow morning.";
+                Xline[6] = "I'll continue searching for more phylacteries tomorrow morning.";
 
                 //end
                 maxI = 6;
@@ -2228,7 +2228,7 @@ public class dialogueScript : MonoBehaviour
                 Xline[9] = "...I think that'll do for tonight. Thank you.";
 
                 Xnpc[10] = null; XinitDelay[10] = 0; XendDelay[10] = 3.5f; XpostDelay[10] = .25f; XisPlayer[10] = true; Xtrigger[10] = false;
-                Xline[10] = "I'll begin searching for your phylacteries tomorrow morning.";
+                Xline[10] = "I'll continue searching for more phylacteries tomorrow morning.";
 
                 //end
                 maxI = 10;
@@ -2275,7 +2275,7 @@ public class dialogueScript : MonoBehaviour
                 Xline[9] = "...I think that'll do for tonight. Thank you.";
 
                 Xnpc[10] = null; XinitDelay[10] = 0; XendDelay[10] = 3.5f; XpostDelay[10] = .25f; XisPlayer[10] = true; Xtrigger[10] = false;
-                Xline[10] = "I'll begin searching for your phylacteries tomorrow morning.";
+                Xline[10] = "I'll continue searching for more phylacteries tomorrow morning.";
 
                 //end
                 maxI = 10;
@@ -2286,7 +2286,7 @@ public class dialogueScript : MonoBehaviour
             }
         }
 
-        if (answerTag == "REGRETPROMPTS")
+        if (answerTag == "REGRETPROMPTSagain")
         {
             youDiag.text = "Who do you want to question further? (Pick One)";
 
@@ -2344,10 +2344,10 @@ public class dialogueScript : MonoBehaviour
                 Xline[11] = "Good thing they're so forgiving.";
 
                 Xnpc[12] = fran; XinitDelay[12] = 0; XendDelay[12] = 4.5f; XpostDelay[12] = .25f; XisPlayer[12] = false; Xtrigger[12] = false;
-                Xline[12] = "...They gave him the death penalty."; XskipAvailable[12] = false;
+                Xline[12] = "...He was burned at the stake."; XskipAvailable[12] = false;
 
                 Xnpc[13] = rob; XinitDelay[13] = .5f; XendDelay[13] = 4.5f; XpostDelay[13] = .25f; XisPlayer[13] = false; Xtrigger[13] = false;
-                Xline[13] = "...";
+                Xline[13] = "..."; XskipAvailable[13] = false;
 
                 Xnpc[14] = fran; XinitDelay[14] = 0; XendDelay[14] = 6f; XpostDelay[14] = .25f; XisPlayer[14] = false; Xtrigger[14] = false;
                 Xline[14] = "Enough about my brother, though. This is about me.";
@@ -2471,7 +2471,7 @@ public class dialogueScript : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))  //if choice 1 is selected
             {
-                youDiag.text = "I appreciate your help, Robin.";
+                youDiag.text = "I appreciate your help, Robin--";
                 answering = false;
 
                 StartCoroutine(poseQuestion(null, 3.5f, true,
@@ -2480,92 +2480,130 @@ public class dialogueScript : MonoBehaviour
 
                 oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
 
-                Xnpc[0] = rob; XinitDelay[0] = 1.5f; XendDelay[0] = 4f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
-                Xline[0] = "I hated it. I hated being useless."; XskipAvailable[0] = false;
+                Xnpc[0] = rob; XinitDelay[0] = .5f; XendDelay[0] = 3f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                Xline[0] = "Sorry."; XskipAvailable[0] = false;
 
-                Xnpc[1] = fran; XinitDelay[1] = 1f; XendDelay[1] = 3.5f; XpostDelay[1] = .75f; XisPlayer[1] = false; Xtrigger[1] = false;
-                Xline[1] = "I don't think you were."; XskipAvailable[1] = false;
+                Xnpc[1] = fran; XinitDelay[1] = 0f; XendDelay[1] = 3.5f; XpostDelay[1] = .5f; XisPlayer[1] = false; Xtrigger[1] = false;
+                Xline[1] = "Thank you, pirate."; XskipAvailable[1] = false;
 
-                Xnpc[2] = rob; XinitDelay[2] = 0; XendDelay[2] = 2.5f; XpostDelay[2] = .75f; XisPlayer[2] = false; Xtrigger[2] = false;
-                Xline[2] = "...?"; XskipAvailable[2] = false;
+                Xnpc[2] = fran; XinitDelay[2] = 0; XendDelay[2] = 5f; XpostDelay[2] = .5f; XisPlayer[2] = false; Xtrigger[2] = false;
+                Xline[2] = "And Robin? Don't dare try prying into my life again."; XskipAvailable[2] = false;
 
-                Xnpc[3] = fran; XinitDelay[3] = 0; XendDelay[3] = 6f; XpostDelay[3] = .75f; XisPlayer[3] = false; Xtrigger[3] = false;
-                Xline[3] = "Sometimes--I think--helpful people are horrible to themselves.";
+                Xnpc[8] = null; XinitDelay[8] = 0; XendDelay[8] = 4f; XpostDelay[8] = .25f; XisPlayer[8] = true; Xtrigger[8] = false;
+                Xline[8] = "...I think that'll do for tonight. Apologies, Francesca.";
 
-                Xnpc[4] = rob; XinitDelay[4] = 0; XendDelay[4] = 4f; XpostDelay[4] = .25f; XisPlayer[4] = false; Xtrigger[4] = false;
-                Xline[4] = "You know we'd miss supper sometimes.";
-
-                Xnpc[5] = rob; XinitDelay[5] = 0; XendDelay[5] = 7f; XpostDelay[5] = .25f; XisPlayer[5] = false; Xtrigger[5] = false;
-                Xline[5] = "Now I can finally help, and I don't even know if they're even alive.";
-
-                Xnpc[6] = fran; XinitDelay[6] = 0; XendDelay[6] = 3.5f; XpostDelay[6] = .25f; XisPlayer[6] = false; Xtrigger[6] = false;
-                Xline[6] = "It's not right for you to bear that, Robin.";
-
-                Xnpc[7] = rob; XinitDelay[7] = 0; XendDelay[7] = 4f; XpostDelay[7] = .25f; XisPlayer[7] = false; Xtrigger[7] = false;
-                Xline[7] = "Look: I know it's fucked. Don't worry about it.";
-
-                Xnpc[8] = rob; XinitDelay[8] = 0; XendDelay[8] = 4f; XpostDelay[8] = .25f; XisPlayer[8] = false; Xtrigger[8] = false;
-                Xline[8] = "I'm beat. Could I get some shut-eye?";
-
-                Xnpc[9] = null; XinitDelay[9] = 0; XendDelay[9] = 3.5f; XpostDelay[9] = .25f; XisPlayer[9] = true; Xtrigger[9] = false;
-                Xline[9] = "...I think that'll do for tonight. Thank you.";
-
-                Xnpc[10] = null; XinitDelay[10] = 0; XendDelay[10] = 3.5f; XpostDelay[10] = .25f; XisPlayer[10] = true; Xtrigger[10] = false;
-                Xline[10] = "I'll begin searching for your phylacteries tomorrow morning.";
+                Xnpc[9] = null; XinitDelay[9] = 0; XendDelay[9] = 4f; XpostDelay[9] = .25f; XisPlayer[9] = true; Xtrigger[9] = false;
+                Xline[9] = "I'll begin searching for your phylacteries tomorrow morning.";
 
                 //end
-                maxI = 10;
+                maxI = 9;
             }
             else if (twoAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))  //if choice 2 is selected
             {
-                youDiag.text = "What's the problem, Robin?";
+                youDiag.text = "...";
                 answering = false;
 
-                StartCoroutine(poseQuestion(rob, 4f, false,
-                    "C'mon, it's obvious:",
-                    4f, false, .5f, false));
+                nextTag = "FranDefuse";
+
+                StartCoroutine(poseQuestion(rob, 5.5f, false,
+                    "Why would your brother be fiddling with necromancy, though?",
+                    4f, false, .25f, false));
 
                 oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
 
-                Xnpc[0] = rob; XinitDelay[0] = 1.5f; XendDelay[0] = 4f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
-                Xline[0] = "I hate it. I hated being useless."; XskipAvailable[0] = false;
+                Xnpc[0] = gunn; XinitDelay[0] = .75f; XendDelay[0] = 3f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;       //start getting fast here, pressuring Fran
+                Xline[0] = "...The friend.";
 
-                Xnpc[1] = fran; XinitDelay[1] = 1f; XendDelay[1] = 3.5f; XpostDelay[1] = .75f; XisPlayer[1] = false; Xtrigger[1] = false;
-                Xline[1] = "I don't think you were."; XskipAvailable[1] = false;
+                Xnpc[1] = rob; XinitDelay[1] = 1f; XendDelay[1] = 2.75f; XpostDelay[1] = .25f; XisPlayer[1] = false; Xtrigger[1] = false;
+                Xline[1] = "Ah so he--";
 
-                Xnpc[2] = rob; XinitDelay[2] = 0; XendDelay[2] = 2.5f; XpostDelay[2] = .75f; XisPlayer[2] = false; Xtrigger[2] = false;
-                Xline[2] = "...?"; XskipAvailable[2] = false;
+                Xnpc[2] = gunn; XinitDelay[2] = 0; XendDelay[2] = 3.5f; XpostDelay[2] = .25f; XisPlayer[2] = false; Xtrigger[2] = false;
+                Xline[2] = "--brought him back and was apprehended.";
 
-                Xnpc[3] = fran; XinitDelay[3] = 0; XendDelay[3] = 6f; XpostDelay[3] = .75f; XisPlayer[3] = false; Xtrigger[3] = false;
-                Xline[3] = "Sometimes--I think--helpful people are horrible to themselves.";
+                Xnpc[3] = rob; XinitDelay[3] = 0; XendDelay[3] = 3.5f; XpostDelay[3] = .25f; XisPlayer[3] = false; Xtrigger[3] = false;
+                Xline[3] = "But...was he successful, Francesca?";
 
-                Xnpc[4] = rob; XinitDelay[4] = 0; XendDelay[4] = 4f; XpostDelay[4] = .25f; XisPlayer[4] = false; Xtrigger[4] = false;
-                Xline[4] = "You know we'd miss supper sometimes.";
+                Xnpc[4] = gunn; XinitDelay[4] = 0; XendDelay[4] = 4f; XpostDelay[4] = .25f; XisPlayer[4] = false; Xtrigger[4] = false;
+                Xline[4] = "He would've been caught practicing before then.";
 
-                Xnpc[5] = rob; XinitDelay[5] = 0; XendDelay[5] = 7f; XpostDelay[5] = .25f; XisPlayer[5] = false; Xtrigger[5] = false;
-                Xline[5] = "Now I can finally help, and I don't even know if they're even alive.";
+                Xnpc[5] = rob; XinitDelay[5] = 0; XendDelay[5] = 2.75f; XpostDelay[5] = .25f; XisPlayer[5] = false; Xtrigger[5] = false;
+                Xline[5] = "Oh. Definitely.";
 
-                Xnpc[6] = fran; XinitDelay[6] = 0; XendDelay[6] = 3.5f; XpostDelay[6] = .25f; XisPlayer[6] = false; Xtrigger[6] = false;
-                Xline[6] = "It's not right for you to bear that, Robin.";
+                Xnpc[6] = gunn; XinitDelay[6] = 0; XendDelay[6] = 3f; XpostDelay[6] = .25f; XisPlayer[6] = false; Xtrigger[6] = false;
+                Xline[6] = "I wonder how though...";
 
-                Xnpc[7] = rob; XinitDelay[7] = 0; XendDelay[7] = 4f; XpostDelay[7] = .25f; XisPlayer[7] = false; Xtrigger[7] = false;
-                Xline[7] = "Look: I know it's fucked. Don't worry about it.";
+                Xnpc[7] = rob; XinitDelay[7] = 0; XendDelay[7] = 3.5f; XpostDelay[7] = .25f; XisPlayer[7] = false; Xtrigger[7] = false;
+                Xline[7] = "Oh god, this' awful, but...";
 
-                Xnpc[8] = rob; XinitDelay[8] = 0; XendDelay[8] = 4f; XpostDelay[8] = .25f; XisPlayer[8] = false; Xtrigger[8] = false;
-                Xline[8] = "I'm beat. Could I get some shut-eye?";
+                Xnpc[8] = rob; XinitDelay[8] = 0; XendDelay[8] = 3.5f; XpostDelay[8] = .25f; XisPlayer[8] = false; Xtrigger[8] = false;
+                Xline[8] = "Were you there when they caught him?";
 
-                Xnpc[9] = null; XinitDelay[9] = 0; XendDelay[9] = 3.5f; XpostDelay[9] = .25f; XisPlayer[9] = true; Xtrigger[9] = false;
-                Xline[9] = "...I think that'll do for tonight. Thank you.";
+                Xnpc[9] = fran; XinitDelay[9] = 0; XendDelay[9] = 2.25f; XpostDelay[9] = .25f; XisPlayer[9] = false; Xtrigger[9] = false;
+                Xline[9] = "I--";
 
-                Xnpc[10] = null; XinitDelay[10] = 0; XendDelay[10] = 3.5f; XpostDelay[10] = .25f; XisPlayer[10] = true; Xtrigger[10] = false;
-                Xline[10] = "I'll begin searching for your phylacteries tomorrow morning.";
+                Xnpc[10] = gunn; XinitDelay[10] = 0; XendDelay[10] = 2.25f; XpostDelay[10] = .25f; XisPlayer[10] = false; Xtrigger[10] = false;
+                Xline[10] = "Oh no.";
+                
+                Xnpc[11] = rob; XinitDelay[11] = 0; XendDelay[11] = 4.5f; XpostDelay[11] = .25f; XisPlayer[11] = false; Xtrigger[11] = false;
+                Xline[11] = "How'd the inquisitors know? Someone had to tell them--";
 
-                //end
-                maxI = 10;
+                Xnpc[12] = rob; XinitDelay[12] = 0; XendDelay[12] = 4f; XpostDelay[12] = .25f; XisPlayer[12] = false; Xtrigger[12] = false;
+                Xline[12] = "Was he practicing at home? Did your family kno--"; XskipAvailable[14] = false;
+
+                Xnpc[13] = fran; XinitDelay[13] = 0; XendDelay[13] = 2.5f; XpostDelay[13] = 1f; XisPlayer[13] = false; Xtrigger[13] = false;
+                Xline[13] = "ENOUGH!";   XskipAvailable[13] = false;
+
+                Xnpc[14] = rob; XinitDelay[14] = 0; XendDelay[14] = 2f; XpostDelay[14] = .25f; XisPlayer[14] = false; Xtrigger[14] = false;
+                Xline[14] = "Oh..."; XskipAvailable[14] = false;
+
+                Xnpc[15] = gunn; XinitDelay[15] = 0; XendDelay[15] = 2f; XpostDelay[15] = 4f; XisPlayer[15] = false; Xtrigger[15] = false;
+                Xline[15] = "..."; XskipAvailable[15] = false;
+
+                Xnpc[16] = fran; XinitDelay[16] = 0; XendDelay[16] = 5f; XpostDelay[16] = .25f; XisPlayer[16] = false; Xtrigger[16] = false;
+                Xline[16] = "My brother is not some case for you to crack.";
+
+                Xnpc[17] = fran; XinitDelay[17] = 0; XendDelay[17] = 8f; XpostDelay[17] = .25f; XisPlayer[17] = false; Xtrigger[17] = false;
+                Xline[17] = "We've all lost family, so I'm sure you understand when I ask you not to treat a death like a fucking puzzle.";
+
+                Xnpc[18] = gunn; XinitDelay[18] = 0; XendDelay[18] = 3f; XpostDelay[18] = .25f; XisPlayer[18] = false; Xtrigger[18] = false;
+                Xline[18] = "Apologies.";
+
+                Xnpc[19] = rob; XinitDelay[19] = 0; XendDelay[19] = 3f; XpostDelay[19] = .25f; XisPlayer[19] = false; Xtrigger[19] = true;
+                Xline[19] = "...";
             }
             else if (thrAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))  //if choice 3 is selected
             {
 
+            }
+        }
+
+        if (answerTag == "FranRefuse")
+        {
+            youDiag.text = "";
+
+            oneAnswer.text = "1) Defuse";
+            twoAnswer.text = null;
+            thrAnswer.text = null;
+
+            if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))  //if choice 1 is selected
+            {
+                youDiag.text = "I think it's best we all go to bed.";
+                answering = false;
+
+                StartCoroutine(poseQuestion(fran, 3.5f, false,
+                    "I couldn't agree more.",
+                    6.5f, false, .5f, false));
+
+                oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
+
+                Xnpc[0] = null; XinitDelay[0] = 0; XendDelay[0] = 3f; XpostDelay[0] = .25f; XisPlayer[0] = true; Xtrigger[0] = false;
+                Xline[0] = "...I'm sorry.";
+
+                Xnpc[1] = null; XinitDelay[1] = 0; XendDelay[1] = 4f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = false;
+                Xline[1] = "I'll continue searching for more phylacteries tomorrow morning.";
+
+                //end
+                maxI = 1;
             }
         }
 

@@ -2,15 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SceneManger : MonoBehaviour
 {
     public bool nextScene;
+    public string nextName;
+    public float delay;
+
+    public Image fadeOutRect;
 
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame
@@ -25,7 +30,8 @@ public class SceneManger : MonoBehaviour
             if (nextScene == true)
             {
                 nextScene = false;
-                SceneManager.LoadScene("Intro");
+                nextName = "Intro";
+                fadeOut();
             }
         }
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Intro"))
@@ -33,7 +39,8 @@ public class SceneManger : MonoBehaviour
             if (nextScene == true)
             {
                 nextScene = false;
-                SceneManager.LoadScene("Night2");
+                nextName = "Night2";
+                fadeOut();
             }
         }
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Night2"))
@@ -41,9 +48,19 @@ public class SceneManger : MonoBehaviour
             if (nextScene == true)
             {
                 nextScene = false;
-                SceneManager.LoadScene("Rilee Home");
+                nextName = "Rilee Home";
+                fadeOut();
             }
         }
     }
 
+    void fadeOut ()
+    {
+        fadeOutRect.color = Vector4.MoveTowards(fadeOutRect.color, Color.black, Time.fixedDeltaTime * delay);
+
+        if (fadeOutRect.color == Color.black)
+        {
+            SceneManager.LoadScene(nextName);
+        }
+    }
 }

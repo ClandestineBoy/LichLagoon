@@ -57,6 +57,15 @@ public class SceneManger : MonoBehaviour
                 StartCoroutine(fadeDelay());
             }
         }
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Rilee Home"))
+        {
+            if (nextScene == true)
+            {
+                nextScene = false;
+                nextName = "Night3";
+                StartCoroutine(fadeDelay());
+            }
+        }
 
 
         if (fading)

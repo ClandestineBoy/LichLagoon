@@ -4724,6 +4724,19 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!65 &1168385633
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1734379540754019597}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.25, y: 0.27, z: 0.04}
+  m_Center: {x: -0.07, y: 0.18, z: 0.02}
 --- !u!114 &1168385627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4751,11 +4764,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94e7fe831fd013d4caf4fc96696e2482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  franScore: 0
+  robScore: 0
+  gunScore: 3
   buried: 0
   tagged: 0
   inInventory: 0
-  lore: 
-  grabScale: 0
+  lore: 'This necklace represents duality, with metal work so meticulous and beautiful,
+    yet paired with beautiful gems completely unrefined. Its creator was often told
+    the necklace would be of far greater value if she simply cut the stones, yet she
+    refused; it would contradict the meaning of the piece. '
+  grabScale: 1.1
   restScale: 1
   grabS: {x: 0.4, y: 0.4, z: 0.4}
   restS: {x: 1, y: 1, z: 1}
@@ -4763,19 +4782,6 @@ MonoBehaviour:
   grabRot: {x: 0, y: 0, z: 0}
   particlesFollowPlayer: 1
   shrinkSpeed: 0
---- !u!65 &1168385633
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1734379540754019597}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.25, y: 0.27, z: 0.04}
-  m_Center: {x: -0.07, y: 0.18, z: 0.02}
 --- !u!1001 &1734379540753986477
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4789,53 +4795,57 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4e6e595f4fea8b64d9048ce9ca97b803, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.7
+      value: -10.576
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4e6e595f4fea8b64d9048ce9ca97b803, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.847
+      value: 16.718
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4e6e595f4fea8b64d9048ce9ca97b803, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 11.913
+      value: 60.696
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4e6e595f4fea8b64d9048ce9ca97b803, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.455615
+      value: 0.2396284
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4e6e595f4fea8b64d9048ce9ca97b803, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.07482746
+      value: -0.7804299
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4e6e595f4fea8b64d9048ce9ca97b803, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0384708
+      value: -0.5229117
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4e6e595f4fea8b64d9048ce9ca97b803, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.88619184
+      value: -0.24509342
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4e6e595f4fea8b64d9048ce9ca97b803, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4e6e595f4fea8b64d9048ce9ca97b803, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -350.347
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -69.012
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4e6e595f4fea8b64d9048ce9ca97b803, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -54.418003
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -201.616
       objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 4e6e595f4fea8b64d9048ce9ca97b803, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -19.185001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300004, guid: 4e6e595f4fea8b64d9048ce9ca97b803, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 66d734fbab0d6384c955cad130ffe1d3, type: 2}
     - target: {fileID: 2300000, guid: 4e6e595f4fea8b64d9048ce9ca97b803, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: ea8ddfd1e9cee41449355f5dd51477f1, type: 2}
     - target: {fileID: 2300002, guid: 4e6e595f4fea8b64d9048ce9ca97b803, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 66d734fbab0d6384c955cad130ffe1d3, type: 2}
-    - target: {fileID: 2300004, guid: 4e6e595f4fea8b64d9048ce9ca97b803, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 66d734fbab0d6384c955cad130ffe1d3, type: 2}

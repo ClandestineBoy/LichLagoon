@@ -4724,6 +4724,19 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!65 &1981972712
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5885668589690743048}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6617818, y: 0.12532867, z: 3.2161589}
+  m_Center: {x: -0.00603655, y: -0.0033615883, z: -0.0025237203}
 --- !u!114 &1981972706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4736,13 +4749,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94e7fe831fd013d4caf4fc96696e2482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buried: 0
+  franScore: 0
+  robScore: 2
+  gunScore: 1
+  buried: 1
   tagged: 0
   inInventory: 0
   lore: Wasn't originally too special. Ever since burying its owner's grandfather,
     though, the shovel has never failed to remind of warm memories with family, and
     the transience of life.
-  grabScale: 0
+  grabScale: 0.5
   restScale: 1
   grabS: {x: 0.5, y: 0.5, z: 0.5}
   restS: {x: 1, y: 1, z: 1}
@@ -4765,19 +4781,6 @@ MonoBehaviour:
   activeRotate: 0
   dir: {x: 0, y: 1, z: 0}
   rotSpeed: 8
---- !u!65 &1981972712
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5885668589690743048}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.6617818, y: 0.12532867, z: 3.2161589}
-  m_Center: {x: -0.00603655, y: -0.0033615883, z: -0.0025237203}
 --- !u!1001 &5885668589690777512
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4791,19 +4794,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 47f8bff21d69bec4cb7a88eaded27801, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.87
+      value: 31.482792
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 47f8bff21d69bec4cb7a88eaded27801, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.5
+      value: -3.085
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 47f8bff21d69bec4cb7a88eaded27801, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.45
+      value: -9.477779
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 47f8bff21d69bec4cb7a88eaded27801, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.35426736
+      value: 0.5145314
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 47f8bff21d69bec4cb7a88eaded27801, type: 3}
       propertyPath: m_LocalRotation.y
@@ -4815,7 +4818,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 47f8bff21d69bec4cb7a88eaded27801, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9351442
+      value: 0.8574716
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 47f8bff21d69bec4cb7a88eaded27801, type: 3}
       propertyPath: m_RootOrder
@@ -4823,16 +4826,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 47f8bff21d69bec4cb7a88eaded27801, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 41.497
+      value: 61.932003
       objectReference: {fileID: 0}
-    - target: {fileID: 2300000, guid: 47f8bff21d69bec4cb7a88eaded27801, type: 3}
-      propertyPath: m_Materials.Array.data[2]
-      value: 
-      objectReference: {fileID: 2100000, guid: e58481a0d01ef854da75a6a92f0aaf21, type: 2}
+    - target: {fileID: 400000, guid: 47f8bff21d69bec4cb7a88eaded27801, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 47f8bff21d69bec4cb7a88eaded27801, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 47f8bff21d69bec4cb7a88eaded27801, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.64261
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 47f8bff21d69bec4cb7a88eaded27801, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.64261
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 47f8bff21d69bec4cb7a88eaded27801, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.64261
+      objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 47f8bff21d69bec4cb7a88eaded27801, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 56dcfb18414deae458ae73d5e117cdf3, type: 2}
+    - target: {fileID: 2300000, guid: 47f8bff21d69bec4cb7a88eaded27801, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: e58481a0d01ef854da75a6a92f0aaf21, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47f8bff21d69bec4cb7a88eaded27801, type: 3}
 --- !u!1 &5885668589690743048 stripped

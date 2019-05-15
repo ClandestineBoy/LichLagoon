@@ -4724,6 +4724,20 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!136 &365996176
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5558042459124099922}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.05
+  m_Height: 1.7135913
+  m_Direction: 1
+  m_Center: {x: -0.004785631, y: 0, z: -0.0036564842}
 --- !u!114 &365996170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4736,12 +4750,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94e7fe831fd013d4caf4fc96696e2482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buried: 0
+  franScore: 0
+  robScore: 1
+  gunScore: 0
+  buried: 1
   tagged: 0
   inInventory: 0
   lore: A stick from the black mangrove tree, snapped off by a child running by. A
     small amount of blood darkens its thorns.
-  grabScale: 0
+  grabScale: 0.9
   restScale: 1
   grabS: {x: 0.4, y: 0.4, z: 0.4}
   restS: {x: 1, y: 1, z: 1}
@@ -4764,20 +4781,6 @@ MonoBehaviour:
   activeRotate: 0
   dir: {x: 0, y: 1, z: 0}
   rotSpeed: 8
---- !u!136 &365996176
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5558042459124099922}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.05
-  m_Height: 1.7135913
-  m_Direction: 1
-  m_Center: {x: -0.004785631, y: 0, z: -0.0036564842}
 --- !u!1001 &5558042459124067826
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4791,35 +4794,47 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8ea4d089adba5d44680bfbd51d1a722f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.7
+      value: 14.011638
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8ea4d089adba5d44680bfbd51d1a722f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.23
+      value: 6.5099998
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8ea4d089adba5d44680bfbd51d1a722f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 11.25
+      value: 20.043781
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8ea4d089adba5d44680bfbd51d1a722f, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0.15893926
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8ea4d089adba5d44680bfbd51d1a722f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: -0.052088283
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8ea4d089adba5d44680bfbd51d1a722f, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.021005012
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8ea4d089adba5d44680bfbd51d1a722f, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9856896
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8ea4d089adba5d44680bfbd51d1a722f, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 8ea4d089adba5d44680bfbd51d1a722f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 18.392
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 8ea4d089adba5d44680bfbd51d1a722f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -5.807
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 8ea4d089adba5d44680bfbd51d1a722f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 1.501
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 8ea4d089adba5d44680bfbd51d1a722f, type: 3}
       propertyPath: m_Materials.Array.data[0]

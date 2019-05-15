@@ -4724,6 +4724,19 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!65 &517690902
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2857932804769258281}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.09470953, y: 1.8464806, z: 0.33898333}
+  m_Center: {x: 0, y: 0, z: -0.006109625}
 --- !u!114 &517690896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4751,14 +4764,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94e7fe831fd013d4caf4fc96696e2482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buried: 0
+  franScore: 1
+  robScore: 3
+  gunScore: 0
+  buried: 1
   tagged: 0
   inInventory: 0
   lore: 'Chipped and worn from vigorous use, this was the companion of an adventurer.
     Daring the great wilderness, they''d venture into the island brush, slashing away
     obstacles with this very machete. Some say they uncovered a great treasure on
     one outing, though, no one knows for sure. '
-  grabScale: 0
+  grabScale: 0.8
   restScale: 1
   grabS: {x: 0.4, y: 0.4, z: 0.4}
   restS: {x: 1, y: 1, z: 1}
@@ -4766,19 +4782,6 @@ MonoBehaviour:
   grabRot: {x: 0, y: 0, z: 0}
   particlesFollowPlayer: 1
   shrinkSpeed: 0
---- !u!65 &517690902
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2857932804769258281}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.09470953, y: 1.8464806, z: 0.33898333}
-  m_Center: {x: 0, y: 0, z: -0.006109625}
 --- !u!1001 &2857932804769226121
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4792,48 +4795,68 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 60d5ef55f84d14143b6297acde4f50e8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.282
+      value: 25.131
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 60d5ef55f84d14143b6297acde4f50e8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.76
+      value: -2.264
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 60d5ef55f84d14143b6297acde4f50e8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.282
+      value: -20.545
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 60d5ef55f84d14143b6297acde4f50e8, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: -0.2577484
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 60d5ef55f84d14143b6297acde4f50e8, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.49510145
+      value: -0.34295604
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 60d5ef55f84d14143b6297acde4f50e8, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.23268148
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 60d5ef55f84d14143b6297acde4f50e8, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.86883515
+      value: 0.8728152
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 60d5ef55f84d14143b6297acde4f50e8, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 60d5ef55f84d14143b6297acde4f50e8, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -59.353004
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -16.878
       objectReference: {fileID: 0}
-    - target: {fileID: 2300000, guid: 60d5ef55f84d14143b6297acde4f50e8, type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: c588d90acd895c644892504e0bc19e39, type: 2}
+    - target: {fileID: 400000, guid: 60d5ef55f84d14143b6297acde4f50e8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -48.674004
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 60d5ef55f84d14143b6297acde4f50e8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 37.532
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 60d5ef55f84d14143b6297acde4f50e8, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.43951005
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 60d5ef55f84d14143b6297acde4f50e8, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.43951008
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 60d5ef55f84d14143b6297acde4f50e8, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.4395101
+      objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 60d5ef55f84d14143b6297acde4f50e8, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 56dcfb18414deae458ae73d5e117cdf3, type: 2}
+    - target: {fileID: 2300000, guid: 60d5ef55f84d14143b6297acde4f50e8, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: c588d90acd895c644892504e0bc19e39, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60d5ef55f84d14143b6297acde4f50e8, type: 3}
 --- !u!1 &2857932804769258281 stripped

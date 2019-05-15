@@ -4724,6 +4724,19 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!65 &1366603593
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2393328655556015869}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.40872884, y: 0.030000007, z: 0.05}
+  m_Center: {x: -0.000000014901161, y: 0, z: 0.0000000037252903}
 --- !u!114 &1366603587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4736,7 +4749,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94e7fe831fd013d4caf4fc96696e2482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buried: 0
+  franScore: 0
+  robScore: 1
+  gunScore: 1
+  buried: 1
   tagged: 0
   inInventory: 0
   lore: The chest it belonged to was permantly broken open years ago. Now this is
@@ -4764,19 +4780,6 @@ MonoBehaviour:
   activeRotate: 0
   dir: {x: 0, y: 1, z: 0}
   rotSpeed: 8
---- !u!65 &1366603593
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2393328655556015869}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.40872884, y: 0.030000007, z: 0.05}
-  m_Center: {x: -0.000000014901161, y: 0, z: 0.0000000037252903}
 --- !u!1001 &2393328655555915869
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4790,15 +4793,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4060ce7c0690bed429fe7809e4d5a28d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.786
+      value: -8.66
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4060ce7c0690bed429fe7809e4d5a28d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.503
+      value: 15.809
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4060ce7c0690bed429fe7809e4d5a28d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 12.421
+      value: 59.06
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4060ce7c0690bed429fe7809e4d5a28d, type: 3}
       propertyPath: m_LocalRotation.x
@@ -4810,15 +4813,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4060ce7c0690bed429fe7809e4d5a28d, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.11343114
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4060ce7c0690bed429fe7809e4d5a28d, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9935459
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4060ce7c0690bed429fe7809e4d5a28d, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 4060ce7c0690bed429fe7809e4d5a28d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 4060ce7c0690bed429fe7809e4d5a28d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 4060ce7c0690bed429fe7809e4d5a28d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -13.026001
       objectReference: {fileID: 0}
     - target: {fileID: 2300010, guid: 4060ce7c0690bed429fe7809e4d5a28d, type: 3}
       propertyPath: m_Materials.Array.data[0]

@@ -49,6 +49,10 @@ public class dialogueScript : MonoBehaviour
     private float[] timer = new float[4];
     public string dialogueID = "";          //potential IDs: "Intro" "Night1" "Night2"
 
+    [Header("Artifacts")]
+    public GameObject artifactTags;
+    public int fResponse, gResponse, rResponse;
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // Start is called before the first frame update
@@ -94,12 +98,14 @@ public class dialogueScript : MonoBehaviour
 
         if (dialogueID == "Night2")
         {
-            StartCoroutine(poseQuestion(null, 2f, true,
-                        "TEST",
-                        2f, true, .5f, false));
+            artifactTags = GameObject.FindGameObjectWithTag("Tags");
 
-            nextTag = "C01";
-            answerTag = "C01";
+            StartCoroutine(poseQuestion(fran, 2f, false,
+                        "How goes the hunt? Find anything good?",
+                        3f, true, .5f, false));
+
+            nextTag = "C00";
+            answerTag = "C00";
         }
     }
 
@@ -1926,6 +1932,63 @@ public class dialogueScript : MonoBehaviour
 
         //C0A artifact stuff
 
+        if (answerTag == "C00")     //Night2
+        {
+            youDiag.text = "";
+
+            oneAnswer.text = "1) Confirm";
+            twoAnswer.text = "2) Worry";
+            thrAnswer.text = null;
+
+            if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))  //if choice 1 is selected
+            {
+                youDiag.text = "I think I've found some suitable phylacteries to test.";
+                answering = false;
+
+                StartCoroutine(poseQuestion(fran, 3f, false,
+                    "Glad to hear I'll be rid of this island yet.",
+                    3f, false, .25f, true));
+
+                nextTag = "FRANGIFT1";
+
+                oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
+
+                Xnpc[0] = rob; XinitDelay[0] = 0f; XendDelay[0] = 2.5f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                Xline[0] = "Aw, you're not gonna miss us?";
+
+                Xnpc[1] = fran; XinitDelay[1] = .25f; XendDelay[1] = 2f; XpostDelay[1] = .25f; XisPlayer[1] = false; Xtrigger[1] = false;
+                Xline[1] = "...No.";
+
+                Xnpc[2] = null; XinitDelay[2] = 0; XendDelay[2] = 3f; XpostDelay[2] = .25f; XisPlayer[2] = false; Xtrigger[1] = false;
+                Xline[2] = "Hah! Okay: here's what I've found."; XskipAvailable[2] = false;
+            }
+            else if (twoAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))  //if choice 2 is selected
+            {
+                youDiag.text = "Not great so far. Don't worry, we'll test some phylacteries tonight anyways.";
+                answering = false;
+
+                StartCoroutine(poseQuestion(null, 5f, true,
+                    "I'll find something eventually.",
+                    3f, false, .25f, true));
+
+                nextTag = "FRANGIFT1";
+
+                oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
+
+                Xnpc[0] = fran; XinitDelay[0] = 0f; XendDelay[0] = 3.5f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                Xline[0] = "I certainly hope so, pirate. You've not much time.";
+
+                Xnpc[1] = rob; XinitDelay[1] = 0f; XendDelay[1] = 4.5f; XpostDelay[1] = .25f; XisPlayer[1] = false; Xtrigger[1] = false;
+                Xline[1] = "Hate to say it, but she's right. Only one day left after this.";    XskipAvailable[1] = false;
+
+                Xnpc[2] = gunn; XinitDelay[2] = 0; XendDelay[2] = 2f; XpostDelay[2] = .25f; XisPlayer[2] = false; Xtrigger[2] = false;
+                Xline[2] = "Indeed.";
+
+                Xnpc[3] = null; XinitDelay[3] = 0; XendDelay[3] = 3f; XpostDelay[3] = .25f; XisPlayer[3] = false; Xtrigger[3] = false;
+                Xline[3] = "Hah! Okay: here's what I've found."; XskipAvailable[3] = false;
+            }
+        }
+
         if (answerTag == "C01")     //Night2
         {
             youDiag.text = "Let's begin:";
@@ -2609,6 +2672,534 @@ public class dialogueScript : MonoBehaviour
 
                 //end
                 maxI = 1;
+            }
+        }
+
+        if (answerTag == "FRANGIFT1")
+        {
+            youDiag.text = "Choose a phylactery to test with Francesca.";
+
+            oneAnswer.text = "1) " + artifactTags.GetComponent<ArtifactTags>().tagged[0].name;
+
+            if (artifactTags.GetComponent<ArtifactTags>().tagged[1] != null)
+            {
+                twoAnswer.text = "2) " + artifactTags.GetComponent<ArtifactTags>().tagged[1].name;
+            }
+            else
+            {
+                twoAnswer.text = null;
+            }
+
+            if (artifactTags.GetComponent<ArtifactTags>().tagged[2] != null)
+            {
+                thrAnswer.text = "3) " + artifactTags.GetComponent<ArtifactTags>().tagged[2].name;
+            }
+            else
+            {
+                thrAnswer.text = null;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))  //if choice 1 is selected
+            {
+                youDiag.text = "Francesca, I found this for you. What do you think?";   //stretch goal (random range for dialogue choices)
+                answering = false;
+
+                fResponse = artifactTags.GetComponent<ArtifactTags>().tagged[0].GetComponent<grabbable>().franScore;    //stretch goal (assign artifact pos when given)
+
+                nextTag = "GUNNGIFT1";
+
+                StartCoroutine(poseQuestion(fran, 3f, false,
+                    "Hmm...",
+                    2.5f, false, .5f, true));
+
+                oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
+
+                if (fResponse == 0)
+                {
+                    Xnpc[0] = fran; XinitDelay[0] = 0f; XendDelay[0] = 4.5f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                    Xline[0] = "...Is this an insult or a poor attempt at a joke, pirate?";
+
+                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 2f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = true;
+                    Xline[1] = "...";
+                }
+                else if (fResponse == 1)
+                {
+                    Xnpc[0] = fran; XinitDelay[0] = 0f; XendDelay[0] = 4.5f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                    Xline[0] = "I'm not very impressed, pirate. I'll humor you, though.";
+
+                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 2.5f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = true;
+                    Xline[1] = "How generous of you.";
+                }
+                else if (fResponse == 2)
+                {
+                    Xnpc[0] = fran; XinitDelay[0] = 0f; XendDelay[0] = 4f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                    Xline[0] = "Hm. I'm impressed. I suppose this could work.";
+
+                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 3f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = true;
+                    Xline[1] = "Glad to hear, Francesca.";
+                }
+                else if (fResponse == 3)
+                {
+                    Xnpc[0] = fran; XinitDelay[0] = 0f; XendDelay[0] = 4f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                    Xline[0] = "I'd...I'm not sure. I feel like it reminds me of...something.";
+
+                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 3f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = true;
+                    Xline[1] = "Really? That's a good sign, Francesca.";
+                }
+            }
+            else if (twoAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))  //if choice 2 is selected
+            {
+                youDiag.text = "Francesca, I found this for you. What do you think?";   //stretch goal (random range for dialogue choices)
+                answering = false;
+
+                fResponse = artifactTags.GetComponent<ArtifactTags>().tagged[1].GetComponent<grabbable>().franScore;    //stretch goal (assign artifact pos when given)
+
+                nextTag = "GUNNGIFT1";
+
+                StartCoroutine(poseQuestion(fran, 3f, false,
+                    "Hmm...",
+                    2.5f, false, .5f, true));
+
+                oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
+
+                if (fResponse == 0)
+                {
+                    Xnpc[0] = fran; XinitDelay[0] = 0f; XendDelay[0] = 4.5f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                    Xline[0] = "...Is this an insult or a poor attempt at a joke, pirate?";
+
+                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 2f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = true;
+                    Xline[1] = "...";
+                }
+                else if (fResponse == 1)
+                {
+                    Xnpc[0] = fran; XinitDelay[0] = 0f; XendDelay[0] = 4.5f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                    Xline[0] = "I'm not very impressed, pirate. I'll humor you, though.";
+
+                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 2.5f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = true;
+                    Xline[1] = "How generous of you.";
+                }
+                else if (fResponse == 2)
+                {
+                    Xnpc[0] = fran; XinitDelay[0] = 0f; XendDelay[0] = 4f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                    Xline[0] = "Hm. I'm impressed. I suppose this could work.";
+
+                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 3f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = true;
+                    Xline[1] = "Glad to hear, Francesca.";
+                }
+                else if (fResponse == 3)
+                {
+                    Xnpc[0] = fran; XinitDelay[0] = 0f; XendDelay[0] = 4f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                    Xline[0] = "I'd...I'm not sure. I feel like it reminds me of...something.";
+
+                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 3f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = true;
+                    Xline[1] = "Really? That's a good sign, Francesca.";
+                }
+            }
+            else if (thrAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))  //if choice 3 is selected
+            {
+                youDiag.text = "Francesca, I found this for you. What do you think?";   //stretch goal (random range for dialogue choices)
+                answering = false;
+
+                fResponse = artifactTags.GetComponent<ArtifactTags>().tagged[2].GetComponent<grabbable>().franScore;    //stretch goal (assign artifact pos when given)
+
+                nextTag = "GUNNGIFT1";
+
+                StartCoroutine(poseQuestion(fran, 3f, false,
+                    "Hmm...",
+                    2.5f, false, .5f, true));
+
+                oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
+
+                if (fResponse == 0)
+                {
+                    Xnpc[0] = fran; XinitDelay[0] = 0f; XendDelay[0] = 4.5f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                    Xline[0] = "...Is this an insult or a poor attempt at a joke, pirate?";
+
+                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 2f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = true;
+                    Xline[1] = "...";
+                }
+                else if (fResponse == 1)
+                {
+                    Xnpc[0] = fran; XinitDelay[0] = 0f; XendDelay[0] = 4.5f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                    Xline[0] = "I'm not very impressed, pirate. I'll humor you, though.";
+
+                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 2.5f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = true;
+                    Xline[1] = "How generous of you.";
+                }
+                else if (fResponse == 2)
+                {
+                    Xnpc[0] = fran; XinitDelay[0] = 0f; XendDelay[0] = 4f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                    Xline[0] = "Hm. I'm impressed. I suppose this could work.";
+
+                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 3f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = true;
+                    Xline[1] = "Glad to hear, Francesca.";
+                }
+                else if (fResponse == 3)
+                {
+                    Xnpc[0] = fran; XinitDelay[0] = 0f; XendDelay[0] = 4f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                    Xline[0] = "I'd...I'm not sure. I feel like it reminds me of...something.";
+
+                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 3f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = true;
+                    Xline[1] = "Really? That's a good sign, Francesca.";
+                }
+            }
+        }
+
+        if (answerTag == "GUNNGIFT1")
+        {
+            youDiag.text = "Choose a phylactery to test with Gunn.";
+
+            oneAnswer.text = "1) " + artifactTags.GetComponent<ArtifactTags>().tagged[0].name;
+
+            if (artifactTags.GetComponent<ArtifactTags>().tagged[1] != null)
+            {
+                twoAnswer.text = "2) " + artifactTags.GetComponent<ArtifactTags>().tagged[1].name;
+            }
+            else
+            {
+                twoAnswer.text = null;
+            }
+
+            if (artifactTags.GetComponent<ArtifactTags>().tagged[2] != null)
+            {
+                thrAnswer.text = "3) " + artifactTags.GetComponent<ArtifactTags>().tagged[2].name;
+            }
+            else
+            {
+                thrAnswer.text = null;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))  //if choice 1 is selected
+            {
+                youDiag.text = "Gunnlaug, what do you think of this?";   //stretch goal (random range for dialogue choices)
+                answering = false;
+
+                gResponse = artifactTags.GetComponent<ArtifactTags>().tagged[0].GetComponent<grabbable>().gunScore;    //stretch goal (assign artifact pos when given)
+
+                nextTag = "ROBGIFT1";
+
+                StartCoroutine(poseQuestion(gunn, 3f, false,
+                    "Let me see...",
+                    2.5f, false, .5f, true));
+
+                oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
+
+                if (gResponse == 0)
+                {
+                    Xnpc[0] = gunn; XinitDelay[0] = 0f; XendDelay[0] = 4.5f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                    Xline[0] = "I'm sorry, I don't follow your logic. This repulses me.";
+
+                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 2f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = true;
+                    Xline[1] = "...";
+                }
+                else if (gResponse == 1)
+                {
+                    Xnpc[0] = gunn; XinitDelay[0] = 0f; XendDelay[0] = 4.5f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                    Xline[0] = "Hm. I'm not pleased, but I don't know phylacteries as you do.";
+
+                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 2.5f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = true;
+                    Xline[1] = "Good to know, thank you.";
+                }
+                else if (gResponse == 2)
+                {
+                    Xnpc[0] = gunn; XinitDelay[0] = 0f; XendDelay[0] = 4f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                    Xline[0] = "I'm quite fond of this. It suits me well.";
+
+                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 3f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = true;
+                    Xline[1] = "That's good. Thank you.";
+                }
+                else if (gResponse == 3)
+                {
+                    Xnpc[0] = gunn; XinitDelay[0] = 0f; XendDelay[0] = 3f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                    Xline[0] = "...Interesting.";
+
+                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 3f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = false;
+                    Xline[1] = "Interesting?";
+
+                    Xnpc[2] = null; XinitDelay[2] = 0f; XendDelay[2] = 2.5f; XpostDelay[2] = .25f; XisPlayer[2] = false; Xtrigger[2] = true;
+                    Xline[2] = "Very.";
+                }
+            }
+            else if (twoAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))  //if choice 2 is selected
+            {
+                youDiag.text = "Gunnlaug, what do you think of this?";   //stretch goal (random range for dialogue choices)
+                answering = false;
+
+                gResponse = artifactTags.GetComponent<ArtifactTags>().tagged[1].GetComponent<grabbable>().gunScore;    //stretch goal (assign artifact pos when given)
+
+                nextTag = "ROBGIFT1";
+
+                StartCoroutine(poseQuestion(gunn, 3f, false,
+                    "Let me see...",
+                    2.5f, false, .5f, true));
+
+                oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
+
+                if (gResponse == 0)
+                {
+                    Xnpc[0] = gunn; XinitDelay[0] = 0f; XendDelay[0] = 4.5f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                    Xline[0] = "I'm sorry, I don't follow your logic. This repulses me.";
+
+                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 2f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = true;
+                    Xline[1] = "...";
+                }
+                else if (gResponse == 1)
+                {
+                    Xnpc[0] = gunn; XinitDelay[0] = 0f; XendDelay[0] = 4.5f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                    Xline[0] = "Hm. I'm not pleased, but I don't know phylacteries as you do.";
+
+                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 2.5f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = true;
+                    Xline[1] = "Good to know, thank you.";
+                }
+                else if (gResponse == 2)
+                {
+                    Xnpc[0] = gunn; XinitDelay[0] = 0f; XendDelay[0] = 4f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                    Xline[0] = "I'm quite fond of this. It suits me well.";
+
+                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 3f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = true;
+                    Xline[1] = "That's good. Thank you.";
+                }
+                else if (gResponse == 3)
+                {
+                    Xnpc[0] = gunn; XinitDelay[0] = 0f; XendDelay[0] = 3f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                    Xline[0] = "...Interesting.";
+
+                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 3f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = false;
+                    Xline[1] = "Interesting?";
+
+                    Xnpc[2] = null; XinitDelay[2] = 0f; XendDelay[2] = 2.5f; XpostDelay[2] = .25f; XisPlayer[2] = false; Xtrigger[2] = true;
+                    Xline[2] = "Very.";
+                }
+            }
+            else if (thrAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))  //if choice 3 is selected
+            {
+                youDiag.text = "Gunnlaug, what do you think of this?";   //stretch goal (random range for dialogue choices)
+                answering = false;
+
+                gResponse = artifactTags.GetComponent<ArtifactTags>().tagged[3].GetComponent<grabbable>().gunScore;    //stretch goal (assign artifact pos when given)
+
+                nextTag = "ROBGIFT1";
+
+                StartCoroutine(poseQuestion(gunn, 3f, false,
+                    "Let me see...",
+                    2.5f, false, .5f, true));
+
+                oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
+
+                if (gResponse == 0)
+                {
+                    Xnpc[0] = gunn; XinitDelay[0] = 0f; XendDelay[0] = 4.5f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                    Xline[0] = "I'm sorry, I don't follow your logic. This repulses me.";
+
+                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 2f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = true;
+                    Xline[1] = "...";
+                }
+                else if (gResponse == 1)
+                {
+                    Xnpc[0] = gunn; XinitDelay[0] = 0f; XendDelay[0] = 4.5f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                    Xline[0] = "Hm. I'm not pleased, but I don't know phylacteries as you do.";
+
+                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 2.5f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = true;
+                    Xline[1] = "Good to know, thank you.";
+                }
+                else if (gResponse == 2)
+                {
+                    Xnpc[0] = gunn; XinitDelay[0] = 0f; XendDelay[0] = 4f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                    Xline[0] = "I'm quite fond of this. It suits me well.";
+
+                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 3f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = true;
+                    Xline[1] = "That's good. Thank you.";
+                }
+                else if (gResponse == 3)
+                {
+                    Xnpc[0] = gunn; XinitDelay[0] = 0f; XendDelay[0] = 3f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                    Xline[0] = "...Interesting.";
+
+                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 3f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = false;
+                    Xline[1] = "Interesting?";
+
+                    Xnpc[2] = null; XinitDelay[2] = 0f; XendDelay[2] = 2.5f; XpostDelay[2] = .25f; XisPlayer[2] = false; Xtrigger[2] = true;
+                    Xline[2] = "Very.";
+                }
+            }
+        }
+
+        if (answerTag == "ROBGIFT1")
+        {
+            youDiag.text = "Choose a phylactery to test with Robin.";
+
+            oneAnswer.text = "1) " + artifactTags.GetComponent<ArtifactTags>().tagged[0].name;
+
+            if (artifactTags.GetComponent<ArtifactTags>().tagged[1] != null)
+            {
+                twoAnswer.text = "2) " + artifactTags.GetComponent<ArtifactTags>().tagged[1].name;
+            }
+            else
+            {
+                twoAnswer.text = null;
+            }
+
+            if (artifactTags.GetComponent<ArtifactTags>().tagged[2] != null)
+            {
+                thrAnswer.text = "3) " + artifactTags.GetComponent<ArtifactTags>().tagged[2].name;
+            }
+            else
+            {
+                thrAnswer.text = null;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))  //if choice 1 is selected
+            {
+                youDiag.text = "How's this feel, Robin?";   //stretch goal (random range for dialogue choices)
+                answering = false;
+
+                rResponse = artifactTags.GetComponent<ArtifactTags>().tagged[0].GetComponent<grabbable>().robScore;    //stretch goal (assign artifact pos when given)
+
+                nextTag = "ROBGIFT1";
+
+                StartCoroutine(poseQuestion(gunn, 3f, false,
+                    "Eh? Let's see.",
+                    2.5f, false, .5f, true));
+
+                oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
+
+                if (gResponse == 0)
+                {
+                    Xnpc[0] = gunn; XinitDelay[0] = 0f; XendDelay[0] = 4.5f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                    Xline[0] = "I'm sorry, I don't follow your logic. This repulses me.";
+
+                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 2f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = true;
+                    Xline[1] = "...";
+                }
+                else if (gResponse == 1)
+                {
+                    Xnpc[0] = gunn; XinitDelay[0] = 0f; XendDelay[0] = 4.5f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                    Xline[0] = "Hm. I'm not pleased, but I don't know phylacteries as you do.";
+
+                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 2.5f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = true;
+                    Xline[1] = "Good to know, thank you.";
+                }
+                else if (gResponse == 2)
+                {
+                    Xnpc[0] = gunn; XinitDelay[0] = 0f; XendDelay[0] = 4f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                    Xline[0] = "I'm quite fond of this. It suits me well.";
+
+                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 3f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = true;
+                    Xline[1] = "That's good. Thank you.";
+                }
+                else if (gResponse == 3)
+                {
+                    Xnpc[0] = gunn; XinitDelay[0] = 0f; XendDelay[0] = 3f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                    Xline[0] = "...Interesting.";
+
+                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 3f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = false;
+                    Xline[1] = "Interesting?";
+
+                    Xnpc[2] = null; XinitDelay[2] = 0f; XendDelay[2] = 2.5f; XpostDelay[2] = .25f; XisPlayer[2] = false; Xtrigger[2] = true;
+                    Xline[2] = "Very.";
+                }
+            }
+            else if (twoAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))  //if choice 2 is selected
+            {
+                youDiag.text = "Gunnlaug, what do you think of this?";   //stretch goal (random range for dialogue choices)
+                answering = false;
+
+                gResponse = artifactTags.GetComponent<ArtifactTags>().tagged[1].GetComponent<grabbable>().gunScore;    //stretch goal (assign artifact pos when given)
+
+                nextTag = "ROBGIFT1";
+
+                StartCoroutine(poseQuestion(gunn, 3f, false,
+                    "Let me see...",
+                    2.5f, false, .5f, true));
+
+                oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
+
+                if (gResponse == 0)
+                {
+                    Xnpc[0] = gunn; XinitDelay[0] = 0f; XendDelay[0] = 4.5f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                    Xline[0] = "I'm sorry, I don't follow your logic. This repulses me.";
+
+                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 2f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = true;
+                    Xline[1] = "...";
+                }
+                else if (gResponse == 1)
+                {
+                    Xnpc[0] = gunn; XinitDelay[0] = 0f; XendDelay[0] = 4.5f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                    Xline[0] = "Hm. I'm not pleased, but I don't know phylacteries as you do.";
+
+                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 2.5f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = true;
+                    Xline[1] = "Good to know, thank you.";
+                }
+                else if (gResponse == 2)
+                {
+                    Xnpc[0] = gunn; XinitDelay[0] = 0f; XendDelay[0] = 4f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                    Xline[0] = "I'm quite fond of this. It suits me well.";
+
+                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 3f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = true;
+                    Xline[1] = "That's good. Thank you.";
+                }
+                else if (gResponse == 3)
+                {
+                    Xnpc[0] = gunn; XinitDelay[0] = 0f; XendDelay[0] = 3f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                    Xline[0] = "...Interesting.";
+
+                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 3f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = false;
+                    Xline[1] = "Interesting?";
+
+                    Xnpc[2] = null; XinitDelay[2] = 0f; XendDelay[2] = 2.5f; XpostDelay[2] = .25f; XisPlayer[2] = false; Xtrigger[2] = true;
+                    Xline[2] = "Very.";
+                }
+            }
+            else if (thrAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))  //if choice 3 is selected
+            {
+                youDiag.text = "Gunnlaug, what do you think of this?";   //stretch goal (random range for dialogue choices)
+                answering = false;
+
+                gResponse = artifactTags.GetComponent<ArtifactTags>().tagged[3].GetComponent<grabbable>().gunScore;    //stretch goal (assign artifact pos when given)
+
+                nextTag = "ROBGIFT1";
+
+                StartCoroutine(poseQuestion(gunn, 3f, false,
+                    "Let me see...",
+                    2.5f, false, .5f, true));
+
+                oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
+
+                if (gResponse == 0)
+                {
+                    Xnpc[0] = gunn; XinitDelay[0] = 0f; XendDelay[0] = 4.5f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                    Xline[0] = "I'm sorry, I don't follow your logic. This repulses me.";
+
+                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 2f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = true;
+                    Xline[1] = "...";
+                }
+                else if (gResponse == 1)
+                {
+                    Xnpc[0] = gunn; XinitDelay[0] = 0f; XendDelay[0] = 4.5f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                    Xline[0] = "Hm. I'm not pleased, but I don't know phylacteries as you do.";
+
+                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 2.5f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = true;
+                    Xline[1] = "Good to know, thank you.";
+                }
+                else if (gResponse == 2)
+                {
+                    Xnpc[0] = gunn; XinitDelay[0] = 0f; XendDelay[0] = 4f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                    Xline[0] = "I'm quite fond of this. It suits me well.";
+
+                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 3f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = true;
+                    Xline[1] = "That's good. Thank you.";
+                }
+                else if (gResponse == 3)
+                {
+                    Xnpc[0] = gunn; XinitDelay[0] = 0f; XendDelay[0] = 3f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                    Xline[0] = "...Interesting.";
+
+                    Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 3f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = false;
+                    Xline[1] = "Interesting?";
+
+                    Xnpc[2] = null; XinitDelay[2] = 0f; XendDelay[2] = 2.5f; XpostDelay[2] = .25f; XisPlayer[2] = false; Xtrigger[2] = true;
+                    Xline[2] = "Very.";
+                }
             }
         }
 

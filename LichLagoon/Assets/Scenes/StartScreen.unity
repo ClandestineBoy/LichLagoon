@@ -1676,7 +1676,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 100060677}
-  - component: {fileID: 100060678}
   m_Layer: 0
   m_Name: Stars
   m_TagString: Untagged
@@ -1709,19 +1708,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &100060678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 100060676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdb2956cdd01b6b40aba5be4408660cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetObj: {fileID: 1862278644}
 --- !u!1001 &100239123
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9165,7 +9151,7 @@ ParticleSystem:
     m_BurstCount: 1
     m_Bursts:
     - serializedVersion: 2
-      time: 3
+      time: 2.5
       countCurve:
         serializedVersion: 2
         minMaxState: 0
@@ -9220,8 +9206,8 @@ ParticleSystem:
           m_PostInfinity: 2
           m_RotationOrder: 4
       cycleCount: 0
-      repeatInterval: 7
-      probability: 0.75
+      repeatInterval: 9
+      probability: 1
   SizeModule:
     enabled: 0
     curve:

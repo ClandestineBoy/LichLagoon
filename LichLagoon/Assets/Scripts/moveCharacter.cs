@@ -31,7 +31,7 @@ public class moveCharacter : MonoBehaviour
     public Image loreBacker, hex0, hex1, reticle;
     public Text headerText, bodyText;
     public float headFadeInSpeed, headFadeOutSpeed, bodyFadeInSpeed, bodyFadeOutSpeed, backFadeInSpeed, backFadeOutSpeed;
-    public Vector3 reticleMinScale, reticleMaxScale;
+    public Vector3 reticleMinScale, reticleMaxScale, reticleMidScale;
 
     [Header("Grab Variables")]
 
@@ -230,6 +230,7 @@ public class moveCharacter : MonoBehaviour
     {
         RaycastHit hit;
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+       
         if (Input.GetMouseButtonDown(1))
         {
             if (!grabbing && tags.tagged.Count > 0)
@@ -259,7 +260,9 @@ public class moveCharacter : MonoBehaviour
                     if (Input.GetMouseButtonDown(0))
                     {
                         DayTransition(true);
-                    }
+                    }                   
+                        Debug.Log("FIre");
+                            //if ya holding something currently 
                 }
                 if (hit.collider.gameObject.GetComponent<grabbable>() != null && sunRotator.goToNight == false)     //if looking at an artifact
                 {
@@ -294,7 +297,7 @@ public class moveCharacter : MonoBehaviour
                     }
                     else   //if looking at artifact but not clicking
                     {
-                        Debug.Log("Can Pickup");
+                        //Debug.Log("Can Pickup");
 
                         reticle.transform.localScale = Vector3.MoveTowards(reticle.transform.localScale, reticleMaxScale, Time.deltaTime * 10);
                         colourShift(reticle, null, reticleActive, Time.deltaTime * colourShiftMod, false, false);
@@ -302,15 +305,22 @@ public class moveCharacter : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("Can't Pickup");
-
-                    reticle.transform.localScale = Vector3.MoveTowards(reticle.transform.localScale, reticleMinScale, Time.deltaTime * 10);
+                    //Debug.Log("Can't Pickup");
+                    if (hit.collider.gameObject.tag == "Fire")
+                    {
+                        reticle.transform.localScale = Vector3.MoveTowards(reticle.transform.localScale, reticleMinScale, Time.deltaTime * 10);
+                        colourShift(reticle, null, new Color(1, 1, 1, 0), Time.deltaTime * colourShiftMod, false, false);
+                    }
+                    else
+                    {
+                        reticle.transform.localScale = Vector3.MoveTowards(reticle.transform.localScale, reticleMidScale, Time.deltaTime * 10);
                     colourShift(reticle, null, reticleSilent, Time.deltaTime * colourShiftMod, false, false);
+                    }
                 }
             }
             else
             {
-                reticle.transform.localScale = Vector3.MoveTowards(reticle.transform.localScale, reticleMinScale, Time.deltaTime * 10);
+                reticle.transform.localScale = Vector3.MoveTowards(reticle.transform.localScale, reticleMidScale, Time.deltaTime * 10);
                 colourShift(reticle, null, reticleSilent, Time.deltaTime * colourShiftMod, false, false);
             }
         }
@@ -411,7 +421,7 @@ public class moveCharacter : MonoBehaviour
         // Move the controller
         characterController.Move(moveDirection * Time.deltaTime);
 
-        Debug.Log(tags.display);
+        //Debug.Log(tags.display);
 
         if (Mathf.Abs(moveDirection.x) < .1f && Mathf.Abs(moveDirection.z) < .1f)
         {

@@ -29490,8 +29490,9 @@ MonoBehaviour:
   bodyFadeOutSpeed: 4
   backFadeInSpeed: 0.4
   backFadeOutSpeed: 4
-  reticleMinScale: {x: 2, y: 2, z: 2}
+  reticleMinScale: {x: 1, y: 1, z: 1}
   reticleMaxScale: {x: 3, y: 3, z: 3}
+  reticleMidScale: {x: 2, y: 2, z: 2}
   grabPos: {fileID: 371525486}
   UIAnchor: {fileID: 1796827817}
   grabSpeed: 7
@@ -37552,8 +37553,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1410846781}
-  m_LocalRotation: {x: 0.1008869, y: 0.884122, z: 0.39711523, w: -0.22460991}
-  m_LocalPosition: {x: -38.702198, y: 17.125612, z: 29.398447}
+  m_LocalRotation: {x: -0.02494054, y: 0.95008826, z: 0.30084243, w: 0.07876598}
+  m_LocalPosition: {x: 95.4237, y: -299.11905, z: 276.33746}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1508705850}

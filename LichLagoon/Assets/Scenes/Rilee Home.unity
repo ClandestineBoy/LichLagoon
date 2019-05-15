@@ -10822,7 +10822,7 @@ PrefabInstance:
     - target: {fileID: 971321994025712737, guid: 2e74e31081599a74c9e035077f95b114,
         type: 3}
       propertyPath: m_Name
-      value: Cannonball (1)
+      value: Cannonball
       objectReference: {fileID: 0}
     - target: {fileID: 971321994025541697, guid: 2e74e31081599a74c9e035077f95b114,
         type: 3}
@@ -22123,7 +22123,7 @@ PrefabInstance:
     - target: {fileID: 971321994025712737, guid: 2e74e31081599a74c9e035077f95b114,
         type: 3}
       propertyPath: m_Name
-      value: Cannonball (2)
+      value: Cannonball
       objectReference: {fileID: 0}
     - target: {fileID: 971321994025541697, guid: 2e74e31081599a74c9e035077f95b114,
         type: 3}
@@ -26765,7 +26765,7 @@ PrefabInstance:
     - target: {fileID: 971321994025712737, guid: 2e74e31081599a74c9e035077f95b114,
         type: 3}
       propertyPath: m_Name
-      value: Cannonball (3)
+      value: Cannonball
       objectReference: {fileID: 0}
     - target: {fileID: 971321994025541697, guid: 2e74e31081599a74c9e035077f95b114,
         type: 3}
@@ -29401,7 +29401,7 @@ MonoBehaviour:
   loreBacker: {fileID: 726127256}
   hex0: {fileID: 1800032328}
   hex1: {fileID: 373575421}
-  reticle: {fileID: 0}
+  reticle: {fileID: 661858936}
   headerText: {fileID: 1748219044}
   bodyText: {fileID: 252380464}
   headFadeInSpeed: 0.5
@@ -37422,8 +37422,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1410846781}
-  m_LocalRotation: {x: 0.15961021, y: 0.49000365, z: 0.09165848, w: -0.8520679}
-  m_LocalPosition: {x: 471.7892, y: -256.37506, z: -58.130665}
+  m_LocalRotation: {x: -0.09321369, y: 0.0057469336, z: 0.0005378947, w: 0.99562943}
+  m_LocalPosition: {x: 31.73975, y: -42.39223, z: -69.93608}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1508705850}

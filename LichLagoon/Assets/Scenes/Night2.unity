@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.051826224, g: 0.027033623, b: 0.076659374, a: 1}
+  m_IndirectSpecularColor: {r: 0.051826313, g: 0.027033683, b: 0.07665939, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3077,10 +3077,10 @@ RectTransform:
   m_GameObject: {fileID: 150756288}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.9974451, y: 0.9974446, z: 0.9974446}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1382718040}
-  m_RootOrder: 6
+  m_Father: {fileID: 592420211}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -12515,6 +12515,7 @@ RectTransform:
   m_Children:
   - {fileID: 1500438930}
   - {fileID: 1484777714}
+  - {fileID: 150756289}
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -22613,6 +22614,7 @@ MonoBehaviour:
   backFadeOutSpeed: 4
   reticleMinScale: {x: 0, y: 0, z: 0}
   reticleMaxScale: {x: 0, y: 0, z: 0}
+  reticleMidScale: {x: 0, y: 0, z: 0}
   grabPos: {fileID: 51670536}
   UIAnchor: {fileID: 1822603114}
   grabSpeed: 7
@@ -29454,7 +29456,6 @@ RectTransform:
   - {fileID: 2110300586}
   - {fileID: 529734616}
   - {fileID: 368745530}
-  - {fileID: 150756289}
   m_Father: {fileID: 1042703594}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -50453,8 +50454,6 @@ MonoBehaviour:
     portrait: {fileID: 579591968}
     mousePrompt: {fileID: 1863401945}
     heldObj: {fileID: 0}
-    heldResponseValue: 0
-    delayResponseValue: 0
     primaryActive: 0
     secondaryActive: 0
   gunn:
@@ -50464,8 +50463,6 @@ MonoBehaviour:
     portrait: {fileID: 1198666390}
     mousePrompt: {fileID: 1680603083}
     heldObj: {fileID: 0}
-    heldResponseValue: 0
-    delayResponseValue: 0
     primaryActive: 0
     secondaryActive: 0
   rob:
@@ -50475,8 +50472,6 @@ MonoBehaviour:
     portrait: {fileID: 1259010191}
     mousePrompt: {fileID: 1056534933}
     heldObj: {fileID: 0}
-    heldResponseValue: 0
-    delayResponseValue: 0
     primaryActive: 0
     secondaryActive: 0
   answering: 0
@@ -50503,8 +50498,6 @@ MonoBehaviour:
     portrait: {fileID: 0}
     mousePrompt: {fileID: 0}
     heldObj: {fileID: 0}
-    heldResponseValue: 0
-    delayResponseValue: 0
     primaryActive: 0
     secondaryActive: 0
   - currentDialogue: {fileID: 0}
@@ -50513,8 +50506,6 @@ MonoBehaviour:
     portrait: {fileID: 0}
     mousePrompt: {fileID: 0}
     heldObj: {fileID: 0}
-    heldResponseValue: 0
-    delayResponseValue: 0
     primaryActive: 0
     secondaryActive: 0
   - currentDialogue: {fileID: 0}
@@ -50523,8 +50514,6 @@ MonoBehaviour:
     portrait: {fileID: 0}
     mousePrompt: {fileID: 0}
     heldObj: {fileID: 0}
-    heldResponseValue: 0
-    delayResponseValue: 0
     primaryActive: 0
     secondaryActive: 0
   - currentDialogue: {fileID: 0}
@@ -50533,8 +50522,6 @@ MonoBehaviour:
     portrait: {fileID: 0}
     mousePrompt: {fileID: 0}
     heldObj: {fileID: 0}
-    heldResponseValue: 0
-    delayResponseValue: 0
     primaryActive: 0
     secondaryActive: 0
   - currentDialogue: {fileID: 0}
@@ -50543,8 +50530,6 @@ MonoBehaviour:
     portrait: {fileID: 0}
     mousePrompt: {fileID: 0}
     heldObj: {fileID: 0}
-    heldResponseValue: 0
-    delayResponseValue: 0
     primaryActive: 0
     secondaryActive: 0
   - currentDialogue: {fileID: 0}
@@ -50553,8 +50538,6 @@ MonoBehaviour:
     portrait: {fileID: 0}
     mousePrompt: {fileID: 0}
     heldObj: {fileID: 0}
-    heldResponseValue: 0
-    delayResponseValue: 0
     primaryActive: 0
     secondaryActive: 0
   - currentDialogue: {fileID: 0}
@@ -50563,8 +50546,6 @@ MonoBehaviour:
     portrait: {fileID: 0}
     mousePrompt: {fileID: 0}
     heldObj: {fileID: 0}
-    heldResponseValue: 0
-    delayResponseValue: 0
     primaryActive: 0
     secondaryActive: 0
   - currentDialogue: {fileID: 0}
@@ -50573,8 +50554,6 @@ MonoBehaviour:
     portrait: {fileID: 0}
     mousePrompt: {fileID: 0}
     heldObj: {fileID: 0}
-    heldResponseValue: 0
-    delayResponseValue: 0
     primaryActive: 0
     secondaryActive: 0
   - currentDialogue: {fileID: 0}
@@ -50583,8 +50562,6 @@ MonoBehaviour:
     portrait: {fileID: 0}
     mousePrompt: {fileID: 0}
     heldObj: {fileID: 0}
-    heldResponseValue: 0
-    delayResponseValue: 0
     primaryActive: 0
     secondaryActive: 0
   - currentDialogue: {fileID: 0}
@@ -50593,8 +50570,6 @@ MonoBehaviour:
     portrait: {fileID: 0}
     mousePrompt: {fileID: 0}
     heldObj: {fileID: 0}
-    heldResponseValue: 0
-    delayResponseValue: 0
     primaryActive: 0
     secondaryActive: 0
   - currentDialogue: {fileID: 0}
@@ -50603,8 +50578,6 @@ MonoBehaviour:
     portrait: {fileID: 0}
     mousePrompt: {fileID: 0}
     heldObj: {fileID: 0}
-    heldResponseValue: 0
-    delayResponseValue: 0
     primaryActive: 0
     secondaryActive: 0
   - currentDialogue: {fileID: 0}
@@ -50613,8 +50586,6 @@ MonoBehaviour:
     portrait: {fileID: 0}
     mousePrompt: {fileID: 0}
     heldObj: {fileID: 0}
-    heldResponseValue: 0
-    delayResponseValue: 0
     primaryActive: 0
     secondaryActive: 0
   - currentDialogue: {fileID: 0}
@@ -50623,8 +50594,6 @@ MonoBehaviour:
     portrait: {fileID: 0}
     mousePrompt: {fileID: 0}
     heldObj: {fileID: 0}
-    heldResponseValue: 0
-    delayResponseValue: 0
     primaryActive: 0
     secondaryActive: 0
   - currentDialogue: {fileID: 0}
@@ -50633,8 +50602,6 @@ MonoBehaviour:
     portrait: {fileID: 0}
     mousePrompt: {fileID: 0}
     heldObj: {fileID: 0}
-    heldResponseValue: 0
-    delayResponseValue: 0
     primaryActive: 0
     secondaryActive: 0
   - currentDialogue: {fileID: 0}
@@ -50643,8 +50610,6 @@ MonoBehaviour:
     portrait: {fileID: 0}
     mousePrompt: {fileID: 0}
     heldObj: {fileID: 0}
-    heldResponseValue: 0
-    delayResponseValue: 0
     primaryActive: 0
     secondaryActive: 0
   - currentDialogue: {fileID: 0}
@@ -50653,8 +50618,6 @@ MonoBehaviour:
     portrait: {fileID: 0}
     mousePrompt: {fileID: 0}
     heldObj: {fileID: 0}
-    heldResponseValue: 0
-    delayResponseValue: 0
     primaryActive: 0
     secondaryActive: 0
   - currentDialogue: {fileID: 0}
@@ -50663,8 +50626,6 @@ MonoBehaviour:
     portrait: {fileID: 0}
     mousePrompt: {fileID: 0}
     heldObj: {fileID: 0}
-    heldResponseValue: 0
-    delayResponseValue: 0
     primaryActive: 0
     secondaryActive: 0
   - currentDialogue: {fileID: 0}
@@ -50673,8 +50634,6 @@ MonoBehaviour:
     portrait: {fileID: 0}
     mousePrompt: {fileID: 0}
     heldObj: {fileID: 0}
-    heldResponseValue: 0
-    delayResponseValue: 0
     primaryActive: 0
     secondaryActive: 0
   - currentDialogue: {fileID: 0}
@@ -50683,8 +50642,6 @@ MonoBehaviour:
     portrait: {fileID: 0}
     mousePrompt: {fileID: 0}
     heldObj: {fileID: 0}
-    heldResponseValue: 0
-    delayResponseValue: 0
     primaryActive: 0
     secondaryActive: 0
   - currentDialogue: {fileID: 0}
@@ -50693,8 +50650,6 @@ MonoBehaviour:
     portrait: {fileID: 0}
     mousePrompt: {fileID: 0}
     heldObj: {fileID: 0}
-    heldResponseValue: 0
-    delayResponseValue: 0
     primaryActive: 0
     secondaryActive: 0
   - currentDialogue: {fileID: 0}
@@ -50703,8 +50658,6 @@ MonoBehaviour:
     portrait: {fileID: 0}
     mousePrompt: {fileID: 0}
     heldObj: {fileID: 0}
-    heldResponseValue: 0
-    delayResponseValue: 0
     primaryActive: 0
     secondaryActive: 0
   - currentDialogue: {fileID: 0}
@@ -50713,8 +50666,6 @@ MonoBehaviour:
     portrait: {fileID: 0}
     mousePrompt: {fileID: 0}
     heldObj: {fileID: 0}
-    heldResponseValue: 0
-    delayResponseValue: 0
     primaryActive: 0
     secondaryActive: 0
   - currentDialogue: {fileID: 0}
@@ -50723,8 +50674,6 @@ MonoBehaviour:
     portrait: {fileID: 0}
     mousePrompt: {fileID: 0}
     heldObj: {fileID: 0}
-    heldResponseValue: 0
-    delayResponseValue: 0
     primaryActive: 0
     secondaryActive: 0
   - currentDialogue: {fileID: 0}
@@ -50733,8 +50682,6 @@ MonoBehaviour:
     portrait: {fileID: 0}
     mousePrompt: {fileID: 0}
     heldObj: {fileID: 0}
-    heldResponseValue: 0
-    delayResponseValue: 0
     primaryActive: 0
     secondaryActive: 0
   - currentDialogue: {fileID: 0}
@@ -50743,8 +50690,6 @@ MonoBehaviour:
     portrait: {fileID: 0}
     mousePrompt: {fileID: 0}
     heldObj: {fileID: 0}
-    heldResponseValue: 0
-    delayResponseValue: 0
     primaryActive: 0
     secondaryActive: 0
   - currentDialogue: {fileID: 0}
@@ -50753,8 +50698,6 @@ MonoBehaviour:
     portrait: {fileID: 0}
     mousePrompt: {fileID: 0}
     heldObj: {fileID: 0}
-    heldResponseValue: 0
-    delayResponseValue: 0
     primaryActive: 0
     secondaryActive: 0
   - currentDialogue: {fileID: 0}
@@ -50763,8 +50706,6 @@ MonoBehaviour:
     portrait: {fileID: 0}
     mousePrompt: {fileID: 0}
     heldObj: {fileID: 0}
-    heldResponseValue: 0
-    delayResponseValue: 0
     primaryActive: 0
     secondaryActive: 0
   - currentDialogue: {fileID: 0}
@@ -50773,8 +50714,6 @@ MonoBehaviour:
     portrait: {fileID: 0}
     mousePrompt: {fileID: 0}
     heldObj: {fileID: 0}
-    heldResponseValue: 0
-    delayResponseValue: 0
     primaryActive: 0
     secondaryActive: 0
   - currentDialogue: {fileID: 0}
@@ -50783,8 +50722,6 @@ MonoBehaviour:
     portrait: {fileID: 0}
     mousePrompt: {fileID: 0}
     heldObj: {fileID: 0}
-    heldResponseValue: 0
-    delayResponseValue: 0
     primaryActive: 0
     secondaryActive: 0
   - currentDialogue: {fileID: 0}
@@ -50793,8 +50730,6 @@ MonoBehaviour:
     portrait: {fileID: 0}
     mousePrompt: {fileID: 0}
     heldObj: {fileID: 0}
-    heldResponseValue: 0
-    delayResponseValue: 0
     primaryActive: 0
     secondaryActive: 0
   - currentDialogue: {fileID: 0}
@@ -50803,8 +50738,6 @@ MonoBehaviour:
     portrait: {fileID: 0}
     mousePrompt: {fileID: 0}
     heldObj: {fileID: 0}
-    heldResponseValue: 0
-    delayResponseValue: 0
     primaryActive: 0
     secondaryActive: 0
   - currentDialogue: {fileID: 0}
@@ -50813,8 +50746,6 @@ MonoBehaviour:
     portrait: {fileID: 0}
     mousePrompt: {fileID: 0}
     heldObj: {fileID: 0}
-    heldResponseValue: 0
-    delayResponseValue: 0
     primaryActive: 0
     secondaryActive: 0
   - currentDialogue: {fileID: 0}
@@ -50823,8 +50754,6 @@ MonoBehaviour:
     portrait: {fileID: 0}
     mousePrompt: {fileID: 0}
     heldObj: {fileID: 0}
-    heldResponseValue: 0
-    delayResponseValue: 0
     primaryActive: 0
     secondaryActive: 0
   - currentDialogue: {fileID: 0}
@@ -50833,8 +50762,6 @@ MonoBehaviour:
     portrait: {fileID: 0}
     mousePrompt: {fileID: 0}
     heldObj: {fileID: 0}
-    heldResponseValue: 0
-    delayResponseValue: 0
     primaryActive: 0
     secondaryActive: 0
   - currentDialogue: {fileID: 0}
@@ -50843,8 +50770,6 @@ MonoBehaviour:
     portrait: {fileID: 0}
     mousePrompt: {fileID: 0}
     heldObj: {fileID: 0}
-    heldResponseValue: 0
-    delayResponseValue: 0
     primaryActive: 0
     secondaryActive: 0
   - currentDialogue: {fileID: 0}
@@ -50853,8 +50778,6 @@ MonoBehaviour:
     portrait: {fileID: 0}
     mousePrompt: {fileID: 0}
     heldObj: {fileID: 0}
-    heldResponseValue: 0
-    delayResponseValue: 0
     primaryActive: 0
     secondaryActive: 0
   - currentDialogue: {fileID: 0}
@@ -50863,8 +50786,6 @@ MonoBehaviour:
     portrait: {fileID: 0}
     mousePrompt: {fileID: 0}
     heldObj: {fileID: 0}
-    heldResponseValue: 0
-    delayResponseValue: 0
     primaryActive: 0
     secondaryActive: 0
   - currentDialogue: {fileID: 0}
@@ -50873,8 +50794,6 @@ MonoBehaviour:
     portrait: {fileID: 0}
     mousePrompt: {fileID: 0}
     heldObj: {fileID: 0}
-    heldResponseValue: 0
-    delayResponseValue: 0
     primaryActive: 0
     secondaryActive: 0
   - currentDialogue: {fileID: 0}
@@ -50883,8 +50802,6 @@ MonoBehaviour:
     portrait: {fileID: 0}
     mousePrompt: {fileID: 0}
     heldObj: {fileID: 0}
-    heldResponseValue: 0
-    delayResponseValue: 0
     primaryActive: 0
     secondaryActive: 0
   - currentDialogue: {fileID: 0}
@@ -50893,8 +50810,6 @@ MonoBehaviour:
     portrait: {fileID: 0}
     mousePrompt: {fileID: 0}
     heldObj: {fileID: 0}
-    heldResponseValue: 0
-    delayResponseValue: 0
     primaryActive: 0
     secondaryActive: 0
   _skippable: 1

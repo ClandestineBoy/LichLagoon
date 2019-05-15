@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class dialogueScript : MonoBehaviour
 {
@@ -116,6 +117,10 @@ public class dialogueScript : MonoBehaviour
         if(maxI == lineI)
         {
             sm.nextScene = true;
+            if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Night3"))
+            {
+                sm.finalScene = true;
+            }
         }
         if (Input.GetKeyDown(KeyCode.Mouse0) && !ff && _skippable)       
         {

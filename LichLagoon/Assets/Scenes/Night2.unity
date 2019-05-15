@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.051826313, g: 0.027033683, b: 0.07665939, a: 1}
+  m_IndirectSpecularColor: {r: 0.051826224, g: 0.027033623, b: 0.076659374, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1548,8 +1548,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 73688487}
-  m_LocalRotation: {x: 0.12216747, y: 0.47639617, z: 0.06704457, w: -0.86811686}
-  m_LocalPosition: {x: -20.014116, y: 17.848938, z: 15.318081}
+  m_LocalRotation: {x: -0.074470446, y: 0.857942, z: 0.13025747, w: 0.49134794}
+  m_LocalPosition: {x: 7.550802, y: 14.131184, z: 400.60516}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1926229345}
@@ -3100,7 +3100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -46210,6 +46210,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1927209593}
   m_CullTransparentMesh: 0
+--- !u!1 &1943451924
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1943451926}
+  - component: {fileID: 1943451925}
+  m_Layer: 0
+  m_Name: SceneManager
+  m_TagString: SceneManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1943451925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1943451924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e841c639d98a8d540806d094132eaec4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextScene: 0
+  fading: 0
+  nextName: 
+  delay: 3
+  fadeSpeed: 1
+  fadeOutRect: {fileID: 150756290}
+--- !u!4 &1943451926
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1943451924}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 94.22, y: 3.41, z: 337.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1947014682
 GameObject:
   m_ObjectHideFlags: 0
@@ -50172,7 +50221,7 @@ MonoBehaviour:
   thrAnswer: {fileID: 529734617}
   youBacker: {fileID: 1363746021}
   youMousePrompt: {fileID: 368745532}
-  answerTag: A01
+  answerTag: 
   nextTag: ' '
   silentPortrait: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 1}
   silentDiag: {r: 0.6886792, g: 0.6886792, b: 0.6886792, a: 1}
@@ -50382,7 +50431,206 @@ MonoBehaviour:
     delayResponseValue: 0
     primaryActive: 0
     secondaryActive: 0
-  XskipAvailable: 00000000000000000000000000000000000000000000000000
+  - currentDialogue: {fileID: 0}
+    header: {fileID: 0}
+    diagBacker: {fileID: 0}
+    portrait: {fileID: 0}
+    mousePrompt: {fileID: 0}
+    heldObj: {fileID: 0}
+    heldResponseValue: 0
+    delayResponseValue: 0
+    primaryActive: 0
+    secondaryActive: 0
+  - currentDialogue: {fileID: 0}
+    header: {fileID: 0}
+    diagBacker: {fileID: 0}
+    portrait: {fileID: 0}
+    mousePrompt: {fileID: 0}
+    heldObj: {fileID: 0}
+    heldResponseValue: 0
+    delayResponseValue: 0
+    primaryActive: 0
+    secondaryActive: 0
+  - currentDialogue: {fileID: 0}
+    header: {fileID: 0}
+    diagBacker: {fileID: 0}
+    portrait: {fileID: 0}
+    mousePrompt: {fileID: 0}
+    heldObj: {fileID: 0}
+    heldResponseValue: 0
+    delayResponseValue: 0
+    primaryActive: 0
+    secondaryActive: 0
+  - currentDialogue: {fileID: 0}
+    header: {fileID: 0}
+    diagBacker: {fileID: 0}
+    portrait: {fileID: 0}
+    mousePrompt: {fileID: 0}
+    heldObj: {fileID: 0}
+    heldResponseValue: 0
+    delayResponseValue: 0
+    primaryActive: 0
+    secondaryActive: 0
+  - currentDialogue: {fileID: 0}
+    header: {fileID: 0}
+    diagBacker: {fileID: 0}
+    portrait: {fileID: 0}
+    mousePrompt: {fileID: 0}
+    heldObj: {fileID: 0}
+    heldResponseValue: 0
+    delayResponseValue: 0
+    primaryActive: 0
+    secondaryActive: 0
+  - currentDialogue: {fileID: 0}
+    header: {fileID: 0}
+    diagBacker: {fileID: 0}
+    portrait: {fileID: 0}
+    mousePrompt: {fileID: 0}
+    heldObj: {fileID: 0}
+    heldResponseValue: 0
+    delayResponseValue: 0
+    primaryActive: 0
+    secondaryActive: 0
+  - currentDialogue: {fileID: 0}
+    header: {fileID: 0}
+    diagBacker: {fileID: 0}
+    portrait: {fileID: 0}
+    mousePrompt: {fileID: 0}
+    heldObj: {fileID: 0}
+    heldResponseValue: 0
+    delayResponseValue: 0
+    primaryActive: 0
+    secondaryActive: 0
+  - currentDialogue: {fileID: 0}
+    header: {fileID: 0}
+    diagBacker: {fileID: 0}
+    portrait: {fileID: 0}
+    mousePrompt: {fileID: 0}
+    heldObj: {fileID: 0}
+    heldResponseValue: 0
+    delayResponseValue: 0
+    primaryActive: 0
+    secondaryActive: 0
+  - currentDialogue: {fileID: 0}
+    header: {fileID: 0}
+    diagBacker: {fileID: 0}
+    portrait: {fileID: 0}
+    mousePrompt: {fileID: 0}
+    heldObj: {fileID: 0}
+    heldResponseValue: 0
+    delayResponseValue: 0
+    primaryActive: 0
+    secondaryActive: 0
+  - currentDialogue: {fileID: 0}
+    header: {fileID: 0}
+    diagBacker: {fileID: 0}
+    portrait: {fileID: 0}
+    mousePrompt: {fileID: 0}
+    heldObj: {fileID: 0}
+    heldResponseValue: 0
+    delayResponseValue: 0
+    primaryActive: 0
+    secondaryActive: 0
+  - currentDialogue: {fileID: 0}
+    header: {fileID: 0}
+    diagBacker: {fileID: 0}
+    portrait: {fileID: 0}
+    mousePrompt: {fileID: 0}
+    heldObj: {fileID: 0}
+    heldResponseValue: 0
+    delayResponseValue: 0
+    primaryActive: 0
+    secondaryActive: 0
+  - currentDialogue: {fileID: 0}
+    header: {fileID: 0}
+    diagBacker: {fileID: 0}
+    portrait: {fileID: 0}
+    mousePrompt: {fileID: 0}
+    heldObj: {fileID: 0}
+    heldResponseValue: 0
+    delayResponseValue: 0
+    primaryActive: 0
+    secondaryActive: 0
+  - currentDialogue: {fileID: 0}
+    header: {fileID: 0}
+    diagBacker: {fileID: 0}
+    portrait: {fileID: 0}
+    mousePrompt: {fileID: 0}
+    heldObj: {fileID: 0}
+    heldResponseValue: 0
+    delayResponseValue: 0
+    primaryActive: 0
+    secondaryActive: 0
+  - currentDialogue: {fileID: 0}
+    header: {fileID: 0}
+    diagBacker: {fileID: 0}
+    portrait: {fileID: 0}
+    mousePrompt: {fileID: 0}
+    heldObj: {fileID: 0}
+    heldResponseValue: 0
+    delayResponseValue: 0
+    primaryActive: 0
+    secondaryActive: 0
+  - currentDialogue: {fileID: 0}
+    header: {fileID: 0}
+    diagBacker: {fileID: 0}
+    portrait: {fileID: 0}
+    mousePrompt: {fileID: 0}
+    heldObj: {fileID: 0}
+    heldResponseValue: 0
+    delayResponseValue: 0
+    primaryActive: 0
+    secondaryActive: 0
+  - currentDialogue: {fileID: 0}
+    header: {fileID: 0}
+    diagBacker: {fileID: 0}
+    portrait: {fileID: 0}
+    mousePrompt: {fileID: 0}
+    heldObj: {fileID: 0}
+    heldResponseValue: 0
+    delayResponseValue: 0
+    primaryActive: 0
+    secondaryActive: 0
+  - currentDialogue: {fileID: 0}
+    header: {fileID: 0}
+    diagBacker: {fileID: 0}
+    portrait: {fileID: 0}
+    mousePrompt: {fileID: 0}
+    heldObj: {fileID: 0}
+    heldResponseValue: 0
+    delayResponseValue: 0
+    primaryActive: 0
+    secondaryActive: 0
+  - currentDialogue: {fileID: 0}
+    header: {fileID: 0}
+    diagBacker: {fileID: 0}
+    portrait: {fileID: 0}
+    mousePrompt: {fileID: 0}
+    heldObj: {fileID: 0}
+    heldResponseValue: 0
+    delayResponseValue: 0
+    primaryActive: 0
+    secondaryActive: 0
+  - currentDialogue: {fileID: 0}
+    header: {fileID: 0}
+    diagBacker: {fileID: 0}
+    portrait: {fileID: 0}
+    mousePrompt: {fileID: 0}
+    heldObj: {fileID: 0}
+    heldResponseValue: 0
+    delayResponseValue: 0
+    primaryActive: 0
+    secondaryActive: 0
+  - currentDialogue: {fileID: 0}
+    header: {fileID: 0}
+    diagBacker: {fileID: 0}
+    portrait: {fileID: 0}
+    mousePrompt: {fileID: 0}
+    heldObj: {fileID: 0}
+    heldResponseValue: 0
+    delayResponseValue: 0
+    primaryActive: 0
+    secondaryActive: 0
   _skippable: 1
   ff: 0
   ffSpeed: 0

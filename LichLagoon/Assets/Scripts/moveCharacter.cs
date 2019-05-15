@@ -98,6 +98,7 @@ public class moveCharacter : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1;
         startYRot = this.transform.eulerAngles.y;
         pause = GetComponent<pauseScript>();
 

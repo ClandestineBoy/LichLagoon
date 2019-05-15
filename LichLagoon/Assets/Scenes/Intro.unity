@@ -3347,6 +3347,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextScene: 0
+  fading: 0
+  nextName: 
+  delay: 3
+  fadeSpeed: 1
+  fadeOutRect: {fileID: 202410179}
 --- !u!4 &194221613
 Transform:
   m_ObjectHideFlags: 0
@@ -10830,7 +10835,7 @@ PrefabInstance:
     - target: {fileID: 5168018723728603733, guid: 4e68538ac0d5b7e43a9ec7ffdecf094e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.69
+      value: 12.14
       objectReference: {fileID: 0}
     - target: {fileID: 5168018723728603733, guid: 4e68538ac0d5b7e43a9ec7ffdecf094e,
         type: 3}
@@ -18184,8 +18189,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 856007729}
-  m_LocalRotation: {x: 0.0007877855, y: 0.9989095, z: 0.04409031, w: -0.01533951}
-  m_LocalPosition: {x: 32.06173, y: -19.396353, z: 462.4955}
+  m_LocalRotation: {x: -0.074470446, y: 0.857942, z: 0.13025747, w: 0.49134794}
+  m_LocalPosition: {x: 7.550802, y: 12.846073, z: 400.60516}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 795733726}
@@ -31754,7 +31759,7 @@ PrefabInstance:
     - target: {fileID: 5168018723728603733, guid: 288489f3f307e4c4aad0d11c3751426b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.96
+      value: -6.74
       objectReference: {fileID: 0}
     - target: {fileID: 5168018723728603733, guid: 288489f3f307e4c4aad0d11c3751426b,
         type: 3}
@@ -32836,7 +32841,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Ninteenth of November, 1682
+  m_Text: Ninteenth of November, 1690
 --- !u!222 &1527708847
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -36687,7 +36692,6 @@ MonoBehaviour:
     delayResponseValue: 0
     primaryActive: 0
     secondaryActive: 0
-  XskipAvailable: 0000000000000000000000000000000000000000
   _skippable: 1
   ff: 0
   ffSpeed: 0

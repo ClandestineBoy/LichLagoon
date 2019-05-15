@@ -31,7 +31,7 @@ public class lightFlicker : MonoBehaviour
         if (flickers)
         {
             Flicker();
-            thisLight.intensity = Mathf.MoveTowards(thisLight.intensity, targetIntensity, Time.deltaTime * flickerSpeed);
+            thisLight.intensity = Mathf.MoveTowards(thisLight.intensity, targetIntensity, Time.fixedDeltaTime * flickerSpeed);
         }
         else if (vacillates)
         {
@@ -41,7 +41,7 @@ public class lightFlicker : MonoBehaviour
 
     void Flicker()
     {
-        flickerI -= Time.deltaTime;
+        flickerI -= Time.fixedDeltaTime;
 
         if (flickerI <= 0)
         {

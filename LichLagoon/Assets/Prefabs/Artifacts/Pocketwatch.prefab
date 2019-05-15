@@ -4724,6 +4724,19 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!65 &721658503
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2166185599277793713}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.107881606, y: 0.34, z: 0.302252}
+  m_Center: {x: 0, y: -0.02, z: 0}
 --- !u!114 &721658497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4736,13 +4749,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94e7fe831fd013d4caf4fc96696e2482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  franScore: 3
+  robScore: 2
+  gunScore: 0
   buried: 0
   tagged: 0
   inInventory: 0
   lore: Only one fisherman would go spearing during high tides. When others took caution
     indoors, the fisherman would give his wife this watch--set to tick for three hours--and
     waded into the surging ocean to put a feast on his village's tables.
-  grabScale: 0
+  grabScale: 1.1
   restScale: 1
   grabS: {x: 0.4, y: 0.4, z: 0.4}
   restS: {x: 1, y: 1, z: 1}
@@ -4765,19 +4781,6 @@ MonoBehaviour:
   activeRotate: 0
   dir: {x: 0, y: 1, z: 0}
   rotSpeed: 8
---- !u!65 &721658503
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2166185599277793713}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.107881606, y: 0.34, z: 0.302252}
-  m_Center: {x: 0, y: -0.02, z: 0}
 --- !u!1001 &2166185599277762307
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4791,52 +4794,48 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400018, guid: 9768cc102e15f084fa8f9230776a1957, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.604
+      value: -42.123837
       objectReference: {fileID: 0}
     - target: {fileID: 400018, guid: 9768cc102e15f084fa8f9230776a1957, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.33
+      value: -5.3
       objectReference: {fileID: 0}
     - target: {fileID: 400018, guid: 9768cc102e15f084fa8f9230776a1957, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 11.741
+      value: 22.133953
       objectReference: {fileID: 0}
     - target: {fileID: 400018, guid: 9768cc102e15f084fa8f9230776a1957, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.23239502
+      value: -0.53309083
       objectReference: {fileID: 0}
     - target: {fileID: 400018, guid: 9768cc102e15f084fa8f9230776a1957, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.67314273
+      value: 0.83832604
       objectReference: {fileID: 0}
     - target: {fileID: 400018, guid: 9768cc102e15f084fa8f9230776a1957, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.22910504
+      value: 0.03998303
       objectReference: {fileID: 0}
     - target: {fileID: 400018, guid: 9768cc102e15f084fa8f9230776a1957, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.66361314
+      value: 0.10688775
       objectReference: {fileID: 0}
     - target: {fileID: 400018, guid: 9768cc102e15f084fa8f9230776a1957, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400018, guid: 9768cc102e15f084fa8f9230776a1957, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -10.428
+      objectReference: {fileID: 0}
+    - target: {fileID: 400018, guid: 9768cc102e15f084fa8f9230776a1957, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 90.817
+      value: 172.01701
       objectReference: {fileID: 0}
     - target: {fileID: 400018, guid: 9768cc102e15f084fa8f9230776a1957, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -38.093002
+      value: -64.175
       objectReference: {fileID: 0}
-    - target: {fileID: 2300008, guid: 9768cc102e15f084fa8f9230776a1957, type: 3}
-      propertyPath: m_Materials.Array.data[3]
-      value: 
-      objectReference: {fileID: 2100000, guid: 42a089b0ad6a16041a53930a2e062a06, type: 2}
-    - target: {fileID: 2300008, guid: 9768cc102e15f084fa8f9230776a1957, type: 3}
-      propertyPath: m_Materials.Array.data[4]
-      value: 
-      objectReference: {fileID: 2100000, guid: c588d90acd895c644892504e0bc19e39, type: 2}
     - target: {fileID: 2300008, guid: 9768cc102e15f084fa8f9230776a1957, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -4845,6 +4844,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[2]
       value: 
       objectReference: {fileID: 2100000, guid: 56dcfb18414deae458ae73d5e117cdf3, type: 2}
+    - target: {fileID: 2300008, guid: 9768cc102e15f084fa8f9230776a1957, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 42a089b0ad6a16041a53930a2e062a06, type: 2}
+    - target: {fileID: 2300008, guid: 9768cc102e15f084fa8f9230776a1957, type: 3}
+      propertyPath: m_Materials.Array.data[4]
+      value: 
+      objectReference: {fileID: 2100000, guid: c588d90acd895c644892504e0bc19e39, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9768cc102e15f084fa8f9230776a1957, type: 3}
 --- !u!1 &2166185599277793713 stripped

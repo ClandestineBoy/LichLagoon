@@ -4724,6 +4724,20 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!136 &1066054651
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7976784742250535157}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.14
+  m_Height: 2.054581
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1066054645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4751,13 +4765,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94e7fe831fd013d4caf4fc96696e2482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  franScore: 0
+  robScore: 2
+  gunScore: 1
   buried: 0
   tagged: 0
   inInventory: 0
   lore: Its owner used this to idle and watch for anything exciting to come. When
     they outgrew the telescope, they left this island to seek adventure for themself
     instead.
-  grabScale: 0.4
+  grabScale: 0.5
   restScale: 1
   grabS: {x: 0.9, y: 0.9, z: 0.9}
   restS: {x: 1, y: 1, z: 1}
@@ -4765,20 +4782,6 @@ MonoBehaviour:
   grabRot: {x: 25, y: 0, z: 0}
   particlesFollowPlayer: 1
   shrinkSpeed: 2.5
---- !u!136 &1066054651
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7976784742250535157}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.14
-  m_Height: 2.054581
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &7976784742250503759
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4792,19 +4795,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400026, guid: e25c37e6a1f678c4287a2ac87815e5b5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.688
+      value: 4.1783757
       objectReference: {fileID: 0}
     - target: {fileID: 400026, guid: e25c37e6a1f678c4287a2ac87815e5b5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.11
+      value: 5.47
       objectReference: {fileID: 0}
     - target: {fileID: 400026, guid: e25c37e6a1f678c4287a2ac87815e5b5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 11.739
+      value: -51.08833
       objectReference: {fileID: 0}
     - target: {fileID: 400026, guid: e25c37e6a1f678c4287a2ac87815e5b5, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: -0.55883795
       objectReference: {fileID: 0}
     - target: {fileID: 400026, guid: e25c37e6a1f678c4287a2ac87815e5b5, type: 3}
       propertyPath: m_LocalRotation.y
@@ -4816,12 +4819,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400026, guid: e25c37e6a1f678c4287a2ac87815e5b5, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.8292769
       objectReference: {fileID: 0}
     - target: {fileID: 400026, guid: e25c37e6a1f678c4287a2ac87815e5b5, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 400026, guid: e25c37e6a1f678c4287a2ac87815e5b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -67.951004
+      objectReference: {fileID: 0}
+    - target: {fileID: 400026, guid: e25c37e6a1f678c4287a2ac87815e5b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400026, guid: e25c37e6a1f678c4287a2ac87815e5b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300006, guid: e25c37e6a1f678c4287a2ac87815e5b5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e58481a0d01ef854da75a6a92f0aaf21, type: 2}
     - target: {fileID: 2300006, guid: e25c37e6a1f678c4287a2ac87815e5b5, type: 3}
       propertyPath: m_Materials.Array.data[2]
       value: 
@@ -4830,10 +4849,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[3]
       value: 
       objectReference: {fileID: 2100000, guid: b3c15de2945e0b747977f34a6e6bae30, type: 2}
-    - target: {fileID: 2300006, guid: e25c37e6a1f678c4287a2ac87815e5b5, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: e58481a0d01ef854da75a6a92f0aaf21, type: 2}
     - target: {fileID: 2300006, guid: e25c37e6a1f678c4287a2ac87815e5b5, type: 3}
       propertyPath: m_Materials.Array.data[4]
       value: 

@@ -35,12 +35,12 @@ public class dialogueScript : MonoBehaviour
     public float fadeOutSpeed = 0f, fadeInSpeed = 0f;
 
     [Header("Next Line Data")]
-    public NPC[] Xnpc = new NPC [25];
+    public NPC[] Xnpc = new NPC [40];
     float[] XinitDelay = new float[25], XendDelay = new float[25], XpostDelay = new float[25];
     bool[] XisPlayer = new bool[25], Xtrigger = new bool[25];
     string[] Xline = new string[25];
-    int lineI = -1;
-    public bool[] XskipAvailable = new bool [25];   public bool _skippable = true;
+    int lineI = -1; int maxI = -2;
+    private bool[] XskipAvailable = new bool [25];   public bool _skippable = true;
 
     [Header("FastForward Tools")]
     public bool ff = false;
@@ -97,6 +97,10 @@ public class dialogueScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(maxI == lineI)
+        {
+            sm.nextScene = true;
+        }
         if (Input.GetKeyDown(KeyCode.Mouse0) && !ff && _skippable)       
         {
             Time.timeScale = ffSpeed * 5;
@@ -234,6 +238,8 @@ public class dialogueScript : MonoBehaviour
                     "Well pardon me. It's my first time. I'm nervous.",
                     5f, false, .5f, true));   //comment this out and fill it out - this is the next line read from the next npc
 
+                
+
                 Xnpc[0] = gunn; XinitDelay[0] = 0f; XendDelay[0] = 6f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
                 Xline[0] = "We are all new to this. Yet here we sit, silent.";
 
@@ -244,7 +250,7 @@ public class dialogueScript : MonoBehaviour
                 Xline[2] = "Okay, okay...Nevermind.";
 
                 //END INTRO
-                sm.nextScene = true;
+                maxI = 2;
             }
             else if (twoAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))  //if choice 2 is selected
             {
@@ -312,9 +318,8 @@ public class dialogueScript : MonoBehaviour
 
                 //StartCoroutine(poseQuestion());
             }
-
             return;
-        }
+        }       //A = intro
 
         if (answerTag == "A01b")
         {
@@ -386,7 +391,7 @@ public class dialogueScript : MonoBehaviour
                 Xline[15] = "...No idea.";
 
                 //END INTRO
-                sm.nextScene = true;
+                maxI = 15;
             }
             else if (twoAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))  //if choice 2 is selected
             {
@@ -438,7 +443,7 @@ public class dialogueScript : MonoBehaviour
                 Xline[11] = "...No idea.";
 
                 //END INTRO
-                sm.nextScene = true;
+                maxI = 11;
             }
             else if (thrAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))  //if choice 3 is selected
             {
@@ -493,9 +498,8 @@ public class dialogueScript : MonoBehaviour
                 Xline[12] = "...No idea.";
 
                 //END INTRO
-                sm.nextScene = true;
+                maxI = 12;
             }
-
             return;
         }
 
@@ -579,7 +583,7 @@ public class dialogueScript : MonoBehaviour
             {
 
             }
-        }
+        }       //B = night1
 
         if (answerTag == "B02")
         {
@@ -598,11 +602,11 @@ public class dialogueScript : MonoBehaviour
 
                 StartCoroutine(poseQuestion(null, 2.5f, true,
                     "This was the first place we could stop safely.",
-                    4f, false, 2f, false));
+                    4f, false, 2f, true));
 
                 oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
 
-                Xnpc[0] = rob; XinitDelay[0] = 0f; XendDelay[0] = 7f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = true;
+                Xnpc[0] = rob; XinitDelay[0] = 0f; XendDelay[0] = 6f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = true;
                 Xline[0] = "Think you'll find something weird in the wreckage?";
             }
             else if (twoAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))  //if choice 2 is selected
@@ -613,12 +617,12 @@ public class dialogueScript : MonoBehaviour
                 nextTag = "B03";
 
                 StartCoroutine(poseQuestion(null, 3f, true,
-                    "This is only safe place North of Cuba right now.",
-                    4f, false, 2f, false));
+                    "This is the only safe place north of Cuba right now.",
+                    3.5f, false, .5f, false));
 
                 oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
 
-                Xnpc[0] = gunn; XinitDelay[0] = 2.5f; XendDelay[0] = 3f; XpostDelay[0] = 2f; XisPlayer[0] = false; Xtrigger[0] = false;
+                Xnpc[0] = gunn; XinitDelay[0] = 1.5f; XendDelay[0] = 2.5f; XpostDelay[0] = 2f; XisPlayer[0] = false; Xtrigger[0] = false;
                 Xline[0] = "Okay.";    XskipAvailable[0] = false;
 
                 Xnpc[1] = rob; XinitDelay[1] = 0f; XendDelay[1] = 7f; XpostDelay[1] = .25f; XisPlayer[1] = false; Xtrigger[1] = true;
@@ -783,7 +787,7 @@ public class dialogueScript : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))  //if choice 1 is selected
             {
-                youDiag.text = "I want to try and get an understanding where you all came from.";
+                youDiag.text = "I want to try and get an understanding of where you all came from.";
                 answering = false;
 
                 nextTag = "CHILDHOOD1";
@@ -817,31 +821,31 @@ public class dialogueScript : MonoBehaviour
             }
             else if (twoAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))  //if choice 2 is selected
             {
-                youDiag.text = "Captain Carrozo saved your life--a courtesy the Paladins have never returned.";
+                youDiag.text = "I want to try and get an understanding of where you all came from.";
                 answering = false;
 
-                nextTag = "B05";
+                nextTag = "FAMILY1";
 
-                StartCoroutine(poseQuestion(fran, .5f, false,
-                    "If not for your raids I would never've needed saving.",
-                    6f, false, 0f, false));
+                StartCoroutine(poseQuestion(null, 3.5f, true,
+                    "Could you tell me about your family? What were they like?",
+                    6.5f, false, 0f, true));
 
                 oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
 
-                Xnpc[0] = rob; XinitDelay[0] = 2f; XendDelay[0] = 4f; XpostDelay[0] = 1.25f; XisPlayer[0] = false; Xtrigger[0] = false;
-                Xline[0] = "..."; XskipAvailable[0] = false;
+                Xnpc[0] = rob; XinitDelay[0] = 0f; XendDelay[0] = 5.5f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                Xline[0] = "Oh, my family's huge. Was, maybe.";
 
-                Xnpc[1] = gunn; XinitDelay[1] = 0f; XendDelay[1] = 4f; XpostDelay[1] = .5f; XisPlayer[1] = false; Xtrigger[1] = false;
-                Xline[1] = "...What now?";
+                Xnpc[1] = rob; XinitDelay[1] = 0f; XendDelay[1] = 5.5f; XpostDelay[1] = .25f; XisPlayer[1] = false; Xtrigger[1] = false;
+                Xline[1] = "...They were my world--didn't have much else.";
 
-                Xnpc[2] = null; XinitDelay[2] = 0f; XendDelay[2] = 3.5f; XpostDelay[2] = .25f; XisPlayer[2] = true; Xtrigger[2] = false;
-                Xline[2] = "We begin. Before I go searching for your phylacteries.";
+                Xnpc[2] = fran; XinitDelay[2] = 0; XendDelay[2] = 4.5f; XpostDelay[2] = .25f; XisPlayer[2] = false; Xtrigger[1] = false;
+                Xline[2] = "Is that not enough for you?";
 
-                Xnpc[3] = null; XinitDelay[3] = 0; XendDelay[3] = 7f; XpostDelay[3] = .25f; XisPlayer[3] = true; Xtrigger[3] = false;
-                Xline[3] = "First, I'm going to ask you questions. All I ask in return is honesty.";
-
-                Xnpc[4] = null; XinitDelay[4] = 0; XendDelay[4] = 5f; XpostDelay[4] = .25f; XisPlayer[4] = true; Xtrigger[4] = true;
-                Xline[4] = "Let's begin: Tell me about your...."; XskipAvailable[4] = false;
+                Xnpc[3] = rob; XinitDelay[3] = 0; XendDelay[3] = 6f; XpostDelay[3] = .25f; XisPlayer[3] = false; Xtrigger[3] = false;
+                Xline[3] = "Ha! More than enough. They're a bloody handful.";
+                //
+                Xnpc[4] = rob; XinitDelay[4] = 0f; XendDelay[4] = 4.5f; XpostDelay[4] = .5f; XisPlayer[4] = false; Xtrigger[4] = true;
+                Xline[4] = "Just don't like being cooped up is all.";
             }
             else if (thrAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))  //if choice 3 is selected
             {
@@ -1067,31 +1071,7 @@ public class dialogueScript : MonoBehaviour
             }
             else if (twoAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))  //if choice 2 is selected
             {
-                youDiag.text = "Magic gives us choices.";
-                answering = false;
-
-                nextTag = "CHILDHOOD3";
-
-                StartCoroutine(poseQuestion(fran, .5f, false,
-                    "Magic gives us false hope.",
-                    5f, false, 0f, true));
-
-                oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
-
-                Xnpc[0] = rob; XinitDelay[0] = 2f; XendDelay[0] = 4f; XpostDelay[0] = 1.25f; XisPlayer[0] = false; Xtrigger[0] = false;
-                Xline[0] = "..."; XskipAvailable[0] = false;
-
-                Xnpc[1] = gunn; XinitDelay[1] = 0f; XendDelay[1] = 4f; XpostDelay[1] = .5f; XisPlayer[1] = false; Xtrigger[1] = false;
-                Xline[1] = "...What now?";
-
-                Xnpc[2] = null; XinitDelay[2] = 0f; XendDelay[2] = 3.5f; XpostDelay[2] = .25f; XisPlayer[2] = true; Xtrigger[2] = false;
-                Xline[2] = "We begin. Before I go searching for your phylacteries.";
-
-                Xnpc[3] = null; XinitDelay[3] = 0; XendDelay[3] = 7f; XpostDelay[3] = .25f; XisPlayer[3] = true; Xtrigger[3] = false;
-                Xline[3] = "First, I'm going to ask you questions. All I ask in return is honesty.";
-
-                Xnpc[4] = null; XinitDelay[4] = 0; XendDelay[4] = 5f; XpostDelay[4] = .25f; XisPlayer[4] = true; Xtrigger[4] = true;
-                Xline[4] = "Let's begin: Tell me about your...."; XskipAvailable[4] = false;
+                
             }
             else if (thrAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))  //if choice 3 is selected
             {
@@ -1176,8 +1156,6 @@ public class dialogueScript : MonoBehaviour
                 youDiag.text = "Gunnlaug: you mentioned your parents. What were they like?";
                 answering = false;
 
-                nextTag = "CHILDHOOD2";
-
                 StartCoroutine(poseQuestion(gunn, 2.5f, false,
                     "Kind, patient, steadyhands: the expected qualities of a decent parent.",
                     4.5f, false, 0f, true));
@@ -1224,7 +1202,7 @@ public class dialogueScript : MonoBehaviour
                 Xline[12] = "You must miss them.";
 
                 Xnpc[13] = gunn; XinitDelay[13] = 0; XendDelay[13] = 5.5f; XpostDelay[13] = .25f; XisPlayer[13] = false; Xtrigger[13] = false;
-                Xline[13] = "Not especially. THey're busy people, as am I.";
+                Xline[13] = "Not especially. They're busy people, as am I.";
 
                 Xnpc[14] = gunn; XinitDelay[14] = 0; XendDelay[14] = 5f; XpostDelay[14] = .25f; XisPlayer[14] = false; Xtrigger[14] = false;
                 Xline[14] = "Our love withstands time and distance.";
@@ -1248,7 +1226,7 @@ public class dialogueScript : MonoBehaviour
                 Xline[20] = "I'll begin searching for your phylacteries tomorrow morning.";
 
                 //end
-                sm.nextScene = true;
+                maxI = 20;
             }
             else if (thrAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))  //if choice 3 is selected
             {
@@ -1321,7 +1299,7 @@ public class dialogueScript : MonoBehaviour
                 Xline[18] = "I'll begin searching for your phylacteries tomorrow morning.";
 
                 //end
-                sm.nextScene = true;
+                maxI = 18;
             }
         }
 
@@ -1359,7 +1337,7 @@ public class dialogueScript : MonoBehaviour
                 Xline[3] = "I'm going to bed, Pirate. Find my phylactery quickly.";
 
                 //END NIGHT
-                sm.nextScene = true;
+                maxI = 3;
             }
             else if (twoAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))
             {
@@ -1387,11 +1365,1245 @@ public class dialogueScript : MonoBehaviour
                 Xline[3] = "I'm going to bed, Pirate. Find my phylactery quickly.";
 
                 //END NIGHT
-                sm.nextScene = true;
+                maxI = 3;
             }
             else if (thrAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))  //if choice 3 is selected
             {
 
+            }
+        }
+
+        if (answerTag == "FAMILY1")
+        {
+            youDiag.text = "";
+
+            oneAnswer.text = "1) Investigate";
+            twoAnswer.text = "2) Stay Quiet";
+            thrAnswer.text = null;
+
+            if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))
+            {
+                youDiag.text = "Did you consider leaving?";
+                answering = false;
+
+                nextTag = "FAMILY2";
+
+                StartCoroutine(poseQuestion(rob, 2f, false,
+                    "Never a consideration, mate. Did you miss the crutches next to my dead corpse?",
+                    5f, false, 0f, true));
+
+                oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
+
+                Xnpc[0] = gunn; XinitDelay[0] = 0f; XendDelay[0] = 2f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                Xline[0] = "Oh.";
+
+                Xnpc[1] = rob; XinitDelay[1] = 0f; XendDelay[1] = 4.5f; XpostDelay[1] = .25f; XisPlayer[1] = false; Xtrigger[1] = false;
+                Xline[1] = "Surprised I'm--I was disabled?";
+
+                Xnpc[2] = gunn; XinitDelay[2] = 0; XendDelay[2] = 3f; XpostDelay[2] = .25f; XisPlayer[2] = false; Xtrigger[2] = false;
+                Xline[2] = "No. I forgot we're dead."; XskipAvailable[2] = false;
+
+                Xnpc[3] = rob; XinitDelay[3] = .75f; XendDelay[3] = 4.5f; XpostDelay[3] = .25f; XisPlayer[3] = false; Xtrigger[3] = false;
+                Xline[3] = "Anyway...I'm a free spirit now. Finally.";
+
+                Xnpc[4] = rob; XinitDelay[4] = 0f; XendDelay[4] = 7f; XpostDelay[4] = .25f; XisPlayer[4] = false; Xtrigger[4] = false;
+                Xline[4] = "Got your crew, working legs: things are looking up!";
+
+                Xnpc[5] = rob; XinitDelay[5] = 0f; XendDelay[5] = 5.5f; XpostDelay[5] = .25f; XisPlayer[5] = false; Xtrigger[5] = false;
+                Xline[5] = "I think I've almost got jumping down.";
+
+                Xnpc[6] = fran; XinitDelay[6] = 0; XendDelay[6] = 6f; XpostDelay[6] = 1f; XisPlayer[6] = false; Xtrigger[6] = false;
+                Xline[6] = "I was taught not to revel in Faustian gifts.";
+
+                Xnpc[7] = rob; XinitDelay[7] = 0; XendDelay[7] = 7.5f; XpostDelay[7] = .25f; XisPlayer[7] = false; Xtrigger[7] = false;
+                Xline[7] = "It's a hell of a lot more than being pious ever got me.";
+
+                Xnpc[8] = gunn; XinitDelay[8] = 0; XendDelay[8] = 7f; XpostDelay[8] = .25f; XisPlayer[8] = false; Xtrigger[8] = false;
+                Xline[8] = "They have a point. Being dead isn't all bad.";
+
+                Xnpc[9] = fran; XinitDelay[9] = 0; XendDelay[9] = 8.5f; XpostDelay[9] = .25f; XisPlayer[9] = false; Xtrigger[9] = true;
+                Xline[9] = "You're both abhorent. I was taught that good requires persistence not magic.";
+            }
+            else if (twoAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))  //if choice 2 is selected
+            {
+                youDiag.text = "...";
+                answering = false;
+
+                nextTag = "CHILDHOOD2";
+
+                StartCoroutine(poseQuestion(fran, 1.5f, false,
+                    "Cooped up? You fulfilled a duty to your family.",
+                    5f, false, 0f, true));
+
+                oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
+
+                Xnpc[0] = rob; XinitDelay[0] = 0f; XendDelay[0] = 2.5f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                Xline[0] = "Ha! Hardly!";
+
+                Xnpc[1] = fran; XinitDelay[1] = 0f; XendDelay[1] = 4f; XpostDelay[1] = .25f; XisPlayer[1] = false; Xtrigger[1] = false;
+                Xline[1] = "Then how could you possibly complai--";
+
+                Xnpc[2] = gunn; XinitDelay[2] = 0; XendDelay[2] = 3.5f; XpostDelay[2] = .5f; XisPlayer[2] = false; Xtrigger[2] = false;
+                Xline[2] = "We should let Robin finish.";
+
+                Xnpc[3] = rob; XinitDelay[3] = 0; XendDelay[3] = 3.5f; XpostDelay[3] = .25f; XisPlayer[3] = false; Xtrigger[3] = false;
+                Xline[3] = "Thanks, Gunner. Look, Fran--";
+
+                Xnpc[4] = fran; XinitDelay[4] = 0f; XendDelay[4] = 1.5f; XpostDelay[4] = .25f; XisPlayer[4] = false; Xtrigger[4] = false;
+                Xline[4] = "Francesca.";
+
+                Xnpc[5] = rob; XinitDelay[5] = 0f; XendDelay[5] = 8.5f; XpostDelay[5] = .25f; XisPlayer[5] = false; Xtrigger[5] = false;
+                Xline[5] = "Listen: I fell ill around age six, legs gave up the ghost and never got going again.";
+
+                Xnpc[6] = rob; XinitDelay[6] = 0; XendDelay[6] = 6f; XpostDelay[6] = 1f; XisPlayer[6] = false; Xtrigger[6] = false;
+                Xline[6] = "There was no serving and no duties.";
+
+                Xnpc[7] = rob; XinitDelay[7] = 0; XendDelay[7] = 7f; XpostDelay[7] = .25f; XisPlayer[7] = false; Xtrigger[7] = false;
+                Xline[7] = "I was basically a turnip but less healthy. They looked after me.";
+
+                Xnpc[8] = fran; XinitDelay[8] = 0; XendDelay[8] = 3f; XpostDelay[8] = .25f; XisPlayer[8] = false; Xtrigger[8] = false;
+                Xline[8] = "Oh...I'm sorry."; XskipAvailable[8] = false;
+
+                Xnpc[9] = rob; XinitDelay[9] = .75f; XendDelay[9] = 2.5f; XpostDelay[9] = .75f; XisPlayer[9] = false; Xtrigger[9] = true;
+                Xline[9] = "Sure."; XskipAvailable[9] = false;
+
+                Xnpc[10] = rob; XinitDelay[10] = 0; XendDelay[10] = 5.5f; XpostDelay[10] = .25f; XisPlayer[10] = false; Xtrigger[10] = false;
+                Xline[10] = "Anyway...I'm a free spirit now. Finally.";
+
+                Xnpc[11] = rob; XinitDelay[11] = 0f; XendDelay[11] = 7f; XpostDelay[11] = .25f; XisPlayer[11] = false; Xtrigger[11] = false;
+                Xline[11] = "Got your crew, working legs: things are looking up!";
+
+                Xnpc[5] = rob; XinitDelay[5] = 0f; XendDelay[5] = 5.5f; XpostDelay[5] = .25f; XisPlayer[5] = false; Xtrigger[5] = false;
+                Xline[5] = "I think I've almost got jumping down.";
+
+                Xnpc[6] = fran; XinitDelay[6] = 0; XendDelay[6] = 6f; XpostDelay[6] = 1f; XisPlayer[6] = false; Xtrigger[6] = false;
+                Xline[6] = "...Don't you worry about how they brought us back?";
+
+                Xnpc[7] = rob; XinitDelay[7] = 0; XendDelay[7] = 7f; XpostDelay[7] = .25f; XisPlayer[7] = false; Xtrigger[7] = false;
+                Xline[7] = "Corrozo's given me more than piety ever did.";
+
+                Xnpc[8] = gunn; XinitDelay[8] = 0; XendDelay[8] = 7f; XpostDelay[8] = .25f; XisPlayer[8] = false; Xtrigger[8] = false;
+                Xline[8] = "They have a point. Being dead isn't all bad.";
+
+                Xnpc[9] = fran; XinitDelay[9] = 0; XendDelay[9] = 8.5f; XpostDelay[9] = .25f; XisPlayer[9] = false; Xtrigger[9] = true;
+                Xline[9] = "I don't know. I was taught that good requires persistence, not magic.";
+            }
+            else if (thrAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))  //if choice 3 is selected
+            {
+
+            }
+        }
+
+        if (answerTag == "FAMILY2")
+        {
+            youDiag.text = "";
+
+            oneAnswer.text = "1) Agree";  //choices presented to player (leave as "null" if there are less choices
+            twoAnswer.text = "2) Qualify";
+            thrAnswer.text = null;
+
+            if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))  //if choice 1 is selected
+            {
+                youDiag.text = "I respect that, Francesca, but some things can't be gained from hard work alone.";
+                answering = false;
+
+                nextTag = "FAMILY3";
+
+                StartCoroutine(poseQuestion(fran, 5f, false,
+                    "...",
+                    3f, false, 0f, true));
+
+                oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
+
+                Xnpc[0] = fran; XinitDelay[0] = 0f; XendDelay[0] = 6.5f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                Xline[0] = "My mother and father were Paladins before me; they understood.";
+
+                Xnpc[1] = fran; XinitDelay[1] = 0f; XendDelay[1] = 7.5f; XpostDelay[1] = .5f; XisPlayer[1] = false; Xtrigger[1] = false;
+                Xline[1] = "They hunted people like you. I always admired them.";
+
+                Xnpc[2] = rob; XinitDelay[2] = 0; XendDelay[2] = 3f; XpostDelay[2] = .75f; XisPlayer[2] = false; Xtrigger[2] = false;
+                Xline[2] = "...They hunted people like us."; XskipAvailable[2] = false;
+
+                Xnpc[3] = fran; XinitDelay[3] = 0; XendDelay[3] = 8f; XpostDelay[3] = .25f; XisPlayer[3] = false; Xtrigger[3] = true;
+                Xline[3] = "I won't be this way forever. Once I'm human again I'll rejoin my comrades in arms.";
+
+            }
+            else if (twoAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))  //if choice 2 is selected
+            {
+                youDiag.text = "Magic gives us choices.";
+                answering = false;
+
+                nextTag = "FAMILY3";
+
+                StartCoroutine(poseQuestion(fran, 1f, false,
+                    "Magic gives us false hope.",
+                    5f, false, 0f, true));
+
+                oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
+
+                Xnpc[0] = fran; XinitDelay[0] = 0f; XendDelay[0] = 6.5f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                Xline[0] = "My family were Paladins before me; they understood.";
+
+                Xnpc[1] = fran; XinitDelay[1] = 0f; XendDelay[1] = 7.5f; XpostDelay[1] = .5f; XisPlayer[1] = false; Xtrigger[1] = false;
+                Xline[1] = "They hunted people like you. I always admired them.";
+
+                Xnpc[2] = rob; XinitDelay[2] = 0; XendDelay[2] = 3f; XpostDelay[2] = .75f; XisPlayer[2] = false; Xtrigger[2] = false;
+                Xline[2] = "...They hunted people like us."; XskipAvailable[2] = false;
+
+                Xnpc[3] = fran; XinitDelay[3] = 0; XendDelay[3] = 8f; XpostDelay[3] = .25f; XisPlayer[3] = false; Xtrigger[3] = true;
+                Xline[3] = "I won't be this way forever. Once I'm human again I'll rejoin my comrades in arms.";
+            }
+            else if (thrAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))  //if choice 3 is selected
+            {
+
+            }
+        }
+
+        if (answerTag == "FAMILY3")
+        {
+            youDiag.text = "";
+
+            oneAnswer.text = "1) Tell the Truth";  //choices presented to player (leave as "null" if there are less choices
+            twoAnswer.text = null;
+            thrAnswer.text = null;
+
+            if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))  //if choice 1 is selected
+            {
+                youDiag.text = "No. Unfortunately you won't.";
+                answering = false;
+
+                nextTag = "FAMILYPROMPTS";
+
+                StartCoroutine(poseQuestion(fran, 2f, false,
+                    "I beg your pardon?",
+                    2f, false, 0f, true));
+
+                oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
+
+                Xnpc[0] = null; XinitDelay[0] = 0f; XendDelay[0] = 6.5f; XpostDelay[0] = .25f; XisPlayer[0] = true; Xtrigger[0] = false;
+                Xline[0] = "There is no returning to humanity. Many have tried; all failed.";
+
+                Xnpc[1] = null; XinitDelay[1] = 0f; XendDelay[1] = 4f; XpostDelay[1] = .5f; XisPlayer[1] = true; Xtrigger[1] = false;
+                Xline[1] = "I'm sorry.";
+
+                Xnpc[2] = fran; XinitDelay[2] = 0; XendDelay[2] = 2.5f; XpostDelay[2] = .75f; XisPlayer[2] = false; Xtrigger[2] = false;
+                Xline[2] = "...";
+
+                Xnpc[3] = rob; XinitDelay[3] = 0; XendDelay[3] = 6f; XpostDelay[3] = .25f; XisPlayer[3] = false; Xtrigger[3] = false;
+                Xline[3] = "...Well what about the big fella? What's your story?";
+
+                Xnpc[4] = gunn; XinitDelay[4] = 0; XendDelay[4] = 3f; XpostDelay[4] = .25f; XisPlayer[4] = false; Xtrigger[4] = false;
+                Xline[4] = "My story is brief:";
+
+                Xnpc[5] = gunn; XinitDelay[5] = 0; XendDelay[5] = 7.5f; XpostDelay[5] = .25f; XisPlayer[5] = false; Xtrigger[5] = false;
+                Xline[5] = "My parents always thought I'd make a fine smith. I did.";
+
+                Xnpc[6] = rob; XinitDelay[6] = 0; XendDelay[6] = 5.5f; XpostDelay[6] = .5f; XisPlayer[6] = false; Xtrigger[6] = false;
+                Xline[6] = "That's it? There must be something more.";
+
+                Xnpc[7] = gunn; XinitDelay[7] = 0; XendDelay[7] = 5f; XpostDelay[7] = .25f; XisPlayer[7] = false; Xtrigger[7] = false;
+                Xline[7] = "My father bakes exquisite bread.";
+
+                Xnpc[8] = rob; XinitDelay[8] = 0; XendDelay[8] = 2f; XpostDelay[8] = .5f; XisPlayer[8] = false; Xtrigger[8] = false;
+                Xline[8] = "...Sweet.";
+
+                Xnpc[9] = gunn; XinitDelay[9] = 0; XendDelay[9] = 3.5f; XpostDelay[9] = .75f; XisPlayer[9] = false; Xtrigger[9] = true;
+                Xline[9] = "He makes sourdough, actually.";
+            }
+            else if (twoAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))  //if choice 2 is selected
+            {
+                
+            }
+            else if (thrAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))  //if choice 3 is selected
+            {
+
+            }
+        }
+
+        if (answerTag == "FAMILYPROMPTS")
+        {
+            youDiag.text = "Who do you want to question further? (Pick One)";
+
+            oneAnswer.text = "1) Francesca";
+            twoAnswer.text = "2) Gunnlaug";
+            thrAnswer.text = "3) Robin";
+
+            if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))
+            {
+                youDiag.text = "Francesca: you said you joined the Paladin armada for your family...";
+                answering = false;
+
+                nextTag = "CHILDHOODPROMPTS1";
+
+                StartCoroutine(poseQuestion(null, 4f, true,
+                    "Was there no other reason?",
+                    4f, false, .5f, true));
+
+                oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
+
+                Xnpc[0] = fran; XinitDelay[0] = 0f; XendDelay[0] = 7.5f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                Xline[0] = "Do I need some trivial motivation to hunt murderers?";
+
+                Xnpc[1] = rob; XinitDelay[1] = 0f; XendDelay[1] = 4f; XpostDelay[1] = .75f; XisPlayer[1] = false; Xtrigger[1] = false;
+                Xline[1] = "You murder people too...";
+
+                Xnpc[2] = fran; XinitDelay[2] = 0; XendDelay[2] = 3f; XpostDelay[2] = .75f; XisPlayer[2] = false; Xtrigger[2] = false;
+                Xline[2] = "We cleanse them.";
+
+                Xnpc[3] = rob; XinitDelay[3] = 0; XendDelay[3] = 5.5f; XpostDelay[3] = .75f; XisPlayer[3] = false; Xtrigger[3] = false;
+                Xline[3] = "I'd rather you didn't 'cleanse' me, thanks.";
+
+                Xnpc[4] = fran; XinitDelay[4] = 0; XendDelay[4] = 7.5f; XpostDelay[4] = .25f; XisPlayer[4] = false; Xtrigger[4] = false;
+                Xline[4] = "Do you understand what you've become? What you've become?";
+
+                Xnpc[5] = fran; XinitDelay[5] = 0; XendDelay[5] = 9.5f; XpostDelay[5] = 1f; XisPlayer[5] = false; Xtrigger[5] = false;
+                Xline[5] = "Lichs are leeches: they cannot survive without sucking the life out of world around them.";
+
+                Xnpc[6] = null; XinitDelay[6] = 0; XendDelay[6] = 8.5f; XpostDelay[6] = .5f; XisPlayer[6] = true; Xtrigger[6] = false;
+                Xline[6] = "You force us to fight. We try to give back all the lives we can.";
+
+                Xnpc[7] = fran; XinitDelay[7] = 0; XendDelay[7] = 6.5f; XpostDelay[7] = .25f; XisPlayer[7] = false; Xtrigger[7] = false;
+                Xline[7] = "And how many lives did you save on your last raid?";
+
+                Xnpc[8] = fran; XinitDelay[8] = 0; XendDelay[8] = 4f; XpostDelay[8] = .25f; XisPlayer[8] = false; Xtrigger[8] = false;
+                Xline[8] = "Three. You saved three lives.";
+
+                Xnpc[9] = fran; XinitDelay[9] = 0; XendDelay[9] = 5.5f; XpostDelay[9] = .25f; XisPlayer[9] = false; Xtrigger[9] = false;
+                Xline[9] = "Were we the only corpses you fiends left intact?";
+
+                Xnpc[10] = rob; XinitDelay[10] = 0; XendDelay[10] = 3.5f; XpostDelay[10] = .25f; XisPlayer[10] = false; Xtrigger[10] = false;
+                Xline[10] = "They're helping us!";
+
+                Xnpc[11] = fran; XinitDelay[11] = 0; XendDelay[11] = 3.5f; XpostDelay[11] = .25f; XisPlayer[11] = false; Xtrigger[11] = false;
+                Xline[11] = "THEY ARE THIEVES! PIRATES!"; XskipAvailable[11] = false;
+
+                Xnpc[12] = fran; XinitDelay[12] = 0; XendDelay[12] = 7.5f; XpostDelay[12] = .25f; XisPlayer[12] = false; Xtrigger[12] = false;
+                Xline[12] = "Only difference is they're stealing lives! The only thing that can't be replaced..."; XskipAvailable[12] = false;
+
+                Xnpc[13] = fran; XinitDelay[13] = 0; XendDelay[13] = 4.5f; XpostDelay[13] = .25f; XisPlayer[13] = false; Xtrigger[13] = false;
+                Xline[13] = "Daughters, fathers, friends."; XskipAvailable[13] = false;
+
+                Xnpc[14] = fran; XinitDelay[14] = 0; XendDelay[14] = 8f; XpostDelay[14] = .25f; XisPlayer[14] = false; Xtrigger[14] = false;
+                Xline[14] = "Do not pretend that by indoctrinating the scraps they have somehow absolved themselves."; XskipAvailable[14] = false;
+
+                Xnpc[15] = rob; XinitDelay[15] = 0; XendDelay[15] = 2.5f; XpostDelay[15] = .25f; XisPlayer[15] = false; Xtrigger[15] = false;
+                Xline[15] = "..."; XskipAvailable[15] = false;
+
+                Xnpc[16] = gunn; XinitDelay[16] = 0; XendDelay[16] = 7f; XpostDelay[16] = .25f; XisPlayer[16] = false; Xtrigger[16] = true;
+                Xline[16] = "They survive, as we all do. Like it or not, you are also a leech."; XskipAvailable[16] = true;
+            }
+            else if (twoAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))  //if choice 2 is selected
+            {
+                youDiag.text = "Gunnlaug: can you tell me more about your parents? What were they like?";
+                answering = false;
+
+                nextTag = "CHILDHOODPROMPTS";
+
+                StartCoroutine(poseQuestion(gunn, 3.5f, false,
+                    "Kind, patient, steadyhands: the expected qualities of a decent parent.",
+                    4.5f, false, 0f, true));
+
+                oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
+
+                Xnpc[0] = null; XinitDelay[0] = 2f; XendDelay[0] = 4f; XpostDelay[0] = .5f; XisPlayer[0] = true; Xtrigger[0] = false;
+                Xline[0] = "Does your father have a trade?";
+
+                Xnpc[1] = gunn; XinitDelay[1] = 0f; XendDelay[1] = 4.5f; XpostDelay[1] = .5f; XisPlayer[1] = false; Xtrigger[1] = false;
+                Xline[1] = "My father is a baker. My mother works iron.";
+
+                Xnpc[2] = gunn; XinitDelay[2] = 0f; XendDelay[2] = 6f; XpostDelay[2] = .25f; XisPlayer[2] = false; Xtrigger[2] = false;
+                Xline[2] = "I learnt from them both, honing my creativity and my craft.";
+
+                Xnpc[3] = gunn; XinitDelay[3] = 0; XendDelay[3] = 5.5f; XpostDelay[3] = .25f; XisPlayer[3] = false; Xtrigger[3] = false;
+                Xline[3] = "I think they taught me about the beauty in my work..."; XskipAvailable[3] = false;
+
+                Xnpc[4] = gunn; XinitDelay[4] = 0; XendDelay[4] = 4f; XpostDelay[4] = .25f; XisPlayer[4] = false; Xtrigger[4] = false;
+                Xline[4] = "Maybe in death I can be greater..."; XskipAvailable[4] = false;
+
+                Xnpc[5] = fran; XinitDelay[5] = 0; XendDelay[5] = 4.5f; XpostDelay[5] = 1f; XisPlayer[5] = false; Xtrigger[5] = false;
+                Xline[5] = "You must have made them very proud.";
+
+                Xnpc[6] = gunn; XinitDelay[6] = 0; XendDelay[6] = 5f; XpostDelay[6] = .5f; XisPlayer[6] = false; Xtrigger[6] = false;
+                Xline[6] = "Perhaps. I left home young. Sailed out.";
+
+                Xnpc[7] = gunn; XinitDelay[7] = 0; XendDelay[7] = 3.5f; XpostDelay[7] = .25f; XisPlayer[7] = false; Xtrigger[7] = false;
+                Xline[7] = "That was that.";
+
+                Xnpc[8] = rob; XinitDelay[8] = 0; XendDelay[8] = 2f; XpostDelay[8] = .25f; XisPlayer[8] = false; Xtrigger[8] = false;
+                Xline[8] = "WHAT?!";
+
+                Xnpc[9] = rob; XinitDelay[9] = 0; XendDelay[9] = 3.5f; XpostDelay[9] = .25f; XisPlayer[9] = false; Xtrigger[9] = false;
+                Xline[9] = "Don't you visit??";
+
+                Xnpc[10] = gunn; XinitDelay[10] = 0; XendDelay[10] = 4.5f; XpostDelay[10] = .25f; XisPlayer[10] = false; Xtrigger[10] = false;
+                Xline[10] = "No. The journey is arduous.";
+
+                Xnpc[11] = gunn; XinitDelay[11] = 0; XendDelay[11] = 7.5f; XpostDelay[11] = .25f; XisPlayer[11] = false; Xtrigger[11] = false;
+                Xline[11] = "They visited once, for the summer. My partner became quite fond of them.";
+
+                Xnpc[12] = rob; XinitDelay[12] = 0; XendDelay[12] = 3.5f; XpostDelay[12] = .25f; XisPlayer[12] = false; Xtrigger[12] = false;
+                Xline[12] = "You must miss them.";
+
+                Xnpc[13] = gunn; XinitDelay[13] = 0; XendDelay[13] = 5.5f; XpostDelay[13] = .25f; XisPlayer[13] = false; Xtrigger[13] = false;
+                Xline[13] = "Not especially. They're busy people, as am I.";
+
+                Xnpc[14] = gunn; XinitDelay[14] = 0; XendDelay[14] = 5f; XpostDelay[14] = .25f; XisPlayer[14] = false; Xtrigger[14] = false;
+                Xline[14] = "Our love withstands time and distance.";
+
+                Xnpc[15] = gunn; XinitDelay[15] = 0; XendDelay[15] = 4.5f; XpostDelay[15] = .25f; XisPlayer[15] = false; Xtrigger[15] = false;
+                Xline[15] = "We see no need to reaffirm that.";
+
+                Xnpc[16] = rob; XinitDelay[16] = 0; XendDelay[16] = 5f; XpostDelay[16] = .25f; XisPlayer[16] = false; Xtrigger[16] = false;
+                Xline[16] = "Sounds unhealthy...";
+
+                Xnpc[17] = fran; XinitDelay[17] = 0; XendDelay[17] = 2.5f; XpostDelay[17] = .25f; XisPlayer[17] = false; Xtrigger[17] = false;
+                Xline[17] = "Why?";
+
+                Xnpc[18] = rob; XinitDelay[18] = 0; XendDelay[18] = 3.5f; XpostDelay[18] = .25f; XisPlayer[18] = false; Xtrigger[18] = false;
+                Xline[18] = "...";
+
+                Xnpc[19] = null; XinitDelay[19] = 0; XendDelay[19] = 3.5f; XpostDelay[19] = .25f; XisPlayer[19] = true; Xtrigger[19] = false;
+                Xline[19] = "I think that'll do for tonight. Thank you.";
+
+                Xnpc[20] = null; XinitDelay[20] = 0; XendDelay[20] = 3.5f; XpostDelay[20] = .25f; XisPlayer[20] = true; Xtrigger[20] = false;
+                Xline[20] = "I'll begin searching for your phylacteries tomorrow morning.";
+
+                //end
+                maxI = 20;
+            }
+            else if (thrAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))  //if choice 3 is selected
+            {
+                youDiag.text = "Robin: could you say more about your family?";
+                answering = false;
+
+                nextTag = "CHILDHOODPROMPTS";
+
+                StartCoroutine(poseQuestion(rob, 2.5f, false,
+                    "For sure! Six of the buggers: Davey, Stace, Marge, Henry, an' Alfie.",
+                    5.5f, false, 0f, true));
+
+                oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
+
+                Xnpc[0] = gunn; XinitDelay[0] = .5f; XendDelay[0] = 3f; XpostDelay[0] = .5f; XisPlayer[0] = false; Xtrigger[0] = false;
+                Xline[0] = "Sounds...loud.";
+
+                Xnpc[1] = rob; XinitDelay[1] = 0f; XendDelay[1] = 4.5f; XpostDelay[1] = .5f; XisPlayer[1] = false; Xtrigger[1] = false;
+                Xline[1] = "Bloody was! Not Davey, but Alfie, the youngest--";
+
+                Xnpc[2] = rob; XinitDelay[2] = 0f; XendDelay[2] = 5.5f; XpostDelay[2] = .25f; XisPlayer[2] = false; Xtrigger[2] = false;
+                Xline[2] = "Kid could talk your ear off with a mouth full of Mahi!";
+
+                Xnpc[3] = fran; XinitDelay[3] = 0; XendDelay[3] = 3.5f; XpostDelay[3] = .25f; XisPlayer[3] = false; Xtrigger[3] = false;
+                Xline[3] = "You were close?";
+
+                Xnpc[4] = rob; XinitDelay[4] = 0; XendDelay[4] = 7f; XpostDelay[4] = .25f; XisPlayer[4] = false; Xtrigger[4] = false;
+                Xline[4] = "Course we were! Didn't see much of the boys during the day though--";
+
+                Xnpc[5] = rob; XinitDelay[5] = 0; XendDelay[5] = 5f; XpostDelay[5] = .25f; XisPlayer[5] = false; Xtrigger[5] = false;
+                Xline[5] = "--out fishing or carryin' heavy shit.";
+
+                Xnpc[6] = rob; XinitDelay[6] = 0; XendDelay[6] = 5f; XpostDelay[6] = .5f; XisPlayer[6] = false; Xtrigger[6] = false;
+                Xline[6] = "Marge though, she kept around the house with Ma.";
+
+                Xnpc[7] = rob; XinitDelay[7] = 0; XendDelay[7] = 4.5f; XpostDelay[7] = 1f; XisPlayer[7] = false; Xtrigger[7] = false;
+                Xline[7] = "Partners in crime, we were...";
+
+                Xnpc[8] = fran; XinitDelay[8] = 0; XendDelay[8] = 3.5f; XpostDelay[8] = .25f; XisPlayer[8] = false; Xtrigger[8] = false;
+                Xline[8] = "You must miss them deeply.";
+
+                Xnpc[9] = rob; XinitDelay[9] = 0; XendDelay[9] = 3.5f; XpostDelay[9] = .25f; XisPlayer[9] = false; Xtrigger[9] = false;
+                Xline[9] = "Yeah...a lot.";
+
+                Xnpc[10] = rob; XinitDelay[10] = 0; XendDelay[10] = 6.5f; XpostDelay[10] = .25f; XisPlayer[10] = false; Xtrigger[10] = false;
+                Xline[10] = "Devils, the lot of them. But they had good souls. Good company."; XskipAvailable[10] = false;
+
+                Xnpc[11] = fran; XinitDelay[11] = 0; XendDelay[11] = 4.5f; XpostDelay[11] = .25f; XisPlayer[11] = false; Xtrigger[11] = false;
+                Xline[11] = "Shame the Lichs stole that from you."; XskipAvailable[11] = false;
+
+                Xnpc[12] = rob; XinitDelay[12] = 0; XendDelay[12] = 6.5f; XpostDelay[12] = .25f; XisPlayer[12] = false; Xtrigger[12] = false;
+                Xline[12] = "...True, very true. But I got my legs back and some added bonuses."; XskipAvailable[12] = false;
+
+                Xnpc[13] = rob; XinitDelay[13] = 0; XendDelay[13] = 3f; XpostDelay[13] = .5f; XisPlayer[13] = false; Xtrigger[13] = false;
+                Xline[13] = "So it's not all bad..."; XskipAvailable[13] = false;
+
+                Xnpc[14] = rob; XinitDelay[14] = 0; XendDelay[14] = 3.5f; XpostDelay[14] = 1f; XisPlayer[14] = false; Xtrigger[14] = false;
+                Xline[14] = "...Never all bad."; XskipAvailable[14] = false;
+
+                Xnpc[15] = fran; XinitDelay[15] = 0; XendDelay[15] = 4.5f; XpostDelay[15] = .5f; XisPlayer[15] = false; Xtrigger[15] = false;
+                Xline[15] = "...So it was worth it, then?"; XskipAvailable[15] = false;
+
+                Xnpc[16] = rob; XinitDelay[16] = 0; XendDelay[16] = 2.5f; XpostDelay[16] = .25f; XisPlayer[16] = false; Xtrigger[16] = false;
+                Xline[16] = "..."; XskipAvailable[16] = false;
+
+                Xnpc[17] = null; XinitDelay[17] = 0; XendDelay[17] = 3.5f; XpostDelay[17] = .25f; XisPlayer[17] = true; Xtrigger[17] = false;
+                Xline[17] = "I think that'll do for tonight. Thank you.";
+
+                Xnpc[18] = null; XinitDelay[18] = 0; XendDelay[18] = 3.5f; XpostDelay[18] = .25f; XisPlayer[18] = true; Xtrigger[18] = false;
+                Xline[18] = "I'll begin searching for your phylacteries tomorrow morning.";
+
+                //end
+                maxI = 18;
+            }
+        }
+
+        if (answerTag == "FAMILYPROMPTS1")
+        {
+            youDiag.text = "";
+
+            oneAnswer.text = "1) Agree with Gunn";  //choices presented to player (leave as "null" if there are less choices
+            twoAnswer.text = "2) Be Diplomatic";
+            thrAnswer.text = null;
+
+            if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))  //if choice 1 is selected
+            {
+                youDiag.text = "Gunnlaug is right. Refusing our help is an unwise choice.";
+                answering = false;
+
+                StartCoroutine(poseQuestion(fran, 4.5f, true,
+                    "...",
+                    3f, false, .5f, true));
+
+                oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
+
+                Xnpc[0] = rob; XinitDelay[0] = 0f; XendDelay[0] = 4.5f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                Xline[0] = "...I'm sorry she spouted all that.";
+
+                Xnpc[1] = fran; XinitDelay[1] = 0f; XendDelay[1] = 4f; XpostDelay[1] = .75f; XisPlayer[1] = false; Xtrigger[1] = false;
+                Xline[1] = "Don't speak for me.";
+
+                Xnpc[2] = rob; XinitDelay[2] = 0; XendDelay[2] = 3f; XpostDelay[2] = .75f; XisPlayer[2] = false; Xtrigger[2] = false;
+                Xline[2] = "...";
+
+                Xnpc[3] = fran; XinitDelay[3] = 0; XendDelay[3] = 6.5f; XpostDelay[3] = .75f; XisPlayer[3] = false; Xtrigger[3] = false;
+                Xline[3] = "I'm going to bed, Pirate. Find my phylactery quickly.";
+
+                //END NIGHT
+                maxI = 3;
+            }
+            else if (twoAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))
+            {
+                youDiag.text = "You don't have to like us, but if you wish to survive, please cooperate.";
+                answering = false;
+
+                nextTag = "CHILDHOODPROMPTS2";
+
+                StartCoroutine(poseQuestion(fran, 4.5f, true,
+                    "...",
+                    3f, false, .5f, true));
+
+                oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
+
+                Xnpc[0] = rob; XinitDelay[0] = 0f; XendDelay[0] = 4.5f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                Xline[0] = "...I'm sorry she spouted all that.";
+
+                Xnpc[1] = fran; XinitDelay[1] = 0f; XendDelay[1] = 4f; XpostDelay[1] = .75f; XisPlayer[1] = false; Xtrigger[1] = false;
+                Xline[1] = "Don't speak for me.";
+
+                Xnpc[2] = rob; XinitDelay[2] = 0; XendDelay[2] = 3f; XpostDelay[2] = .75f; XisPlayer[2] = false; Xtrigger[2] = false;
+                Xline[2] = "...";
+
+                Xnpc[3] = fran; XinitDelay[3] = 0; XendDelay[3] = 6.5f; XpostDelay[3] = .75f; XisPlayer[3] = false; Xtrigger[3] = false;
+                Xline[3] = "I'm going to bed, Pirate. Find my phylactery quickly.";
+
+                //END NIGHT
+                maxI = 3;
+            }
+            else if (thrAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))  //if choice 3 is selected
+            {
+
+            }
+        }
+
+        //C0A artifact stuff
+
+        if (answerTag == "C01")     //Night2
+        {
+            youDiag.text = "Let's begin:";
+
+            oneAnswer.text = "1) What do you regret?"; 
+            twoAnswer.text = null;
+            thrAnswer.text = null;
+
+            if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))  //if choice 1 is selected
+            {
+                youDiag.text = "Let's begin: what do you regret?";
+                answering = false;
+
+                StartCoroutine(poseQuestion(fran, 1.5f, true,
+                    "Nothing.",
+                    2f, false, .25f, true));
+
+                oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
+
+                Xnpc[0] = gunn; XinitDelay[0] = 0f; XendDelay[0] = 2.5f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                Xline[0] = "Nothing?";
+
+                Xnpc[1] = rob; XinitDelay[1] = 0f; XendDelay[1] = 3f; XpostDelay[1] = .25f; XisPlayer[1] = false; Xtrigger[1] = false;
+                Xline[1] = "...At all?";
+
+                Xnpc[2] = fran; XinitDelay[2] = 0; XendDelay[2] = 2f; XpostDelay[2] = 1f; XisPlayer[2] = false; Xtrigger[1] = false;
+                Xline[2] = "No."; XskipAvailable[2] = false;
+
+                Xnpc[3] = rob; XinitDelay[3] = 0; XendDelay[3] = 2.5f; XpostDelay[3] = .5f; XisPlayer[3] = false; Xtrigger[3] = false;
+                Xline[3] = "That's impressive.";
+
+                Xnpc[4] = rob; XinitDelay[4] = 0; XendDelay[4] = 4f; XpostDelay[4] = .25f; XisPlayer[4] = true; Xtrigger[4] = false;
+                Xline[4] = "I regret...a lot, I guess.";
+
+                Xnpc[5] = rob; XinitDelay[5] = 0; XendDelay[5] = 5f; XpostDelay[5] = .25f; XisPlayer[5] = false; Xtrigger[5] = false;
+                Xline[5] = "Can you regret things you've never done?";
+
+                Xnpc[6] = gunn; XinitDelay[6] = 0; XendDelay[6] = 5.5f; XpostDelay[6] = 1f; XisPlayer[6] = false; Xtrigger[6] = false;
+                Xline[6] = "Absolutely. And now I think we've a chance to do them.";
+
+                Xnpc[6] = null; XinitDelay[6] = 0; XendDelay[6] = 3.5f; XpostDelay[6] = 1f; XisPlayer[6] = true; Xtrigger[6] = false;
+                Xline[6] = "What about you, Gunnlaug?";
+
+                Xnpc[6] = null; XinitDelay[6] = 0; XendDelay[6] = 5f; XpostDelay[6] = 1f; XisPlayer[6] = false; Xtrigger[6] = false;
+                Xline[6] = "I have one regret. That might change soon, though.";
+
+                Xnpc[7] = fran; XinitDelay[7] = 0; XendDelay[7] = 5f; XpostDelay[7] = 1f; XisPlayer[7] = false; Xtrigger[7] = true;
+                Xline[7] = "I have one regret. That might change soon, though.";
+
+                nextTag = "REGRETPROMPTS";
+            }
+            else if (twoAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))  //if choice 2 is selected
+            {
+                
+            }
+            else if (thrAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))  //if choice 3 is selected
+            {
+
+            }
+        }       //C = night2
+
+        if (answerTag == "REGRETPROMPTS")
+        {
+            youDiag.text = "Who do you want to question further? (Pick One)";
+
+            oneAnswer.text = "1) Francesca";
+            twoAnswer.text = "2) Gunnlaug";
+            thrAnswer.text = "3) Robin";
+
+            if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))  //if choice 1 is selected
+            {
+                youDiag.text = "Francesca, you must regret something. Please.";
+                answering = false;
+
+                nextTag = "REGRETPROMPTSagain";
+
+                StartCoroutine(poseQuestion(null, 4f, true,
+                    "I've nothing to give, pirate. Probe someone else.",
+                    4.5f, false, .5f, true));
+
+                oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
+
+                Xnpc[0] = rob; XinitDelay[0] = 0f; XendDelay[0] = 3f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                Xline[0] = "That's not how it works.";
+
+                Xnpc[1] = fran; XinitDelay[1] = 0f; XendDelay[1] = 5f; XpostDelay[1] = .75f; XisPlayer[1] = false; Xtrigger[1] = false;
+                Xline[1] = "I'm sorry; I didn't realize there was a system to this.";
+
+                Xnpc[2] = fran; XinitDelay[2] = 0; XendDelay[2] = 5f; XpostDelay[2] = .75f; XisPlayer[2] = false; Xtrigger[2] = true;
+                Xline[2] = "I've nothing of value to share. Try one of the other corpses.";                
+            }
+            else if (twoAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))  //if choice 2 is selected
+            {
+                youDiag.text = "What do you hope to do, Gunnlaug?";
+                answering = false;
+
+                nextTag = "REGRETPROMPTSG";
+
+                StartCoroutine(poseQuestion(gunn, 2.5f, false,
+                    "...",
+                    2f, false, 0f, true));
+
+                oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
+
+                Xnpc[0] = gunn; XinitDelay[0] = 2f; XendDelay[0] = 4f; XpostDelay[0] = .5f; XisPlayer[0] = true; Xtrigger[0] = false;
+                Xline[0] = "The pommel is my favourite part of a sword.";
+
+                Xnpc[1] = fran; XinitDelay[1] = 0f; XendDelay[1] = 4.5f; XpostDelay[1] = .5f; XisPlayer[1] = false; Xtrigger[1] = false;
+                Xline[1] = "I prefer the blade.";
+
+                Xnpc[2] = rob; XinitDelay[2] = 0f; XendDelay[2] = 6f; XpostDelay[2] = .25f; XisPlayer[2] = false; Xtrigger[2] = false;
+                Xline[2] = "...Did I miss something?";
+
+                Xnpc[3] = fran; XinitDelay[3] = 0; XendDelay[3] = 5.5f; XpostDelay[3] = .25f; XisPlayer[3] = false; Xtrigger[3] = false;
+                Xline[3] = "He's saying he's a pacifist.";
+
+                Xnpc[4] = gunn; XinitDelay[4] = 0; XendDelay[4] = 4f; XpostDelay[4] = .25f; XisPlayer[4] = false; Xtrigger[4] = false;
+                Xline[4] = "I'm saying I'm an artist.";
+
+                Xnpc[5] = gunn; XinitDelay[5] = 0; XendDelay[5] = 4.5f; XpostDelay[5] = 1f; XisPlayer[5] = false; Xtrigger[5] = false;
+                Xline[5] = "I've perfected the blade; it bores me.";
+
+                Xnpc[6] = fran; XinitDelay[6] = 0; XendDelay[6] = 5f; XpostDelay[6] = .5f; XisPlayer[6] = false; Xtrigger[6] = false;
+                Xline[6] = "Perfect? No weapon is perfect.";
+
+                Xnpc[7] = gunn; XinitDelay[7] = 0; XendDelay[7] = 3.5f; XpostDelay[7] = .25f; XisPlayer[7] = false; Xtrigger[7] = false;
+                Xline[7] = "I could change your mind.";
+
+                Xnpc[8] = fran; XinitDelay[8] = 0; XendDelay[8] = 2f; XpostDelay[8] = .25f; XisPlayer[8] = false; Xtrigger[8] = false;
+                Xline[8] = "Oh, uhm...I'd like to see that.";
+
+                Xnpc[9] = rob; XinitDelay[9] = 0; XendDelay[9] = 3.5f; XpostDelay[9] = .25f; XisPlayer[9] = false; Xtrigger[9] = false;
+                Xline[9] = "...So what then if not swords?";
+
+                Xnpc[10] = gunn; XinitDelay[10] = 0; XendDelay[10] = 4.5f; XpostDelay[10] = .25f; XisPlayer[10] = false; Xtrigger[10] = false;
+                Xline[10] = "Jewelry: the finest work a man can craft.";
+
+                Xnpc[11] = rob; XinitDelay[11] = 0; XendDelay[11] = 7.5f; XpostDelay[11] = .25f; XisPlayer[11] = false; Xtrigger[11] = true;
+                Xline[11] = "I take it you never made any.";
+            }
+            else if (thrAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))  //if choice 3 is selected
+            {
+                youDiag.text = "Robin, you have to be more specific.";
+                answering = false;
+
+                nextTag = "REGRETPROMPTSR";
+
+                StartCoroutine(poseQuestion(null, 3f, true,
+                    "What exactly do you regret? Take your time.",
+                    4.5f, false, 0f, true));
+
+                oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
+
+                Xnpc[0] = rob; XinitDelay[0] = .5f; XendDelay[0] = 3.5f; XpostDelay[0] = .5f; XisPlayer[0] = false; Xtrigger[0] = false;
+                Xline[0] = "I dunno. My family never had cache. Money.";
+
+                Xnpc[1] = gunn; XinitDelay[1] = 0f; XendDelay[1] = 4f; XpostDelay[1] = .25f; XisPlayer[1] = false; Xtrigger[1] = false;
+                Xline[1] = "Reales aren't easy to come by these days.";
+
+                Xnpc[2] = rob; XinitDelay[2] = 0f; XendDelay[2] = 3f; XpostDelay[2] = .25f; XisPlayer[2] = false; Xtrigger[2] = false;
+                Xline[2] = "No they are not.";
+
+                Xnpc[3] = rob; XinitDelay[3] = 0; XendDelay[3] = 6.5f; XpostDelay[3] = .75f; XisPlayer[3] = false; Xtrigger[3] = false;
+                Xline[3] = "All me brothers and sisters had jobs in and out of the house...";
+
+                Xnpc[4] = rob; XinitDelay[4] = 0; XendDelay[4] = 4f; XpostDelay[4] = .5f; XisPlayer[4] = false; Xtrigger[4] = false;
+                Xline[4] = "They all did their part, right?";
+
+                Xnpc[5] = fran; XinitDelay[5] = 0; XendDelay[5] = 2.5f; XpostDelay[5] = .5f; XisPlayer[5] = false; Xtrigger[5] = false;
+                Xline[5] = "Of course.";
+
+                Xnpc[6] = rob; XinitDelay[6] = 0; XendDelay[6] = 3.5f; XpostDelay[6] = .5f; XisPlayer[6] = false; Xtrigger[6] = true;
+                Xline[6] = "Yeah, that's the problem.";
+            }
+        }
+
+        if (answerTag == "REGRETPROMPTSG")
+        {
+            youDiag.text = "";
+
+            oneAnswer.text = "1) Investigate";
+            twoAnswer.text = "2) Console";
+            thrAnswer.text = null;
+
+            if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))  //if choice 1 is selected
+            {
+                youDiag.text = "Why didn't you pursue your dreams?";
+                answering = false;
+
+                //nextTag = "CHILDHOODPROMPTS1";
+
+                StartCoroutine(poseQuestion(gunn, 3f, false,
+                    "Wasn't profitable. Gems are hard to come by and even if they weren't, nobody would be buying.",
+                    7f, false, .5f, true));
+
+                oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
+
+                Xnpc[0] = gunn; XinitDelay[0] = 0f; XendDelay[0] = 7f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                Xline[0] = "Things would be different had I lived in Port-au-Prince or somewhere wealthy.";
+
+                Xnpc[1] = rob; XinitDelay[1] = 0f; XendDelay[1] = 6.5f; XpostDelay[1] = .75f; XisPlayer[1] = false; Xtrigger[1] = false;
+                Xline[1] = "Well now that we're pirates I guess you can just steal what you need...";
+
+                Xnpc[2] = rob; XinitDelay[2] = 0; XendDelay[2] = 2.5f; XpostDelay[2] = .75f; XisPlayer[2] = false; Xtrigger[2] = false;
+                Xline[2] = "We...?";
+
+                Xnpc[3] = fran; XinitDelay[3] = 0; XendDelay[3] = 3f; XpostDelay[3] = .75f; XisPlayer[3] = false; Xtrigger[3] = false;
+                Xline[3] = "...";
+
+                Xnpc[4] = gunn; XinitDelay[4] = 0; XendDelay[4] = 4f; XpostDelay[4] = .25f; XisPlayer[4] = false; Xtrigger[4] = false;
+                Xline[4] = "I suppose that's one way of doing it.";
+
+                Xnpc[5] = null; XinitDelay[5] = 0; XendDelay[5] = 3.5f; XpostDelay[5] = .25f; XisPlayer[5] = true; Xtrigger[5] = false;
+                Xline[5] = "I think that'll do for tonight. Thank you.";
+
+                Xnpc[6] = null; XinitDelay[6] = 0; XendDelay[6] = 3.5f; XpostDelay[6] = .25f; XisPlayer[6] = true; Xtrigger[6] = false;
+                Xline[6] = "I'll continue searching for more phylacteries tomorrow morning.";
+
+                //end
+                maxI = 6;
+            }
+            else if (twoAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))  //if choice 2 is selected
+            {
+                youDiag.text = "Chasing dreams can be...daunting.";
+                answering = false;
+
+                StartCoroutine(poseQuestion(gunn, 3.5f, false,
+                    "No, it wouldn't've been profitable. Gems are hard to come by and even if they weren't, nobody would be buying.",
+                    8.5f, false, .5f, true));
+
+                oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
+
+                Xnpc[0] = gunn; XinitDelay[0] = 0f; XendDelay[0] = 7f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                Xline[0] = "Things would be different had I lived in Port-au-Prince or somewhere wealthy.";
+
+                Xnpc[1] = rob; XinitDelay[1] = 0f; XendDelay[1] = 6.5f; XpostDelay[1] = .75f; XisPlayer[1] = false; Xtrigger[1] = false;
+                Xline[1] = "Well now that we're pirates I guess you can just steal what you need...";
+
+                Xnpc[2] = rob; XinitDelay[2] = 0; XendDelay[2] = 2.5f; XpostDelay[2] = .75f; XisPlayer[2] = false; Xtrigger[2] = false;
+                Xline[2] = "We...?";
+
+                Xnpc[3] = fran; XinitDelay[3] = 0; XendDelay[3] = 3f; XpostDelay[3] = .75f; XisPlayer[3] = false; Xtrigger[3] = false;
+                Xline[3] = "...";
+
+                Xnpc[4] = gunn; XinitDelay[4] = 0; XendDelay[4] = 4f; XpostDelay[4] = .25f; XisPlayer[4] = false; Xtrigger[4] = false;
+                Xline[4] = "I suppose that's one way of doing it.";
+
+                Xnpc[5] = null; XinitDelay[5] = 0; XendDelay[5] = 3.5f; XpostDelay[5] = .25f; XisPlayer[5] = true; Xtrigger[5] = false;
+                Xline[5] = "I think that'll do for tonight. Thank you.";
+
+                Xnpc[6] = null; XinitDelay[6] = 0; XendDelay[6] = 3.5f; XpostDelay[6] = .25f; XisPlayer[6] = true; Xtrigger[6] = false;
+                Xline[6] = "I'll continue searching for more phylacteries tomorrow morning.";
+
+                //end
+                maxI = 6;
+            }
+            else if (thrAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))  //if choice 3 is selected
+            {
+                
+            }
+        }
+
+        if (answerTag == "REGRETPROMPTSR")
+        {
+            youDiag.text = "";
+
+            oneAnswer.text = "1) Wait";
+            twoAnswer.text = "2) Ask";
+            thrAnswer.text = null;
+
+            if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))  //if choice 1 is selected
+            {
+                youDiag.text = "Yeah.";
+                answering = false;
+
+                StartCoroutine(poseQuestion(rob, 4f, false,
+                    "I just couldn't...",
+                    7f, false, .5f, false));
+
+                oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
+
+                Xnpc[0] = rob; XinitDelay[0] = 1.5f; XendDelay[0] = 4f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                Xline[0] = "I hated it. I hated being useless.";    XskipAvailable[0] = false;
+
+                Xnpc[1] = fran; XinitDelay[1] = 1f; XendDelay[1] = 3.5f; XpostDelay[1] = .75f; XisPlayer[1] = false; Xtrigger[1] = false;
+                Xline[1] = "I don't think you were."; XskipAvailable[1] = false;
+
+                Xnpc[2] = rob; XinitDelay[2] = 0; XendDelay[2] = 2.5f; XpostDelay[2] = .75f; XisPlayer[2] = false; Xtrigger[2] = false;
+                Xline[2] = "...?"; XskipAvailable[2] = false;
+
+                Xnpc[3] = fran; XinitDelay[3] = 0; XendDelay[3] = 6f; XpostDelay[3] = .75f; XisPlayer[3] = false; Xtrigger[3] = false;
+                Xline[3] = "Sometimes--I think--helpful people are horrible to themselves.";
+
+                Xnpc[4] = rob; XinitDelay[4] = 0; XendDelay[4] = 4f; XpostDelay[4] = .25f; XisPlayer[4] = false; Xtrigger[4] = false;
+                Xline[4] = "You know we'd miss supper sometimes.";
+
+                Xnpc[5] = rob; XinitDelay[5] = 0; XendDelay[5] = 7f; XpostDelay[5] = .25f; XisPlayer[5] = false; Xtrigger[5] = false;
+                Xline[5] = "Now I can finally help, and I don't even know if they're even alive.";
+
+                Xnpc[6] = fran; XinitDelay[6] = 0; XendDelay[6] = 3.5f; XpostDelay[6] = .25f; XisPlayer[6] = false; Xtrigger[6] = false;
+                Xline[6] = "It's not right for you to bear that, Robin.";
+
+                Xnpc[7] = rob; XinitDelay[7] = 0; XendDelay[7] = 4f; XpostDelay[7] = .25f; XisPlayer[7] = false; Xtrigger[7] = false;
+                Xline[7] = "Look: I know it's fucked. Don't worry about it.";
+
+                Xnpc[8] = rob; XinitDelay[8] = 0; XendDelay[8] = 4f; XpostDelay[8] = .25f; XisPlayer[8] = false; Xtrigger[8] = false;
+                Xline[8] = "I'm beat. Could I get some shut-eye?";
+
+                Xnpc[9] = null; XinitDelay[9] = 0; XendDelay[9] = 3.5f; XpostDelay[9] = .25f; XisPlayer[9] = true; Xtrigger[9] = false;
+                Xline[9] = "...I think that'll do for tonight. Thank you.";
+
+                Xnpc[10] = null; XinitDelay[10] = 0; XendDelay[10] = 3.5f; XpostDelay[10] = .25f; XisPlayer[10] = true; Xtrigger[10] = false;
+                Xline[10] = "I'll continue searching for more phylacteries tomorrow morning.";
+
+                //end
+                maxI = 10;
+            }
+            else if (twoAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))  //if choice 2 is selected
+            {
+                youDiag.text = "What's the problem, Robin?";
+                answering = false;
+
+                StartCoroutine(poseQuestion(rob, 4f, false,
+                    "C'mon, it's obvious:",
+                    4f, false, .5f, false));
+
+                oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
+
+                Xnpc[0] = rob; XinitDelay[0] = 1.5f; XendDelay[0] = 4f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                Xline[0] = "I hate it. I hated being useless."; XskipAvailable[0] = false;
+
+                Xnpc[1] = fran; XinitDelay[1] = 1f; XendDelay[1] = 3.5f; XpostDelay[1] = .75f; XisPlayer[1] = false; Xtrigger[1] = false;
+                Xline[1] = "I don't think you were."; XskipAvailable[1] = false;
+
+                Xnpc[2] = rob; XinitDelay[2] = 0; XendDelay[2] = 2.5f; XpostDelay[2] = .75f; XisPlayer[2] = false; Xtrigger[2] = false;
+                Xline[2] = "...?"; XskipAvailable[2] = false;
+
+                Xnpc[3] = fran; XinitDelay[3] = 0; XendDelay[3] = 6f; XpostDelay[3] = .75f; XisPlayer[3] = false; Xtrigger[3] = false;
+                Xline[3] = "Sometimes--I think--helpful people are horrible to themselves.";
+
+                Xnpc[4] = rob; XinitDelay[4] = 0; XendDelay[4] = 4f; XpostDelay[4] = .25f; XisPlayer[4] = false; Xtrigger[4] = false;
+                Xline[4] = "You know we'd miss supper sometimes.";
+
+                Xnpc[5] = rob; XinitDelay[5] = 0; XendDelay[5] = 7f; XpostDelay[5] = .25f; XisPlayer[5] = false; Xtrigger[5] = false;
+                Xline[5] = "Now I can finally help, and I don't even know if they're even alive.";
+
+                Xnpc[6] = fran; XinitDelay[6] = 0; XendDelay[6] = 3.5f; XpostDelay[6] = .25f; XisPlayer[6] = false; Xtrigger[6] = false;
+                Xline[6] = "It's not right for you to bear that, Robin.";
+
+                Xnpc[7] = rob; XinitDelay[7] = 0; XendDelay[7] = 4f; XpostDelay[7] = .25f; XisPlayer[7] = false; Xtrigger[7] = false;
+                Xline[7] = "Look: I know it's fucked. Don't worry about it.";
+
+                Xnpc[8] = rob; XinitDelay[8] = 0; XendDelay[8] = 4f; XpostDelay[8] = .25f; XisPlayer[8] = false; Xtrigger[8] = false;
+                Xline[8] = "I'm beat. Could I get some shut-eye?";
+
+                Xnpc[9] = null; XinitDelay[9] = 0; XendDelay[9] = 3.5f; XpostDelay[9] = .25f; XisPlayer[9] = true; Xtrigger[9] = false;
+                Xline[9] = "...I think that'll do for tonight. Thank you.";
+
+                Xnpc[10] = null; XinitDelay[10] = 0; XendDelay[10] = 3.5f; XpostDelay[10] = .25f; XisPlayer[10] = true; Xtrigger[10] = false;
+                Xline[10] = "I'll continue searching for more phylacteries tomorrow morning.";
+
+                //end
+                maxI = 10;
+            }
+            else if (thrAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))  //if choice 3 is selected
+            {
+
+            }
+        }
+
+        if (answerTag == "REGRETPROMPTSagain")
+        {
+            youDiag.text = "Who do you want to question further? (Pick One)";
+
+            oneAnswer.text = "1) Francesca";
+            twoAnswer.text = "2) Gunnlaug";
+            thrAnswer.text = "3) Robin";
+
+            if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))  //if choice 1 is selected
+            {
+                youDiag.text = "I'm sorry Francesca. But if you want a phylactery, you have to be honest with me.";
+                answering = false;
+
+                nextTag = "REGRETPROMPTSF";
+
+                StartCoroutine(poseQuestion(fran, 4f, false,
+                    "I won't be called a liar by the likes of you.",
+                    4.5f, false, .5f, true));
+
+                oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
+
+                Xnpc[0] = gunn; XinitDelay[0] = 0f; XendDelay[0] = 2.5f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                Xline[0] = "Lies are lies.";
+
+                Xnpc[1] = fran; XinitDelay[1] = 0f; XendDelay[1] = 3f; XpostDelay[1] = .75f; XisPlayer[1] = false; Xtrigger[1] = false;
+                Xline[1] = "...";   XskipAvailable[1] = false;
+
+                Xnpc[2] = fran; XinitDelay[2] = 1.5f; XendDelay[2] = 3.5f; XpostDelay[2] = .75f; XisPlayer[2] = false; Xtrigger[2] = true;
+                Xline[2] = "I lost someone."; XskipAvailable[2] = false;
+
+                Xnpc[3] = rob; XinitDelay[3] = 0; XendDelay[3] = 2.5f; XpostDelay[3] = .75f; XisPlayer[3] = false; Xtrigger[3] = false;
+                Xline[3] = "Finally!";
+
+                Xnpc[4] = gunn; XinitDelay[4] = 0; XendDelay[4] = 2.5f; XpostDelay[4] = .25f; XisPlayer[4] = false; Xtrigger[4] = false;
+                Xline[4] = "Hush!";
+
+                Xnpc[5] = fran; XinitDelay[5] = 0; XendDelay[5] = 5.5f; XpostDelay[5] = 1f; XisPlayer[5] = false; Xtrigger[5] = false;
+                Xline[5] = "Before all of this, it was my brother Jacob."; XskipAvailable[5] = false;
+
+                Xnpc[6] = fran; XinitDelay[6] = 0; XendDelay[6] = 6f; XpostDelay[6] = .5f; XisPlayer[6] = false; Xtrigger[6] = false;
+                Xline[6] = "I don't...it's not a regret, but I dwell on it.";
+
+                Xnpc[7] = gunn; XinitDelay[7] = 0; XendDelay[7] = 3f; XpostDelay[7] = .25f; XisPlayer[7] = false; Xtrigger[7] = false;
+                Xline[7] = "What happened?";
+
+                Xnpc[8] = fran; XinitDelay[8] = 0; XendDelay[8] = 4.5f; XpostDelay[8] = .25f; XisPlayer[8] = false; Xtrigger[8] = false;
+                Xline[8] = "His friend was murdered, in battle."; 
+
+                Xnpc[9] = fran; XinitDelay[9] = 0; XendDelay[9] = 4f; XpostDelay[9] = .25f; XisPlayer[9] = false; Xtrigger[9] = false;
+                Xline[9] = "Jacob did something stupid."; XskipAvailable[9] = false;
+
+                Xnpc[10] = fran; XinitDelay[10] = 0; XendDelay[10] = 5f; XpostDelay[10] = .25f; XisPlayer[10] = false; Xtrigger[10] = false;
+                Xline[10] = "The Church found out...";
+
+                Xnpc[11] = rob; XinitDelay[11] = 0; XendDelay[11] = 4.5f; XpostDelay[11] = .25f; XisPlayer[11] = false; Xtrigger[11] = false;
+                Xline[11] = "Good thing they're so forgiving.";
+
+                Xnpc[12] = fran; XinitDelay[12] = 0; XendDelay[12] = 4.5f; XpostDelay[12] = .25f; XisPlayer[12] = false; Xtrigger[12] = false;
+                Xline[12] = "...He was burned at the stake."; XskipAvailable[12] = false;
+
+                Xnpc[13] = rob; XinitDelay[13] = .5f; XendDelay[13] = 4.5f; XpostDelay[13] = .25f; XisPlayer[13] = false; Xtrigger[13] = false;
+                Xline[13] = "..."; XskipAvailable[13] = false;
+
+                Xnpc[14] = fran; XinitDelay[14] = 0; XendDelay[14] = 6f; XpostDelay[14] = .25f; XisPlayer[14] = false; Xtrigger[14] = false;
+                Xline[14] = "Enough about my brother, though. This is about me.";
+
+                Xnpc[15] = rob; XinitDelay[15] = 0; XendDelay[15] = 6.5f; XpostDelay[15] = .25f; XisPlayer[15] = false; Xtrigger[15] = false;
+                Xline[15] = "Hang on, if you won't say what happened I'll bloody work it out!";
+
+                Xnpc[16] = fran; XinitDelay[16] = 0; XendDelay[16] = 2.5f; XpostDelay[16] = .25f; XisPlayer[16] = false; Xtrigger[16] = false;
+                Xline[16] = "Please: don't.";
+
+                Xnpc[17] = rob; XinitDelay[17] = 0; XendDelay[17] = 4f; XpostDelay[17] = .25f; XisPlayer[17] = false; Xtrigger[17] = false;
+                Xline[17] = "Too late, already ideating.";
+
+                Xnpc[18] = null; XinitDelay[18] = 0; XendDelay[18] = 2.5f; XpostDelay[18] = .25f; XisPlayer[18] = true; Xtrigger[18] = false;
+                Xline[18] = "Whating?";
+
+                Xnpc[19] = fran; XinitDelay[19] = 0; XendDelay[19] = 6.5f; XpostDelay[19] = .25f; XisPlayer[19] = false; Xtrigger[19] = false;
+                Xline[19] = "It doesn't matter. I answered the pirate's question. We're done.";
+
+                Xnpc[20] = rob; XinitDelay[20] = 0; XendDelay[20] = 3f; XpostDelay[20] = .25f; XisPlayer[20] = false; Xtrigger[20] = false;
+                Xline[20] = "But we're not!";
+
+                Xnpc[21] = null; XinitDelay[21] = 0; XendDelay[21] = 5.5f; XpostDelay[21] = .25f; XisPlayer[21] = false; Xtrigger[21] = false;
+                Xline[21] = "Pretty hard to get thrown on a pyre these days...";
+
+                Xnpc[22] = null; XinitDelay[22] = 0; XendDelay[22] = 6.5f; XpostDelay[22] = .25f; XisPlayer[22] = false; Xtrigger[22] = true;
+                Xline[22] = "...But if there's one thing I know Paladins hate, it's necromancy.";
+            }
+            else if (twoAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))  //if choice 2 is selected
+            {
+                youDiag.text = "...Then what do you hope to do, Gunnlaug?";
+                answering = false;
+
+                nextTag = "REGRETPROMPTSG";
+
+                StartCoroutine(poseQuestion(gunn, 2.5f, false,
+                    "...",
+                    2f, false, 0f, true));
+
+                oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
+
+                Xnpc[0] = gunn; XinitDelay[0] = 2f; XendDelay[0] = 4f; XpostDelay[0] = .5f; XisPlayer[0] = true; Xtrigger[0] = false;
+                Xline[0] = "The pommel is my favourite part of a sword.";
+
+                Xnpc[1] = fran; XinitDelay[1] = 0f; XendDelay[1] = 4.5f; XpostDelay[1] = .5f; XisPlayer[1] = false; Xtrigger[1] = false;
+                Xline[1] = "I prefer the blade.";
+
+                Xnpc[2] = rob; XinitDelay[2] = 0f; XendDelay[2] = 6f; XpostDelay[2] = .25f; XisPlayer[2] = false; Xtrigger[2] = false;
+                Xline[2] = "...Did I miss something?";
+
+                Xnpc[3] = fran; XinitDelay[3] = 0; XendDelay[3] = 5.5f; XpostDelay[3] = .25f; XisPlayer[3] = false; Xtrigger[3] = false;
+                Xline[3] = "He's saying he's a pacifist.";
+
+                Xnpc[4] = gunn; XinitDelay[4] = 0; XendDelay[4] = 4f; XpostDelay[4] = .25f; XisPlayer[4] = false; Xtrigger[4] = false;
+                Xline[4] = "I'm saying I'm an artist.";
+
+                Xnpc[5] = gunn; XinitDelay[5] = 0; XendDelay[5] = 4.5f; XpostDelay[5] = 1f; XisPlayer[5] = false; Xtrigger[5] = false;
+                Xline[5] = "I've perfected the blade; it bores me.";
+
+                Xnpc[6] = fran; XinitDelay[6] = 0; XendDelay[6] = 5f; XpostDelay[6] = .5f; XisPlayer[6] = false; Xtrigger[6] = false;
+                Xline[6] = "Perfect? No weapon is perfect.";
+
+                Xnpc[7] = gunn; XinitDelay[7] = 0; XendDelay[7] = 3.5f; XpostDelay[7] = .25f; XisPlayer[7] = false; Xtrigger[7] = false;
+                Xline[7] = "I could change your mind.";
+
+                Xnpc[8] = fran; XinitDelay[8] = 0; XendDelay[8] = 2f; XpostDelay[8] = .25f; XisPlayer[8] = false; Xtrigger[8] = false;
+                Xline[8] = "Oh, uhm...I'd like to see that.";
+
+                Xnpc[9] = rob; XinitDelay[9] = 0; XendDelay[9] = 3.5f; XpostDelay[9] = .25f; XisPlayer[9] = false; Xtrigger[9] = false;
+                Xline[9] = "...So what then if not swords?";
+
+                Xnpc[10] = gunn; XinitDelay[10] = 0; XendDelay[10] = 4.5f; XpostDelay[10] = .25f; XisPlayer[10] = false; Xtrigger[10] = false;
+                Xline[10] = "Jewelry: the finest work a man can craft.";
+
+                Xnpc[11] = rob; XinitDelay[11] = 0; XendDelay[11] = 7.5f; XpostDelay[11] = .25f; XisPlayer[11] = false; Xtrigger[11] = true;
+                Xline[11] = "I take it you never made any.";
+            }
+            else if (thrAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))  //if choice 3 is selected
+            {
+                youDiag.text = "...Then Robin, you have to be more specific.";
+                answering = false;
+
+                nextTag = "REGRETPROMPTSR";
+
+                StartCoroutine(poseQuestion(null, 3f, true,
+                    "What exactly do you regret? Take your time.",
+                    4.5f, false, 0f, true));
+
+                oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
+
+                Xnpc[0] = rob; XinitDelay[0] = .5f; XendDelay[0] = 3.5f; XpostDelay[0] = .5f; XisPlayer[0] = false; Xtrigger[0] = false;
+                Xline[0] = "I dunno. My family never had cache. Money.";
+
+                Xnpc[1] = gunn; XinitDelay[1] = 0f; XendDelay[1] = 4f; XpostDelay[1] = .25f; XisPlayer[1] = false; Xtrigger[1] = false;
+                Xline[1] = "Reales aren't easy to come by these days.";
+
+                Xnpc[2] = rob; XinitDelay[2] = 0f; XendDelay[2] = 3f; XpostDelay[2] = .25f; XisPlayer[2] = false; Xtrigger[2] = false;
+                Xline[2] = "No they are not.";
+
+                Xnpc[3] = rob; XinitDelay[3] = 0; XendDelay[3] = 6.5f; XpostDelay[3] = .75f; XisPlayer[3] = false; Xtrigger[3] = false;
+                Xline[3] = "All me brothers and sisters had jobs in and out of the house...";
+
+                Xnpc[4] = rob; XinitDelay[4] = 0; XendDelay[4] = 4f; XpostDelay[4] = .5f; XisPlayer[4] = false; Xtrigger[4] = false;
+                Xline[4] = "They all did their part, right?";
+
+                Xnpc[5] = fran; XinitDelay[5] = 0; XendDelay[5] = 2.5f; XpostDelay[5] = .5f; XisPlayer[5] = false; Xtrigger[5] = false;
+                Xline[5] = "Of course.";
+
+                Xnpc[6] = rob; XinitDelay[6] = 0; XendDelay[6] = 3.5f; XpostDelay[6] = .5f; XisPlayer[6] = false; Xtrigger[6] = true;
+                Xline[6] = "Yeah, that's the problem.";
+            }
+        }
+
+        if (answerTag == "REGRETPROMPTSF")
+        {
+            youDiag.text = "";
+
+            oneAnswer.text = "1) Stop Robin";
+            twoAnswer.text = "2) Say Nothing";
+            thrAnswer.text = null;
+
+            if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))  //if choice 1 is selected
+            {
+                youDiag.text = "I appreciate your help, Robin--";
+                answering = false;
+
+                StartCoroutine(poseQuestion(null, 3.5f, true,
+                    "But we cannot force people to share things. It's the wrong way.",
+                    6.5f, false, .5f, false));
+
+                oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
+
+                Xnpc[0] = rob; XinitDelay[0] = .5f; XendDelay[0] = 3f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
+                Xline[0] = "Sorry."; XskipAvailable[0] = false;
+
+                Xnpc[1] = fran; XinitDelay[1] = 0f; XendDelay[1] = 3.5f; XpostDelay[1] = .5f; XisPlayer[1] = false; Xtrigger[1] = false;
+                Xline[1] = "Thank you, pirate."; XskipAvailable[1] = false;
+
+                Xnpc[2] = fran; XinitDelay[2] = 0; XendDelay[2] = 5f; XpostDelay[2] = .5f; XisPlayer[2] = false; Xtrigger[2] = false;
+                Xline[2] = "And Robin? Don't dare try prying into my life again."; XskipAvailable[2] = false;
+
+                Xnpc[8] = null; XinitDelay[8] = 0; XendDelay[8] = 4f; XpostDelay[8] = .25f; XisPlayer[8] = true; Xtrigger[8] = false;
+                Xline[8] = "...I think that'll do for tonight. Apologies, Francesca.";
+
+                Xnpc[9] = null; XinitDelay[9] = 0; XendDelay[9] = 4f; XpostDelay[9] = .25f; XisPlayer[9] = true; Xtrigger[9] = false;
+                Xline[9] = "I'll begin searching for your phylacteries tomorrow morning.";
+
+                //end
+                maxI = 9;
+            }
+            else if (twoAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))  //if choice 2 is selected
+            {
+                youDiag.text = "...";
+                answering = false;
+
+                nextTag = "FranDefuse";
+
+                StartCoroutine(poseQuestion(rob, 5.5f, false,
+                    "Why would your brother be fiddling with necromancy, though?",
+                    4f, false, .25f, false));
+
+                oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
+
+                Xnpc[0] = gunn; XinitDelay[0] = .75f; XendDelay[0] = 3f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;       //start getting fast here, pressuring Fran
+                Xline[0] = "...The friend.";
+
+                Xnpc[1] = rob; XinitDelay[1] = 1f; XendDelay[1] = 2.75f; XpostDelay[1] = .25f; XisPlayer[1] = false; Xtrigger[1] = false;
+                Xline[1] = "Ah so he--";
+
+                Xnpc[2] = gunn; XinitDelay[2] = 0; XendDelay[2] = 3.5f; XpostDelay[2] = .25f; XisPlayer[2] = false; Xtrigger[2] = false;
+                Xline[2] = "--brought him back and was apprehended.";
+
+                Xnpc[3] = rob; XinitDelay[3] = 0; XendDelay[3] = 3.5f; XpostDelay[3] = .25f; XisPlayer[3] = false; Xtrigger[3] = false;
+                Xline[3] = "But...was he successful, Francesca?";
+
+                Xnpc[4] = gunn; XinitDelay[4] = 0; XendDelay[4] = 4f; XpostDelay[4] = .25f; XisPlayer[4] = false; Xtrigger[4] = false;
+                Xline[4] = "He would've been caught practicing before then.";
+
+                Xnpc[5] = rob; XinitDelay[5] = 0; XendDelay[5] = 2.75f; XpostDelay[5] = .25f; XisPlayer[5] = false; Xtrigger[5] = false;
+                Xline[5] = "Oh. Definitely.";
+
+                Xnpc[6] = gunn; XinitDelay[6] = 0; XendDelay[6] = 3f; XpostDelay[6] = .25f; XisPlayer[6] = false; Xtrigger[6] = false;
+                Xline[6] = "I wonder how though...";
+
+                Xnpc[7] = rob; XinitDelay[7] = 0; XendDelay[7] = 3.5f; XpostDelay[7] = .25f; XisPlayer[7] = false; Xtrigger[7] = false;
+                Xline[7] = "Oh god, this' awful, but...";
+
+                Xnpc[8] = rob; XinitDelay[8] = 0; XendDelay[8] = 3.5f; XpostDelay[8] = .25f; XisPlayer[8] = false; Xtrigger[8] = false;
+                Xline[8] = "Were you there when they caught him?";
+
+                Xnpc[9] = fran; XinitDelay[9] = 0; XendDelay[9] = 2.25f; XpostDelay[9] = .25f; XisPlayer[9] = false; Xtrigger[9] = false;
+                Xline[9] = "I--";
+
+                Xnpc[10] = gunn; XinitDelay[10] = 0; XendDelay[10] = 2.25f; XpostDelay[10] = .25f; XisPlayer[10] = false; Xtrigger[10] = false;
+                Xline[10] = "Oh no.";
+                
+                Xnpc[11] = rob; XinitDelay[11] = 0; XendDelay[11] = 4.5f; XpostDelay[11] = .25f; XisPlayer[11] = false; Xtrigger[11] = false;
+                Xline[11] = "How'd the inquisitors know? Someone had to tell them--";
+
+                Xnpc[12] = rob; XinitDelay[12] = 0; XendDelay[12] = 4f; XpostDelay[12] = .25f; XisPlayer[12] = false; Xtrigger[12] = false;
+                Xline[12] = "Was he practicing at home? Did your family kno--"; XskipAvailable[14] = false;
+
+                Xnpc[13] = fran; XinitDelay[13] = 0; XendDelay[13] = 2.5f; XpostDelay[13] = 1f; XisPlayer[13] = false; Xtrigger[13] = false;
+                Xline[13] = "ENOUGH!";   XskipAvailable[13] = false;
+
+                Xnpc[14] = rob; XinitDelay[14] = 0; XendDelay[14] = 2f; XpostDelay[14] = .25f; XisPlayer[14] = false; Xtrigger[14] = false;
+                Xline[14] = "Oh..."; XskipAvailable[14] = false;
+
+                Xnpc[15] = gunn; XinitDelay[15] = 0; XendDelay[15] = 2f; XpostDelay[15] = 4f; XisPlayer[15] = false; Xtrigger[15] = false;
+                Xline[15] = "..."; XskipAvailable[15] = false;
+
+                Xnpc[16] = fran; XinitDelay[16] = 0; XendDelay[16] = 5f; XpostDelay[16] = .25f; XisPlayer[16] = false; Xtrigger[16] = false;
+                Xline[16] = "My brother is not some case for you to crack.";
+
+                Xnpc[17] = fran; XinitDelay[17] = 0; XendDelay[17] = 8f; XpostDelay[17] = .25f; XisPlayer[17] = false; Xtrigger[17] = false;
+                Xline[17] = "We've all lost family, so I'm sure you understand when I ask you not to treat a death like a fucking puzzle.";
+
+                Xnpc[18] = gunn; XinitDelay[18] = 0; XendDelay[18] = 3f; XpostDelay[18] = .25f; XisPlayer[18] = false; Xtrigger[18] = false;
+                Xline[18] = "Apologies.";
+
+                Xnpc[19] = rob; XinitDelay[19] = 0; XendDelay[19] = 3f; XpostDelay[19] = .25f; XisPlayer[19] = false; Xtrigger[19] = true;
+                Xline[19] = "...";
+            }
+            else if (thrAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))  //if choice 3 is selected
+            {
+
+            }
+        }
+
+        if (answerTag == "FranRefuse")
+        {
+            youDiag.text = "";
+
+            oneAnswer.text = "1) Defuse";
+            twoAnswer.text = null;
+            thrAnswer.text = null;
+
+            if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))  //if choice 1 is selected
+            {
+                youDiag.text = "I think it's best we all go to bed.";
+                answering = false;
+
+                StartCoroutine(poseQuestion(fran, 3.5f, false,
+                    "I couldn't agree more.",
+                    6.5f, false, .5f, false));
+
+                oneAnswer.text = ""; twoAnswer.text = ""; thrAnswer.text = "";
+
+                Xnpc[0] = null; XinitDelay[0] = 0; XendDelay[0] = 3f; XpostDelay[0] = .25f; XisPlayer[0] = true; Xtrigger[0] = false;
+                Xline[0] = "...I'm sorry.";
+
+                Xnpc[1] = null; XinitDelay[1] = 0; XendDelay[1] = 4f; XpostDelay[1] = .25f; XisPlayer[1] = true; Xtrigger[1] = false;
+                Xline[1] = "I'll continue searching for more phylacteries tomorrow morning.";
+
+                //end
+                maxI = 1;
             }
         }
 

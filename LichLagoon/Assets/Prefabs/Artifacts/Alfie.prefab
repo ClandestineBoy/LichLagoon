@@ -4764,17 +4764,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94e7fe831fd013d4caf4fc96696e2482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buried: 0
+  franScore: 0
+  robScore: 1
+  gunScore: 1
+  buried: 1
   tagged: 0
   inInventory: 0
-  lore: This fish was not caught for eating, quite the opposite infact. He was caught,
+  lore: This fish was not caught for eating, quite the opposite in fact. He was caught,
     stuffed, mounted and loved by a man named Alfie. The fishes name was also Alfie.
   grabScale: 0.7
-  restScale: 0
+  restScale: 1
   grabS: {x: 0.7, y: 0.7, z: 0.7}
   restS: {x: 1, y: 1, z: 1}
   ps: {fileID: 0}
-  grabRot: {x: 0, y: 0, z: 0}
+  grabRot: {x: 0, y: 0, z: 340}
   particlesFollowPlayer: 1
   shrinkSpeed: 0
 --- !u!1001 &241243136005327954
@@ -4786,56 +4789,56 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 79d602a9f28881a4c8148e137e42cf2e, type: 3}
       propertyPath: m_Name
-      value: alfie Variant
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 79d602a9f28881a4c8148e137e42cf2e, type: 3}
-      propertyPath: m_TagString
-      value: Tags
+      value: Alfie
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 79d602a9f28881a4c8148e137e42cf2e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.697
+      value: -11.6
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 79d602a9f28881a4c8148e137e42cf2e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.1
+      value: -1.29
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 79d602a9f28881a4c8148e137e42cf2e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.104
+      value: 36.5
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 79d602a9f28881a4c8148e137e42cf2e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: -0.3614485
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 79d602a9f28881a4c8148e137e42cf2e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.60235506
+      value: 0.72718143
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 79d602a9f28881a4c8148e137e42cf2e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.05316254
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 79d602a9f28881a4c8148e137e42cf2e, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7982283
+      value: -0.58115053
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 79d602a9f28881a4c8148e137e42cf2e, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 79d602a9f28881a4c8148e137e42cf2e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 29.830002
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 79d602a9f28881a4c8148e137e42cf2e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 74.077
+      value: 248.43399
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 79d602a9f28881a4c8148e137e42cf2e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -32.326
       objectReference: {fileID: 0}
     - target: {fileID: 2300002, guid: 79d602a9f28881a4c8148e137e42cf2e, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e58481a0d01ef854da75a6a92f0aaf21, type: 2}
-    - target: {fileID: 2300000, guid: 79d602a9f28881a4c8148e137e42cf2e, type: 3}
-      propertyPath: m_Materials.Array.data[2]
-      value: 
-      objectReference: {fileID: 2100000, guid: 56dcfb18414deae458ae73d5e117cdf3, type: 2}
     - target: {fileID: 2300000, guid: 79d602a9f28881a4c8148e137e42cf2e, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -4844,6 +4847,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 9222aa5f3e7b1b44ca8b4aefbe7754fd, type: 2}
+    - target: {fileID: 2300000, guid: 79d602a9f28881a4c8148e137e42cf2e, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 56dcfb18414deae458ae73d5e117cdf3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79d602a9f28881a4c8148e137e42cf2e, type: 3}
 --- !u!1 &241243136005294834 stripped

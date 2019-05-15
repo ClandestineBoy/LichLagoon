@@ -4751,7 +4751,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94e7fe831fd013d4caf4fc96696e2482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buried: 0
+  buried: 1
   tagged: 0
   inInventory: 0
   lore: This was fired from your own ship, actually. It tore its victim's arm into
@@ -4766,6 +4766,19 @@ MonoBehaviour:
   grabRot: {x: 0, y: 0, z: 0}
   particlesFollowPlayer: 1
   shrinkSpeed: 0
+--- !u!135 &1536249709194815441
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 971321994025712737}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.3614339
+  m_Center: {x: 0, y: 0, z: 0.000000014901161}
 --- !u!1001 &971321994025679553
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4779,15 +4792,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ec5ab497bc67b9e4ebca798820f32c9d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.47
+      value: -8.58
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ec5ab497bc67b9e4ebca798820f32c9d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.3
+      value: -1.19
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ec5ab497bc67b9e4ebca798820f32c9d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.67
+      value: 34.79
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ec5ab497bc67b9e4ebca798820f32c9d, type: 3}
       propertyPath: m_LocalRotation.x
@@ -4807,6 +4820,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ec5ab497bc67b9e4ebca798820f32c9d, type: 3}
       propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ec5ab497bc67b9e4ebca798820f32c9d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ec5ab497bc67b9e4ebca798820f32c9d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ec5ab497bc67b9e4ebca798820f32c9d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: ec5ab497bc67b9e4ebca798820f32c9d, type: 3}

@@ -22,18 +22,25 @@ public class pauseScript : MonoBehaviour
     {
         if (!paused)    //unpaused
         {
-            colourShift(pauseImage, null, new Color(1, 1, 1, 0), Time.deltaTime * 100, false, false);
-            colourShift(pausePrompt, null, new Color(1, 1, 1, .75f), Time.deltaTime * 100, false, false);
+            colourShift(pauseImage, null, new Color(1, 1, 1, 0), Time.fixedDeltaTime * 100, false, false);
+            colourShift(pausePrompt, null, new Color(1, 1, 1, .75f), Time.fixedDeltaTime * 100, false, false);
 
             if (Input.GetKeyDown(KeyCode.P))
             {
                 paused = true;
             }
+
+            if (Time.timeScale == 0)
+            {
+                Time.timeScale = 1;
+            }
         }
         else     //paused
         {
-            colourShift(pauseImage, null, new Color(1, 1, 1, 1), Time.deltaTime * 100, false, false);
-            colourShift(pausePrompt, null, new Color(1, 1, 1, 0), Time.deltaTime * 100, false, false);
+            Time.timeScale = 0;
+
+            colourShift(pauseImage, null, new Color(1, 1, 1, 1),100, false, false);
+            colourShift(pausePrompt, null, new Color(1, 1, 1, 0), 100, false, false);
 
             if (Input.GetKey(KeyCode.Escape))
             {
@@ -68,7 +75,7 @@ public class pauseScript : MonoBehaviour
                             (
                                 curText.color,
                                 target,
-                                speed * Time.deltaTime
+                                speed * Time.fixedDeltaTime
                             );
             }
             else
@@ -77,7 +84,7 @@ public class pauseScript : MonoBehaviour
                             (
                                 curText.color,
                                 target,
-                                speed * Time.deltaTime
+                                speed * Time.fixedDeltaTime
                             );
             }
         }
@@ -87,7 +94,7 @@ public class pauseScript : MonoBehaviour
                         (
                             curImg.color,
                             target,
-                            speed * Time.deltaTime
+                            speed * Time.fixedDeltaTime
                         );
         }
 

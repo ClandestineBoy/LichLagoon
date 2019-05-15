@@ -74,6 +74,7 @@ public class introProcedure : MonoBehaviour
         }
         else if (inBoatConvo)
         {
+            player.GetComponent<pauseScript>().enabled = true;
             //nothing? that i can think of rn
         }
         else if (atFadeOut)

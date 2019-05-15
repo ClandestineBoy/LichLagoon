@@ -6,9 +6,9 @@ using UnityEngine.UI;
 
 public class SceneManger : MonoBehaviour
 {
-    public bool nextScene;
+    public bool nextScene, fading;
     public string nextName;
-    public float delay;
+    public float delay, fadeSpeed;
 
     public Image fadeOutRect;
 
@@ -25,7 +25,7 @@ public class SceneManger : MonoBehaviour
             {
                 nextScene = false;
                 nextName = "Intro";
-                fadeOut();
+                StartCoroutine(fadeDelay());
             }
         }
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Intro"))
@@ -34,7 +34,7 @@ public class SceneManger : MonoBehaviour
             {
                 nextScene = false;
                 nextName = "Night2";
-                fadeOut();
+                StartCoroutine(fadeDelay());
             }
         }
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Night2"))
@@ -43,18 +43,29 @@ public class SceneManger : MonoBehaviour
             {
                 nextScene = false;
                 nextName = "Rilee Home";
-                fadeOut();
+                StartCoroutine(fadeDelay());
             }
+        }
+
+        if (fading)
+        {
+            fadeOut();
         }
     }
 
     void fadeOut()
     {
-        fadeOutRect.color = Vector4.MoveTowards(fadeOutRect.color, Color.black, Time.fixedDeltaTime * delay);
+        fadeOutRect.color = Vector4.MoveTowards(fadeOutRect.color, Color.black, Time.fixedDeltaTime * fadeSpeed);
 
         if (fadeOutRect.color == Color.black)
         {
             SceneManager.LoadScene(nextName);
         }
+    }
+
+    IEnumerator fadeDelay()
+    {
+        yield return new WaitForSeconds(delay);
+        fading = true;
     }
 }

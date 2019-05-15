@@ -39423,8 +39423,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextScene: 0
+  fading: 0
   nextName: 
-  delay: 4
+  delay: 0.3
+  fadeSpeed: 1
   fadeOutRect: {fileID: 258222869}
 --- !u!1 &1654536255
 GameObject:

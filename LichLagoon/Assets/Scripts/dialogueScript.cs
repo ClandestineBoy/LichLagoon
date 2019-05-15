@@ -35,12 +35,12 @@ public class dialogueScript : MonoBehaviour
     public float fadeOutSpeed = 0f, fadeInSpeed = 0f;
 
     [Header("Next Line Data")]
-    public NPC[] Xnpc = new NPC [25];
+    public NPC[] Xnpc = new NPC [40];
     float[] XinitDelay = new float[25], XendDelay = new float[25], XpostDelay = new float[25];
     bool[] XisPlayer = new bool[25], Xtrigger = new bool[25];
     string[] Xline = new string[25];
-    int lineI = -1;
-    public bool[] XskipAvailable = new bool [25];   public bool _skippable = true;
+    int lineI = -1; int maxI = -2;
+    private bool[] XskipAvailable = new bool [25];   public bool _skippable = true;
 
     [Header("FastForward Tools")]
     public bool ff = false;
@@ -97,6 +97,10 @@ public class dialogueScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(maxI == lineI)
+        {
+            sm.nextScene = true;
+        }
         if (Input.GetKeyDown(KeyCode.Mouse0) && !ff && _skippable)       
         {
             Time.timeScale = ffSpeed * 5;
@@ -234,6 +238,8 @@ public class dialogueScript : MonoBehaviour
                     "Well pardon me. It's my first time. I'm nervous.",
                     5f, false, .5f, true));   //comment this out and fill it out - this is the next line read from the next npc
 
+                
+
                 Xnpc[0] = gunn; XinitDelay[0] = 0f; XendDelay[0] = 6f; XpostDelay[0] = .25f; XisPlayer[0] = false; Xtrigger[0] = false;
                 Xline[0] = "We are all new to this. Yet here we sit, silent.";
 
@@ -244,7 +250,7 @@ public class dialogueScript : MonoBehaviour
                 Xline[2] = "Okay, okay...Nevermind.";
 
                 //END INTRO
-                sm.nextScene = true;
+                maxI = 2;
             }
             else if (twoAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))  //if choice 2 is selected
             {
@@ -312,7 +318,6 @@ public class dialogueScript : MonoBehaviour
 
                 //StartCoroutine(poseQuestion());
             }
-
             return;
         }
 
@@ -386,7 +391,7 @@ public class dialogueScript : MonoBehaviour
                 Xline[15] = "...No idea.";
 
                 //END INTRO
-                sm.nextScene = true;
+                maxI = 15;
             }
             else if (twoAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))  //if choice 2 is selected
             {
@@ -438,7 +443,7 @@ public class dialogueScript : MonoBehaviour
                 Xline[11] = "...No idea.";
 
                 //END INTRO
-                sm.nextScene = true;
+                maxI = 11;
             }
             else if (thrAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))  //if choice 3 is selected
             {
@@ -493,9 +498,8 @@ public class dialogueScript : MonoBehaviour
                 Xline[12] = "...No idea.";
 
                 //END INTRO
-                sm.nextScene = true;
+                maxI = 12;
             }
-
             return;
         }
 
@@ -1224,7 +1228,7 @@ public class dialogueScript : MonoBehaviour
                 Xline[12] = "You must miss them.";
 
                 Xnpc[13] = gunn; XinitDelay[13] = 0; XendDelay[13] = 5.5f; XpostDelay[13] = .25f; XisPlayer[13] = false; Xtrigger[13] = false;
-                Xline[13] = "Not especially. THey're busy people, as am I.";
+                Xline[13] = "Not especially. They're busy people, as am I.";
 
                 Xnpc[14] = gunn; XinitDelay[14] = 0; XendDelay[14] = 5f; XpostDelay[14] = .25f; XisPlayer[14] = false; Xtrigger[14] = false;
                 Xline[14] = "Our love withstands time and distance.";
@@ -1248,7 +1252,7 @@ public class dialogueScript : MonoBehaviour
                 Xline[20] = "I'll begin searching for your phylacteries tomorrow morning.";
 
                 //end
-                sm.nextScene = true;
+                maxI = 20;
             }
             else if (thrAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))  //if choice 3 is selected
             {
@@ -1321,7 +1325,7 @@ public class dialogueScript : MonoBehaviour
                 Xline[18] = "I'll begin searching for your phylacteries tomorrow morning.";
 
                 //end
-                sm.nextScene = true;
+                maxI = 18;
             }
         }
 
@@ -1359,7 +1363,7 @@ public class dialogueScript : MonoBehaviour
                 Xline[3] = "I'm going to bed, Pirate. Find my phylactery quickly.";
 
                 //END NIGHT
-                sm.nextScene = true;
+                maxI = 3;
             }
             else if (twoAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))
             {
@@ -1387,7 +1391,7 @@ public class dialogueScript : MonoBehaviour
                 Xline[3] = "I'm going to bed, Pirate. Find my phylactery quickly.";
 
                 //END NIGHT
-                sm.nextScene = true;
+                maxI = 3;
             }
             else if (thrAnswer.text != null && Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))  //if choice 3 is selected
             {

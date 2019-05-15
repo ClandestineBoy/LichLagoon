@@ -3347,9 +3347,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextScene: 0
+  fading: 0
   nextName: 
-  delay: 4
-  fadeOutRect: {fileID: 0}
+  delay: 3
+  fadeSpeed: 1
+  fadeOutRect: {fileID: 202410179}
 --- !u!4 &194221613
 Transform:
   m_ObjectHideFlags: 0

@@ -6,16 +6,21 @@ using UnityEngine.UI;
 
 public class SceneManger : MonoBehaviour
 {
-    public bool nextScene, finalScene, fading;
-    public string nextName;
+    public bool nextScene = false, finalScene = false, fading = false;
+    public string nextName = "";
     public float delay, fadeSpeed;
 
     public Image fadeOutRect;
 
+    private void Start()
+    {
+        nextName = " "; finalScene = false;
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if(finalScene = true)
+        if(finalScene == true)
         {
             finalScene = false;
             nextName = "End";
@@ -52,6 +57,7 @@ public class SceneManger : MonoBehaviour
                 StartCoroutine(fadeDelay());
             }
         }
+
 
         if (fading)
         {

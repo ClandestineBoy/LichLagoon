@@ -50900,7 +50900,7 @@ MonoBehaviour:
   _skippable: 1
   ff: 0
   ffSpeed: 0
-  dialogueID: Night1
+  dialogueID: Night2
   artifactTags: {fileID: 0}
   fResponse: 0
   gResponse: 0

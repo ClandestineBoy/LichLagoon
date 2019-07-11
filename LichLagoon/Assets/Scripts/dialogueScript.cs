@@ -3254,9 +3254,9 @@ public class dialogueScript : MonoBehaviour
         ///*********LINE************************************************************************************************///
     }
 
-///_______________________________________________________________________________________________________________________________________________________________________
-//////////////////////END PLAYER SCRIPT
-///_______________________________________________________________________________________________________________________________________________________________________
+    ///_______________________________________________________________________________________________________________________________________________________________________
+    //////////////////////END PLAYER SCRIPT
+    ///_______________________________________________________________________________________________________________________________________________________________________
 
     IEnumerator poseQuestion(NPC speaker, float initDelay, bool isPlayer, string line, float endDelay, bool trigger, float postDelay, bool skippable)
     {
@@ -3268,43 +3268,44 @@ public class dialogueScript : MonoBehaviour
 
         youMousePrompt.color = tranWhite;
         yield return new WaitForSeconds(initDelay);
-
-        if (!isPlayer)    //if an npc is speaking
+        if (!sm.fading)
         {
-            speaker.primaryActive = true; speaker.secondaryActive = false;     //fade in speaker's dialogue box, dialogue text, and brighten their portrait
-
-            if (skippable)
+            if (!isPlayer)    //if an npc is speaking
             {
-                speaker.mousePrompt.color = Color.white;
-                _skippable = true;
+                speaker.primaryActive = true; speaker.secondaryActive = false;     //fade in speaker's dialogue box, dialogue text, and brighten their portrait
+
+                if (skippable)
+                {
+                    speaker.mousePrompt.color = Color.white;
+                    _skippable = true;
+                }
+                else
+                {
+                    _skippable = false;
+                }
+
+                speaker.currentDialogue.text = line;
             }
             else
             {
-                _skippable = false;
+                if (skippable)
+                {
+                    youMousePrompt.color = Color.white;
+                    _skippable = true;
+                }
+                else
+                {
+                    _skippable = false;
+                }
+
+                playerSpeaking = true;
+
+                oneAnswer.text = null;  //choices presented to player (leave as "null" if there are less choices
+                twoAnswer.text = null;
+                thrAnswer.text = null;
+                youDiag.text = line;
             }
-
-            speaker.currentDialogue.text = line;
-        }
-        else
-        {
-            if (skippable)
-            {
-                youMousePrompt.color = Color.white;
-                _skippable = true;
-            }
-            else
-            {
-                _skippable = false;
-            }
-
-            playerSpeaking = true;
-
-            oneAnswer.text = null;  //choices presented to player (leave as "null" if there are less choices
-            twoAnswer.text = null;
-            thrAnswer.text = null;
-            youDiag.text = line;
-        }
-
+        
         ///Debug.Log(skippable);
         ff = false;
         ffSpeed = endDelay;
@@ -3332,6 +3333,7 @@ public class dialogueScript : MonoBehaviour
             lineI++;
             StartCoroutine(poseQuestion(Xnpc[lineI], XinitDelay[lineI], XisPlayer[lineI], Xline[lineI], XendDelay[lineI], Xtrigger[lineI], XpostDelay[lineI], XskipAvailable[lineI]));
             ///Debug.Log("New Line: " + Xnpc[lineI]);
+        }
         }
     }
 

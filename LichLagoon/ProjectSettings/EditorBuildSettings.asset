@@ -6,27 +6,21 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Rilee Home.unity
-    guid: 00871575bd6b007458647b2b7a3a1db9
-  - enabled: 1
-    path: Assets/Scenes/Night1.unity
-    guid: 5886a2699950afe44a940208aad3d6fe
-  - enabled: 0
-    path: Assets/Scenes/Alex Island!.unity
-    guid: c79adf86f9d8e9d4fba484e9145f1537
+    path: Assets/Scenes/StartScreen.unity
+    guid: 27df8c2aec2d44340b170d3e0e1c2c35
   - enabled: 1
     path: Assets/Scenes/Intro.unity
     guid: 0e8f1cfb926de1243939b703b44960e3
   - enabled: 1
-    path: Assets/Scenes/StartScreen.unity
-    guid: 27df8c2aec2d44340b170d3e0e1c2c35
+    path: Assets/Scenes/Rilee Home.unity
+    guid: 00871575bd6b007458647b2b7a3a1db9
   - enabled: 1
     path: Assets/Scenes/Night2.unity
     guid: fb43875d1254b59409aebc3f78666c34
   - enabled: 1
-    path: Assets/Scenes/End.unity
-    guid: e44f5a2bb9d123c499440dc3847de8fb
-  - enabled: 1
     path: Assets/Scenes/Night3.unity
     guid: 70bf3d1753595234286ce92c82933ec9
+  - enabled: 1
+    path: Assets/Scenes/End.unity
+    guid: e44f5a2bb9d123c499440dc3847de8fb
   m_configObjects: {}

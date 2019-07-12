@@ -44,6 +44,10 @@ public class Sun_Rotation : MonoBehaviour
             if(RenderSettings.reflectionIntensity > 0)
             RenderSettings.reflectionIntensity -= .01f;
         }
+        else
+        {
+            transform.RotateAround(Vector3.zero, Vector3.right, .01f);
+        }
         if (transform.position.y <= -50 && day)
         {
             night = true;

@@ -12,6 +12,7 @@
           <e p="bobberScript.cs" t="Include" />
           <e p="cameraClamp.cs" t="Include" />
           <e p="dialogueScript.cs" t="Include" />
+          <e p="FireBehavior.cs" t="Include" />
           <e p="followPoint.cs" t="Include" />
           <e p="grabbable.cs" t="Include" />
           <e p="introProcedure.cs" t="Include" />

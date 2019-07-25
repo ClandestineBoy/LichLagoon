@@ -10,7 +10,7 @@ Material:
   m_Name: Water
   m_Shader: {fileID: 4800000, guid: 5427ebe9116981c47a703c236a38b503, type: 3}
   m_ShaderKeywords: 
-  m_LightmapFlags: 4
+  m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -18,7 +18,43 @@ Material:
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs: []
+    m_TexEnvs:
+    - _SeaFoam:
+        m_Texture: {fileID: 2800000, guid: 2bb3ff6dd8380154db920f3e9be93061, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture0:
+        m_Texture: {fileID: 2800000, guid: 2dd3788f8589b40bf82a92d76ffc5091, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TextureSample0:
+        m_Texture: {fileID: 2800000, guid: 2dd3788f8589b40bf82a92d76ffc5091, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
-    - __dirty: 1
-    m_Colors: []
+    - _Depth: -8.66
+    - _EdgeDistance: 0.22
+    - _EdgeFoamTile: 1
+    - _EdgePower: 0.26
+    - _Float1: 1
+    - _Float2: 1
+    - _FoamSpeed: 0.01
+    - _FoamStrength: 0.246
+    - _NormalSpeed: 0.001
+    - _NormalStrength: 0.396
+    - _NormalTile: 0.01
+    - _RefractAmount: 0.03
+    - _SeaFoamTile: 1
+    - _WaveHeight: 0.41
+    - _WaveSpeed: 0.25
+    - _WaveTile: 0.25
+    - __dirty: 0
+    m_Colors:
+    - _Direction: {r: 1, g: 0, b: 0, a: 0}
+    - _TopColor: {r: 0.2862745, g: 0.6862745, b: 0.8235294, a: 0}
+    - _WaterColor: {r: 0.2352941, g: 0.5411765, b: 0.7019608, a: 0}
+    - _WaveStretch: {r: 0.1, g: 0.02, b: 0, a: 0}
